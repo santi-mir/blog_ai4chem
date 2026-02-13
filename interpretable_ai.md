@@ -50,7 +50,7 @@ Hence, the techniques to enhance it are to do with the math.
 * Simplifying the model (when possible)
     * Regularisation Approaches (SISSO, LASSO) can help by identifying the most important descriptors to use.
     * LASSO: to remove features when tightly correlated (leaving the most helpful one).
-* Generalised Linear Models (GLMs) where the generalised model ($g(z)$) fits the more complex model ($f(z)$) with a linear expansion with desired functions $\psi$:
+* Generalised Linear Models (GLMs) where the generalised model approximates the more complex model i.e $g(z) \approx f(z)$, respectively. The GLM, $g(z)$, is defined as:
     $$g(z) = \psi_0 + \sum_{i=1}^M \psi_i z_i$$
 
 ### Enhancing Extrinsic Explanations (Methods)
