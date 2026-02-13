@@ -28,14 +28,9 @@ The paper defines a few concepts, I use my own terms below.
 
 Trivially, "adomainness" is "not domainness", that is, concepts not from the domain. This removes the need for an extra term.
 
-There tends to be a tradeoff between _domainness_, _correctness_ because complex behaviour needs complex networks or models, to which we can rarely assign high domainness.
+There tends to be a tradeoff between _domainness_ and _correctness_ because complex behaviour needs complex networks or models, to which we can rarely assign high domainness.
 
-Also, _domainness_ may be applied to the model (as a whole) or to outputs or comparison of outputs. This is referred to as local vs global explanations, also as intrinsic vs extrinsic.
-
-The difference between local vs extrinsic and global vs intrinsic seems too vague to be useful.
-This post uses these interchangeably.
-
-_domainness_ tends to be higher for local explanations.
+Also, domainness may be applied to the model (as a whole) or to outputs or comparison of outputs.
 
 ### Example
 
@@ -45,16 +40,16 @@ They cite as an example the compatibility of some NN with the Penn model of diel
 
 ## Explaining Classical ML
 
-
 As an example of Classical ML think of Support Vector Regression, and other kinds of regressions.
-The me
 
 ### Enhancing Intrinsic Explanations
 
-Prior to methods they explain the intrinsically explainable models (also for classic ML). They include:
+Intrinsically explainable models are those we can get some understanding by looking at the math.
+Hence, the techniques to enhance it are to do with the math.
 
-* Simplifying the model (though this can backfire)
-* Regularisation Approaches (SISSO, LASSO)
+* Simplifying the model (when possible)
+    * Regularisation Approaches (SISSO, LASSO) can help by identifying the most important descriptors to use.
+    * LASSO: to remove features when tightly correlated (leaving the most helpful one).
 * Generalised Linear Models (GLMs) where the generalised model ($g(z)$) fits the more complex model ($f(z)$) with a linear expansion with desired functions $\psi$:
     $$g(z) = \psi_0 + \sum_{i=1}^M \psi_i z_i$$
 
@@ -73,11 +68,17 @@ The image below is from the paper, under [CC BY 4.0] (cropped), the main things 
 
 ## Explaining Deep Learning Models
 
-* Processing Methods: How the model processes an input (like what-if analyses i.e Intrinsic)
+### Intrinsic
+* Representation Methods: Interpret the learnt representations (i.e intrinsic).
+* Introducing inductive biases related to symmetry
+
+### Extrinsic
+
+* Processing Methods: How the model processes an input (like what-if analyses i.e extrinsic).
     * Salience methods: these are quite simple and useful, basically it's also finding a coefficient, and try to refer it back to some input feature or region (for images).
         * analyse which activations respond stronger to which features (e.g class activation map or CAM)
         * or where changes in the activations change the output the most (derivatives/gradients, grad-CAM).
-* Representation Methods: Interpret the learnt representations (i.e Extrinsic)
+
 
 Another separate avenue is using more explainable NNs like $\beta$-VAEs or transformers.
 
