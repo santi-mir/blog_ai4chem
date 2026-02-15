@@ -6,6 +6,9 @@ h3 {
   margin-block-start: calc(1em + 2vh);
 }
 
+main > p {
+  margin:0.8rem 0;
+}
 div.center {
   text-align: center;
   margin: auto;
