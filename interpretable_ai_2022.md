@@ -53,12 +53,12 @@ Hence, the techniques to enhance it are to do with the math.
 * Generalised Linear Models (GLMs) where the generalised model approximates the more complex model i.e $g(z) \approx f(z)$, respectively. The GLM, $g(z)$, is defined as:
     $$g(z) = \psi_0 + \sum_{i=1}^M \psi_i z_i$$
 
-### Enhancing Extrinsic Explanations (Methods)
+### Enhancing Extrinsic Explanations
 
-* What-if: Correlate input changes (or features) with outputs.
-    * One such technique is Partial Dependence Plots (PDPs). Though this masks possible correlations between features (if all are kept constant but one).
-    * Individual Conditional Expectations (ICE) appears to overcome the limitation above.
-    * Feature Importance methods: partial derivative of an output w.r.t some input feature. (See refs 20 and 21 in the paper for more detail.)
+* What-if: Correlate changes in input-features with changes in outputs.
+    * Partial Dependence Plots (PDPs). Though it masks possible correlations between features (if all are kept constant but one).
+    * Individual Conditional Expectations (ICE) overcomes the limitation above.
+    * Feature Importance methods: partial derivative of an output w.r.t some input feature.[^1]
     * Shapley Analysis: also involves fitting a linear model around some close input points, then looking at the coefficients. The coefficients quantify the effect of each feature in the output. It seems to be derived from the GLM. (I assume they fit different GLMs to different areas of their input space, and then analyze the distribution of coefficients? I am unsure.)
 
 
@@ -68,11 +68,11 @@ The image below is from the paper, under [CC BY 4.0] (cropped), the main things 
 
 ## Explaining Deep Learning Models
 
-### Intrinsic
+### Intrinsic Explanations
 * Representation Methods: Interpret the learnt representations (i.e intrinsic).
 * Introducing inductive biases related to symmetry
 
-### Extrinsic
+### Extrinsic Explanations
 
 * Processing Methods: How the model processes an input (like what-if analyses i.e extrinsic).
     * Salience methods: these are quite simple and useful, basically it's also finding a coefficient, and try to refer it back to some input feature or region (for images).
@@ -84,3 +84,4 @@ Another separate avenue is using more explainable NNs like $\beta$-VAEs or trans
 
 [Account]: https://pubs.acs.org/doi/10.1021/accountsmr.1c00244
 [CC BY 4.0]: https://creativecommons.org/licenses/by/4.0/
+[^1]:  This I think can be done also numerically, without actually calculating the derivative. See refs 20 and 21 in the paper for more detail.

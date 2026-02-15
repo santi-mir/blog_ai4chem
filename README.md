@@ -1,11 +1,15 @@
 # blog_ai4chem
-Markdown blog where I write summaries and ideas related to AI for chemistry.
 
-Feel free to use the Discussions tab to talk about anything, and submit issues for any errors.
+My thoughts related to AI for chemistry.
 
-## Posts
+Check to the Discussions tab to chat about anything related.
 
-1. [Interpretable AI](./interpretable_ai.md)
+## Index of blogposts
+
+1. [Interpretable and Explainable Machine Learning for Materials
+Science and Chemistry (2022)](./interpretable_ai_2022.md)
+2. [Distributed representations of atoms and materials for
+machine learning (2022)](./distributed_reps_of_atoms_2022.md)
 
 
 ## License
