@@ -64,7 +64,14 @@ Hence, the techniques to enhance it are to do with the math.
 
 The image below is from the paper, under [CC BY 4.0] (cropped), the main things to notice are the linear generalised model and the Shapley's contributions from different features (how much each feature affects the output). It seems to derive from the GLM.
 
-<a href="./linear_model_and_shapley.jpeg"/><img width=350 src="./linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley's contributions"/></a>
+<div class="center w320"> <!--other classes: w220, w420-->
+    <a href="./assets/linear_model_and_shapley.jpeg">
+    <img src="./linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley's contributions"/>
+    </a>
+    <p>
+    Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
+    </p>
+</div>
 
 ## Explaining Deep Learning Models
 

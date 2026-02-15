@@ -1,0 +1,59 @@
+[book]
+title = "AI for Chemistry"
+authors = ["Santiago Miranda"]
+language = "en"
+description = "Thoughts on papers in the topic of AI, DL, ML for chemistry."
+src = "src"
+#multilingual = false
+
+[rust]
+edition = "2024"
+
+[output.html]
+git-repository-url = "https://github.com/santi-mir/blog_ai4chem/"
+edit-url-template = "https://github.com/santi-mir/blog_ai4chem/edit/main/book/{path}"
+# default was "light"
+default-theme = "dark"
+# default was "navy"
+preferred-dark-theme = "ayu"
+# Not used
+definition-lists = false
+# > [!NOTE] and all these are pretty.
+admonitions = true
+# Can cause issues copying and pasting
+smart-punctuation = false
+# Remove h2 sections from sidebar.
+sidebar-header-nav = false
+# Same, remove numbers from section.
+no-section-label = false
+additional-css = ["./src/assets/custom.css"]
+# git-repository-icon = "fab-github"
+# input-404 = "not-found.md"
+# theme = "my-theme"
+# mathjax-support = false
+# additional-js = ["custom.js"]
+
+# they did not upgrade to 0.5 just yet.
+# [preprocessor.quiz]
+
+# [preprocessor.fetch]
+# Not a general preprocessor key but in `fetch`.
+# disable=true
+
+# used when debugging a preprocessor.
+# [output.markdown]
+
+[output.html.print]
+enable = true    # include support for printable output
+page-break = true # insert page-break after each chapter
+
+[output.html.fold]
+enable = false    # whether or not to enable section folding
+level = 0         # the depth to start folding
+
+[output.html.playground]
+runnable = false         # displays a run button for rust code
+editable = false         # allows editing the source code
+copyable = true          # include the copy button for copying code snippets
+copy-js = true          # includes the JavaScript for the code editor
+line-numbers = false     # displays line numbers for editable code

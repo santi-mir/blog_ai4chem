@@ -1,21 +1,17 @@
-# blog_ai4chem
+# Blog
 
 My thoughts related to AI for chemistry.
 
-Check to the Discussions tab to chat about anything related.
-
-## Index of blogposts
-
-1. [Interpretable and Explainable Machine Learning for Materials
-Science and Chemistry (2022)](./interpretable_ai_2022.md)
-2. [Distributed representations of atoms and materials for
-machine learning (2022)](./distributed_reps_of_atoms_2022.md)
-
+The URL for the book (if you are reading this on GitHub) is <https://santi-mir.github.io/blog_ai4chem>.
 
 ## License
 
 All the content here is under [CC BY 4.0].
 
 
+## Tools Used
 
+* [`mdbook`][mdbook].
+
+[mdbook]: https://github.com/rust-lang/mdBook
 [CC BY 4.0]: https://creativecommons.org/licenses/by/4.0/

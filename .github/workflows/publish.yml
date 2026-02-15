@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build, Test and Deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # To push a branch
+      pull-requests: write  # To create a PR from that branch
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+      - name: "Cache cargo"
+        # https://github.com/actions/cache
+        id: cache-cargo
+        uses: "actions/cache@v4"
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            ~/.cargo/.crates.toml
+            ~/.cargo/.crates2.json
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}-${{ hashFiles('~/.cargo/.crates.toml') }}
+          restore-keys: ${{ runner.os }}-cargo-
+      # Installs all latest versions.
+      - run: cargo install mdbook lychee rumdl caesiumclt mdbook-mermaid || echo "Check logs" && true
+      # Compress images losslessly, and overwrite.
+      - run: caesiumclt --lossless -O bigger book/src/assets/*.{jpg,jpeg,png} --same-folder-as-input
+      # Link-checker
+      - run: lychee book/src
+      # Markdown linter
+      - run: rumdl check #--fix would cause trouble if we dislike the fix.
+      # Build the book, located in `./book`
+      - run: mdbook build book
+      # Publish the stuff under `/book/book` to GH pages
+      # If we add a preprocessor, we will need to update to
+      # `/book/book/html`
+      - uses: JamesIves/github-pages-deploy-action@v4.7.4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: book/book/ # The folder the action should deploy.
