@@ -1,22 +1,30 @@
 # Explainable AI for chemistry
 
-I've recently read the paper ["Interpretable and Explainable Machine Learning for Materials Science and Chemistry"][Account] (2022).
+I've recently read the paper titled [Interpretable and Explainable Machine Learning for Materials Science and Chemistry][Account] (2022).
 
 I write some thoughts about it below.
 
-## Main Topic
+## Introduction
 
-DNNs are often considered black-boxes. But insofar as we are doing _science_ with deep learning (DL) models,
-it is important to understand the model itself, not just its output.
+Scientist strive to explain the world. When a mathematical description or model is proposed, it is expected to be interpretable. By _interpretable_ we mean understood by a human, both mathematically and conceptually.
+
+A conceptual level normally implies domain concepts. Here are two examples:
+
+* In chemistry, this could be electronegativity, or mass.
+* In physics, if we take a Hamiltonian, we can recognise terms by its mathematical structure, but also intuitively understand. One term is for kinetic energy, another for an electric potential, and so on.
+
+### The question
+
+ML algorithms tend to be interpretable in a general sense (a human can explain it).
+
+But Deep Neural Networks (DNNs) are often considered black-boxes. But insofar as we are doing _science_ with deep learning models, it is important to understand the model itself, not just its output.
 
 In many cases, DNNs are hard to interpret, and in some cases we may be satisfied with its predictive power alone.
+This is how we get to the question to be explored:
 
-But it is possible to gain scientific knowledge and insights, when its operation is understood by a human (interpretable).
+* _How can we humans gain understanding of both traditional ML algorithms and DNNs?_
 
 
->[!NOTE]
-> We can _understand_ and _explain_ models in purely mathematical terms.
-> Using _understandability_ as "the degree in which we understand the models' operation through domain-relevant concepts" creates confusion. Instead, the word _domainness_ is used in this blogpost.
 
 ## Concepts
 

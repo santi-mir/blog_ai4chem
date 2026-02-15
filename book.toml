@@ -36,6 +36,9 @@ additional-css = ["./src/assets/custom.css"]
 # they did not upgrade to 0.5 just yet.
 # [preprocessor.quiz]
 
+[preprocessor.katex]
+after = ["links"]
+
 # [preprocessor.fetch]
 # Not a general preprocessor key but in `fetch`.
 # disable=true
