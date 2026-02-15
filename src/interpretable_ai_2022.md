@@ -41,7 +41,7 @@ Both for DNNs and classical ML algorithms _intrinsic_ and _extrinsic_ methods ar
 
 Intrinsic and extrinsic methods are complementary.
 
-## Explaining Classical ML
+## Interpreting Classical ML Algorithms
 
 As an example of Classical ML think of Support Vector Regression, and other kinds of regressions.
 
@@ -83,25 +83,35 @@ The image below is from the paper, under [CC BY 4.0] (cropped), the main things 
     </p>
 </div>
 
-## Explaining Deep Learning Models
+## Interpreting Deep Learning Models
 
-There are _processing_ and _representation_ approaches. They map roughly to intrinsic and extrinsic, respectively. Or more concretely to "looking inside the model" and "what ifs" (extrinsic).
+This is the interesting part at present (2026), although the paper attention is split between deep learning and classical machine learning, so there isn't very much about deep learning.
 
-### Intrinsic Explanations
-* Representation Methods: Interpret the learnt representations (i.e intrinsic).
-* Introducing inductive biases related to symmetry
+The paper mentions the _processing_ and _representation_ approaches. These concepts map to "what ifs" (or extrinsic)  and "looking inside the model" (intrinsic).
 
-### Extrinsic Explanations
+
+### Extrinsic Methods
 
 * Processing Methods: How the model processes an input (like what-if analyses i.e extrinsic).
-    * Salience methods: Finding which "filter*coefficient" is most active for some input feature or region (for images).
+    * Salience Methods or Class Activation Maps: Finding which filters are most sensitive to which features or image regions.
         * For example, we decompose sum for a class prediction, and find where the largest contribution came from. That way we can tell which filter may be most responsible for a particular feature in an image.
         * analyse which activations respond stronger to which features (e.g class activation map or CAM)
         * or where changes in the activations change the output the most (derivatives/gradients, grad-CAM).
+    * Attention-based approches: this is very similar to salience methods. I expand below.
 
-The paper mentions transformers as well:
+The paper mentions transformers as well. A transformer operates upon an embedding, for example an atom vector, and learns which parts pay attention to other parts. These are called _attention masks_.
 
-> The transformer begins by learning an "embedding" for each element of the input. A simple example could be a vector for an atom of the length of all other elements in the periodic table. The embedding then represents how a given atom is related to all other atoms. This embedding then passes through the attention layers, which learn how much attention elements of the vectors pay to each other.
+A good explanation is provided as an image (highlights are mine):
+
+<div class="center w320"> <!--other classes: w220, w420-->
+    <a href="./assets/attention.png">
+    <img src="./assets/attention.png" alt="Example of a simple transformer network."/>
+    </a>
+    <p>
+    Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
+    </p>
+</div>
+
 
 The paper continues (bold is mine):
 
@@ -118,6 +128,11 @@ It's mentioned as well, that it's important to test any physical interpretation 
 
 Both $\beta$-VAEs or transformers are considered quite explainable models.
 
+### Intrinsic Methods
+There isn't much about these ones, this is what I take away:
+
+* Representation Methods: Interpret the learnt representations (i.e intrinsic). This is not always possible and sometimes may be just somewhat interpretable, or interpretable "to a degree".
+* Introducing inductive biases related to symmetry.
 
 [Account]: https://pubs.acs.org/doi/10.1021/accountsmr.1c00244
 [CC BY 4.0]: https://creativecommons.org/licenses/by/4.0/
