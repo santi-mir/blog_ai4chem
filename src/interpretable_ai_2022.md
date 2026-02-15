@@ -8,22 +8,22 @@ I write some thoughts about it below.
 
 Scientist strive to explain the world. When a mathematical description or model is proposed, it is expected to be interpretable. By _interpretable_ we mean understood by a human, both mathematically and conceptually.
 
-A conceptual level normally implies domain concepts. Here are two examples:
+A conceptual level generally means that we explain it using terms from the domain of applicability of the model. Here are two examples:
 
-* In chemistry, this could be electronegativity, or mass.
-* In physics, if we take a Hamiltonian, we can recognise terms by its mathematical structure, but also intuitively understand. One term is for kinetic energy, another for an electric potential, and so on.
+* In chemistry, this could be electronegativity or mass.
+* In physics, if we take a Hamiltonian, we can talk about the kinetic energy term, the electric potential term, and so on. We can also understand its mathematical structure as part of a differential equation.
 
 ### The question
 
-ML algorithms tend to be interpretable in a general sense (a human can explain it).
+ML algorithms tend to be interpretable in a general sense (a human can explain it); Deep Neural Networks (DNNs) are often considered black boxes.
 
-But Deep Neural Networks (DNNs) are often considered black-boxes. But insofar as we are doing _science_ with deep learning models, it is important to understand the model itself, not just its output.
+But insofar as we are doing _science_ with deep learning models, it is important to understand the model itself, not just its output.
 
-In many cases, DNNs are hard to interpret, and in some cases we may be satisfied with its predictive power alone.
 This is how we get to the question to be explored:
 
-* _How can we humans gain understanding of both traditional ML algorithms and DNNs?_
+* How can scientists gain deeper understanding of traditional ML algorithms and DNNs?
 
+(Admittedly, in some cases we may be satisfied with DNNs' predictive power alone.)
 
 
 ## Concepts
@@ -33,8 +33,6 @@ The paper defines a few concepts, I use my own terms below.
 * _correctness_: how accurate the model is.
 * _domainness_: extent to which the mathematical model is explained by domain concepts e.g. mass or charge.
     * If high: helps experts build confidence interpreting the outputs.
-
-Trivially, "adomainness" is "not domainness", that is, concepts not from the domain. This removes the need for an extra term.
 
 There tends to be a tradeoff between _domainness_ and _correctness_ because complex behaviour needs complex networks or models, to which we can rarely assign high domainness.
 
@@ -74,7 +72,7 @@ The image below is from the paper, under [CC BY 4.0] (cropped), the main things 
 
 <div class="center w320"> <!--other classes: w220, w420-->
     <a href="./assets/linear_model_and_shapley.jpeg">
-    <img src="./linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley's contributions"/>
+    <img src="./assets/linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley's contributions"/>
     </a>
     <p>
     Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
