@@ -1,13 +1,44 @@
 # Learning embeddings for atoms
 
-I've recently read the paper ["Distributed representations of atoms and materials for
-machine learning"][Nature] (2022).
+These are some of my opinions and ideas after reading [Distributed representations of atoms and materials for
+machine learning][Nature] (2022).
 
-I write some thoughts about it below.
 
+## Main Ideas
+
+They propose an approach to learn atom embeddings ithey propose to learn atom embeddings is called SkipAtom, in reference to Word2Vec's Skip-gram algorithm.
+
+In a nutshell, the paper proposes:
+
+* Training one atom to predict its most common neighbours will create atom embeddings that store useful information about their environment.
+* Combining these, material embeddings can be created, which are useful for NNs.
+* For any new material for which we want the properties, the embedding can be generated without any structural information, which makes it useful for those cases.
+
+They also compare it against approaches that use structural information in the inference process.
+
+
+## High-Level procedure
+
+The process they followed is something like:
+
+1. Convert a database of crystal structures of materials into a graph,
+2. Use the graph to generate a database of connected atom pairs A-B (and B-A),
+    * Each pairs is composed of the input and the output, used for training,
+3. Hot encode each atom in a vector,
+4. Train a single layer to predict one vector given another,
+
+At the end, each the single layer is the optimised matrix, each column being an atom's vector. The atom's vector (embedding) is a reflection of the atom's environment. Atoms often found in similar environments should have similar vectors (possibly carbon, oxygen, nitrogen).
 
 ## Embeddings
 
+An embedding can be thought of as a descriptor, where each dimension of it is a property like electronegativity, mass. Though most likely they only capture more concrete related to the dataset.
+
+We can try to interpret some of it; if for example some dimension increases as C-N-O-F (and the same for atoms in the next period), then a hypothesis could be it encodes a proxy of electronegativity.
+
+Some interesting experiments would be how to choose the optimal dimensionality of the embedding vector, plot the distribution, maybe using dimensionality reduction or PCA first to get just vectors with 2 or 3 components.
+
+
+### Ways to create embeddings
 Which ways are there to create embeddings of atoms?
 
 * Random vector for each atom,
@@ -25,37 +56,6 @@ Which ways are there to create embeddings of atoms?
 
 In both Mat2Vec and SkipAtom the analogy is that a _word_ (not a letter) is an _atom_. Multiple words make a sentence, and multiple atoms a material or compound.
 
-## Main Idea
-
-
-> We introduce an approach for learning atomic representations using an unsupervised approach. This approach, which we name SkipAtom, (...)
-
-The idea is that training one atom to predict its neighbours will force the optimisation
-process to create atom embeddings that store useful information about their environment.
-
-<!--They say it's unsupervised, which I don't quite get yet, since the pairs seem to me Atom (input) - Neighbour (label). Still figuring it out.
-
-An embedding is not a distributed representation.
-
-"distributed representation" isn't just for DNNs, the embedding is distributing it into a vector.-->
-
-The process they followed is something like:
-
-1. Convert a database of crystal structures of materials into a graph,
-2. Use the graph to generate a database of connected atom pairs A-B (and B-A),
-    * Each pairs is composed of the input and the output, used for training,
-3. Hot encode each atom in a vector,
-4. Train a single layer to predict one vector given another,
-5. They name this method SkipAtom because it adapts for chemistry SkipGram's ideas for text.
-
-In the end, each vector is a reflection of the atom's environment, and atoms that are found in
-similar environments should have similar vectors (possibly carbon and oxygen, or nitrogen).
-
-An embedding can be thought of as a descriptor, where each dimension of it is a property like electronegativity, mass. Though most likely they only capture more concrete related to the dataset.
-
-We can try to interpret some of it; if for example some dimension increases as C-N-O-F (and the same for atoms in the next period), then a hypothesis could be it encodes a proxy of electronegativity.
-
-Some interesting experiments would be how to choose the optimal dimensionality of the embedding vector, plot the distribution, maybe using dimensionality reduction or PCA first to get just vectors with 2 or 3 components.
 
 ## Application
 Then for a given compound, the embeddings for each of its atoms can be combined (pooled) into a single vector.
