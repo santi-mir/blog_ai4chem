@@ -33,7 +33,7 @@ jobs:
           restore-keys: ${{ runner.os }}-cargo-
       # Installs all latest versions.
       - run: cargo install --git https://github.com/lzanini/mdbook-katex || echo "Check logs" && true
-      - run: cargo install mdbook lychee rumdl caesiumclt mdbook-katex || echo "Check logs" && true
+      - run: cargo install mdbook lychee rumdl caesiumclt mdbook-mermaid mdbook-katex || echo "Check logs" && true
       # Compress images losslessly, and overwrite.
       - run: caesiumclt --lossless -O bigger book/src/assets/*.{jpg,jpeg,png} --same-folder-as-input
       # Link-checker

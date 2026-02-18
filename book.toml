@@ -27,6 +27,7 @@ sidebar-header-nav = false
 # Same, remove numbers from section.
 no-section-label = false
 additional-css = ["./src/assets/custom.css"]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
 # git-repository-icon = "fab-github"
 # input-404 = "not-found.md"
 # theme = "my-theme"
@@ -38,6 +39,9 @@ additional-css = ["./src/assets/custom.css"]
 
 [preprocessor.katex]
 after = ["links"]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
 
 # [preprocessor.fetch]
 # Not a general preprocessor key but in `fetch`.

@@ -1,3 +1,5 @@
+
+
 # Discovering Inorganic Solids
 
 These are some of my opinions and ideas after reading [Discovery of Crystalline Inorganic Solids in the Digital Age][Account] (2025).
@@ -43,21 +45,29 @@ The semi-automated exploratory-search involves:
 
 Computation can find low energy crystals / stable candidates. This is known as inorganic Crystal Structure Prediction (CSP). These can then be explored for synthesis (or similar ones.)
 
-We can describe it as a flow as well:
-
-Input (phase) => |VAE| => ranking of phases => |closest to known| => compositions => |thermod| => probe => |try synthesis|
-
 Another way to think of the steps above is:
 
 1. Phase field: the axes chosen with their labels, example Y-Sr-Ca-Ga-O (VAE can help choose labels)
 2. Composition: the values or ranges of values in each axes.
 
-<!--
-## Questions
+### Flowchart
+We can describe the steps as a flow as well:
 
-* What exactly is the role of the VAE? Can we look at its structure, training data, examples..?
+```mermaid
+---
+config:
+  flowchart:
+    htmlLabels: true
+---
+flowchart LR
+A(("`**Input Phase**
+(e.g Na-Ca-O)`")) --> B(VAE)
+B -- "`**Ranked Phases**`" --> D(Distance Metric)
+D -- "`**Compositions**`" --> F(Thermodynamics)
+F -- "`**Probe**`" --> H(Try synthesis)
 
-Most about calculations: 3, 4 (vae, maybe interesting), 12, 12-19, 20-23, 25 and 26 (similarity metric and Bayesian Opt respectively)
--->
+style A fill:#eee,stroke:#333,stroke-width:0px
+```
+
 
 [Account]: https://pubs.acs.org/doi/10.1021/acs.accounts.4c00694
