@@ -4,7 +4,7 @@ These are some of my opinions and ideas after reading [Distributed representatio
 machine learning][Nature] (2022).
 
 
-## Main Ideas
+## Summary
 
 They propose an approach to learn atom embeddings ithey propose to learn atom embeddings is called SkipAtom, in reference to Word2Vec's Skip-gram algorithm.
 

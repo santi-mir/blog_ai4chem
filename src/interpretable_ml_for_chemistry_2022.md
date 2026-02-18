@@ -2,7 +2,9 @@
 
 These are some of my opinions and ideas after reading [Interpretable and Explainable Machine Learning for Materials Science and Chemistry][Account] (2022).
 
-------------------------
+## Summary
+
+Survey of methods that can help to make classical ML and DL algorithms more interpretable, that is, easier to understand for a human.
 
 ## Introduction
 
