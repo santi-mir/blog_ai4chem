@@ -7,16 +7,23 @@ machine learning][Nature] (2022).
 
 ## Summary
 
-They propose an approach to learn atom embeddings ithey propose to learn atom embeddings is called SkipAtom, in reference to Word2Vec's Skip-gram algorithm.
+The paper proposes an unsupervised learning approach to learn atom-embeddings called SkipAtom, in reference to Word2Vec's Skip-gram algorithm.
 
-In a nutshell, the paper proposes:
+SkipAtom involves training one atom to predict its most common neighbours.
 
-* Training one atom to predict its most common neighbours will create atom embeddings that store useful information about their environment.
-* Combining these, material embeddings can be created, which are useful for NNs.
-* For any new material for which we want the properties, the embedding can be generated without any structural information, which makes it useful for those cases.
+Combining atom-emdeddings, compound embeddings can be created, which are useful for property prediction neural networks (NNs).
 
 They also compare it against approaches that use structural information in the inference process.
 
+
+## Analogy to Word2Vec
+
+* Word2Vec: hot-encoded word-tokens are converted into an embedding by unsupervised learning.
+* SkipAtom: hot-encoded atoms (either formulas, smiles, etc.) are converted into an embedding by unsupervised learning.
+
+The analogy is that _words are like atoms_, and _sentences are like compounds_.
+
+This approach is attractive because the algorithm is unsupervised i.e. it does not rely on labelled data.
 
 ## High-Level procedure
 
@@ -26,11 +33,17 @@ The process they followed is something like:
 2. Convert each into a graph (paper uses Voronoi decomposition / method for this),
 3. Use the graph to generate a database of connected atom pairs A-B (and B-A),
     * Each pairs is composed of the input and the output, used for training,
-4. Hot encode each atom in a vector,
+4. Hot encode each atom in a vector (sparse representation),
 5. Train a single layer to predict the neighbour hot-encoded vector given the central atom,
     * The training task is to minimise the average log probability (not sure how the vectors are "reduced", is the distance computed, or what?).
+6. Result: each projection-matrix-column is now an atom's embedding.
+    * The atom's vector (embedding) is a reflection of the atom's environment.
+    * Atoms often found in similar environments should have similar vectors (possibly carbon, oxygen, nitrogen).
+    * The representation is now dense and the vector space is ordered/semantic.
 
-The result is that each projection-matrix-column is now an atom's embedding. The atom's vector (embedding) is a reflection of the atom's environment. Atoms often found in similar environments should have similar vectors (possibly carbon, oxygen, nitrogen).
+<--!
+Discussion: Why doesn't it learn just the probabilities for each dimension? One reason is that we have less dimensions, which is handy. Also, it's not clear probabilities would end up with the structure of similarities (similar things close together as vectors). Although I think they would!
+-->
 
 ## Embeddings
 

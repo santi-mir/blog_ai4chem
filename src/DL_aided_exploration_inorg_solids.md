@@ -11,7 +11,7 @@ These are some of my opinions and ideas after reading two papers by Rosseinsky g
 
 ## Introduction
 
-In the solid state chemistry, some elemental compositions (phase fields) are more likely to lead to isolable compounds than others.
+In solid-state chemistry, some elemental compositions (phase fields) are more likely to lead to isolable compounds than others.
 
 Deep learning models can help differentiate between these two groups, and lead researchers to the promising areas. The models can be trained for this task with data from ICSD, the Inorganic Crystal Structure Database.
 
@@ -24,6 +24,12 @@ We can search for compounds by _analogy_ and by _exploration_, characterised in 
 |----------------|------------------------------|-------------------------------------------|--------------|
 | By analogy     | Parent Compound              | Change composition, same structure        | Higher       |
 | By exploration | Structural Hypothesis / Idea | Try composition and structure             | Lower        |
+
+### Definitions
+
+* _Phase field_: the elements selected. Can be thought as the labels for cartesian axes.
+* _Composition_: the values or ranges of values in each axes.
+    * Once we have the axes' labels we can explore values computationally.
 
 ### Analogy Based Search
 
@@ -49,26 +55,13 @@ The ML-aided exploratory-search involves:
 1. Human selects elements or _phase field_ e.g. $\mathrm{Y−Sr−Ca−Ga−O}$, $\mathrm{LiSiXX'}$,...
     * A VAE decodes the seed-input into similar compounds (nearby in latent space).
     * The reconstruction loss is used as a ranking metric for the generated compounds.
-2. Computationally search in composition-space, find probe structures, e.g. $\mathrm{Y_8Sr_{32}Ca{_40}Ga_{80}O_{204}}$
-    * User specified max number of atoms (expressed as integers).
-    * Distance metric to select compounds most similar to existing ones.
-    * Get a probe structure, calculated to be thermodynamically stable.
+2. Computationally search in composition-space (Crystal Structure Prediction, CSP), find low-energy probe structures, e.g. $\mathrm{Y_8Sr_{32}Ca{_40}Ga_{80}O_{204}}$
+    * Can use physical constraints (like max n of atoms).
+    * Calculate thermodynamically stable[^1] probe structure (this step is complex).
       Hints experimentalists of promising region.
 3. Try synthesis, and find somewhat similar structures to the computationally suggested one.
 
-Computation can find low energy crystals / stable candidates. This is known as inorganic Crystal Structure Prediction (CSP). These can then be explored for synthesis (or similar ones.)
 
-Another way to put the steps above is:
-
-1. Phase field: the axes chosen with their labels, example $\mathrm{A-B-C-D-E}$ (VAE can help choose labels)
-    * A VAE learns the regions in phase field likely to become synthesizable compounds.
-    * It's also semantic to an extent; similar structures will be nearby.
-    * It will be used to retrieve labels, for example $\mathrm{Y-Sr-Ca-Ga-O}$.
-2. Composition: the values or ranges of values in each axes.
-    * Once we have the axes' labels we can search of their values.
-    * One way is to do some random search.
-    * A better way is to use bayesian optimisation, so the search is directed (towards some goal).
-3. Synthesis of researcher-approved candidates.
 
 ### Flowchart
 We can describe the steps as a flow as well:
@@ -125,7 +118,25 @@ A larger reconstruction loss means the phase is less likely to be synthesizable,
 
 The rank will also tell how different the compound is to the original.
 
+### Example of Results
+
+After VAE ranking, the decision to explore Li-Sn-S-Cl phase field was based on the high conductivity of a related ternary field Li-Sn-S.
+
+The following image shows calculations performed, each a tripod, in a red background. Dark red represents little enery barrier from the convex hull, bright red the opposite.
+
+Most solids found by the group or by others are in dark areas of the plot with tripods overlaying.
+
+The magenta point A in the image is the new phase found, not far from the probe structure which was $\mathrm{Li_3SnS_3Cl}$.
+
+<div class="center w320"> <!--other classes: w220, w420-->
+    <a href="./assets/results_rosseinsky_energy_phase_map.png">
+    <img src="./assets/results_rosseinsky_energy_phase_map.png" alt="Results showing compositions as S/(S+Cl) in y-axis and of Li/(Li+Sn) on the x-axis. The compositions vary from 0 to 1 for each. The point (1,1) is S and Li, the point (0,0) is SnCl. They evaluated many compositions and computed the energies."/>
+    </a>
+    <p>
+    Image from <a href="https://www.nature.com/articles/s41467-021-25343-7">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
+    </p>
+</div>
 
 [Account]: https://pubs.acs.org/doi/10.1021/acs.accounts.4c00694
 [Nature]: https://www.nature.com/articles/s41467-021-25343-7
-
+[^1]: With respect to the convex hull.
