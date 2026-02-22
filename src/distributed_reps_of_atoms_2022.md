@@ -65,14 +65,16 @@ flowchart LR
         E("Minimise Log-Probability")
         F("`Extract Embeddings
             (dense)`")
-        D --"`**Train Projection
-                Layer**`"--> E
+        D --"`**Train
+            CrossEntropy(y, y')**`"--> E
         E --> F
 ```
 
-* Each resulting atom's embedding is a reflection of the atom's environment.
-* Atoms often found in similar environments should have similar vectors (possibly carbon, oxygen, nitrogen).
+* Embeddings from similar environments result in close vectors (e.g. $\mathrm{C}$, $\mathrm{N}$, $\mathrm{O}$,..).
 * The representation is now dense and the vector space is ordered/semantic.
+* The architecture is described as:
+    > (...) single hidden layer with linear activation, whose size depended on the desired dimensionality of the learned embeddings, and an output layer with 86 neurons (one for each of the utilized atom types) with softmax activation. (...) minimizing the cross-entropy loss between the predicted context atom probabilities and the one-hot vector representing the context atom, given the one-vector representing the target atom as input. Training utilized stochastic gradient descent with the Adam optimizer, with a learning rate of $10^{−2}$ and a mini-batch size of 1024, for
+    ten epochs.
 
 ## Embeddings
 
@@ -89,7 +91,7 @@ Which ways are there to create vector-embeddings of atoms?
 
 | Random | One-Hot | Atom2Vec | Mat2Vec | SkipAtom|
 |--------|---------|----------|---------|----------|
-| From Random Distributions  | One 1, rest 0s | SVD of Co-Occurence Matrix      | embedding | embedding |
+| From Random Distributions  | One 1, rest 0s | SVD of Co-Occurence Matrix      | Embedding (Word2Vec)| Embedding (Skip-gram) |
 | $(0.4,\ldots,0.6)$ | $(0,\ldots,1,\ldots,0)$|- | - | -|
 |dense|sparse|sparse|dense|dense|
 
