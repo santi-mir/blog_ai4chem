@@ -84,21 +84,22 @@ Other experiments could: optimise the dimensionality of the embedding vector; pl
 
 
 ### Ways to create embeddings
-Which ways are there to create embeddings of atoms?
 
-* Random dense vector for each atom,
-* One-hot vector: one component is a 1, the rest are 0s,
-    * For example: `[1,0,0]` and `[0,1,0]` are different atoms,
-    * All zeros as in `[0,..,0]` means _no atom_.
-* Atom2Vec: build a matrix of co-occurences of atoms, then apply single-value decomposition (SVD).
-    * Every matrix (square or not) has an SVD.
-    * Comment: Does this improves over co-occurences vector?
-* Mat2Vec: applies to Word2Vec algorithm to a corpus of compounds.
-    * The projection matrix, initially random, ends up storing embeddings.
-    * Task: context-words predict centre-word.
-    * Example: `The cat ___ on the mat.`
+Which ways are there to create vector-embeddings of atoms?
+
+| Random | One-Hot | Atom2Vec | Mat2Vec | SkipAtom|
+|--------|---------|----------|---------|----------|
+| From Random Distributions  | One 1, rest 0s | SVD of Co-Occurence Matrix      | embedding | embedding |
+| $(0.4,\ldots,0.6)$ | $(0,\ldots,1,\ldots,0)$|- | - | -|
+|dense|sparse|sparse|dense|dense|
+
+**Comments**
+
+* Atom2Vec: any matrix (square or not) has SVD; but does this improves over co-occurences vector?
+* Mat2Vec: The projection matrix, initially random, ends up storing embeddings.
+    * Task: context-words predict centre-word. Example: `The cat ___ on the mat.`
 * SkipAtom: In the same paper of Word2Vec there is the Skip-gram algorithm, which is adapted for chemistry in this paper.
-    * Task: centre-word predicts context-words `___ ___ sat __ ___ ____` (same sentence).
+    * Task: centre-word predicts context-words. Example: `___ ___ sat __ ___ ____` (same sentence).
 
 
 
@@ -111,13 +112,13 @@ Vector-pooling options are:
 * _mean_: $\frac{\sum s_i \vec{a}_i}{\sum s_i}$, i.e. divided by total number of atoms (can be fractional too).
 * _max_: $\mathrm{max}(M_i)$, reduces material matrix $\mathrm{M}$ to vector. Selects max value of each column, each row being an atom in the compound.
 
-The resulting vector is a compound embedding. On the on hand, similar compounds will have similar vectors, which is useful; on the other hand, all isomers have the same vector, which is a limitation of what this method can express.
-
 The resulting compound embedding is then used for training a feed-forward NN on different tasks. Also benchmarked using MatBench.
 
 The pooling can also be done with hot-encoded versions rather than embeddings as in *ElemNet* (mean pooling), where the result is a sparse vector; or in Bag-of-atoms (sum pooling).
 
 ## When it's useful
+
+On the on hand, similar compounds will have similar vectors, which is useful; on the other hand, all isomers have the same vector, which is a limitation of what this method can express.
 
 With this model, having just the material's composition but not its structure, we can still try to calculate some properties.
 
