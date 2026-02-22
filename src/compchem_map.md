@@ -57,11 +57,14 @@ A --> Direct
 
 ```
 
-## Unsupervised Learning of Representations of Atoms
+## Unsupervised-Learning of Representations of Atoms
 
 Other investigations of unsupervised learning of machine representation of atoms are:
 - Zhou, Q. et al. Learning atoms for materials discovery. (2018).
 - Tshitoyan, V. et al. Unsupervised word embeddings capture latent knowledge from materials science literature. (2019).
 - Chakravarti, S. K. Distributed representation of chemical fragments. (2018).
-- Jha, D. et al. ElemNet: deep learning the chemistry of materials from only elemental composition. (2018).
 - Butler K. et al. Distributed Representations of Atoms and Materials for Machine Learning. (2022).
+
+## Supervised-Learning of Representations of Atoms
+- Jha, D. et al. ElemNet: deep learning the chemistry of materials from only elemental composition. (2018).
+- Goodall, R. E. & Lee, A. A. Predicting materials properties without crystal structure: deep representation learning from stoichiometry. (2020).

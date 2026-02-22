@@ -7,13 +7,15 @@ machine learning][Nature] (2022).
 
 ## Summary
 
-The paper proposes an unsupervised learning approach to learn atom-embeddings called SkipAtom, in reference to Word2Vec's Skip-gram algorithm.
+The paper proposes an unsupervised learning approach to learn atom-embeddings called SkipAtom, in reference to the Skip-gram algorithm.
 
 SkipAtom involves training one atom to predict its most common neighbours.
 
 Combining atom-emdeddings, compound embeddings can be created, which are useful for property prediction neural networks (NNs).
 
-They also compare it against approaches that use structural information in the inference process.
+## Use cases
+
+This approach is especially useful when the structure of a compound is unknown. Otherwise, approaches incorporating structural information are more accurate (on average) at most tasks.
 
 
 ## Analogy to Word2Vec
