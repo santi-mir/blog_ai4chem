@@ -18,27 +18,30 @@ Combining atom-emdeddings, compound embeddings can be created, which are useful 
 This approach is especially useful when the structure of a compound is unknown. Otherwise, approaches incorporating structural information are more accurate (on average) at most tasks.
 
 
-## Analogy to Word2Vec
+## Analogy to Skip-gram
 
-* Word2Vec: hot-encoded word-tokens are converted into an embedding by unsupervised learning.
-* SkipAtom: hot-encoded atoms (either formulas, smiles, etc.) are converted into an embedding by unsupervised learning.
+* Skip-gram: Unsupervised learning is project hot-encoded word-tokens to a dense, lower-dimensional vector, then decoding it.
 
-The analogy is that _words are like atoms_, and _sentences are like compounds_.
+* SkipAtom: Project hot-encoded atoms to a dense, lower-dimensional vector, then decoding it.
 
-This approach is attractive because the algorithm is unsupervised i.e. it does not rely on labelled data.
+
+The analogies are that _words are like atoms_, and _sentences are like compounds_.
+
+> [!NOTE]
+> This approach is attractive because the algorithm is unsupervised i.e. it does not rely on labelled data.
 
 ## High-Level procedure
 
 The process they followed is something like:
 
-1. Get a database of crystal structures of materials,
+1. Retrieve crystal structures from a database,
 2. Convert each into a graph (paper uses Voronoi decomposition / method for this),
 3. Use the graph to generate a database of connected atom pairs A-B (and B-A),
-    * Each pairs is composed of the input and the output, used for training,
-4. Hot encode each atom in a vector (sparse representation),
-5. Train a single layer to predict the neighbour hot-encoded vector given the central atom,
-    * The training task is to minimise the average log probability (not sure how the vectors are "reduced", is the distance computed, or what?).
-6. Result: each projection-matrix-column is now an atom's embedding.
+    * Each pair is composed of the input and the output, used for training,
+4. Hot-encode each atom (sparse representation),
+5. Train a single layer to predict the neighbour's hot-encoded vector given the central atom,
+    * Task: minimise the average log-probability (not sure how the vectors are "reduced", is the distance computed, or what?).
+6. Result: Each projection-matrix-column is now an atom's embedding.
     * The atom's vector (embedding) is a reflection of the atom's environment.
     * Atoms often found in similar environments should have similar vectors (possibly carbon, oxygen, nitrogen).
     * The representation is now dense and the vector space is ordered/semantic.
@@ -49,32 +52,30 @@ Discussion: Why doesn't it learn just the probabilities for each dimension? One 
 
 ## Embeddings
 
-An embedding can be thought of as a descriptor, where each dimension of it is a property like electronegativity, mass. Though most likely they only capture more concrete related to the dataset.
+An embedding can be thought of as a descriptor, where each dimension of it is a property like electronegativity, mass. However, dimensions needn't to map to a real property.
 
-We can try to interpret some of it; if for example some dimension increases as C-N-O-F (and the same for atoms in the next period), then a hypothesis could be it encodes a proxy of electronegativity.
+If, for example, some dimension increases as `C<N<O<F..` (and for the next periods), a hypothesis could be that it encodes electronegativity.
 
-Some interesting experiments would be how to choose the optimal dimensionality of the embedding vector, plot the distribution, maybe using dimensionality reduction or PCA first to get just vectors with 2 or 3 components.
+Other experiments could: optimise the dimensionality of the embedding vector; plot the distribution using dimensionality reduction or PCA to further reduce it to 2-3 components.
 
 
 ### Ways to create embeddings
 Which ways are there to create embeddings of atoms?
 
-* Random vector for each atom,
+* Random dense vector for each atom,
 * One-hot vector: one component is a 1, the rest are 0s,
     * For example: `[1,0,0]` and `[0,1,0]` are different atoms,
-    * Each index represents an atom,
-    * Only one position is a 1 (and all 0s would be no atom).
+    * All 0s is _no atom_.
 * Atom2Vec: build a matrix of co-occurences of atoms, then apply single-value decomposition (SVD).
     * Every matrix (square or not) has an SVD.
-    * Comment: not quite sure why this would be attractive or useful, but they used it.
+    * Comment: Does this improves over co-occurences vector?
 * Mat2Vec: applies to Word2Vec algorithm to a corpus of compounds.
     * The projection matrix, initially random, ends up storing embeddings.
-    * The task is to predict the missing word given neighbouring words.
-    * Example: as in "The cat ___ on the mat."
+    * Task: context-words predict centre-word.
+    * Example: "The cat ___ on the mat."
 * SkipAtom: In the same paper of Word2Vec there is the Skip-gram algorithm, which is adapted for chemistry in this paper.
-    * The task here is to use the word to predict the neighbours "___ ___ sat __ ___ ____" (same sentence).
+    * Task: centre-word predicts context-words "___ ___ sat __ ___ ____" (same sentence).
 
-In both Mat2Vec and SkipAtom the analogy is that a _word_ (not a letter) is an _atom_. Multiple words make a sentence, and multiple atoms a material or compound.
 
 
 ### Combining atom embeddings (pooling)

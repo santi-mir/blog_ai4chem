@@ -1,5 +1,9 @@
 html {
-    font-family: "system-ui", "sans-serif"
+    font-family: "Ubuntu", "system-ui", "sans-serif"
+}
+body {
+  max-width:80ch;
+  margin:auto
 }
 h2,
 h3 {
@@ -9,7 +13,8 @@ h3 {
 main > p {
   margin:0.8rem 0;
 }
-div.center {
+
+.center {
   text-align: center;
   margin: auto;
 }
