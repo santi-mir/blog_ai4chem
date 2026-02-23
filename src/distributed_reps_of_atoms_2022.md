@@ -7,20 +7,17 @@ machine learning][Nature] (2022).
 
 ## Summary
 
-The paper proposes an unsupervised-learning approach to learn atom embeddings.
-
-The approach is called SkipAtom, and involves training atom-vectors to predict their most common neighbours.
+The paper proposes SkipAtom, an unsupervised-learning approach to learn atom-embeddings.
 
 Compound embeddings can be created by combining atom-emdeddings, then used for property prediction neural networks (NNs) and other tasks.
 
-## Analogy to Skip-gram
+## Skip-gram, SkipAtom
 
-In NLP's algorithm Skip-gram, hot-encoded word-tokens are projected onto a dense, lower-dimensional vector, which is then decoded into another word.
+Skip-gram is an NLP algorithm to generate word embeddings.
+
+In Skip-gram, hot-encoded words are projected onto a dense, lower-dimensional vector, which is then decoded into another word.
 
 In SkipAtom, hot-encoded atoms are projected instead, and the task is to predict its neighbours' hot-encoded vectors with the least error.
-
-The analogies are that: _words are like atoms_, and _sentences are like compounds_.
-
 
 ## High-Level procedure
 
@@ -101,7 +98,7 @@ In most, cases similar vectors won't be close in terms of euclidean distance.
 
 ### Combining Vectors (pooling)
 
-Distributed representations for atoms can be combined (pooled) into a single vector representing a compound.
+The analogy to NLP is that _words are like atoms_, and _sentences are like compounds_. Hence, distributed representations for atoms can be combined (pooled) into a vector representing a compound.
 
 Vector-pooling options are:
 * _sum_: $\sum s_i \vec{a}_i$ where $s_i$ is the stoichiometry (can be fractional),
