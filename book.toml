@@ -1,10 +1,9 @@
 [book]
 title = "AI for Chemistry"
 authors = ["Santiago Miranda"]
+description = "Blogging about AI for chemistry."
 language = "en"
-description = "Thoughts on papers in the topic of AI, DL, ML for chemistry."
 src = "src"
-#multilingual = false
 
 [rust]
 edition = "2024"
@@ -16,9 +15,7 @@ edit-url-template = "https://github.com/santi-mir/blog_ai4chem/edit/main/book/{p
 default-theme = "dark"
 # default was "navy"
 preferred-dark-theme = "ayu"
-# Not used
 definition-lists = false
-# > [!NOTE] and all these are pretty.
 admonitions = true
 # Can cause issues copying and pasting
 smart-punctuation = false
@@ -27,12 +24,9 @@ sidebar-header-nav = false
 # Same, remove numbers from section.
 no-section-label = false
 additional-css = ["./src/assets/custom.css"]
-additional-js = ["mermaid.min.js", "mermaid-init.js"]
-# git-repository-icon = "fab-github"
+additional-js = ["./src/assets/mermaid.min.js", "./src/assets/mermaid-init.js"]
 # input-404 = "not-found.md"
-# theme = "my-theme"
-# mathjax-support = false
-# additional-js = ["custom.js"]
+# mathjax-support = true
 
 # they did not upgrade to 0.5 just yet.
 # [preprocessor.quiz]
@@ -42,13 +36,6 @@ after = ["links"]
 
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
-
-# [preprocessor.fetch]
-# Not a general preprocessor key but in `fetch`.
-# disable=true
-
-# used when debugging a preprocessor.
-# [output.markdown]
 
 [output.html.print]
 enable = true    # include support for printable output
