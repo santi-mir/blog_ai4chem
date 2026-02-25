@@ -36,7 +36,6 @@ We can characterise explanations using:
 
 A related dimension is _correctness_, which does not belong to explaining a model, but is of high importance. A 3D radar plot is included in the linked above, and reproduced below (_simplicity_ maps to _understandability_):
 
-
 <div class="center w320"> <!--other classes: w220, w420-->
     <a href="./assets/radial_plot.png">
     <img src="./assets/radial_plot.png" alt="Plot of the three dimensions"/>
@@ -47,11 +46,13 @@ A related dimension is _correctness_, which does not belong to explaining a mode
 </div>
 
 ### Strategies
+
 Some examples of explanation strategies are:
- * Using domain concepts e.g. mass or charge, usually making it less _complete_ i.e. they would answer only a subset of "what ifs".
- * Rule-extraction techniques, analysing input-output relations (considering the model as a black box), finding trends.
- * Salience Maps.
- * Simplifying the model, or using proxy models.
+
+- Using domain concepts e.g. mass or charge, usually making it less _complete_ i.e. they would answer only a subset of "what ifs".
+- Rule-extraction techniques, analysing input-output relations (considering the model as a black box), finding trends.
+- Salience Maps.
+- Simplifying the model, or using proxy models.
 
 Let's consider some concrete examples.
 
