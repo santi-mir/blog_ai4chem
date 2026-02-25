@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-5ed34be5.js";
+            window.path_to_searchindex_js = "searchindex-ade1b5e1.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-3c004fd3.js"></script>
@@ -186,12 +186,12 @@
 <p>These are some of my opinions and ideas after reading <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Interpretable and Explainable Machine Learning for Materials Science and Chemistry</a> (2022), and <a href="http://arxiv.org/abs/1806.00069">Explaining Explanations: An Overview of Interpretability of Machine Learning</a> (2019).</p>
 <p>A very interesting experiment in terms of explainability was <a href="https://distill.pub">https://distill.pub</a>.</p>
 <hr>
-<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<h2 id="explanations"><a class="header" href="#explanations">Explanations</a></h2>
 <p>Scientific models are expected to be explainable; that is, an expert human can respond to <em>why</em> questions with it and about it.</p>
 <p>And yet, deep learning models' operation remains hard to explain.
 So how can we explain deep-learning models? That is what this blog explores.</p>
 <p>(Admittedly, in some cases we may be satisfied with the predictive power alone.)</p>
-<h2 id="explanations"><a class="header" href="#explanations">Explanations</a></h2>
+<h3 id="definition-characteristics-examples"><a class="header" href="#definition-characteristics-examples">Definition, Characteristics, Examples</a></h3>
 <p>Explanation can be defined in an intuitive way. First, phrase what we want to know as a "Why question", the answer is a candidate-explanation. Keep asking why until satisfied. Call the process an explanation.</p>
 <p>We can characterise explanations using:</p>
 <ul>
@@ -222,18 +222,10 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 
 </div>
 
-<h3 id="strategies"><a class="header" href="#strategies">Strategies</a></h3>
-<p>Some examples of explanation strategies are:</p>
-<ul>
-<li>Using domain concepts e.g. mass or charge, usually making it less <em>complete</em> i.e. they would answer only a subset of "what ifs".</li>
-<li>Rule-extraction techniques, analysing input-output relations (considering the model as a black box), finding trends.</li>
-<li>Salience Maps.</li>
-<li>Simplifying the model, or using proxy models.</li>
-</ul>
-<p>Let's consider some concrete examples.</p>
-<h2 id="classical-ml"><a class="header" href="#classical-ml">Classical ML</a></h2>
+<p>Let's consider strategies that can help explain models operations.</p>
+<h3 id="strategies-fo-classical-ml-models"><a class="header" href="#strategies-fo-classical-ml-models">Strategies fo Classical ML models</a></h3>
 <p>As an example of Classical ML think of Support Vector Regression, and other kinds of regressions.</p>
-<h3 id="enhancing-explanations-with-intrinsic-methods"><a class="header" href="#enhancing-explanations-with-intrinsic-methods">Enhancing explanations with intrinsic methods</a></h3>
+<h4 id="intrinsic-methods"><a class="header" href="#intrinsic-methods">Intrinsic methods</a></h4>
 <p>This focuses on the math (internal structure).</p>
 <ul>
 <li>Simplifying the model (when possible)
@@ -245,7 +237,7 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 <li>Proxy Models e.g. Generalised Linear Models (GLMs) to approximate the more complex model i.e <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>, respectively. The GLM, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>, is defined as:
 <span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ψ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:3.106em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ψ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></li>
 </ul>
-<h3 id="enhancing-explanations-with-extrinsic-methods"><a class="header" href="#enhancing-explanations-with-extrinsic-methods">Enhancing explanations with extrinsic methods</a></h3>
+<h4 id="extrinsic-methods"><a class="header" href="#extrinsic-methods">Extrinsic methods</a></h4>
 <p>This focuses on its behaviour: its outputs, input-outputs relationships, and so forth.</p>
 <ul>
 <li>Correlate changes in input-features with changes in outputs.
@@ -276,18 +268,16 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 
 </div>
 
-<h2 id="deep-learning"><a class="header" href="#deep-learning">Deep Learning</a></h2>
+<h3 id="strategies-for-deep-learning-models"><a class="header" href="#strategies-for-deep-learning-models">Strategies for Deep Learning Models</a></h3>
 <p>This is the interesting part at present (2026), although the paper attention is split between deep learning and classical machine learning, so there isn't very much about deep learning.</p>
 <p>The paper mentions the <em>processing</em> and <em>representation</em> approaches. These concepts map to "what ifs" (or extrinsic) and "looking inside the model" (intrinsic).</p>
-<h3 id="enhancing-explanations-with-intrinsic-methods-1"><a class="header" href="#enhancing-explanations-with-intrinsic-methods-1">Enhancing explanations with intrinsic methods</a></h3>
-<p>There isn't much about these ones, this is what I take away:</p>
+<h4 id="intrinsic-or-representation-methods"><a class="header" href="#intrinsic-or-representation-methods">Intrinsic or Representation methods</a></h4>
+<p>Interpret the learnt representations and data inside the model (i.e intrinsic). <em>What information does the network contain?</em></p>
 <ul>
-<li>Representation Methods: Interpret the learnt representations (i.e intrinsic). This is not always possible and sometimes may be just somewhat interpretable, or interpretable "to a degree".</li>
 <li>Introducing inductive biases related to symmetry.</li>
 </ul>
-<h3 id="enhancing-explanations-with-extrinsic-methods-1"><a class="header" href="#enhancing-explanations-with-extrinsic-methods-1">Enhancing explanations with extrinsic methods</a></h3>
-<ul>
-<li>Processing Methods: How the model processes an input (like what-if analyses i.e extrinsic).
+<h4 id="extrinsic-or-processing-methods"><a class="header" href="#extrinsic-or-processing-methods">Extrinsic or Processing methods</a></h4>
+<p>How the model processes an input (extrinsic).</p>
 <ul>
 <li>Salience Methods or Class Activation Maps: Finding which filters are most sensitive to which features or image regions.
 <ul>
@@ -296,10 +286,18 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 <li>or where changes in the activations change the output the most (derivatives/gradients, grad-CAM).</li>
 </ul>
 </li>
-<li>Attention-based approches: this is very similar to salience methods. I expand below.</li>
 </ul>
-</li>
+<blockquote>
+<p>With salience and attention-based approaches, there is a danger of overinterpretation, particularly in cases where physical explanations are searched for.</p>
+</blockquote>
+<p>It's mentioned as well, that it's important to test any physical interpretation with more than one class (of molecule, image, or input), since two errors can happen:</p>
+<ul>
+<li>What is observed happens for all classes.</li>
+<li>What is observer is just the network exploiting some correlation, without real meaning (<em>shortcut learning</em>).</li>
 </ul>
+<h4 id="explanation-producing-systems"><a class="header" href="#explanation-producing-systems">Explanation-Producing systems</a></h4>
+<p>We can still apply previous methods, but these architectures are designed to make explaining part of their operation easier, so they deserve a separate section.</p>
+<p>Attention-based approches: this is very similar to salience methods. I expand below.</p>
 <p>The paper mentions transformers as well. A transformer operates upon an embedding, for example an atom vector, and learns which parts pay attention to other parts. These are called <em>attention masks</em>.</p>
 <p>A good explanation is provided as an image (highlights are mine):</p>
 <div class="center w320"> <!--other classes: w220, w420-->
@@ -318,14 +316,6 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 <p>These representations, known as <em>attention masks</em>, can be <strong>interpreted in similar way to salience maps and determine sections of the input data that a model exploits for making predictions</strong>. The authors of a transformer model trained on chemical reaction data were able to perform atom-mapping and learn chemical grammars, i.e., identify atoms during a chemical reaction, by interpreting its learned attention map.</p>
 </blockquote>
 <p>Finally the paper warns us:</p>
-<blockquote>
-<p>With salience and attention-based approaches, there is a danger of overinterpretation, particularly in cases where physical explanations are searched for.</p>
-</blockquote>
-<p>It's mentioned as well, that it's important to test any physical interpretation with more than one class (of molecule, image, or input), since two errors can happen:</p>
-<ul>
-<li>What is observed happens for all classes.</li>
-<li>What is observer is just the network exploiting some correlation, without real meaning (<em>shortcut learning</em>).</li>
-</ul>
 <p>Both <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span>-VAEs or transformers are considered quite explainable models.</p>
 <hr>
 <ol class="footnote-definition">
@@ -369,6 +359,22 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>

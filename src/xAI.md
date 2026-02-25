@@ -6,7 +6,7 @@ A very interesting experiment in terms of explainability was <https://distill.pu
 
 --------------------
 
-## Introduction
+## Explanations
 
 Scientific models are expected to be explainable; that is, an expert human can respond to _why_ questions with it and about it.
 
@@ -15,7 +15,7 @@ So how can we explain deep-learning models? That is what this blog explores.
 
 (Admittedly, in some cases we may be satisfied with the predictive power alone.)
 
-## Explanations
+### Definition, Characteristics, Examples
 
 Explanation can be defined in an intuitive way. First, phrase what we want to know as a "Why question", the answer is a candidate-explanation. Keep asking why until satisfied. Call the process an explanation.
 
@@ -45,22 +45,13 @@ A related dimension is _correctness_, which does not belong to explaining a mode
     </p>
 </div>
 
-### Strategies
+Let's consider strategies that can help explain models operations.
 
-Some examples of explanation strategies are:
-
-- Using domain concepts e.g. mass or charge, usually making it less _complete_ i.e. they would answer only a subset of "what ifs".
-- Rule-extraction techniques, analysing input-output relations (considering the model as a black box), finding trends.
-- Salience Maps.
-- Simplifying the model, or using proxy models.
-
-Let's consider some concrete examples.
-
-## Classical ML
+### Strategies fo Classical ML models
 
 As an example of Classical ML think of Support Vector Regression, and other kinds of regressions.
 
-### Enhancing explanations with intrinsic methods
+#### Intrinsic methods
 
 This focuses on the math (internal structure).
 
@@ -70,7 +61,7 @@ This focuses on the math (internal structure).
 - Proxy Models e.g. Generalised Linear Models (GLMs) to approximate the more complex model i.e $g(z) \approx f(z)$, respectively. The GLM, $g(z)$, is defined as:
     $$g(z) = \psi_0 + \sum_{i=1}^M \psi_i z_i$$
 
-### Enhancing explanations with extrinsic methods
+#### Extrinsic methods
 
 This focuses on its behaviour: its outputs, input-outputs relationships, and so forth.
 
@@ -95,27 +86,39 @@ The image below is from the paper, under [CC BY 4.0] (cropped), the main things 
     </p>
 </div>
 
-## Deep Learning
+### Strategies for Deep Learning Models
 
 This is the interesting part at present (2026), although the paper attention is split between deep learning and classical machine learning, so there isn't very much about deep learning.
 
 The paper mentions the _processing_ and _representation_ approaches. These concepts map to "what ifs" (or extrinsic) and "looking inside the model" (intrinsic).
 
-### Enhancing explanations with intrinsic methods
+#### Intrinsic or Representation methods
 
-There isn't much about these ones, this is what I take away:
+Interpret the learnt representations and data inside the model (i.e intrinsic). _What information does the network contain?_
 
-- Representation Methods: Interpret the learnt representations (i.e intrinsic). This is not always possible and sometimes may be just somewhat interpretable, or interpretable "to a degree".
 - Introducing inductive biases related to symmetry.
 
-### Enhancing explanations with extrinsic methods
+#### Extrinsic or Processing methods
 
-- Processing Methods: How the model processes an input (like what-if analyses i.e extrinsic).
-    - Salience Methods or Class Activation Maps: Finding which filters are most sensitive to which features or image regions.
-        - For example, we decompose sum for a class prediction, and find where the largest contribution came from. That way we can tell which filter may be most responsible for a particular feature in an image.
-        - analyse which activations respond stronger to which features (e.g class activation map or CAM)
-        - or where changes in the activations change the output the most (derivatives/gradients, grad-CAM).
-    - Attention-based approches: this is very similar to salience methods. I expand below.
+How the model processes an input (extrinsic).
+
+- Salience Methods or Class Activation Maps: Finding which filters are most sensitive to which features or image regions.
+    - For example, we decompose sum for a class prediction, and find where the largest contribution came from. That way we can tell which filter may be most responsible for a particular feature in an image.
+    - analyse which activations respond stronger to which features (e.g class activation map or CAM)
+    - or where changes in the activations change the output the most (derivatives/gradients, grad-CAM).
+
+> With salience and attention-based approaches, there is a danger of overinterpretation, particularly in cases where physical explanations are searched for.
+
+It's mentioned as well, that it's important to test any physical interpretation with more than one class (of molecule, image, or input), since two errors can happen:
+
+- What is observed happens for all classes.
+- What is observer is just the network exploiting some correlation, without real meaning (_shortcut learning_).
+
+#### Explanation-Producing systems
+
+We can still apply previous methods, but these architectures are designed to make explaining part of their operation easier, so they deserve a separate section.
+
+Attention-based approches: this is very similar to salience methods. I expand below.
 
 The paper mentions transformers as well. A transformer operates upon an embedding, for example an atom vector, and learns which parts pay attention to other parts. These are called _attention masks_.
 
@@ -135,13 +138,6 @@ The paper continues (bold is mine):
 > These representations, known as _attention masks_, can be **interpreted in similar way to salience maps and determine sections of the input data that a model exploits for making predictions**. The authors of a transformer model trained on chemical reaction data were able to perform atom-mapping and learn chemical grammars, i.e., identify atoms during a chemical reaction, by interpreting its learned attention map.
 
 Finally the paper warns us:
-
-> With salience and attention-based approaches, there is a danger of overinterpretation, particularly in cases where physical explanations are searched for.
-
-It's mentioned as well, that it's important to test any physical interpretation with more than one class (of molecule, image, or input), since two errors can happen:
-
-- What is observed happens for all classes.
-- What is observer is just the network exploiting some correlation, without real meaning (_shortcut learning_).
 
 Both $\beta$-VAEs or transformers are considered quite explainable models.
 
