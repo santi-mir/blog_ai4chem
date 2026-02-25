@@ -1,12 +1,29 @@
+/* Instead of using em like original, use vh,vw and rem, and scale all
+ * with font-size if needed. */
+:root {
+    --sidebar-target-width: 40rem;
+    --scaler_w:1vw;
+    --scaler_h:2vh;
+    --sidebar-width: min(var(--sidebar-target-width), 80vw);
+    --sidebar-resize-indicator-width: calc(0.75rem + var(--scaler_w));
+    --sidebar-resize-indicator-space: calc(0.3rem + var(--scaler_w));
+    --page-padding: calc(1.3rem + var(--scaler_w));
+    --content-max-width: 72rem;
+    --menu-bar-height: calc(1rem + var(--scaler_h) + 3vh);
+    --mono-font: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace;
+    --searchbar-margin-block-start: calc(1rem + var(--scaler_h));
+}
 html {
     font-family: "Ubuntu", "system-ui", "sans-serif";
-     font-size: 100%;
+    /* font-size: 62.5%; /* Makes 1 rem = 10 px */ */
 }
 
 body {
   margin:auto;
-  font-size:calc(1.1em + 1vw);
-  padding-top:calc(0.5em + 0.75vw);
+  padding-top:calc(0.5rem + 1vh);
+}
+body, .fa-svg, input, code, svg {
+  font-size:calc(0.8rem + var(--scaler_h));
 }
 #mdbook-content{
   padding-left: 2vw;
@@ -15,19 +32,15 @@ body {
   max-width:66ch;
   margin:auto
 }
-.sidebar-scrollbox {
-  min-width:20vw
-}
-.fa-svg {
-  font-size:calc(0.75em + 1vw);
-}
-h2,
-h3 {
-  margin-block-start: calc(1em + 2vh);
+nav.sidebar {
+  width:var(--sidebar-width);
+  font-size: inherit;
 }
 
-main > p {
-  margin:0.8rem 0;
+main p { margin:calc(1rem + var(--scaler_h)) 0;}
+h2,
+h3 {
+  margin-block-start: calc(1rem + 2vh);
 }
 
 .center {
@@ -37,27 +50,28 @@ main > p {
 
 div img {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   background-color: #d1d1d1;
 }
 
+/* Were originally pixels */
 div.w420 {
-  max-width: 420px;
+  max-width: 50ch;
 }
 
 div.w320 {
-  max-width: 320px;
+  max-width: 30ch;
 }
 
 div.w220 {
-  max-width: 220px;
+  max-width: 25ch;
 }
 div.w150 {
-  max-width: 150px;
+  max-width: 20ch;
 }
 
 ol li {
-  margin: 1rem 0;
+  margin: calc(1rem + var(--scaler_h)) 0;
 }
 
 main ol {

@@ -32,6 +32,7 @@ First, compounds are downloaded, then the atom-pairs-dataset is generated. The V
 
 Next, use the dataset for training a shallow network:
 
+```mermaid
     ---
     config:
         flowchart:
@@ -46,7 +47,7 @@ Next, use the dataset for training a shallow network:
             D --"`**Train
                 CrossEntropy(y, y')**`"--> E
             E --> F
-
+```
 The shallow net is trained to predict the neighbour-pair. Visually, it looks like this:
 
 <div class="center w320">

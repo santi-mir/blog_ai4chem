@@ -20,7 +20,7 @@ cargo install mdbook mdbook-mermaid mdbook-katex
 
 Besides the build-apps, install:
 
-```
+```text
 cargo install lychee rumdl caesiumclt
 ```
 
