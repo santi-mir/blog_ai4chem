@@ -37,10 +37,10 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-0e38483a.js";
+            window.path_to_searchindex_js = "searchindex-b59b20d8.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-3c004fd3.js"></script>
+        <script src="toc-0722acd4.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -207,7 +207,7 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 <li><em>Simplicity</em>: how easy to understand the explanation is. (The opposite term, <em>complexity</em> could be used as well.)</li>
 <li><em>Completeness</em>: how accurately it describes the model's behaviour.</li>
 </ul>
-<div class="w320 center">
+<div class="w420 center">
 <a href="assets/tradeoff.png">
 <img style="display:inline-block" src="assets/tradeoff.png" />
 </a>
@@ -220,9 +220,9 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 <p>This isn't universal but just a common case. Some phenomena are simple, and both characteristics are high.</p>
 </blockquote>
 <p>A related dimension is <em>correctness</em>, which does not belong to explaining a model, but is of high importance. A 3D radar plot is included in the linked above, and reproduced below (<em>simplicity</em> maps to <em>understandability</em>):</p>
-<div class="center w320"> <!--other classes: w220, w420-->
-    <a href="assets/radial_plot.png">
-    <img src="assets/radial_plot.png" alt="Plot of the three dimensions" />
+<div class="center w420"> <!--other classes: w220, w420-->
+    <a href="assets/radar_plot.png">
+    <img src="assets/radar_plot.png" alt="Plot of the three dimensions" />
     </a>
     
 <p>
@@ -264,7 +264,7 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 </li>
 </ul>
 <p>The image below is from the paper, under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> (cropped), the main things to notice are the linear generalised model and the Shapley's contributions from different features (how much each feature affects the output). It seems to derive from the GLM.</p>
-<div class="center w320"> <!--other classes: w220, w420-->
+<div class="center w420"> <!--other classes: w220, w420-->
     <a href="assets/linear_model_and_shapley.jpeg">
     <img src="assets/linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley&#39;s contributions" />
     </a>
@@ -287,14 +287,14 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 <p>How the model processes an input (extrinsic).</p>
 <p><em>Linear Proxy Models</em>: LIME, or Generalised Linear Models (GLMs) to approximate the more complex model i.e <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>, respectively. The GLM, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>, is defined as:
 <span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ψ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:3.106em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ψ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
-<p><em>Salience Methods</em> or <em>Class Activation Maps</em> (CAMs): Finding which filters are most sensitive to which features or image regions.</p>
+<p><em>Salience Maps</em> or <em>Class Activation Maps</em> (CAMs): Finding which filters are most sensitive to which features or image regions. Also through oclussion procedures.</p>
 <p><em>Validity Interval Analysis</em>: another technique fitting the NN behaviour to try to extract explanations.</p>
 <h4 id="explanation-producing-systems"><a class="header" href="#explanation-producing-systems">Explanation-Producing systems</a></h4>
 <p>We can still apply previous methods, but these architectures are designed to make explaining part of their operation easier, so they deserve a separate section.</p>
 <p>Attention-based approches: this is very similar to salience methods. I expand below.</p>
 <p>The paper mentions transformers as well. A transformer operates upon an embedding, for example an atom vector, and learns which parts pay attention to other parts. These are called <em>attention masks</em>.</p>
 <p>A good explanation is provided as an image (highlights are mine):</p>
-<div class="center w320"> <!--other classes: w220, w420-->
+<div class="center w420"> <!--other classes: w220, w420-->
     <a href="assets/attention.png">
     <img src="assets/attention.png" alt="Example of a simple transformer network." />
     </a>
@@ -317,62 +317,6 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 <p>This I think can be done also numerically, without actually calculating the derivative. See refs 20 and 21 in the paper for more detail. <a href="#fr-1-1">↩</a></p>
 </li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="machine-learning-for-molecular-and-materials-science"><a class="header" href="#machine-learning-for-molecular-and-materials-science">Machine learning for molecular and materials science</a></h1>
-<p>Useful snippets from the Perspective paper <a href="https://www.nature.com/articles/s41586-018-0337-2">Machine learning for molecular and materials science</a>.</p>
-<h2 id="representations-of-atoms-molecules-materials"><a class="header" href="#representations-of-atoms-molecules-materials">Representations of atoms, molecules, materials</a></h2>
-<p>The process of converting raw data into a format more suitable for an algorithm is called <em>feature engineering</em>.</p>
-<blockquote>
-<p>The more suitable the representation of the input data, the more accurately can an algorithm map it to the output data.</p>
-<p>Selecting how best to represent the data may require insight into both the underlying scientific problem and the operation of the learning algorithm, since it is not always obvious which choice of representation will give the best performance</p>
-</blockquote>
-<p>Some representations:</p>
-<ul>
-<li>Coulomb Matrix: atomic nuclear repulsion information.</li>
-<li>Graphs: connectivity of molecules.</li>
-<li>String representations: SMILES, SELFIEs,..</li>
-<li>Solid-state unit-cells: Representations based on radial distribution functions, Voronoi tessellations, and property-labelled materials fragments (...)
-<blockquote>
-<p>In the solid-state, the conventional description of crystal structures by translation vectors and fractional coordinates of the atoms is <strong>not appropriate for ML</strong>, since a lattice can be represented in an infinite number of ways by choosing a different coordinate system.</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="areas"><a class="header" href="#areas">Areas</a></h2>
-<p>They see possible impact in a few areas:</p>
-<ul>
-<li>Synthesis: retrosynthesis, crystallisation predictions, etc.</li>
-<li>Characterisation: for example analysing images (CV)</li>
-<li>Modelling: reducing time and improving accuracy of calculations</li>
-<li>Drug discovery, Drug design, Inverse Design, Property Prediction,..</li>
-</ul>
-<h2 id="algorithms"><a class="header" href="#algorithms">Algorithms</a></h2>
-<ul>
-<li>Naive Bayes:
-<blockquote>
-<p>Bayes’ theorem provides a formal way to calculate the probability that a hypothesis is correct, given a set of existing data.</p>
-</blockquote>
-</li>
-<li>Nearest Neighbour:
-<blockquote>
-<p>In nearest neighbour (k-NN) methods the distances between samples and training data in a descriptor hyperspace are calculated. k-NN methods are so-called because the output value for a prediction relies on the values of the k nearest neighbours, where k is an integer.</p>
-</blockquote>
-</li>
-<li>Decision Trees:
-<blockquote>
-<p>are flowchart-like diagrams used to determine a course of action or outcomes. (...) with branches indicating that each option is mutually exclusive. (...) Both root and leaf nodes contain questions or criteria to be answered.</p>
-</blockquote>
-</li>
-<li>
-<blockquote>
-<p>Kernel methods are a class of algorithms; whose best known members are the support vector machine (SVM) and kernel ridge regression (KRR).</p>
-</blockquote>
-</li>
-<li>
-<blockquote>
-<p>Artificial neural networks (ANNs) and deep neural networks (DNNs). (...) Learning is the process of adjusting the weights so that the training data are reproduced as accurately as possible. (...) The values of internal variables (hyperparameters) are estimated beforehand using systematic and random searches, or heuristics.</p>
-</blockquote>
-</li>
-</ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="learning-embeddings-for-atoms"><a class="header" href="#learning-embeddings-for-atoms">Learning embeddings for atoms</a></h1>
 <p>These are some of my opinions and ideas after reading <a href="https://www.nature.com/articles/s41524-022-00729-3">Distributed representations of atoms and materials for
@@ -406,21 +350,22 @@ machine learning</a> (2022).</p>
 </div>
 
 <p>Next, use the dataset for training a shallow network:</p>
-<pre><code>    ---
-    config:
-        flowchart:
-            htmlLabels: false
-    ---
-    flowchart LR
-            D("`Hot-encode atoms
-                (sparse)`")
-            E("Minimise Log-Probability")
-            F("`Extract Embeddings
-                (dense)`")
-            D --"`**Train
-                CrossEntropy(y, y')**`"--&gt; E
-            E --&gt; F
-</code></pre>
+<pre class="mermaid">---
+config:
+    flowchart:
+        htmlLabels: false
+---
+flowchart LR
+        D("`Hot-encode atoms
+            (sparse)`")
+        E("Minimise Log-Probability")
+        F("`Extract Embeddings
+            (dense)`")
+        D --"`**Train
+            CrossEntropy(y, y')**`"--&gt; E
+        E --&gt; F
+</pre>
+
 <p>The shallow net is trained to predict the neighbour-pair. Visually, it looks like this:</p>
 <div class="center w320">
     <a href="assets/shallow_net.png">
@@ -630,6 +575,62 @@ For example, <span class="katex"><span class="katex-html" aria-hidden="true"><sp
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="machine-learning-for-molecular-and-materials-science"><a class="header" href="#machine-learning-for-molecular-and-materials-science">Machine learning for molecular and materials science</a></h1>
+<p>Useful snippets from the Perspective paper <a href="https://www.nature.com/articles/s41586-018-0337-2">Machine learning for molecular and materials science</a>.</p>
+<h2 id="representations-of-atoms-molecules-materials"><a class="header" href="#representations-of-atoms-molecules-materials">Representations of atoms, molecules, materials</a></h2>
+<p>The process of converting raw data into a format more suitable for an algorithm is called <em>feature engineering</em>.</p>
+<blockquote>
+<p>The more suitable the representation of the input data, the more accurately can an algorithm map it to the output data.</p>
+<p>Selecting how best to represent the data may require insight into both the underlying scientific problem and the operation of the learning algorithm, since it is not always obvious which choice of representation will give the best performance</p>
+</blockquote>
+<p>Some representations:</p>
+<ul>
+<li>Coulomb Matrix: atomic nuclear repulsion information.</li>
+<li>Graphs: connectivity of molecules.</li>
+<li>String representations: SMILES, SELFIEs,..</li>
+<li>Solid-state unit-cells: Representations based on radial distribution functions, Voronoi tessellations, and property-labelled materials fragments (...)
+<blockquote>
+<p>In the solid-state, the conventional description of crystal structures by translation vectors and fractional coordinates of the atoms is <strong>not appropriate for ML</strong>, since a lattice can be represented in an infinite number of ways by choosing a different coordinate system.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="areas"><a class="header" href="#areas">Areas</a></h2>
+<p>They see possible impact in a few areas:</p>
+<ul>
+<li>Synthesis: retrosynthesis, crystallisation predictions, etc.</li>
+<li>Characterisation: for example analysing images (CV)</li>
+<li>Modelling: reducing time and improving accuracy of calculations</li>
+<li>Drug discovery, Drug design, Inverse Design, Property Prediction,..</li>
+</ul>
+<h2 id="algorithms"><a class="header" href="#algorithms">Algorithms</a></h2>
+<ul>
+<li>Naive Bayes:
+<blockquote>
+<p>Bayes’ theorem provides a formal way to calculate the probability that a hypothesis is correct, given a set of existing data.</p>
+</blockquote>
+</li>
+<li>Nearest Neighbour:
+<blockquote>
+<p>In nearest neighbour (k-NN) methods the distances between samples and training data in a descriptor hyperspace are calculated. k-NN methods are so-called because the output value for a prediction relies on the values of the k nearest neighbours, where k is an integer.</p>
+</blockquote>
+</li>
+<li>Decision Trees:
+<blockquote>
+<p>are flowchart-like diagrams used to determine a course of action or outcomes. (...) with branches indicating that each option is mutually exclusive. (...) Both root and leaf nodes contain questions or criteria to be answered.</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>Kernel methods are a class of algorithms; whose best known members are the support vector machine (SVM) and kernel ridge regression (KRR).</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>Artificial neural networks (ANNs) and deep neural networks (DNNs). (...) Learning is the process of adjusting the weights so that the training data are reproduced as accurately as possible. (...) The values of internal variables (hyperparameters) are estimated beforehand using systematic and random searches, or heuristics.</p>
+</blockquote>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="compchem-map"><a class="header" href="#compchem-map">CompChem Map</a></h1>
 <p>This is a draft of areas I'd like to organise in some taxonomy.</p>
 <h2 id="finding-useful-molecules"><a class="header" href="#finding-useful-molecules">Finding Useful Molecules</a></h2>
@@ -771,6 +772,22 @@ A --&gt; Direct
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>

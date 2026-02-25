@@ -24,7 +24,7 @@ We can characterise explanations using:
 - _Simplicity_: how easy to understand the explanation is. (The opposite term, _complexity_ could be used as well.)
 - _Completeness_: how accurately it describes the model's behaviour.
 
-<div class="w320 center">
+<div class="w420 center">
 <a href="./assets/tradeoff.png">
 <img style="display:inline-block" src="./assets/tradeoff.png"/>
 </a>
@@ -36,9 +36,9 @@ We can characterise explanations using:
 
 A related dimension is _correctness_, which does not belong to explaining a model, but is of high importance. A 3D radar plot is included in the linked above, and reproduced below (_simplicity_ maps to _understandability_):
 
-<div class="center w320"> <!--other classes: w220, w420-->
-    <a href="./assets/radial_plot.png">
-    <img src="./assets/radial_plot.png" alt="Plot of the three dimensions"/>
+<div class="center w420"> <!--other classes: w220, w420-->
+    <a href="./assets/radar_plot.png">
+    <img src="./assets/radar_plot.png" alt="Plot of the three dimensions"/>
     </a>
     <p>
     Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
@@ -75,7 +75,7 @@ This focuses on its behaviour: its outputs, input-outputs relationships, and so 
 
 The image below is from the paper, under [CC BY 4.0] (cropped), the main things to notice are the linear generalised model and the Shapley's contributions from different features (how much each feature affects the output). It seems to derive from the GLM.
 
-<div class="center w320"> <!--other classes: w220, w420-->
+<div class="center w420"> <!--other classes: w220, w420-->
     <a href="./assets/linear_model_and_shapley.jpeg">
     <img src="./assets/linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley's contributions"/>
     </a>
@@ -103,7 +103,7 @@ How the model processes an input (extrinsic).
 _Linear Proxy Models_: LIME, or Generalised Linear Models (GLMs) to approximate the more complex model i.e $g(z) \approx f(z)$, respectively. The GLM, $g(z)$, is defined as:
     $$g(z) = \psi_0 + \sum_{i=1}^M \psi_i z_i$$
 
-_Salience Methods_ or _Class Activation Maps_ (CAMs): Finding which filters are most sensitive to which features or image regions.
+_Salience Maps_ or _Class Activation Maps_ (CAMs): Finding which filters are most sensitive to which features or image regions. Also through oclussion procedures.
 
 _Validity Interval Analysis_: another technique fitting the NN behaviour to try to extract explanations.
 
@@ -117,7 +117,7 @@ The paper mentions transformers as well. A transformer operates upon an embeddin
 
 A good explanation is provided as an image (highlights are mine):
 
-<div class="center w320"> <!--other classes: w220, w420-->
+<div class="center w420"> <!--other classes: w220, w420-->
     <a href="./assets/attention.png">
     <img src="./assets/attention.png" alt="Example of a simple transformer network."/>
     </a>

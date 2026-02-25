@@ -8,6 +8,8 @@
   "MD033",
  # allow empty links (draft chapters)
   "MD042",
+ # it messes up my mermaid graphs
+  "MD046"
 ]
 
 [per-file-ignores]

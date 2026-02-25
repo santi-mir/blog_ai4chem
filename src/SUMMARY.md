@@ -7,9 +7,9 @@
 # Thoughts on papers
 
 - [Explainable AI](./xAI.md)
-- [Machine Learning Perspective](./machine_learning_perspective_2019.md)
 - [Distributed Representations of Atoms](./distributed_reps_of_atoms_2022.md)
 - [Discovering Inorganic Solids](./DL_aided_exploration_inorg_solids.md)
+- [Machine Learning Perspective (draft)](./machine_learning_perspective_2019.md)
 
 -----
 

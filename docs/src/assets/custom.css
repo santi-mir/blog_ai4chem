@@ -22,8 +22,11 @@ body {
   margin:auto;
   padding-top:calc(0.5rem + 1vh);
 }
-body, .fa-svg, input, code, svg {
+body, .fa-svg, input, code {
   font-size:calc(0.8rem + var(--scaler_h));
+}
+svg {
+  font-size:calc(0.8rem + var(--scaler_h))!important;
 }
 #mdbook-content{
   padding-left: 2vw;
