@@ -10,14 +10,14 @@ A very interesting experiment in terms of explainability was <https://distill.pu
 
 Scientific models are expected to be explainable; that is, an expert human can respond to _why_ questions with it and about it.
 
-And yet, deep learning models' operation remains hard to explain.
+And yet, deep learning models' operation remains opaque.
 So how can we explain deep-learning models? That is what this blog explores.
 
 (Admittedly, in some cases we may be satisfied with the predictive power alone.)
 
-### Definition, Characteristics, Examples
+### Definition and characteristics
 
-Explanation can be defined in an intuitive way. First, phrase what we want to know as a "Why question", the answer is a candidate-explanation. Keep asking why until satisfied. Call the process an explanation.
+_Explanation_ can be defined in an intuitive way. First, phrase what we want to know as a "Why question", the answer is a candidate-explanation. Keep asking "Why" until satisfied. Call the process an explanation.
 
 We can characterise explanations using:
 
@@ -58,8 +58,6 @@ This focuses on the math (internal structure).
 - Simplifying the model (when possible)
     - Regularisation Approaches (SISSO, LASSO) can help by identifying the most important descriptors to use.
     - LASSO: to remove features when tightly correlated (leaving the most helpful one).
-- Proxy Models e.g. Generalised Linear Models (GLMs) to approximate the more complex model i.e $g(z) \approx f(z)$, respectively. The GLM, $g(z)$, is defined as:
-    $$g(z) = \psi_0 + \sum_{i=1}^M \psi_i z_i$$
 
 #### Extrinsic methods
 
@@ -98,21 +96,17 @@ Interpret the learnt representations and data inside the model (i.e intrinsic). 
 
 - Introducing inductive biases related to symmetry.
 
+
 #### Extrinsic or Processing methods
 
 How the model processes an input (extrinsic).
 
-- Salience Methods or Class Activation Maps: Finding which filters are most sensitive to which features or image regions.
-    - For example, we decompose sum for a class prediction, and find where the largest contribution came from. That way we can tell which filter may be most responsible for a particular feature in an image.
-    - analyse which activations respond stronger to which features (e.g class activation map or CAM)
-    - or where changes in the activations change the output the most (derivatives/gradients, grad-CAM).
+_Linear Proxy Models_: LIME, or Generalised Linear Models (GLMs) to approximate the more complex model i.e $g(z) \approx f(z)$, respectively. The GLM, $g(z)$, is defined as:
+    $$g(z) = \psi_0 + \sum_{i=1}^M \psi_i z_i$$
 
-> With salience and attention-based approaches, there is a danger of overinterpretation, particularly in cases where physical explanations are searched for.
+_Salience Methods_ or _Class Activation Maps_ (CAMs): Finding which filters are most sensitive to which features or image regions.
 
-It's mentioned as well, that it's important to test any physical interpretation with more than one class (of molecule, image, or input), since two errors can happen:
-
-- What is observed happens for all classes.
-- What is observer is just the network exploiting some correlation, without real meaning (_shortcut learning_).
+_Validity Interval Analysis_: another technique fitting the NN behaviour to try to extract explanations.
 
 #### Explanation-Producing systems
 
