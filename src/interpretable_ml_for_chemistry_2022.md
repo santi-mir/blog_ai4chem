@@ -123,4 +123,3 @@ There isn't much about these ones, this is what I take away:
 [arxiv]: http://arxiv.org/abs/1806.00069
 [CC BY 4.0]: https://creativecommons.org/licenses/by/4.0/
 [^1]:  This I think can be done also numerically, without actually calculating the derivative. See refs 20 and 21 in the paper for more detail.
-

@@ -18,7 +18,6 @@ Such models would improve the allocation of resources when exploring new phase f
 
 ## Searching for new compounds
 
-
 Some definitions will be used:
 
 - _Phase field_: the elements selected. Can be thought as the labels for cartesian axes.
@@ -77,7 +76,6 @@ F -- "`**Probe**`" --> H(Try synthesis)
 style A fill:#123456,color:#f4f4f4,stroke-width:0px
 ```
 
-
 ## In depth workflow
 
 ### Dataset
@@ -88,7 +86,6 @@ The 4-element crystals are selected from ICSD, and only the elements are retaine
 For example, $\mathrm{CaNaLiO_2}$ would become $\mathrm{CaNaLiO}$ for training.
 
 The data is scaled 24 fold by performing all possible permutations of 4 elements, i.e. 4! (factorial). This enhances learning, reduces overfitting.
-
 
 ### Architecture: Variational Autoencoder (VAE)
 
