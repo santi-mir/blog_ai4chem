@@ -96,7 +96,6 @@ Interpret the learnt representations and data inside the model (i.e intrinsic). 
 
 - Introducing inductive biases related to symmetry.
 
-
 #### Extrinsic or Processing methods
 
 How the model processes an input (extrinsic).
