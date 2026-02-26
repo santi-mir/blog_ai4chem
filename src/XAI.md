@@ -45,8 +45,8 @@ A related dimension is _correctness_, which does not belong to explaining a mode
     </p>
 </div>
 
-
 ## Strategies
+
 We consider strategies that can help explain models' operations.
 First, Deep Learning (DL) intrinsic and extrinsic methods. Then the same is done for Classical ML.
 
@@ -64,17 +64,17 @@ They classify these at the level of Layer, Neuron, and Vector.
 
 How the model processes an input (extrinsic).
 
-* Linear Proxy Models: fit a simpler model to the neighbourhood of an input (+ noise), i.e $g(z) \approx f(z)$ around some $z$. For example, LIME or Generalised Linear Models (GLMs).
+- Linear Proxy Models: fit a simpler model to the neighbourhood of an input (+ noise), i.e $g(z) \approx f(z)$ around some $z$. For example, LIME or Generalised Linear Models (GLMs).
 
-* Salience Maps: aim to explain which portions of the computation (original model) are most important for different inputs.
+- Salience Maps: aim to explain which portions of the computation (original model) are most important for different inputs.
 
-* Validity Interval Analysis: another technique fitting the NN behaviour to try to extract explanations.
+- Validity Interval Analysis: another technique fitting the NN behaviour to try to extract explanations.
 
 ### Explanation-Producing systems
 
 Architectures designed to make explaining part of their operation easier.
 
-* Using Explicit Attention: For example the transformer operates upon an embedding, like an atom embedding, and learns which parts pay attention to other parts. These are called _attention masks_ and are somewhat interpretable.
+- Using Explicit Attention: For example the transformer operates upon an embedding, like an atom embedding, and learns which parts pay attention to other parts. These are called _attention masks_ and are somewhat interpretable.
 
 <div class="center w420"> <!--other classes: w220, w420-->
     <a href="./assets/attention.png">
@@ -89,8 +89,7 @@ The [paper][Account] continues (bold is mine):
 
 > _attention masks_, can be interpreted in similar way to salience maps and **determine sections of the input data that a model exploits for making predictions**.
 
-* Dissentangled Representations:
-
+- Dissentangled Representations:
 
 ### Classical ML / Intrinsic
 
