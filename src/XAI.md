@@ -8,7 +8,7 @@ A very interesting experiment in terms of explainability was <https://distill.pu
 
 ## Explanations
 
-Scientific models are expected to be explainable; that is, an expert human can respond to _why_ questions with it and about it.
+Scientific models are expected to be explainable; that is, an expert human can respond to _why_ questions about it.
 
 And yet, deep learning models' operation remains opaque.
 So how can we explain deep-learning models? That is what this blog explores.
@@ -24,24 +24,24 @@ We can characterise explanations using:
 - _Simplicity_: how easy to understand the explanation is. (The opposite term, _complexity_, could be used as well.)
 - _Completeness_: how accurately it describes the model's behaviour.
 
-<div class="w420 center">
+<div class="w40 center">
 <a href="./assets/tradeoff.png">
-<img style="display:inline-block" src="./assets/tradeoff.png"/>
+<img alt="graph looking like completeness is the inverse of simplitity." src="./assets/tradeoff.png"/>
 </a>
-<p>Completeness/Simplicity tradeoff graph.</p>
+<p>Completeness v. Simplicity tradeoff.</p>
 </div>
 
->[!NOTE]
-> This isn't universal but just a common case. Some phenomena are simple, and both characteristics are high.
+This tradeoff isn't universal but just a common case. Some phenomena are simple, in which case both characteristics are high.
 
-A related dimension is _correctness_, which does not belong to explaining a model, but is of high importance. A 3D radar plot is included in the linked above, and reproduced below (_simplicity_ maps to _understandability_):
+### Correctness
+This isn't a characteristic of explanations, but of a model, yet it is often correlated, as represented below (_understandability_ replaces _simplicity_):
 
-<div class="center w420"> <!--other classes: w220, w420-->
+<div class="center w40"> <!--other classes: w220, w420-->
     <a href="./assets/radar_plot.png">
     <img src="./assets/radar_plot.png" alt="Plot of the three dimensions"/>
     </a>
     <p>
-    Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
+    Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
     </p>
 </div>
 
@@ -57,7 +57,7 @@ Interpret the learnt representations and data inside the model (i.e intrinsic). 
 They classify these at the level of Layer, Neuron, and Vector.
 
 - Role of Layers: for example, transfer learning, reusing output of some layers for another task.
-- Role of Units: "visualizations of the input patterns that maximize the response of a single unit or quantitatively, by testing the ability of a unit to solve a transfer problem".
+- Role of Units: "visualizations of the input patterns that maximize the response of a single unit or quantitatively, by testing the ability of a unit to solve a transfer problem" ([source][arxiv]).
 - Role of Vectors: for example using Concept Activation Vectors framework.
 
 ### DL / Extrinsic or Processing
@@ -70,26 +70,15 @@ How the model processes an input (extrinsic).
 
 - Validity Interval Analysis: another technique fitting the NN behaviour to try to extract explanations.
 
+- Principal Component Analysis, Independent Component Analysis, Non-negative Matrix Factorisation can all help as well. But in a way this is better done by architectures with disentangled representations.
+
 ### Explanation-Producing systems
 
 Architectures designed to make explaining part of their operation easier.
 
-- Using Explicit Attention: For example the transformer operates upon an embedding, like an atom embedding, and learns which parts pay attention to other parts. These are called _attention masks_ and are somewhat interpretable.
+- Using Explicit Attention: An attention layer/mask learns how parts of an input embedding pay attention to other parts. The layer is somewhat interpretable. In chemistry, it could learn which atoms connect (or pay attention to) other atoms.
 
-<div class="center w420"> <!--other classes: w220, w420-->
-    <a href="./assets/attention.png">
-    <img src="./assets/attention.png" alt="Example of a simple transformer network."/>
-    </a>
-    <p>
-    Explicit attention example. Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
-    </p>
-</div>
-
-The [paper][Account] continues (bold is mine):
-
-> _attention masks_, can be interpreted in similar way to salience maps and **determine sections of the input data that a model exploits for making predictions**.
-
-- Dissentangled Representations:
+- Dissentangled Representations: "Disentangled representations have individual dimensions that describe meaningful and independent factors of variation." ([source][arxiv]). Examples of architectures are Beta-VAE, INFOGan, capsule networks.
 
 ### Classical ML / Intrinsic
 
@@ -103,25 +92,22 @@ These focuses on the math (internal structure).
 
 ### Classical ML / Extrinsic
 
-These study the model's behaviour, as a black box.
+These study the model's behaviour, as a black box. Most below, correlate changes in input-features with changes in outputs.
 
-- Correlate changes in input-features with changes in outputs.
-    - Partial Dependence Plots (PDPs). Though it masks possible correlations between features (if all are kept constant but one).
-    - Individual Conditional Expectations (ICE) overcomes the limitation above.
-    - Feature Importance methods: partial derivative of an output w.r.t some input feature.[^1]
-    - Shapley Analysis: involves fitting a linear model using nearby input-points.
-        - We get insight on which features are locally relevant, by looking at the accompanying coefficients.
-        - The coefficients quantify the effect of each feature in the output. I assume they fit different models to different areas of their input space, and then analyze the distribution of coefficients?
-    - Counterfactual Analysis
+- Partial Dependence Plots (PDPs). Though it masks possible correlations between features (if all are kept constant but one).
+- Individual Conditional Expectations (ICE) overcomes the limitation above.
+- Feature Importance methods: partial derivative of an output w.r.t some input feature.[^1]
+- Shapley Analysis: involves fitting a linear model using nearby input-points.
+    - We get insight on which features are locally relevant, by looking at the accompanying coefficients.
+    - The coefficients quantify the effect of each feature in the output. I assume they fit different models to different areas of their input space, and then analyze the distribution of coefficients?
+- Counterfactual Analysis
 
-The image below is from the paper, under [CC BY 4.0] (cropped) showing the Linear Generalised Model and the Shapley's contributions from different features (how much each feature affects the output).
-
-<div class="center w420"> <!--other classes: w220, w420-->
+<div class="center w40"> <!--other classes: w220, w420-->
     <a href="./assets/linear_model_and_shapley.jpeg">
     <img src="./assets/linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley's contributions"/>
     </a>
     <p>
-    Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
+    LGM ($g$ function) and Shapley's feature contribution. Image (cropped) from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
     </p>
 </div>
 

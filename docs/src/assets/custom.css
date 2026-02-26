@@ -57,20 +57,28 @@ div img {
   background-color: #d1d1d1;
 }
 
+div.w50 {
+  max-width: 50ch;
+}
+div.w40 {
+  max-width: 40ch;
+}
+div.w30 {
+  max-width: 30ch;
+}
+div.w25 {
+  max-width: 25ch;
+}
+div.w20 {
+  max-width: 20ch;
+}
+
 /* Were originally pixels */
 div.w420 {
   max-width: 50ch;
 }
-
 div.w320 {
   max-width: 30ch;
-}
-
-div.w220 {
-  max-width: 25ch;
-}
-div.w150 {
-  max-width: 20ch;
 }
 
 ol li {

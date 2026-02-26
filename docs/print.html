@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-732c963c.js";
+            window.path_to_searchindex_js = "searchindex-212e9b4a.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-882c65fa.js"></script>
@@ -196,7 +196,7 @@
 <p>A very interesting experiment in terms of explainability was <a href="https://distill.pub">https://distill.pub</a>.</p>
 <hr>
 <h2 id="explanations"><a class="header" href="#explanations">Explanations</a></h2>
-<p>Scientific models are expected to be explainable; that is, an expert human can respond to <em>why</em> questions with it and about it.</p>
+<p>Scientific models are expected to be explainable; that is, an expert human can respond to <em>why</em> questions about it.</p>
 <p>And yet, deep learning models' operation remains opaque.
 So how can we explain deep-learning models? That is what this blog explores.</p>
 <p>(Admittedly, in some cases we may be satisfied with the predictive power alone.)</p>
@@ -207,26 +207,24 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 <li><em>Simplicity</em>: how easy to understand the explanation is. (The opposite term, <em>complexity</em>, could be used as well.)</li>
 <li><em>Completeness</em>: how accurately it describes the model's behaviour.</li>
 </ul>
-<div class="w420 center">
+<div class="w40 center">
 <a href="assets/tradeoff.png">
-<img style="display:inline-block" src="assets/tradeoff.png" />
+<img alt="graph looking like completeness is the inverse of simplitity." src="assets/tradeoff.png" />
 </a>
-<p>Completeness/Simplicity tradeoff graph.</p>
+<p>Completeness v. Simplicity tradeoff.</p>
 
 </div>
 
-<blockquote class="blockquote-tag blockquote-tag-note">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>This isn't universal but just a common case. Some phenomena are simple, and both characteristics are high.</p>
-</blockquote>
-<p>A related dimension is <em>correctness</em>, which does not belong to explaining a model, but is of high importance. A 3D radar plot is included in the linked above, and reproduced below (<em>simplicity</em> maps to <em>understandability</em>):</p>
-<div class="center w420"> <!--other classes: w220, w420-->
+<p>This tradeoff isn't universal but just a common case. Some phenomena are simple, in which case both characteristics are high.</p>
+<h3 id="correctness"><a class="header" href="#correctness">Correctness</a></h3>
+<p>This isn't a characteristic of explanations, but of a model, yet it is often correlated, as represented below (<em>understandability</em> replaces <em>simplicity</em>):</p>
+<div class="center w40"> <!--other classes: w220, w420-->
     <a href="assets/radar_plot.png">
     <img src="assets/radar_plot.png" alt="Plot of the three dimensions" />
     </a>
     
 <p>
-    Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
+    Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
     </p>
 
 </div>
@@ -239,7 +237,7 @@ First, Deep Learning (DL) intrinsic and extrinsic methods. Then the same is done
 <p>They classify these at the level of Layer, Neuron, and Vector.</p>
 <ul>
 <li>Role of Layers: for example, transfer learning, reusing output of some layers for another task.</li>
-<li>Role of Units: "visualizations of the input patterns that maximize the response of a single unit or quantitatively, by testing the ability of a unit to solve a transfer problem".</li>
+<li>Role of Units: "visualizations of the input patterns that maximize the response of a single unit or quantitatively, by testing the ability of a unit to solve a transfer problem" (<a href="http://arxiv.org/abs/1806.00069">source</a>).</li>
 <li>Role of Vectors: for example using Concept Activation Vectors framework.</li>
 </ul>
 <h3 id="dl--extrinsic-or-processing"><a class="header" href="#dl--extrinsic-or-processing">DL / Extrinsic or Processing</a></h3>
@@ -254,29 +252,19 @@ First, Deep Learning (DL) intrinsic and extrinsic methods. Then the same is done
 <li>
 <p>Validity Interval Analysis: another technique fitting the NN behaviour to try to extract explanations.</p>
 </li>
+<li>
+<p>Principal Component Analysis, Independent Component Analysis, Non-negative Matrix Factorisation can all help as well. But in a way this is better done by architectures with disentangled representations.</p>
+</li>
 </ul>
 <h3 id="explanation-producing-systems"><a class="header" href="#explanation-producing-systems">Explanation-Producing systems</a></h3>
 <p>Architectures designed to make explaining part of their operation easier.</p>
 <ul>
-<li>Using Explicit Attention: For example the transformer operates upon an embedding, like an atom embedding, and learns which parts pay attention to other parts. These are called <em>attention masks</em> and are somewhat interpretable.</li>
-</ul>
-<div class="center w420"> <!--other classes: w220, w420-->
-    <a href="assets/attention.png">
-    <img src="assets/attention.png" alt="Example of a simple transformer network." />
-    </a>
-    
-<p>
-    Explicit attention example. Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
-    </p>
-
-</div>
-
-<p>The <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> continues (bold is mine):</p>
-<blockquote>
-<p><em>attention masks</em>, can be interpreted in similar way to salience maps and <strong>determine sections of the input data that a model exploits for making predictions</strong>.</p>
-</blockquote>
-<ul>
-<li>Dissentangled Representations:</li>
+<li>
+<p>Using Explicit Attention: An attention layer/mask learns how parts of an input embedding pay attention to other parts. The layer is somewhat interpretable. In chemistry, it could learn which atoms connect (or pay attention to) other atoms.</p>
+</li>
+<li>
+<p>Dissentangled Representations: "Disentangled representations have individual dimensions that describe meaningful and independent factors of variation." (<a href="http://arxiv.org/abs/1806.00069">source</a>). Examples of architectures are Beta-VAE, INFOGan, capsule networks.</p>
+</li>
 </ul>
 <h3 id="classical-ml--intrinsic"><a class="header" href="#classical-ml--intrinsic">Classical ML / Intrinsic</a></h3>
 <p>For an example of Classical ML think of Support Vector Regression, and other kinds of regressions.</p>
@@ -290,9 +278,7 @@ First, Deep Learning (DL) intrinsic and extrinsic methods. Then the same is done
 </li>
 </ul>
 <h3 id="classical-ml--extrinsic"><a class="header" href="#classical-ml--extrinsic">Classical ML / Extrinsic</a></h3>
-<p>These study the model's behaviour, as a black box.</p>
-<ul>
-<li>Correlate changes in input-features with changes in outputs.
+<p>These study the model's behaviour, as a black box. Most below, correlate changes in input-features with changes in outputs.</p>
 <ul>
 <li>Partial Dependence Plots (PDPs). Though it masks possible correlations between features (if all are kept constant but one).</li>
 <li>Individual Conditional Expectations (ICE) overcomes the limitation above.</li>
@@ -305,16 +291,13 @@ First, Deep Learning (DL) intrinsic and extrinsic methods. Then the same is done
 </li>
 <li>Counterfactual Analysis</li>
 </ul>
-</li>
-</ul>
-<p>The image below is from the paper, under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> (cropped) showing the Linear Generalised Model and the Shapley's contributions from different features (how much each feature affects the output).</p>
-<div class="center w420"> <!--other classes: w220, w420-->
+<div class="center w40"> <!--other classes: w220, w420-->
     <a href="assets/linear_model_and_shapley.jpeg">
     <img src="assets/linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley&#39;s contributions" />
     </a>
     
 <p>
-    Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
+    LGM (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span> function) and Shapley's feature contribution. Image (cropped) from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
     </p>
 
 </div>
@@ -780,6 +763,22 @@ A --&gt; Direct
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>
