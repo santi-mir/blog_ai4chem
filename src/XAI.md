@@ -34,6 +34,7 @@ We can characterise explanations using:
 This tradeoff isn't universal but just a common case. Some phenomena are simple, in which case both characteristics are high.
 
 ### Correctness
+
 This isn't a characteristic of explanations, but of a model, yet it is often correlated, as represented below (_understandability_ replaces _simplicity_):
 
 <div class="center w40"> <!--other classes: w220, w420-->
