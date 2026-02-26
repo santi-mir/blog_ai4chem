@@ -28,7 +28,7 @@ no-section-label = true # remove numbers in navbar.
 additional-css = ["./src/assets/custom.css"]
 additional-js = ["./src/assets/mermaid.min.js", "./src/assets/mermaid-init.js"]
 # input-404 = "not-found.md"
-# mathjax-support = true
+mathjax-support = false
 
 # they did not upgrade to 0.5 just yet.
 # [preprocessor.quiz]
