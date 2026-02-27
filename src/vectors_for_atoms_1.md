@@ -14,10 +14,10 @@ By exploiting the analogy that _words are to sentences what to atoms are to comp
 
 ## Introduction in Chemistry
 
-Atom vectors can be _built_ from empirical features or they can be _learnt_ by an algorithm. Selecting descriptors is tedious, they may not transfer to other tasks, and may be less accurate. So the automated approach has won in popularity.
+Atom vectors can be _built_ from empirical features or they can be _learnt_ by an algorithm. Selecting descriptors is tedious, need to be designed for each particular task, and may be less accurate. So the automated approach, with more general-purpose vectors, has won in popularity.
 
 > [!NOTE]
-> "Empirical features" refers to the group and period (but also potentially others). This was widely used prior to 2018, before the automated ones.
+> "Empirical features" refers to the group and period (but also potentially many others like charge, mass, ..). This was widely used prior to 2018, before the automated ones.
 
 Both _Atom2Vec_ and _SkipAtom_ are unsupervised algorithms that obtain their atom vectors from compound-databases. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.
 
