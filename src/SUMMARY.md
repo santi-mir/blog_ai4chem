@@ -4,21 +4,28 @@
 
 -----
 
-# Explainable AI
-
-- [Concepts](./XAI_1.md)
-- [Strategies](./XAI_2.md)
-
 # Atom Vectors
 
 - [Key Ideas](./vectors_for_atoms_1.md)
 - [Types](./vectors_for_atoms_2.md)
 - [Results](./vectors_for_atoms_3.md)
 
+-----
+
+# Explainable AI
+
+- [Concepts](./XAI_1.md)
+- [Strategies](./XAI_2.md)
+
+
+-----
+
 # AI for the Solid State
 
 - [Discovering Solids - Concepts](./DL_aided_exploration_inorg_solids_1.md)
 - [Discovering Solids - Workflow](./DL_aided_exploration_inorg_solids_2.md)
+
+-----
 
 # Perspective
 
