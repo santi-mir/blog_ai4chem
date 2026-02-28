@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-5b8358cb.js";
+            window.path_to_searchindex_js = "searchindex-d728140c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-c3508fb3.js"></script>
@@ -193,8 +193,10 @@
 <p>Atom vectors can be <em>built</em> from empirical features or they can be <em>learnt</em> by an algorithm<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup>. Learning vectors yields more general-purpose vectors, and has won in popularity.</p>
 <p>Both <em>Atom2Vec</em> and <em>SkipAtom</em> are unsupervised algorithms that obtain their atom vectors from databases of compounds. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.</p>
 <p>These approaches compete with others that use crystal-structure information. Without structural informtation they <em>tend to</em> be less accurate, computationally cheaper to learn.</p>
-<p>The vectors sparse (one-hot) or dense (most approaches). The components can can be continuous (real) or discrete (integers, natural numbers, binary).</p>
-<p>Usually, the term <em>embedding</em> is reserved for those dense and continuous, but it varies.</p>
+<h3 id="embedding"><a class="header" href="#embedding">Embedding</a></h3>
+<p>The vector representations can be sparse, like one-hot encoding, or dense, like most approaches. The components of the vectors can be all continuous (real) or all discrete (integers, natural numbers, binary).</p>
+<p>Mixing up continuous and discrete components isn't common, nor it is to use complex numbers.</p>
+<p>Usually, the term <em>embedding</em> is reserved for dense vectors with real (continuous) components.</p>
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-1">

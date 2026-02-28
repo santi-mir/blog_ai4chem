@@ -20,9 +20,13 @@ Both _Atom2Vec_ and _SkipAtom_ are unsupervised algorithms that obtain their ato
 
 These approaches compete with others that use crystal-structure information. Without structural informtation they _tend to_ be less accurate, computationally cheaper to learn.
 
-The vectors sparse (one-hot) or dense (most approaches). The components can can be continuous (real) or discrete (integers, natural numbers, binary).
+### Embedding
 
-Usually, the term _embedding_ is reserved for those dense and continuous, but it varies.
+The vector representations can be sparse, like one-hot encoding, or dense, like most approaches. The components of the vectors can be all continuous (real) or all discrete (integers, natural numbers, binary).
+
+Mixing up continuous and discrete components isn't common, nor it is to use complex numbers.
+
+Usually, the term _embedding_ is reserved for dense vectors with real (continuous) components.
 
 [^1]: Empirical features refers to the group and period (and potentially charge, mass, ..). This was widely used prior to 2018, before the automated ones.
 
