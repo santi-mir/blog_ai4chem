@@ -41,7 +41,7 @@ Most solids found by the group or by others are in dark areas of the plot with t
 
 The magenta point A in the image is the new phase found, not far from the probe structure which was $\mathrm{Li_3SnS_3Cl}$.
 
-<div class="center w320"> <!--other classes: w220, w420-->
+<div class="center w40"> <!--other classes: w220, w420-->
     <a href="./assets/results_rosseinsky_energy_phase_map.png">
     <img src="./assets/results_rosseinsky_energy_phase_map.png" alt="Results showing compositions as S/(S+Cl) in y-axis and of Li/(Li+Sn) on the x-axis. The compositions vary from 0 to 1 for each. The point (1,1) is S and Li, the point (0,0) is SnCl. They evaluated many compositions and computed the energies."/>
     </a>

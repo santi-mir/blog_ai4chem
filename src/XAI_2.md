@@ -1,4 +1,4 @@
-# XAI
+# Explainable AI - Strategies
 
 Now let's get into strategies that can help explain models better.
 First, for Deep Learning, then the same is done for Classical Machine Learning.

@@ -1,4 +1,4 @@
-# Explainable AI (XAI)
+# Explainable AI - Concepts
 
 These are some of my opinions and ideas after reading [Interpretable and Explainable Machine Learning for Materials Science and Chemistry][Account] (2022), and [Explaining Explanations: An Overview of Interpretability of Machine Learning][arxiv] (2019).
 

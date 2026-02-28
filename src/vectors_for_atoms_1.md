@@ -2,8 +2,6 @@
 
 Let's start with the representation that appeared first (2018), Atom2Vec.
 
-## Atom2Vec
-
 Atom2Vec uses defines a matrix ($X$) where each column is an environment and each row an element. Each $X_{ij}$ can be 0 or a natural number, and represents the _count_ of those atom-environment combinations.
 
 In other words, $X$ is a co-occurence matrix of atom-environment pairs.
@@ -16,6 +14,7 @@ In other words, $X$ is a co-occurence matrix of atom-environment pairs.
 
 The index `(N)` is the stoichiometry of the atom in the compound $\mathrm{Bi_2Sb_3}$ for the first column. Each atom-vector is sparse, since a particular atom binds to a small fraction of all groups.
 
+### SVD Method
 A normalised matrix $X_u$ is obtain by independently normalising each row vector. Using euclidean norm (2-norm) allows for an intuitive similarity metric:
 
 $$\mathrm{dist}(\vec{u_1},\vec{u_2}) = 1 - \vec{u_1} \cdot \vec{u_2} = 1 - \mathrm{similarity}$$
@@ -25,6 +24,7 @@ In their best-performing model, they compute $SVD(X_u) = U\,D\,V^T$, collect the
 > [!NOTE]
 > The strategy has certain beauty to it: the new f-vectors retain the inner product similarity but are denser. Though now, the columns have no explicit meaning.
 
+### Findings
 They find:
 
 - Similar atoms have similar vectors,
@@ -42,6 +42,8 @@ They find:
 </div>
 
 - Looking at the variation of some dimensions in the vectors, we can assign meaning to some of them.
+
+### Benches
 
 Then, they compared to "empirical features" &mdash; a vector `(group, period,...)`, randomly padded to match their $d$&mdash;, with the task of predicting the DFT-found formation-energies of $\approx 10^4$ elpasolite crystals ($\mathrm{ABC_2D_6}$). They represent each solid as a concatenation of atom vectors, and feed it to a hidden layer. (They also do other tasks.)
 

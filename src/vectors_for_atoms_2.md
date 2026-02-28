@@ -1,8 +1,6 @@
-# Vectors In Chemistry
+# Atoms Vectors - SkipAtom
 
-Already described Atom2Vec, now it's time for SkipAtom.
-
-## SkipAtom
+Atom2Vec was already described, now it's time for SkipAtom.
 
 First, compounds are downloaded, then the atom-pairs-dataset is generated. The Voronoi Decomposition helps derive training-pairs from the unit cell. This is shown in the image below:
 

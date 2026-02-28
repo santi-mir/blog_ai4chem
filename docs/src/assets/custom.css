@@ -1,94 +1,11 @@
-/* Instead of using em like original, use vh,vw and rem, and scale all
- * with font-size if needed. */
-:root {
-    --scaler_w:1vw;
-    --scaler_h:1.8vh;
-    --font_size: calc(1rem + var(--scaler_h));
-    --sidebar-resize-indicator-width: 3rem;
-    --sidebar-resize-indicator-space: 3rem;
-    --sidebar-target-width: 25rem;
-    --sidebar-width: min(var(--sidebar-target-width), 80vw);
-    --page-padding: calc(1.3rem + var(--scaler_w));
-    --content-max-width: 72rem;
-    --menu-bar-height: calc(1rem + var(--scaler_h) + 3vh);
-    --mono-font: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace;
-    --searchbar-margin-block-start: calc(1rem + var(--scaler_h));
-}
-html {
-    font-family: "Ubuntu", "system-ui", "sans-serif";
-}
-
-body {
-  margin:auto;
-  padding-top:calc(0.5rem + 1vh);
-}
-body, input, code { font-size:var(--font_size) }
-svg {
-    width: calc(2*var(--font_size))!important;
-    height: calc(2*var(--font_size))!important;
-
-}
-
-.js .sidebar .sidebar-resize-handle {
-    cursor: col-resize;
-    width: calc(var(--font_size));
-    padding:0.3vw
-}
-
-.sidebar .sidebar-resize-handle {
-    position: relative;
-    cursor: col-resize;
-    width: content-width;
-    left: var(--sidebar-width);
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    height: 100vh;
-    background: transparent;
-    justify-content: center;
-}
-.sidebar-resize-handle .sidebar-resize-indicator {
-    width: calc(var(--font_size));
-    height: calc(var(--font_size)*3);
-    color: var(--icons);
-    margin-inline-start: unset;
-    /* margin-inline-start: var(--sidebar-resize-indicator-space); */
-    display: flex;
-    align-items: center;
-    justify-content: center
-}
-.sidebar-resize-handle .sidebar-resize-indicator::before,
-.sidebar-resize-handle .sidebar-resize-indicator::after{
-    border-left: dotted calc(var(--font_size)/5) currentColor;
-}
-
-.sidebar-resize-handle .sidebar-resize-indicator::before {
-    width: calc(var(--font_size)/3);
-    height: var(--font_size)
-}
-
-.sidebar-resize-handle .sidebar-resize-indicator::after {
-    width: calc(var(--font_size)/3);
-    height: calc(1.5*var(--font_size))
-}
-#mdbook-content{
-  padding-left: 2vw;
+h2,
+h3 {
+  margin-block-start: 1.2rem;
+  margin-block-end:1.4rem;
 }
 .content main {
   max-width:66ch;
   margin:auto
-}
-nav.sidebar {
-  /* min-width:18ch; */
-  width: var(--sidebar-width);
-  font-size: inherit;
-}
-
-main p { margin:calc(0.2rem + var(--scaler_h)) 0;}
-h2,
-h3 {
-  margin-block-start: calc(1rem + 2vh);
 }
 
 .center {
@@ -145,16 +62,88 @@ main ol > li::before {
   content: counter(num) ". ";
 }
 
-html:is(.ayu) main ol > li::before {
-  color: inherit;
-}
-
-html:is(.rust, .light) main ol > li::before {
-  color: #248eb8;
-}
-
-html:is(.coal, .navy) main ol > li::before {
-  color: #ffa500;
-}
 
 
+
+/* /* Instead of using em like original, use vh,vw and rem, and scale all */
+/*  * with font-size if needed. */ */
+/* :root { */
+/*     --scaler_w:1vw; */
+/*     --scaler_h:1.8vh; */
+/*     --font_size: calc(1rem + var(--scaler_h)); */
+/*     --sidebar-resize-indicator-width: 3rem; */
+/*     --sidebar-resize-indicator-space: 3rem; */
+/*     --sidebar-target-width: 25rem; */
+/*     --sidebar-width: min(var(--sidebar-target-width), 80vw); */
+/*     --page-padding: calc(1.3rem + var(--scaler_w)); */
+/*     --content-max-width: 72rem; */
+/*     --menu-bar-height: calc(1rem + var(--scaler_h) + 3vh); */
+/*     --mono-font: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace; */
+/*     --searchbar-margin-block-start: calc(1rem + var(--scaler_h)); */
+/* } */
+/* html { */
+/*     font-family: "Ubuntu", "system-ui", "sans-serif"; */
+/* } */
+/**/
+/* body { */
+/*   margin:auto; */
+/*   padding-top:calc(0.5rem + 1vh); */
+/* } */
+/* body, input, code { font-size:var(--font_size) } */
+/* svg { */
+/*     width: calc(1.5*var(--font_size))!important; */
+/*     height: calc(1.5*var(--font_size))!important; */
+/* } */
+/**/
+/* .js .sidebar .sidebar-resize-handle { */
+/*     cursor: col-resize; */
+/*     width: calc(var(--font_size)); */
+/*     padding:0.3vw */
+/* } */
+/**/
+/* .sidebar .sidebar-resize-handle { */
+/*     position: relative; */
+/*     cursor: col-resize; */
+/*     width: content-width; */
+/*     left: var(--sidebar-width); */
+/*     top: 0; */
+/*     bottom: 0; */
+/*     display: flex; */
+/*     align-items: center; */
+/*     height: 100vh; */
+/*     background: transparent; */
+/*     justify-content: center; */
+/* } */
+/* .sidebar-resize-handle .sidebar-resize-indicator { */
+/*     width: calc(var(--font_size)); */
+/*     height: calc(var(--font_size)*3); */
+/*     color: var(--icons); */
+/*     margin-inline-start: unset; */
+/*     /* margin-inline-start: var(--sidebar-resize-indicator-space); */ */
+/*     display: flex; */
+/*     align-items: center; */
+/*     justify-content: center */
+/* } */
+/* .sidebar-resize-handle .sidebar-resize-indicator::before, */
+/* .sidebar-resize-handle .sidebar-resize-indicator::after{ */
+/*     border-left: dotted calc(var(--font_size)/5) currentColor; */
+/* } */
+/**/
+/* .sidebar-resize-handle .sidebar-resize-indicator::before { */
+/*     width: calc(var(--font_size)/3); */
+/*     height: var(--font_size) */
+/* } */
+/**/
+/* .sidebar-resize-handle .sidebar-resize-indicator::after { */
+/*     width: calc(var(--font_size)/3); */
+/*     height: calc(1.5*var(--font_size)) */
+/* } */
+/* #mdbook-content{ */
+/*   padding-left: 2vw; */
+/* } */
+/* nav.sidebar { */
+/*   /* min-width:18ch; */ */
+/*   width: var(--sidebar-width); */
+/*   font-size: inherit; */
+/* } */
+/**/
