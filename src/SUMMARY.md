@@ -1,6 +1,6 @@
 # Summary
 
-[Introduction](./welcome.md)
+[Welcome](./welcome.md)
 
 -----
 

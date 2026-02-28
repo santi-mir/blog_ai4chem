@@ -2,11 +2,13 @@
 
 Welcome to the blog!
 
-Here I write my thoughts on topics related to AI for chemistry.
+## Organisation
 
-Most posts are split in parts, to make reading them easier.
+In the navigation bar / sidebar under the hamburguer icon: <img style="display:inline; width:24px" src="./assets/hamburguer.png"/> there is the index
 
-The index can be found by opening the sidebar.
+The headers titles are overarching themes, like a chapter title. Then the content is split into different posts within each header.
+
+Splitting in parts makes reading them easier.
 
 ## License
 

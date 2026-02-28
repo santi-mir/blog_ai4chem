@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-24be5fa0.js";
+            window.path_to_searchindex_js = "searchindex-5b8358cb.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-6a5ce066.js"></script>
+        <script src="toc-c3508fb3.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -187,35 +187,18 @@
 <hr>
 <h2 id="background-vectors-in-nlp"><a class="header" href="#background-vectors-in-nlp">Background: Vectors in NLP</a></h2>
 <p>Around 2014, Mikolov et. al. proposed an algorithm for machine-learning vector representations of words.</p>
-<p>The insight was to encode information about the word's environment (neighbouring words). The vector space had similar word clustered together, and these vectors became useful for downstream tasks.</p>
+<p>The insight was to encode information about the word's environment (neighbouring words). The resulting word-vectors had similar words nearby in vector space. And these vectors became useful for downstream tasks.</p>
 <p>By exploiting the analogy that <em>words are to sentences what to atoms are to compounds</em>, computational chemists have built upon these findings.</p>
 <h2 id="vectors-in-chemistry"><a class="header" href="#vectors-in-chemistry">Vectors in Chemistry</a></h2>
 <p>Atom vectors can be <em>built</em> from empirical features or they can be <em>learnt</em> by an algorithm<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup>. Learning vectors yields more general-purpose vectors, and has won in popularity.</p>
-<p>Both <em>Atom2Vec</em> and <em>SkipAtom</em> are unsupervised algorithms that obtain their atom vectors from compound-databases. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.</p>
-<p>These approaches compete with others that use crystal-structure information, but are computationally cheaper.</p>
-<h2 id="summary-of-approaches"><a class="header" href="#summary-of-approaches">Summary of approaches</a></h2>
-<p>Distributed representations are the technical name for the vectors (for atoms, compounds, words,..) we have talked about. They can be continuous or discrete, sparse or dense<sup class="footnote-reference" id="fr-2-1"><a href="#footnote-2">2</a></sup>.</p>
-<p>Which ways are there to create vector-representations of atoms?</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>Random</th><th>One-Hot</th><th>Atom2Vec</th><th>Mat2Vec</th><th>SkipAtom</th></tr>
-</thead>
-<tbody>
-<tr><td>From Random Distributions</td><td>One 1, rest 0s</td><td>SVD of Atom-Group matrix</td><td>Embedding (Word2Vec)</td><td>Embedding (Skip-gram)</td></tr>
-<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0.4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0.6</span><span class="mclose">)</span></span></span></span></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span></td><td>as random</td><td>as random</td><td>as random</td></tr>
-<tr><td>dense</td><td>sparse</td><td>sparse</td><td>dense</td><td>dense</td></tr>
-</tbody>
-</table>
-</div>
-<p>Let's see how each algorithm obtains the atom vectors.</p>
+<p>Both <em>Atom2Vec</em> and <em>SkipAtom</em> are unsupervised algorithms that obtain their atom vectors from databases of compounds. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.</p>
+<p>These approaches compete with others that use crystal-structure information. Without structural informtation they <em>tend to</em> be less accurate, computationally cheaper to learn.</p>
+<p>The vectors sparse (one-hot) or dense (most approaches). The components can can be continuous (real) or discrete (integers, natural numbers, binary).</p>
+<p>Usually, the term <em>embedding</em> is reserved for those dense and continuous, but it varies.</p>
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-1">
 <p>Empirical features refers to the group and period (and potentially charge, mass, ..). This was widely used prior to 2018, before the automated ones. <a href="#fr-1-1">↩</a></p>
-</li>
-<li id="footnote-2">
-<p>This are just my definitions and may be wrong! <a href="#fr-2-1">↩</a></p>
 </li>
 </ol>
 
@@ -254,6 +237,22 @@
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>
