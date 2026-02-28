@@ -6,8 +6,9 @@
 
 # Atom Vectors
 
-- [Key Ideas](./vectors_for_atoms_1.md)
-- [Types](./vectors_for_atoms_2.md)
+- [Introduction](./vectors_for_atoms_intro.md)
+- [Atom2Vec](./vectors_for_atoms_1.md)
+- [SkipAtom](./vectors_for_atoms_2.md)
 - [Results](./vectors_for_atoms_3.md)
 
 -----

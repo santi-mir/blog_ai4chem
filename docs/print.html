@@ -37,10 +37,10 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-57e2dc65.js";
+            window.path_to_searchindex_js = "searchindex-d2833122.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-27d2b58b.js"></script>
+        <script src="toc-6a5ce066.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -192,7 +192,7 @@
 <li><a href="https://github.com/rust-lang/mdBook"><code>mdbook</code></a>.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="atom-vectors---key-ideas"><a class="header" href="#atom-vectors---key-ideas">Atom Vectors - Key Ideas</a></h1>
+<h1 id="atom-vectors---introduction"><a class="header" href="#atom-vectors---introduction">Atom Vectors - Introduction</a></h1>
 <p>These are some of my opinions and ideas after reading the "<a href="https://pnas.org/doi/full/10.1073/pnas.1801181115">Atom2Vec</a>" (2018) and "<a href="https://www.nature.com/articles/s41524-022-00729-3">SkipAtom</a>" (2022) papers.</p>
 <hr>
 <h2 id="background-vectors-in-nlp"><a class="header" href="#background-vectors-in-nlp">Background: Vectors in NLP</a></h2>
@@ -204,7 +204,7 @@
 <p>Both <em>Atom2Vec</em> and <em>SkipAtom</em> are unsupervised algorithms that obtain their atom vectors from compound-databases. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.</p>
 <p>These approaches compete with others that use crystal-structure information, but are computationally cheaper.</p>
 <h2 id="summary-of-approaches"><a class="header" href="#summary-of-approaches">Summary of approaches</a></h2>
-<p>Distributed representations are the technical name for the vectors (for atoms, compounds, words,..) we have talked about. They can be continuous or discrete, sparse or dense.<sup class="footnote-reference" id="fr-2-1"><a href="#footnote-2">2</a></sup></p>
+<p>Distributed representations are the technical name for the vectors (for atoms, compounds, words,..) we have talked about. They can be continuous or discrete, sparse or dense<sup class="footnote-reference" id="fr-2-1"><a href="#footnote-2">2</a></sup>.</p>
 <p>Which ways are there to create vector-representations of atoms?</p>
 <div class="table-wrapper">
 <table>
@@ -218,19 +218,22 @@
 </tbody>
 </table>
 </div>
-<h2 id="comments"><a class="header" href="#comments">Comments</a></h2>
-<ul>
-<li><strong>Atom2Vec</strong>: Discussed below.</li>
-<li><strong>SkipAtom</strong>: Discussed in next post.</li>
-<li><strong>Mat2Vec</strong>: The projection matrix, initially random, ends up storing embeddings.
-<ul>
-<li>Task: context-words predict centre-word. Example: <code>The cat ___ on the mat.</code></li>
-</ul>
-</li>
-</ul>
 <p>Let's see how each algorithm obtains the atom vectors.</p>
-<h3 id="atom2vec"><a class="header" href="#atom2vec">Atom2Vec</a></h3>
-<p>Atom2Vec uses defines a matrix (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span>) where each column is an environment and each row an element. Each <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> can be 0 or a natural number, and represents the <em>count</em> of those atom-environment combinations. In other words, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> is a co-occurence matrix of atom-environment pairs.</p>
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-1">
+<p>Empirical features refers to the group and period (and potentially charge, mass, ..). This was widely used prior to 2018, before the automated ones. <a href="#fr-1-1">↩</a></p>
+</li>
+<li id="footnote-2">
+<p>This are just my definitions and may be wrong! <a href="#fr-2-1">↩</a></p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="atom-vectors---atom2vec"><a class="header" href="#atom-vectors---atom2vec">Atom Vectors - Atom2Vec</a></h1>
+<p>Let's start with the representation that appeared first (2018), Atom2Vec.</p>
+<h2 id="atom2vec"><a class="header" href="#atom2vec">Atom2Vec</a></h2>
+<p>Atom2Vec uses defines a matrix (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span>) where each column is an environment and each row an element. Each <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> can be 0 or a natural number, and represents the <em>count</em> of those atom-environment combinations.</p>
+<p>In other words, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> is a co-occurence matrix of atom-environment pairs.</p>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -280,15 +283,6 @@
 <blockquote>
 <p>Structural information has to be taken into account to accurately model how atoms are bound together to form either environment or compound, where the recent development on recursive and graph-based neural networks might help.</p>
 </blockquote>
-<hr>
-<ol class="footnote-definition">
-<li id="footnote-1">
-<p>Empirical features refers to the group and period (and potentially charge, mass, ..). This was widely used prior to 2018, before the automated ones. <a href="#fr-1-1">↩</a></p>
-</li>
-<li id="footnote-2">
-<p>This are just my definitions and may be wrong! <a href="#fr-2-1">↩</a></p>
-</li>
-</ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="vectors-in-chemistry-1"><a class="header" href="#vectors-in-chemistry-1">Vectors In Chemistry</a></h1>
 <p>Already described Atom2Vec, now it's time for SkipAtom.</p>
@@ -803,6 +797,22 @@ A --&gt; Direct
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>
