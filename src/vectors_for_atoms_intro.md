@@ -6,9 +6,13 @@ These are some of my opinions and ideas after reading the "[Atom2Vec][PNAS]" (20
 
 ## Background: Vectors in NLP
 
-Around 2014, Mikolov et. al. proposed an algorithm for machine-learning vector representations of words.
+In 2013, Mikolov et. al. proposed an algorithm for learning [continuous vector representations of words][arxiv] using neural networks.
 
-The insight was to encode information about the word's environment (neighbouring words). The resulting word-vectors had similar words nearby in vector space. And these vectors became useful for downstream tasks.
+Although the representations had been used for decades, this became an important paper.
+
+The insight was to encode information about the word's environment (neighbouring words). The resulting vectors-space grouped similar words-vectors closeby. The vectors offset arithmetic operations, and became useful for downstream tasks. The classic example is:
+
+vector("Queen") = vector("King") - vector("Man") + vector("Woman")
 
 By exploiting the analogy that _words are to sentences what to atoms are to compounds_, computational chemists have built upon these findings.
 
@@ -39,3 +43,4 @@ These properties allow for more accurate, and smaller networks (faster to train)
 
 [Nature]: https://www.nature.com/articles/s41524-022-00729-3
 [PNAS]: https://pnas.org/doi/full/10.1073/pnas.1801181115
+[arxiv]: https://arxiv.org/1301.3781v3
