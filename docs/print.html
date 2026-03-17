@@ -37,10 +37,10 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-41ec3606.js";
+            window.path_to_searchindex_js = "searchindex-14ffe0a2.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-c3508fb3.js"></script>
+        <script src="toc-1c83127a.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -354,7 +354,11 @@
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="comparing-distributed-representations"><a class="header" href="#comparing-distributed-representations">Comparing distributed representations</a></h1>
 <p>A paper studied this precisely <a href="https://link.springer.com/article/10.1007/s40192-020-00179-z">Is domain knowledge necessary for machine learning materials properties?</a>.</p>
-<p>They state that <em>featurisation</em><sup class="footnote-reference" id="fr-1-1-1"><a href="#footnote-1-1">1</a></sup> is useful for smaller datasets but otherwise fractional or random vector representation of elements performs just as well.</p>
+<p>They state that <em>featurisation</em><sup class="footnote-reference" id="fr-1-1-1"><a href="#footnote-1-1">1</a></sup> is useful for smaller datasets but otherwise fractional or random-vector representation of elements performs just as well.</p>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>For data-scarce problems (small datasets) featurisation is useful, for data-rich cases it is irrelevant.</p>
+</blockquote>
 <p>Skip atom includes a comparison of the representations in different tasks, and is discussed below.</p>
 <h2 id="quality-of-atom-representations"><a class="header" href="#quality-of-atom-representations">Quality of Atom Representations</a></h2>
 <p>One-hot, Random, Atom2Vec, Mat2Vec and SkipAtom compared.</p>
@@ -491,10 +495,11 @@ First, for Deep Learning, then the same is done for Classical Machine Learning.<
 <li>Partial Dependence Plots (PDPs). Though it masks possible correlations between features (if all are kept constant but one).</li>
 <li>Individual Conditional Expectations (ICE) overcomes the limitation above.</li>
 <li>Feature Importance methods: partial derivative of an output w.r.t some input feature.<sup class="footnote-reference" id="fr-1-1-2"><a href="#footnote-1-2">1</a></sup></li>
-<li>Shapley Analysis: involves fitting a linear model using nearby input-points.
+<li>Shapley Analysis: fits a linear model to nearby input-points.
 <ul>
+<li>The coefficients of the linear fit quantify the contribution / effect of each input feature to the output value.</li>
 <li>We get insight on which features are locally relevant, by looking at the accompanying coefficients.</li>
-<li>The coefficients quantify the effect of each feature in the output. I assume they fit different models to different areas of their input space, and then analyze the distribution of coefficients?</li>
+<li>Question: They fit different models to different areas of their input space, and then analyze the distribution of coefficients?</li>
 </ul>
 </li>
 <li>Counterfactual Analysis</li>
@@ -514,6 +519,33 @@ First, for Deep Learning, then the same is done for Classical Machine Learning.<
 <ol class="footnote-definition">
 <li id="footnote-1-2">
 <p>This I think can be done also numerically, without actually calculating the derivative. See refs 20 and 21 in the paper for more detail. <a href="#fr-1-1-2">↩</a></p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="explainable-hierarchical-monte-carlo-ensemble"><a class="header" href="#explainable-hierarchical-monte-carlo-ensemble">Explainable Hierarchical Monte Carlo Ensemble</a></h1>
+<p>They propose the model <a href="https://fruct.org/files/publications/volume-38/fruct38/Urs.pdf">"Explainable Hierarchical Monte Carlo Ensemble"</a>.</p>
+<h2 id="general-ideas"><a class="header" href="#general-ideas">General ideas</a></h2>
+<ul>
+<li>Hypothesis A (split dataset): the dataset can be split into independent regions, and each model is responsible for one region.
+This makes the dataset smaller, but on the flip-side the models required are simpler / explainable (stretching "explainable" somewhat).</li>
+<li>Hypothesis B (confidence passes on): Take a test input, how do we know which model to use? Using the model's "classification confidence".</li>
+<li>Hypothesis C (hierarchy): says that models can be hierarchically ordered.<sup class="footnote-reference" id="fr-1-1-3"><a href="#footnote-1-3">1</a></sup></li>
+</ul>
+<p>So the "Explainable" (less complex models), "Hierarchy" (passing on the data point) and "Ensemble" (multiple models) in the title are explained.</p>
+<h2 id="my-questions-so-far"><a class="header" href="#my-questions-so-far">My questions so far</a></h2>
+<ul>
+<li>"Machine learning models for classification can be trained without domain-specific knowledge" since any meaningful training involves domain-specific data (they mean sufficiently general maybe?)</li>
+<li>"However, they are not suitable for incorporating a Euclidean distance model." since deep learning can certainly use it, even for classification.</li>
+</ul>
+<h2 id="other-avenues"><a class="header" href="#other-avenues">Other avenues</a></h2>
+<p>One could also test the opposite Hypothesis to B, i.e that those regions actually are or can-be-made to reside quite close.
+Or could also use other kinds of hierarchies: for example to train a model to predict Class A, Class B,...and Class X. Where class X would be "Other", and in that case it is passed on.
+Another idea would be to have a "routing" network that delegates to each based on a higher classification (could be what they did).
+(Some of these may be what they did, still unsure)</p>
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-1-3">
+<p>So far, it looks more like it involves passing whatever a model can't classify with enough confidence to the next model, and the next, and so on. But hierarchy may be obvious in next sections. <a href="#fr-1-1-3">↩</a></p>
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
@@ -572,7 +604,7 @@ First, for Deep Learning, then the same is done for Classical Machine Learning.<
 <li>Computationally search in composition-space (Crystal Structure Prediction, CSP), find low-energy probe structures, e.g. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathrm">L</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">Sn</span><span class="mord"><span class="mord mathrm">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">Cl</span></span></span></span></span>.
 <ul>
 <li>Can use physical constraints (like max n of atoms).</li>
-<li>Calculate thermodynamically stable<sup class="footnote-reference" id="fr-1-1-3"><a href="#footnote-1-3">1</a></sup> probe structure (this step is complex).
+<li>Calculate thermodynamically stable<sup class="footnote-reference" id="fr-1-1-4"><a href="#footnote-1-4">1</a></sup> probe structure (this step is complex).
 Hints experimentalists of promising region.</li>
 </ul>
 </li>
@@ -596,8 +628,8 @@ style A fill:#123456,color:#f4f4f4,stroke-width:0px
 
 <hr>
 <ol class="footnote-definition">
-<li id="footnote-1-3">
-<p>With respect to the convex hull. <a href="#fr-1-1-3">↩</a></p>
+<li id="footnote-1-4">
+<p>With respect to the convex hull. <a href="#fr-1-1-4">↩</a></p>
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
@@ -847,22 +879,6 @@ A --&gt; Direct
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
         <script>
