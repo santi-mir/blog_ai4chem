@@ -1,6 +1,6 @@
 # Atoms Vectors - SkipAtom
 
-Atom2Vec was already described, now it's time for SkipAtom.
+[Atom2Vec] was already described, now it's time for [SkipAtom].
 
 ## Summary
 
@@ -56,4 +56,8 @@ Vector-pooling options are:
 
 The resulting compound representation is then used for training a feed-forward NN on different tasks. Also benchmarked using MatBench.
 
-The pooling can also be done with hot-encoded vectors. This is done in ElemNet (mean pooling), and in Bag-of-atoms (sum pooling). In these cases, the result is a _sparse_ vector.
+The pooling can also be done with hot-encoded vectors for atoms. This is done in [ElemNet] (mean pooling), and in Bag-of-atoms (sum pooling). The advantage: no training required, the disadvantage: the result is a _sparse_ vector, and _can_ be less accurate.
+
+[Atom2Vec]: https://arxiv.org/pdf/1807.05617
+[SkipAtom]: https://www.nature.com/articles/s41524-022-00729-3.pdf
+[ElemNet]: https://www.nature.com/articles/s41598-018-35934-y

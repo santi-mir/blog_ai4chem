@@ -1,6 +1,6 @@
 # Atom Vectors - Atom2Vec
 
-A popular representation of atoms as vectors appeared in (2018): Atom2Vec.
+A popular representation of atoms as vectors appeared in (2018): [Atom2Vec].
 
 Atom2Vec uses defines a matrix ($X$) where each column is an environment and each row an element. Each $X_{ij}$ can be 0 or a natural number, and represents the _count_ of those atom-environment combinations.
 
@@ -52,3 +52,5 @@ Then, they compared to "empirical features" &mdash; a vector `(group, period,...
 The paper ends with an interesting insight:
 
 > Structural information has to be taken into account to accurately model how atoms are bound together to form either environment or compound, where the recent development on recursive and graph-based neural networks might help.
+
+[Atom2Vec]: https://arxiv.org/pdf/1807.05617
