@@ -1,5 +1,15 @@
 # Explainable AI - Concepts
 
+```mermaid
+
+flowchart LR
+    A["ML Model"] --> B["Explainable"]
+    A --> C["Not Explainable"]
+    B --> D["Intrinsically (Internals)"]
+    B --> E["Extrinsically (Black box, I/O relation)"]
+
+```
+
 These are some of my opinions and ideas after reading [Interpretable and Explainable Machine Learning for Materials Science and Chemistry][Account] (2022), and [Explaining Explanations: An Overview of Interpretability of Machine Learning][arxiv] (2019).
 
 A very interesting experiment in terms of explainability was <https://distill.pub>.

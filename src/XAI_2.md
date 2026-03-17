@@ -17,6 +17,8 @@ They classify these at the level of Layer, Neuron, and Vector.
 - Role of Units: "visualizations of the input patterns that maximize the response of a single unit or quantitatively, by testing the ability of a unit to solve a transfer problem" ([source][arxiv]).
 - Role of Vectors: for example using Concept Activation Vectors framework.
 
+Another way is to introduce biases like symmetry considerations which can help interpretability.
+
 ### Extrinsic or Processing Methods
 
 These relate to how the model processes _an input_ (extrinsic) and in a way we look at the model as a black box.
@@ -56,9 +58,10 @@ These study the model's behaviour, as a black box. Most below, correlate changes
 - Partial Dependence Plots (PDPs). Though it masks possible correlations between features (if all are kept constant but one).
 - Individual Conditional Expectations (ICE) overcomes the limitation above.
 - Feature Importance methods: partial derivative of an output w.r.t some input feature.[^1]
-- Shapley Analysis: involves fitting a linear model using nearby input-points.
+- Shapley Analysis: fits a linear model to nearby input-points.
+    - The coefficients of the linear fit quantify the contribution / effect of each input feature to the output value.
     - We get insight on which features are locally relevant, by looking at the accompanying coefficients.
-    - The coefficients quantify the effect of each feature in the output. I assume they fit different models to different areas of their input space, and then analyze the distribution of coefficients?
+    - Question: They fit different models to different areas of their input space, and then analyze the distribution of coefficients?
 - Counterfactual Analysis
 
 <div class="center w40"> <!--other classes: w220, w420-->

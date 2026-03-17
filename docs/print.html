@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-c692d697.js";
+            window.path_to_searchindex_js = "searchindex-41ec3606.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-c3508fb3.js"></script>
@@ -352,8 +352,10 @@
 <p>The resulting compound representation is then used for training a feed-forward NN on different tasks. Also benchmarked using MatBench.</p>
 <p>The pooling can also be done with hot-encoded vectors. This is done in ElemNet (mean pooling), and in Bag-of-atoms (sum pooling). In these cases, the result is a <em>sparse</em> vector.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="distributed-representations-results"><a class="header" href="#distributed-representations-results">Distributed Representations: Results</a></h1>
-<p>Brief description of a comparison of the representations in different tasks.</p>
+<h1 id="comparing-distributed-representations"><a class="header" href="#comparing-distributed-representations">Comparing distributed representations</a></h1>
+<p>A paper studied this precisely <a href="https://link.springer.com/article/10.1007/s40192-020-00179-z">Is domain knowledge necessary for machine learning materials properties?</a>.</p>
+<p>They state that <em>featurisation</em><sup class="footnote-reference" id="fr-1-1-1"><a href="#footnote-1-1">1</a></sup> is useful for smaller datasets but otherwise fractional or random vector representation of elements performs just as well.</p>
+<p>Skip atom includes a comparison of the representations in different tasks, and is discussed below.</p>
 <h2 id="quality-of-atom-representations"><a class="header" href="#quality-of-atom-representations">Quality of Atom Representations</a></h2>
 <p>One-hot, Random, Atom2Vec, Mat2Vec and SkipAtom compared.</p>
 <p>The atom-vectors were <em>concatenated</em> into compound representations, and these used to predict elpasolites (compounds) formation-energy.</p>
@@ -376,8 +378,23 @@
 <p>The model just needs the formula at inference time, and does fine with non-stoichiometric solids. So having the material's composition —but no structural information— we can still calculate some properties.</p>
 <p>Similar compounds have similar vectors, which is useful. But without structural information, all isomers have the same vector, which is a limitation.</p>
 <p>It is computationally cheap, and can help screen large number of compounds as a first selection step.</p>
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-1-1">
+<p>Careful design (by hand or machine learning) of the vector representations. <a href="#fr-1-1-1">↩</a></p>
+</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="explainable-ai---concepts"><a class="header" href="#explainable-ai---concepts">Explainable AI - Concepts</a></h1>
+<pre class="mermaid">
+flowchart LR
+    A["ML Model"] --&gt; B["Explainable"]
+    A --&gt; C["Not Explainable"]
+    B --&gt; D["Intrinsically (Internals)"]
+    B --&gt; E["Extrinsically (Black box, I/O relation)"]
+
+</pre>
+
 <p>These are some of my opinions and ideas after reading <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Interpretable and Explainable Machine Learning for Materials Science and Chemistry</a> (2022), and <a href="http://arxiv.org/abs/1806.00069">Explaining Explanations: An Overview of Interpretability of Machine Learning</a> (2019).</p>
 <p>A very interesting experiment in terms of explainability was <a href="https://distill.pub">https://distill.pub</a>.</p>
 <hr>
@@ -429,6 +446,7 @@ First, for Deep Learning, then the same is done for Classical Machine Learning.<
 <li>Role of Units: "visualizations of the input patterns that maximize the response of a single unit or quantitatively, by testing the ability of a unit to solve a transfer problem" (<a href="http://arxiv.org/abs/1806.00069">source</a>).</li>
 <li>Role of Vectors: for example using Concept Activation Vectors framework.</li>
 </ul>
+<p>Another way is to introduce biases like symmetry considerations which can help interpretability.</p>
 <h3 id="extrinsic-or-processing-methods"><a class="header" href="#extrinsic-or-processing-methods">Extrinsic or Processing Methods</a></h3>
 <p>These relate to how the model processes <em>an input</em> (extrinsic) and in a way we look at the model as a black box.</p>
 <ul>
@@ -472,7 +490,7 @@ First, for Deep Learning, then the same is done for Classical Machine Learning.<
 <ul>
 <li>Partial Dependence Plots (PDPs). Though it masks possible correlations between features (if all are kept constant but one).</li>
 <li>Individual Conditional Expectations (ICE) overcomes the limitation above.</li>
-<li>Feature Importance methods: partial derivative of an output w.r.t some input feature.<sup class="footnote-reference" id="fr-1-1-1"><a href="#footnote-1-1">1</a></sup></li>
+<li>Feature Importance methods: partial derivative of an output w.r.t some input feature.<sup class="footnote-reference" id="fr-1-1-2"><a href="#footnote-1-2">1</a></sup></li>
 <li>Shapley Analysis: involves fitting a linear model using nearby input-points.
 <ul>
 <li>We get insight on which features are locally relevant, by looking at the accompanying coefficients.</li>
@@ -494,8 +512,8 @@ First, for Deep Learning, then the same is done for Classical Machine Learning.<
 
 <hr>
 <ol class="footnote-definition">
-<li id="footnote-1-1">
-<p>This I think can be done also numerically, without actually calculating the derivative. See refs 20 and 21 in the paper for more detail. <a href="#fr-1-1-1">↩</a></p>
+<li id="footnote-1-2">
+<p>This I think can be done also numerically, without actually calculating the derivative. See refs 20 and 21 in the paper for more detail. <a href="#fr-1-1-2">↩</a></p>
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
@@ -554,7 +572,7 @@ First, for Deep Learning, then the same is done for Classical Machine Learning.<
 <li>Computationally search in composition-space (Crystal Structure Prediction, CSP), find low-energy probe structures, e.g. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathrm">L</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">Sn</span><span class="mord"><span class="mord mathrm">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">Cl</span></span></span></span></span>.
 <ul>
 <li>Can use physical constraints (like max n of atoms).</li>
-<li>Calculate thermodynamically stable<sup class="footnote-reference" id="fr-1-1-2"><a href="#footnote-1-2">1</a></sup> probe structure (this step is complex).
+<li>Calculate thermodynamically stable<sup class="footnote-reference" id="fr-1-1-3"><a href="#footnote-1-3">1</a></sup> probe structure (this step is complex).
 Hints experimentalists of promising region.</li>
 </ul>
 </li>
@@ -578,8 +596,8 @@ style A fill:#123456,color:#f4f4f4,stroke-width:0px
 
 <hr>
 <ol class="footnote-definition">
-<li id="footnote-1-2">
-<p>With respect to the convex hull. <a href="#fr-1-1-2">↩</a></p>
+<li id="footnote-1-3">
+<p>With respect to the convex hull. <a href="#fr-1-1-3">↩</a></p>
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
@@ -829,6 +847,22 @@ A --&gt; Direct
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>

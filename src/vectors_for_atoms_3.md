@@ -1,6 +1,13 @@
-# Distributed Representations: Results
+# Comparing distributed representations
 
-Brief description of a comparison of the representations in different tasks.
+A paper studied this precisely [Is domain knowledge necessary for machine learning materials properties?][comparison].
+
+They state that _featurisation_[^1] is useful for smaller datasets but otherwise fractional or random-vector representation of elements performs just as well.
+
+> [!TIP]
+> For data-scarce problems (small datasets) featurisation is useful, for data-rich cases it is irrelevant.
+
+Skip atom includes a comparison of the representations in different tasks, and is discussed below.
 
 ## Quality of Atom Representations
 
@@ -33,3 +40,6 @@ The model just needs the formula at inference time, and does fine with non-stoic
 Similar compounds have similar vectors, which is useful. But without structural information, all isomers have the same vector, which is a limitation.
 
 It is computationally cheap, and can help screen large number of compounds as a first selection step.
+
+[comparison]: https://link.springer.com/article/10.1007/s40192-020-00179-z
+[^1]: Careful design (by hand or machine learning) of the vector representations.

@@ -17,6 +17,7 @@
 
 - [Concepts](./XAI_1.md)
 - [Strategies](./XAI_2.md)
+- [Example: EHME](./XAI_3.md)
 
 -----
 
