@@ -25,6 +25,7 @@ Both _Atom2Vec_ and _SkipAtom_ are unsupervised algorithms that obtain their ato
 These approaches compete with others that use crystal-structure information. Without structural informtation they _tend to_ be less accurate, computationally cheaper to learn.
 
 ### Embedding
+
 A simple definition is:
 
 >[!NOTE]
@@ -44,6 +45,7 @@ Dense vectors are useful because training will be faster (than a similar sparse 
 The strategy to generate the descriptors (atom or element-vectors) is called a _featuriser_.
 
 Element descriptors can be:
+
 - Simple: like hot-encoded, random;
 - Human-designed: Composition-Based Feature Vector (CBFV) which are expert-curated vectors as in Jarvis, Magpie;
 - Machine-learnt: embeddings, like SkipAtom.
@@ -64,7 +66,6 @@ Otherwise, performance in downstream tasks is similar to hot-encoded or random v
 [PNAS]: https://pnas.org/doi/full/10.1073/pnas.1801181115
 [arxiv]: https://arxiv.org/1301.3781v3
 [comparison]: https://www.researchgate.net/profile/Taylor-Sparks-2/publication/343926838_Is_Domain_Knowledge_Necessary_for_Machine_Learning_Materials_Properties
-
 
 [^1]: Empirical features refers to the group and period (and potentially charge, mass, ..). This was widely used prior to 2018, before the automated ones.
 
