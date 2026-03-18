@@ -1,8 +1,8 @@
 # Comparing distributed representations
 
-A paper studied this precisely [Is domain knowledge necessary for machine learning materials properties?][comparison].
+The paper [Is domain knowledge necessary for machine learning materials properties?][comparison] compared descriptors generated in different ways for downstream tasks.
 
-They state that _featurisation_[^1] is useful for smaller datasets but otherwise fractional or random-vector representation of elements performs just as well.
+They found hand-crafted descriptors most useful for small datasets, and fractional (ElemNet) or random-vector representations of elements for large datasets.
 
 > [!TIP]
 > For data-scarce problems (small datasets) featurisation is useful, for data-rich cases it is irrelevant.
@@ -42,4 +42,3 @@ Similar compounds have similar vectors, which is useful. But without structural 
 It is computationally cheap, and can help screen large number of compounds as a first selection step.
 
 [comparison]: https://link.springer.com/article/10.1007/s40192-020-00179-z
-[^1]: Careful design (by hand or machine learning) of the vector representations.

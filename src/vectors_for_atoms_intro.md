@@ -6,7 +6,9 @@ The insight of the paper was to encode information about a word's environment (n
 
 The vectors supported semantically  meaningful arithmetic operations, and became useful for downstream tasks. A classic example was:
 
+```txt
 vector("Queen") = vector("King") - vector("Man") + vector("Woman")
+```
 
 By exploiting the analogy that _words are to sentences what atoms are to compounds_, computational chemists have built upon these findings.
 
