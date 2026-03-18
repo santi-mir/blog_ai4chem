@@ -25,22 +25,47 @@ Both _Atom2Vec_ and _SkipAtom_ are unsupervised algorithms that obtain their ato
 These approaches compete with others that use crystal-structure information. Without structural informtation they _tend to_ be less accurate, computationally cheaper to learn.
 
 ### Embedding
+A simple definition is:
 
-The vector representations can be sparse, like one-hot encoding, or dense, like most approaches. The components of the vectors can be all continuous (real) or all discrete (integers, natural numbers, binary).
+>[!NOTE]
+> _Embeddings_ are machine-learnt vectors $\in \mathbb{R}^N$.
 
-Mixing up continuous and discrete components isn't common, nor it is to use complex numbers.
+Though that alone isn't quite complete. Normally, they are also:
 
-The term _embedding_ is usually used when these properties apply:
+- Dense rather than sparse i.e they have few zeros,
+- Real-valued rather than discrete,
+- Non-human-readable (though some parts may be interpretable).
+- Belong to a structured vector space: semantically similar vectors are close together and allow for meaningful vector-arithmetic.
 
-- Dense vectors with real (continuous) components,
-    - This reduces size of weight matrices in MLPs.
-- Compressed versions of higher-dimensional vectors.
-- The vector-space is structured (semantically similar vectors are close together.)
+Dense vectors are useful because training will be faster (than a similar sparse version).
 
-These properties allow for more accurate, and smaller networks (faster to train).
+## Featurisers
 
-[^1]: Empirical features refers to the group and period (and potentially charge, mass, ..). This was widely used prior to 2018, before the automated ones.
+The strategy to generate the descriptors (atom or element-vectors) is called a _featuriser_.
+
+Element descriptors can be:
+- Simple: like hot-encoded, random;
+- Human-designed: Composition-Based Feature Vector (CBFV) which are expert-curated vectors as in Jarvis, Magpie;
+- Machine-learnt: embeddings, like SkipAtom.
+
+which are combined in some way to describe compounds.
+
+We can pick any of the already-computed element-descriptors and use them as inputs, or run the featurising process to make our own.
+
+A performance-comparison of vector representations is carried out in ["Is domain knowledge necessary for machine learning materials properties?"][comparison].
+
+Their conclusion is: Human-designed Composition Based Feature Vectors (CBFV like Jarvis and Olyinyk) outperform other methods if there isn't much data. This was prior to SkipAtom, but does include Atom2Vec.
+
+Otherwise, performance in downstream tasks is similar to hot-encoded or random vectors.
+
+> (...) Although new, data-driven approaches are of interest, those studied here have yet to surpass CBFVs in terms of material property prediction with small data.
 
 [Nature]: https://www.nature.com/articles/s41524-022-00729-3
 [PNAS]: https://pnas.org/doi/full/10.1073/pnas.1801181115
 [arxiv]: https://arxiv.org/1301.3781v3
+[comparison]: https://www.researchgate.net/profile/Taylor-Sparks-2/publication/343926838_Is_Domain_Knowledge_Necessary_for_Machine_Learning_Materials_Properties
+
+
+[^1]: Empirical features refers to the group and period (and potentially charge, mass, ..). This was widely used prior to 2018, before the automated ones.
+
+[^2]: Could be considered machine-learnt, but it's not so important here.
