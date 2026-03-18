@@ -1,26 +1,20 @@
 # Atom Vectors - Introduction
 
-These are some of my opinions and ideas after reading the "[Atom2Vec][PNAS]" (2018) and "[SkipAtom][Nature]" (2022) papers.
+Machine-learnt vectors for atoms were inspired by NLP models. An example was learning [continuous vector representations of words][arxiv] using neural networks by Mikolov et. al. in (2013).
 
------------
+The insight of the paper was to encode information about a word's environment (neighbouring words). The resulting vectors had similar word-vectors clustered together in vector space.
 
-## Background: Vectors in NLP
-
-In 2013, Mikolov et. al. proposed an algorithm for learning [continuous vector representations of words][arxiv] using neural networks.
-
-Although the representations had been used for decades, this became an important paper.
-
-The insight was to encode information about the word's environment (neighbouring words). The resulting vectors-space grouped similar words-vectors closeby. The vectors offset arithmetic operations, and became useful for downstream tasks. The classic example is:
+The vectors supported semantically  meaningful arithmetic operations, and became useful for downstream tasks. A classic example was:
 
 vector("Queen") = vector("King") - vector("Man") + vector("Woman")
 
-By exploiting the analogy that _words are to sentences what to atoms are to compounds_, computational chemists have built upon these findings.
+By exploiting the analogy that _words are to sentences what atoms are to compounds_, computational chemists have built upon these findings.
 
 ## Vectors in Chemistry
 
-Atom vectors can be _built_ from empirical features or they can be _learnt_ by an algorithm[^1]. Learning vectors yields more general-purpose vectors, and has won in popularity.
+Atom vectors can be expert-designed or they can be _learnt_ by an algorithm[^1]. Learning vectors yields more general-purpose vectors, and has won in popularity.
 
-Both _Atom2Vec_ and _SkipAtom_ are unsupervised algorithms that obtain their atom vectors from databases of compounds. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.
+Both [Atom2Vec] and [SkipAtom] are unsupervised algorithms that obtain their atom vectors from databases of compounds. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.
 
 These approaches compete with others that use crystal-structure information. Without structural informtation they _tend to_ be less accurate, computationally cheaper to learn.
 
@@ -40,7 +34,7 @@ Though that alone isn't quite complete. Normally, they are also:
 
 Dense vectors are useful because training will be faster (than a similar sparse version).
 
-## Featurisers
+### Featurisers
 
 The strategy to generate the descriptors (atom or element-vectors) is called a _featuriser_.
 
@@ -62,11 +56,9 @@ Otherwise, performance in downstream tasks is similar to hot-encoded or random v
 
 > (...) Although new, data-driven approaches are of interest, those studied here have yet to surpass CBFVs in terms of material property prediction with small data.
 
-[Nature]: https://www.nature.com/articles/s41524-022-00729-3
-[PNAS]: https://pnas.org/doi/full/10.1073/pnas.1801181115
+[SkipAtom]: https://www.nature.com/articles/s41524-022-00729-3
+[Atom2Vec]: https://pnas.org/doi/full/10.1073/pnas.1801181115
 [arxiv]: https://arxiv.org/1301.3781v3
 [comparison]: https://www.researchgate.net/profile/Taylor-Sparks-2/publication/343926838_Is_Domain_Knowledge_Necessary_for_Machine_Learning_Materials_Properties
 
 [^1]: Empirical features refers to the group and period (and potentially charge, mass, ..). This was widely used prior to 2018, before the automated ones.
-
-[^2]: Could be considered machine-learnt, but it's not so important here.
