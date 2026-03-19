@@ -2,19 +2,24 @@
 
 [Atom2Vec] was already described, now it's time for [SkipAtom].
 
-## Summary
+----------
 
-This paper proposes a method to create atom embeddings (SkipAtom), and compares a few things:
+The paper proposes a method to create atom embeddings (SkipAtom).
 
-- Predictions concatenating vectors (no pooling) vs other methods:
-    - These should hint about the embedding quality.
-    - In elpasolite-task; SkipAtom wins here.
-- Predictions across embedding-methods and pooling-methods (9 prediction tasks)
-    - Sum and Mean Pooling outperform Max Pooling
-    - Mat2Vec does best, and second Skip Vector.
-    - Bag of Atoms (sum pool of hot enc) does best in one task
-- The results against state of the art methods.
-    - Showing these methods can be useful when no structural info is available.
+To evaluate the representation they use elpasolite task, where the atom vectors are concatenated into a compound vector (no pooling).
+SkipAtom performs best here.
+
+Then they compare representations and pooling methods, across 9 prediction tasks. The results are:
+
+- Pooling: sum and mean-pooling outperform max-pooling,
+- Kind: Mat2Vec does best, and second Skip Vector,
+- Bag-of-Atoms (sum pool of hot enc) does best in one task.
+
+They conclude that these methods are most useful when no structural info is available.
+
+As said in the [Results][./vectors_for_atoms_3.md] other reasearchers find that, with enough data, hot-encoded works just as well; they also find that, with little data, human-designed vectors tend to perform better (CBFVs like MagPie).
+
+In other words, there isn't a simple answer so far, it depends in the featuriser and the tasks.
 
 ## Method
 

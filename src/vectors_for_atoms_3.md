@@ -1,6 +1,8 @@
-# Comparing distributed representations
+# Comparison
 
-The paper [Is domain knowledge necessary for machine learning materials properties?][comparison] compared descriptors generated in different ways for downstream tasks.
+We have discussed a few vector representation of atoms, with emphasis in SkipVec and Atom2Vec.
+
+The paper [Is domain knowledge necessary for machine learning materials properties?][comparison] compared descriptors (same as vector representations) generated in different ways for downstream tasks.
 
 They found hand-crafted descriptors most useful for small datasets, and fractional ([ElemNet]) or random-vector representations of elements for large datasets.
 

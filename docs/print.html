@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-c88bb4cc.js";
+            window.path_to_searchindex_js = "searchindex-b9204011.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-1c83127a.js"></script>
@@ -194,14 +194,22 @@
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="atom-vectors---introduction"><a class="header" href="#atom-vectors---introduction">Atom Vectors - Introduction</a></h1>
-<p>Machine-learnt vectors for atoms were inspired by NLP models. An example was learning <a href="https://arxiv.org/1301.3781v3">continuous vector representations of words</a> using neural networks by Mikolov et. al. in (2013).</p>
+<p>Representing atoms and compounds as vectors isn't new. Even those that are machine-learnt.</p>
+<p>The general idea is that these vectors can be useful for downstream tasks; for example, as inputs for machine-learning models.<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup></p>
+<p>Machine-learnt vectors for atoms were inspired by NLP models in the 2010s. One such example was learning <a href="https://arxiv.org/1301.3781v3">continuous vector representations of words</a> using neural networks by Mikolov et. al. in (2013).</p>
 <p>The insight of the paper was to encode information about a word's environment (neighbouring words). The resulting vectors had similar word-vectors clustered together in vector space.</p>
 <p>The vectors supported semantically meaningful arithmetic operations, and became useful for downstream tasks. A classic example was:</p>
 <pre><code class="language-txt">vector("Queen") = vector("King") - vector("Man") + vector("Woman")
 </code></pre>
 <p>By exploiting the analogy that <em>words are to sentences what atoms are to compounds</em>, computational chemists have built upon these findings.</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>Human-designed vectors are easier to interpret.</p>
+<p>Can we design machine-learnt interpretable vectors?</p>
+<p>Attention-masks and disentangled representations are closer to this.</p>
+</blockquote>
 <h2 id="vectors-in-chemistry"><a class="header" href="#vectors-in-chemistry">Vectors in Chemistry</a></h2>
-<p>Atom vectors can be expert-designed or they can be <em>learnt</em> by an algorithm<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup>. Learning vectors yields more general-purpose vectors, and has won in popularity.</p>
+<p>Atom vectors can be expert-designed or they can be <em>learnt</em> by an algorithm<sup class="footnote-reference" id="fr-2-1"><a href="#footnote-2">2</a></sup>. Learning vectors yields more general-purpose vectors, and has won in popularity.</p>
 <p>Both <a href="https://pnas.org/doi/full/10.1073/pnas.1801181115">Atom2Vec</a> and <a href="https://www.nature.com/articles/s41524-022-00729-3">SkipAtom</a> are unsupervised algorithms that obtain their atom vectors from databases of compounds. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.</p>
 <p>These approaches compete with others that use crystal-structure information. Without structural informtation they <em>tend to</em> be less accurate, computationally cheaper to learn.</p>
 <h3 id="embedding"><a class="header" href="#embedding">Embedding</a></h3>
@@ -237,14 +245,17 @@
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-1">
-<p>Empirical features refers to the group and period (and potentially charge, mass, ..). This was widely used prior to 2018, before the automated ones. <a href="#fr-1-1">↩</a></p>
+<p>Machine Learning includes deep-learning and traditional methods like regression, support vector machines, random forests and so on. <a href="#fr-1-1">↩</a></p>
+</li>
+<li id="footnote-2">
+<p>Empirical features refers to the group and period (and potentially charge, mass, ..). This was widely used prior to 2018, before the automated ones. <a href="#fr-2-1">↩</a></p>
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="atom-vectors---atom2vec"><a class="header" href="#atom-vectors---atom2vec">Atom Vectors - Atom2Vec</a></h1>
 <p>A popular representation of atoms as vectors appeared in (2018): <a href="https://arxiv.org/pdf/1807.05617">Atom2Vec</a>.</p>
-<p>Atom2Vec uses defines a matrix (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span>) where each column is an environment and each row an element. Each <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> can be 0 or a natural number, and represents the <em>count</em> of those atom-environment combinations.</p>
-<p>In other words, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> is a co-occurence matrix of atom-environment pairs.</p>
+<p>Atom2Vec defines a matrix (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span>). Each row represents an element, each column represents an environment.</p>
+<p>In other words, each cell is a <em>count</em> of the number or times the atom-environment pair appears in the dataset; a co-occurrence matrix.</p>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -300,28 +311,19 @@
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="atoms-vectors---skipatom"><a class="header" href="#atoms-vectors---skipatom">Atoms Vectors - SkipAtom</a></h1>
 <p><a href="https://arxiv.org/pdf/1807.05617">Atom2Vec</a> was already described, now it's time for <a href="https://www.nature.com/articles/s41524-022-00729-3.pdf">SkipAtom</a>.</p>
-<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
-<p>This paper proposes a method to create atom embeddings (SkipAtom), and compares a few things:</p>
+<hr>
+<p>The paper proposes a method to create atom embeddings (SkipAtom).</p>
+<p>To evaluate the representation they use elpasolite task, where the atom vectors are concatenated into a compound vector (no pooling).
+SkipAtom performs best here.</p>
+<p>Then they compare representations and pooling methods, across 9 prediction tasks. The results are:</p>
 <ul>
-<li>Predictions concatenating vectors (no pooling) vs other methods:
-<ul>
-<li>These should hint about the embedding quality.</li>
-<li>In elpasolite-task; SkipAtom wins here.</li>
+<li>Pooling: sum and mean-pooling outperform max-pooling,</li>
+<li>Kind: Mat2Vec does best, and second Skip Vector,</li>
+<li>Bag-of-Atoms (sum pool of hot enc) does best in one task.</li>
 </ul>
-</li>
-<li>Predictions across embedding-methods and pooling-methods (9 prediction tasks)
-<ul>
-<li>Sum and Mean Pooling outperform Max Pooling</li>
-<li>Mat2Vec does best, and second Skip Vector.</li>
-<li>Bag of Atoms (sum pool of hot enc) does best in one task</li>
-</ul>
-</li>
-<li>The results against state of the art methods.
-<ul>
-<li>Showing these methods can be useful when no structural info is available.</li>
-</ul>
-</li>
-</ul>
+<p>They conclude that these methods are most useful when no structural info is available.</p>
+<p>As said in the [Results][./vectors_for_atoms_3.md] other reasearchers find that, with enough data, hot-encoded works just as well; they also find that, with little data, human-designed vectors tend to perform better (CBFVs like MagPie).</p>
+<p>In other words, there isn't a simple answer so far, it depends in the featuriser and the tasks.</p>
 <h2 id="method"><a class="header" href="#method">Method</a></h2>
 <p>First, compounds are downloaded. Then, the Voronoi Decomposition is used to derive graphs from unit-cells, and from the graphs generate training-pairs. As they show in the paper:</p>
 <div class="center w40">
@@ -366,8 +368,9 @@
 <p>The resulting compound representation is then used for training a feed-forward NN on different tasks. Also benchmarked using MatBench.</p>
 <p>The pooling can also be done with hot-encoded vectors for atoms. This is done in <a href="https://www.nature.com/articles/s41598-018-35934-y">ElemNet</a> (mean pooling), and in Bag-of-atoms (sum pooling). The advantage: no training required, the disadvantage: the result is a <em>sparse</em> vector, and <em>can</em> be less accurate.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="comparing-distributed-representations"><a class="header" href="#comparing-distributed-representations">Comparing distributed representations</a></h1>
-<p>The paper <a href="https://link.springer.com/article/10.1007/s40192-020-00179-z">Is domain knowledge necessary for machine learning materials properties?</a> compared descriptors generated in different ways for downstream tasks.</p>
+<h1 id="comparison"><a class="header" href="#comparison">Comparison</a></h1>
+<p>We have discussed a few vector representation of atoms, with emphasis in SkipVec and Atom2Vec.</p>
+<p>The paper <a href="https://link.springer.com/article/10.1007/s40192-020-00179-z">Is domain knowledge necessary for machine learning materials properties?</a> compared descriptors (same as vector representations) generated in different ways for downstream tasks.</p>
 <p>They found hand-crafted descriptors most useful for small datasets, and fractional (<a href="https://www.nature.com/articles/s41598-018-35934-y">ElemNet</a>) or random-vector representations of elements for large datasets.</p>
 <blockquote class="blockquote-tag blockquote-tag-tip">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
@@ -905,22 +908,6 @@ A --&gt; Direct
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
         <script>

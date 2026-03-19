@@ -2,9 +2,9 @@
 
 A popular representation of atoms as vectors appeared in (2018): [Atom2Vec].
 
-Atom2Vec uses defines a matrix ($X$) where each column is an environment and each row an element. Each $X_{ij}$ can be 0 or a natural number, and represents the _count_ of those atom-environment combinations.
+Atom2Vec defines a matrix ($X$). Each row represents an element, each column represents an environment.
 
-In other words, $X$ is a co-occurence matrix of atom-environment pairs.
+In other words, each cell is a _count_ of the number or times the atom-environment pair appears in the dataset; a co-occurrence matrix.
 
 |  |(2)Sb3|(2)Se3|(2)Te3|(3)Bi2|(3)Sb2|(3)O2|(3)S2|
 | ----          | ---- | -----|------|------|------|-----|-----|
