@@ -58,8 +58,6 @@ They conclude that these methods are most useful when no structural info is avai
 
 However, there isn't a simple answer to which representation is best, it depends in the task. This is discussed in more detailed in [Results].
 
-
-
 [Atom2Vec]: https://arxiv.org/pdf/1807.05617
 [SkipAtom]: https://www.nature.com/articles/s41524-022-00729-3.pdf
 [ElemNet]: https://www.nature.com/articles/s41598-018-35934-y
