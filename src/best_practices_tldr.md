@@ -1,6 +1,6 @@
 # Best Practices
 
-TL;DR from the paper ["Best practices in machine learning for chemistry"][best practices] (2021)
+TL;DR from the paper ["Best practices in machine learning for chemistry"][best practices] (2021), a very similar paper by the same authors is ["Machine learning for molecular and materials science"][similar].
 
 - _For Datasets_
     - Ensure dataset remains available, and is version-tagged (they change)
@@ -32,3 +32,4 @@ They also state:
 They provide a great checklist but since the license is a mess I am not including it here.
 
 [best practices]: https://www.nature.com/articles/s41557-021-00716-z
+[similar]: https://www.nature.com/articles/s41586-018-0337-2
