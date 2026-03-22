@@ -7,8 +7,8 @@
 First, compounds are downloaded. Then, the Voronoi Decomposition is used to derive graphs from unit-cells, and from the graphs generate training-pairs. As they show in the paper:
 
 <div class="center w40">
-    <a href="/assets/distributed_reps_dataset_gen.png">
-        <img src="/assets/distributed_reps_dataset_gen.png" alt="Using formula and Voronoi Decomposition to build a crystal-graph"/>
+    <a href="../assets/distributed_reps_dataset_gen.png">
+        <img src="../assets/distributed_reps_dataset_gen.png" alt="Using formula and Voronoi Decomposition to build a crystal-graph"/>
     </a>
     <p>
     Image from <a href="https://www.nature.com/articles/s41524-022-00729-3">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
@@ -18,8 +18,8 @@ First, compounds are downloaded. Then, the Voronoi Decomposition is used to deri
 Finally, each pair X-Y is used to train a shallow network to predict the target (Y) from the reference (X).
 
 <div class="center w40">
-    <a href="/assets/shallow_net.png">
-        <img src="/assets/shallow_net.png" alt="Shallow network used to create the embeddings. It consists of a projection matrix, followed by a 'prediction' matrix."/>
+    <a href="../assets/shallow_net.png">
+        <img src="../assets/shallow_net.png" alt="Shallow network used to create the embeddings. It consists of a projection matrix, followed by a 'prediction' matrix."/>
     </a>
     <p>
     Image from <a href="https://www.nature.com/articles/s41524-022-00729-3">Original Paper</a> (slightly modified) under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
