@@ -95,7 +95,7 @@ main ol > li::before {
 
 
 
-div:has(>a>img) *, blockquote,nav#mdbook-sidebar ol>li.part-title{
+div:has(>a>img) *, blockquote, q, nav#mdbook-sidebar ol>li.part-title{
   font-family: "cmu-concrete", "serif"
 }
 

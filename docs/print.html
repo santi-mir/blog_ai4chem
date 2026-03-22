@@ -37,10 +37,10 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-9faa9110.js";
+            window.path_to_searchindex_js = "searchindex-673c7628.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-abe782a1.js"></script>
+        <script src="toc-0fa4899b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -195,13 +195,14 @@
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="atom-vectors---introduction"><a class="header" href="#atom-vectors---introduction">Atom Vectors - Introduction</a></h1>
-<p>Representing atoms and compounds as vectors has been around for decades.</p>
-<p>"Atom-vectors" is a broad category. A narrower category is <em>descriptors</em>, used for expert-designed vectors; another one is <em>embedding</em>, used for machine-learnt vectors.</p>
-<p>The vectors are of interest because they can be useful inputs to ML models for prediction tasks.<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup></p>
-<p>Descriptors are hand-crafted vectors optimised for each problem, we don't get into details here.</p>
-<p>The interest here is automated methods that don't require so much human expertise or time. Creating embeddings is one such approach but we talk about one-hot and random vectors later on.</p>
-<p>Let's get to embeddings.</p>
-<h2 id="what-are-embeddings"><a class="header" href="#what-are-embeddings">What are embeddings?</a></h2>
+<p><em>Atom vectors</em> is a broad category. Narrower categories are:</p>
+<ul>
+<li><em>Descriptor</em>: used for expert-designed vectors,</li>
+<li><em>Embedding</em>: used for machine-learnt vectors.</li>
+</ul>
+<p>These vector representations are of interest because they can be useful inputs for tranining machine-learning models.<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup></p>
+<p>Here we are interested in methods that don't require human expertise, hence <em>descriptors</em> won't be discussed.</p>
+<h2 id="embeddings"><a class="header" href="#embeddings">Embeddings</a></h2>
 <p>Embeddings are <em>machine-learnt vectors <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span></span></span></span>.</em> Normally, they are also:</p>
 <ul>
 <li>Dense rather than sparse i.e they have few zeros,</li>
@@ -210,40 +211,35 @@
 <li>Belong to a structured vector space: semantically similar vectors are close together and allow for meaningful vector-arithmetic.</li>
 </ul>
 <p>Dense vectors are useful because training will be faster (than a similar sparse version).</p>
-<h3 id="origin"><a class="header" href="#origin">Origin</a></h3>
+<h3 id="some-background-on-embeddings"><a class="header" href="#some-background-on-embeddings">Some Background on Embeddings</a></h3>
 <p>Embeddings for atoms were inspired by NLP models from the 2010s. One such example was learning <a href="https://arxiv.org/1301.3781v3">continuous vector representations of words</a> by Mikolov et. al. in (2013). They proposed an automated mechanism generate word-vectors by absorbing information from that word's environment (neighbouring words).</p>
-<p>They found that similar words had similar vectors. And the vectors also supported semantically meaningful arithmetic operations, and became useful for downstream tasks. A classic example was:</p>
+<p>Materials science has exploited the same ideas: <q>properties of an atom can be inferred from the environments it lives in</q> (<a href="https://pnas.org/doi/full/10.1073/pnas.1801181115">Atom2Vec</a>, 2018), or another example <q>atoms are to compounds as words are to sentences</q> (<a href="https://www.nature.com/articles/s41524-022-00729-3">SkipAtom</a>, 2022), so computational chemists have built upon these findings.</p>
+<p>What Mikolov's and derived approaches found is that similar words (or atoms) produce similar vectors. The vectors also support semantically meaningful arithmetic operations, and became useful for downstream tasks. A classic example was:</p>
 <pre><code class="language-txt">vector("Queen") = vector("King") - vector("Man") + vector("Woman")
 </code></pre>
-<p>By exploiting analogies like (Source: <a href="https://pnas.org/doi/full/10.1073/pnas.1801181115">Atom2Vec</a>):</p>
-<blockquote>
-<p>properties of an atom can be inferred from the environments it lives in,</p>
-</blockquote>
-<p>and (Source: <a href="https://www.nature.com/articles/s41524-022-00729-3">SkipAtom</a>):</p>
-<blockquote>
-<p>atoms are to compounds as words are to sentences</p>
-</blockquote>
-<p>computational chemists have built upon these findings.</p>
 <h2 id="vectors-in-chemistry"><a class="header" href="#vectors-in-chemistry">Vectors in Chemistry</a></h2>
-<p>Atom vectors can be expert-designed or they can be <em>learnt</em> by an algorithm<sup class="footnote-reference" id="fr-2-1"><a href="#footnote-2">2</a></sup>. Learning vectors yields more general-purpose vectors, and has won in popularity.</p>
-<p>Both <a href="https://pnas.org/doi/full/10.1073/pnas.1801181115">Atom2Vec</a> and <a href="https://www.nature.com/articles/s41524-022-00729-3">SkipAtom</a> are unsupervised algorithms that obtain their atom vectors from databases of compounds. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.</p>
-<p>These approaches compete with others that use crystal-structure information. Without structural informtation they <em>tend to</em> be less accurate, computationally cheaper to learn.</p>
-<h3 id="featurisers"><a class="header" href="#featurisers">Featurisers</a></h3>
-<p>The strategy to generate the descriptors (atom or element-vectors) is called a <em>featuriser</em>.</p>
-<p>Element descriptors can be:</p>
+<p>As dicussed earlier, atom vectors can be expert-designed or they can be <em>learnt</em> by an algorithm. Learning vectors yields more general-purpose vectors, and has won in popularity.</p>
+<p>Both <a href="https://pnas.org/doi/full/10.1073/pnas.1801181115">Atom2Vec</a> (2018) and <a href="https://www.nature.com/articles/s41524-022-00729-3">SkipAtom</a> (2022) are unsupervised algorithms that obtain their atom vectors from databases of compounds. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.</p>
+<h3 id="classifications-and-featurisers"><a class="header" href="#classifications-and-featurisers">Classifications and Featurisers</a></h3>
+<p>The method used to generate our vectors is called a <em>featuriser</em> (we can use a featuriser or create our own). There are many common approaches:</p>
 <ul>
 <li>Simple: like hot-encoded, random;</li>
 <li>Human-designed: Composition-Based Feature Vector (CBFV) which are expert-curated vectors as in Jarvis, Magpie;</li>
 <li>Machine-learnt: embeddings, like SkipAtom.</li>
 </ul>
-<p>which are combined in some way to describe compounds.</p>
-<p>We can pick any of the already-computed element-descriptors and use them as inputs, or run the featurising process to make our own.</p>
-<p>A performance-comparison of vector representations is carried out in <a href="https://www.researchgate.net/profile/Taylor-Sparks-2/publication/343926838_Is_Domain_Knowledge_Necessary_for_Machine_Learning_Materials_Properties">"Is domain knowledge necessary for machine learning materials properties?"</a>.</p>
-<p>Their conclusion is: Human-designed Composition Based Feature Vectors (CBFV like Jarvis and Olyinyk) outperform other methods if there isn't much data. This was prior to SkipAtom, but does include Atom2Vec.</p>
+<p>Atom-vectors can be combined to describe compounds. Examples of combination methods are concatenation into a long vector and pooling of vectors (e.g. summing them up).</p>
+<h4 id="comparing-representations"><a class="header" href="#comparing-representations">Comparing representations</a></h4>
+<p>A performance-comparison of vector representations is carried out in <a href="https://www.researchgate.net/profile/Taylor-Sparks-2/publication/343926838_Is_Domain_Knowledge_Necessary_for_Machine_Learning_Materials_Properties">"Is domain knowledge necessary for machine learning materials properties?"</a> (2020).</p>
+<p>Their conclusion is: human-designed Composition Based Feature Vectors (CBFV like Jarvis and Olyinyk) outperform other methods if there isn't much data. This was prior to SkipAtom, but does include Atom2Vec.</p>
 <p>Otherwise, performance in downstream tasks is similar to hot-encoded or random vectors.</p>
 <blockquote>
 <p>(...) Although new, data-driven approaches are of interest, those studied here have yet to surpass CBFVs in terms of material property prediction with small data.</p>
 </blockquote>
+<p>However, <a href="https://www.fruct.org/files/publications/volume-38/fruct38/Urs.pdf">"Domain Independent XAI for Material Science"</a> (2025) challenges that conclusion:</p>
+<blockquote>
+<p>Our method challenges this perception: we obtain excellent classifiers that are interpretable and based on a small amount of training data without using any domain knowledge: (...)</p>
+</blockquote>
+<p>They assert that one-hot encoded vectors can still achieve good results using small datasets, as long as the network is designed in the way they specify.</p>
 <h3 id="thoughts"><a class="header" href="#thoughts">Thoughts</a></h3>
 <p>Human-designed vectors are easier to interpret. Machine learnt vectors require more effort.
 Can we design machine-learnt interpretable vectors that are intrinsically interpretable?</p>
@@ -252,9 +248,6 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <ol class="footnote-definition">
 <li id="footnote-1">
 <p>Machine Learning (ML) includes deep-learning and traditional methods like regression, support vector machines, random forests and so on. <a href="#fr-1-1">↩</a></p>
-</li>
-<li id="footnote-2">
-<p>Empirical features refers to the group and period (and potentially charge, mass, ..). This was widely used prior to 2018, before the automated ones. <a href="#fr-2-1">↩</a></p>
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
@@ -298,8 +291,8 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 </li>
 </ul>
 <div class="center w40">
-    <a href="assets/hierarchical_clusters.png">
-        <img src="assets/hierarchical_clusters.png" alt="Hierarchical clusters of atoms." />
+    <a href="atom_vectors/assets/hierarchical_clusters.png">
+        <img src="atom_vectors/assets/hierarchical_clusters.png" alt="Hierarchical clusters of atoms." />
     </a>
     
 <p>
@@ -330,8 +323,8 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <h2 id="method"><a class="header" href="#method">Method</a></h2>
 <p>First, compounds are downloaded. Then, the Voronoi Decomposition is used to derive graphs from unit-cells, and from the graphs generate training-pairs. As they show in the paper:</p>
 <div class="center w40">
-    <a href="assets/distributed_reps_dataset_gen.png">
-        <img src="assets/distributed_reps_dataset_gen.png" alt="Using formula and Voronoi Decomposition to build a crystal-graph" />
+    <a href="atom_vectors/assets/distributed_reps_dataset_gen.png">
+        <img src="atom_vectors/assets/distributed_reps_dataset_gen.png" alt="Using formula and Voronoi Decomposition to build a crystal-graph" />
     </a>
     
 <p>
@@ -342,8 +335,8 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 
 <p>Finally, each pair X-Y is used to train a shallow network to predict the target (Y) from the reference (X).</p>
 <div class="center w40">
-    <a href="assets/shallow_net.png">
-        <img src="assets/shallow_net.png" alt="Shallow network used to create the embeddings. It consists of a projection matrix, followed by a &#39;prediction&#39; matrix." />
+    <a href="atom_vectors/assets/shallow_net.png">
+        <img src="atom_vectors/assets/shallow_net.png" alt="Shallow network used to create the embeddings. It consists of a projection matrix, followed by a &#39;prediction&#39; matrix." />
     </a>
     
 <p>
@@ -449,8 +442,8 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 <li><em>Completeness</em>: how accurately it describes the model's behaviour.</li>
 </ul>
 <div class="w40 center">
-<a href="assets/tradeoff.png">
-<img alt="graph looking like completeness is the inverse of simplitity." src="assets/tradeoff.png" />
+<a href="XAI/assets/tradeoff.png">
+<img alt="graph looking like completeness is the inverse of simplitity." src="XAI/assets/tradeoff.png" />
 </a>
 <p>Completeness v. Simplicity tradeoff.</p>
 
@@ -460,8 +453,8 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 <h3 id="correctness"><a class="header" href="#correctness">Correctness</a></h3>
 <p>This isn't a characteristic of explanations, but of a model, yet it is often correlated, as represented below (<em>understandability</em> replaces <em>simplicity</em>):</p>
 <div class="center w40"> <!--other classes: w220, w420-->
-    <a href="assets/radar_plot.png">
-    <img src="assets/radar_plot.png" alt="Plot of the three dimensions" />
+    <a href="XAI/assets/radar_plot.png">
+    <img src="XAI/assets/radar_plot.png" alt="Plot of the three dimensions" />
     </a>
     
 <p>
@@ -539,8 +532,8 @@ First, for Deep Learning, then the same is done for Classical Machine Learning.<
 <li>Counterfactual Analysis</li>
 </ul>
 <div class="center w40"> <!--other classes: w220, w420-->
-    <a href="assets/linear_model_and_shapley.jpeg">
-    <img src="assets/linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley&#39;s contributions" />
+    <a href="XAI/assets/linear_model_and_shapley.jpeg">
+    <img src="XAI/assets/linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley&#39;s contributions" />
     </a>
     
 <p>
@@ -581,7 +574,7 @@ First, for Deep Learning, then the same is done for Classical Machine Learning.<
 <li>They call each <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> a <em>centroid</em>.</li>
 </ul>
 </li>
-<li>Hypothesis C (hierarchy): models representing regions of a dataset can be hierarchically ordered.<sup class="footnote-reference" id="fr-2-1-1"><a href="#footnote-2-1">2</a></sup></li>
+<li>Hypothesis C (hierarchy): models representing regions of a dataset can be hierarchically ordered.<sup class="footnote-reference" id="fr-2-1"><a href="#footnote-2">2</a></sup></li>
 </ul>
 <p>They argue that this allows simpler models, requiring less data and being more interpretable.</p>
 <h2 id="explainability"><a class="header" href="#explainability">Explainability</a></h2>
@@ -617,8 +610,8 @@ Another idea would be to have a "routing" network that delegates to each based o
 <li id="footnote-1-3">
 <p>Could KNN be used? I assume so, but maybe it is described further down. <a href="#fr-1-1-3">↩</a></p>
 </li>
-<li id="footnote-2-1">
-<p>So far, it looks more like it involves passing whatever a model can't classify with enough confidence to the next model, and the next, and so on. But hierarchy may be obvious in next sections. <a href="#fr-2-1-1">↩</a></p>
+<li id="footnote-2">
+<p>So far, it looks more like it involves passing whatever a model can't classify with enough confidence to the next model, and the next, and so on. But hierarchy may be obvious in next sections. <a href="#fr-2-1">↩</a></p>
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
@@ -1041,6 +1034,22 @@ A --&gt; Direct
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>
