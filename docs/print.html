@@ -291,8 +291,8 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 </li>
 </ul>
 <div class="center w40">
-    <a href="atom_vectors/assets/hierarchical_clusters.png">
-        <img src="atom_vectors/assets/hierarchical_clusters.png" alt="Hierarchical clusters of atoms." />
+    <a href="assets/hierarchical_clusters.png">
+        <img src="assets/hierarchical_clusters.png" alt="Hierarchical clusters of atoms." />
     </a>
     
 <p>
@@ -323,8 +323,8 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <h2 id="method"><a class="header" href="#method">Method</a></h2>
 <p>First, compounds are downloaded. Then, the Voronoi Decomposition is used to derive graphs from unit-cells, and from the graphs generate training-pairs. As they show in the paper:</p>
 <div class="center w40">
-    <a href="atom_vectors/assets/distributed_reps_dataset_gen.png">
-        <img src="atom_vectors/assets/distributed_reps_dataset_gen.png" alt="Using formula and Voronoi Decomposition to build a crystal-graph" />
+    <a href="assets/distributed_reps_dataset_gen.png">
+        <img src="assets/distributed_reps_dataset_gen.png" alt="Using formula and Voronoi Decomposition to build a crystal-graph" />
     </a>
     
 <p>
@@ -335,8 +335,8 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 
 <p>Finally, each pair X-Y is used to train a shallow network to predict the target (Y) from the reference (X).</p>
 <div class="center w40">
-    <a href="atom_vectors/assets/shallow_net.png">
-        <img src="atom_vectors/assets/shallow_net.png" alt="Shallow network used to create the embeddings. It consists of a projection matrix, followed by a &#39;prediction&#39; matrix." />
+    <a href="assets/shallow_net.png">
+        <img src="assets/shallow_net.png" alt="Shallow network used to create the embeddings. It consists of a projection matrix, followed by a &#39;prediction&#39; matrix." />
     </a>
     
 <p>
@@ -442,8 +442,8 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 <li><em>Completeness</em>: how accurately it describes the model's behaviour.</li>
 </ul>
 <div class="w40 center">
-<a href="XAI/assets/tradeoff.png">
-<img alt="graph looking like completeness is the inverse of simplitity." src="XAI/assets/tradeoff.png" />
+<a href="assets/tradeoff.png">
+<img alt="graph looking like completeness is the inverse of simplitity." src="assets/tradeoff.png" />
 </a>
 <p>Completeness v. Simplicity tradeoff.</p>
 
@@ -453,8 +453,8 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 <h3 id="correctness"><a class="header" href="#correctness">Correctness</a></h3>
 <p>This isn't a characteristic of explanations, but of a model, yet it is often correlated, as represented below (<em>understandability</em> replaces <em>simplicity</em>):</p>
 <div class="center w40"> <!--other classes: w220, w420-->
-    <a href="XAI/assets/radar_plot.png">
-    <img src="XAI/assets/radar_plot.png" alt="Plot of the three dimensions" />
+    <a href="assets/radar_plot.png">
+    <img src="assets/radar_plot.png" alt="Plot of the three dimensions" />
     </a>
     
 <p>
@@ -532,8 +532,8 @@ First, for Deep Learning, then the same is done for Classical Machine Learning.<
 <li>Counterfactual Analysis</li>
 </ul>
 <div class="center w40"> <!--other classes: w220, w420-->
-    <a href="XAI/assets/linear_model_and_shapley.jpeg">
-    <img src="XAI/assets/linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley&#39;s contributions" />
+    <a href="assets/linear_model_and_shapley.jpeg">
+    <img src="assets/linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley&#39;s contributions" />
     </a>
     
 <p>
@@ -1047,6 +1047,22 @@ A --&gt; Direct
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>

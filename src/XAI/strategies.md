@@ -65,8 +65,8 @@ These study the model's behaviour, as a black box. Most below, correlate changes
 - Counterfactual Analysis
 
 <div class="center w40"> <!--other classes: w220, w420-->
-    <a href="./assets/linear_model_and_shapley.jpeg">
-    <img src="./assets/linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley's contributions"/>
+    <a href="../assets/linear_model_and_shapley.jpeg">
+    <img src="../assets/linear_model_and_shapley.jpeg" alt="Linear Approximation Model (Generalised) and Shapley's contributions"/>
     </a>
     <p>
     LGM ($g$ function) and Shapley's feature contribution. Image (cropped) from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>

@@ -36,8 +36,8 @@ In their best-performing model, they compute $SVD(X_u) = U\,D\,V^T$, collect the
     - At a very large distance, all atoms merge into a single group. The result is called _dendogram_.
 
 <div class="center w40">
-    <a href="./assets/hierarchical_clusters.png">
-        <img src="./assets/hierarchical_clusters.png" alt="Hierarchical clusters of atoms."/>
+    <a href="../assets/hierarchical_clusters.png">
+        <img src="../assets/hierarchical_clusters.png" alt="Hierarchical clusters of atoms."/>
     </a>
     <p>
     Image (modified) from <a href="https://pnas.org/doi/full/10.1073/pnas.1801181115">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>. The atoms are rotated to make the image fit (rotated).

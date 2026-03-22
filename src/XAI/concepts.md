@@ -35,8 +35,8 @@ We can characterise explanations using:
 - _Completeness_: how accurately it describes the model's behaviour.
 
 <div class="w40 center">
-<a href="./assets/tradeoff.png">
-<img alt="graph looking like completeness is the inverse of simplitity." src="./assets/tradeoff.png"/>
+<a href="../assets/tradeoff.png">
+<img alt="graph looking like completeness is the inverse of simplitity." src="../assets/tradeoff.png"/>
 </a>
 <p>Completeness v. Simplicity tradeoff.</p>
 </div>
@@ -48,8 +48,8 @@ This tradeoff isn't universal but just a common case. Some phenomena are simple,
 This isn't a characteristic of explanations, but of a model, yet it is often correlated, as represented below (_understandability_ replaces _simplicity_):
 
 <div class="center w40"> <!--other classes: w220, w420-->
-    <a href="./assets/radar_plot.png">
-    <img src="./assets/radar_plot.png" alt="Plot of the three dimensions"/>
+    <a href="../assets/radar_plot.png">
+    <img src="../assets/radar_plot.png" alt="Plot of the three dimensions"/>
     </a>
     <p>
     Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
