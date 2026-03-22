@@ -49,17 +49,16 @@ $m$ is the number of classes, $d_i$ the euclidean distance to each classes' _tra
 - The smaller $d_i$ is (closer to centroid $i$) the larger $P_i$ is, since the term $1/d_i$ eventually dominates the sum.
 - The larger $d_i$ is (far from centroid) the more it tends towards zero, the term contributes little to the sum.
 
-
 They propose two methods to generate centroids:
 
 1. Trained Detailed Centroids (TDC):
-    - Each class has an independently trained centroid,
-    - Params to train: $n\times{}m$ parameters given by $n$ features and $m$ classes,
-    - According to the paper, TDC differs from KNN, which uses _actual centroids_ rather than _trained centroids_.
+   - Each class has an independently trained centroid,
+   - Params to train: $n\times{}m$ parameters given by $n$ features and $m$ classes,
+   - According to the paper, TDC differs from KNN, which uses _actual centroids_ rather than _trained centroids_.
 2. Trained Compressed Centroids (TCC):
-    - Classes centroids are generated from a common centroid,
-    - Params to train: $n + m$, for $m$ classes and $n$ features of $c$,
-    - Aims to reduce N params which may be too large for a small dataset to optimise.
+   - Classes centroids are generated from a common centroid,
+   - Params to train: $n + m$, for $m$ classes and $n$ features of $c$,
+   - Aims to reduce N params which may be too large for a small dataset to optimise.
 
 The class compressed centroid comes from comparing the compressed centroid ($P$) with the single class parameter ($Q_i$), using "minimum" function:
 
