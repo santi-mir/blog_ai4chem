@@ -70,7 +70,7 @@ which is done for each class. It could be represented as a matrix but I find it 
 
 - Could KNN be used to decide Hypothesis B? Possibly.
 - <q>However, they are not suitable for incorporating a Euclidean distance model.</q> Can't DL use this?
-- How are the centroids-and-element's coordinates obtained (used for building $d_i$)?
+- How are the detailed trained centroids, and common centroids calculated?
 
 ## Other avenues
 
