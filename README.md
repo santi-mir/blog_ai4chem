@@ -44,7 +44,7 @@ Then do `chmod +x .git/hooks/{pre-push,pre-commit}`
 
 ## License
 
-All the content here is under [CC BY 4.0].
+All the content here is under [CC BY 4.0], except for quotations which may share the license of the source.
 
 ## Contributions
 
@@ -52,8 +52,8 @@ Contributions are taken under the same license, [CC BY 4.0].
 
 ## Tools Used
 
-- [mdbook]: a Rust package to render html from markdown.
-- [mermaid]: a Javascript package to draw basic charts.
+- [mdbook]: a Rust crate to render html from markdown.
+- [mermaid]: NPM package to draw basic charts.
 
 [mdbook]: https://github.com/rust-lang/mdBook
 [mermaid]: https://github.com/orgs/mermaid-js

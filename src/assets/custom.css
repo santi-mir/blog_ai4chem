@@ -2,7 +2,7 @@
  * locally and on github */
 @font-face {
     font-family: 'cmu-concrete';
-    src: url('/fonts/cmuconcrete_roman_macroman/cmunorm-webfont.woff') format('woff'),
+    src: url('../fonts/cmuconcrete_roman_macroman/cmunorm-webfont.woff') format('woff'),
     font-weight: 500;
     font-style: normal;
 }
