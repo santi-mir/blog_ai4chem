@@ -1,10 +1,9 @@
 @font-face {
     font-family: 'cmu-concrete';
-    src: url('/assets/font/cmuconcrete_roman_macroman/cmunorm-webfont.woff') format('woff'),
+    src: url('/fonts/cmuconcrete_roman_macroman/cmunorm-webfont.woff') format('woff'),
     font-weight: 500;
     font-style: normal;
 }
-
 :root{
   font-size:clamp(13px, 2vw, 22px)!important;
     --sidebar-target-width: max(20vw, 300px);
