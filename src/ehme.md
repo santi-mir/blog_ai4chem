@@ -78,4 +78,3 @@ Another idea would be to have a "routing" network that delegates to each based o
 [EHME]: https://fruct.org/files/publications/volume-38/fruct38/Urs.pdf
 [^1]: In my view the paper's use of the term _hyperspace_ is inaccurate; hyperspace is $\mathbb{R}^{N > 3}$. What they have seem _subsets of hyperspace_ given by the probability condition above.
 [^2]: Other approaches require training to produce higher-quality element vectors, such as Mat2Vec or SkipAtom. The performance is not too different though.
-
