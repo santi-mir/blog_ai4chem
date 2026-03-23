@@ -5,7 +5,7 @@ _Atom vectors_ is a broad category. Narrower categories are:
 - _Descriptor_: used for expert-designed vectors,
 - _Embedding_: used for machine-learnt vectors.
 
-These vector representations are of interest because they can be useful inputs for tranining machine-learning models.[^1]
+These vector representations are of interest because they can be useful inputs for training machine-learning models.[^1]
 
 Here we are interested in methods that don't require human expertise, hence _descriptors_ won't be discussed.
 
@@ -24,7 +24,7 @@ Dense vectors are useful because training will be faster (than a similar sparse 
 
 Embeddings for atoms were inspired by NLP models from the 2010s.
 
-One such example was learning [continuous vector representations of words][arxiv] (2013). They proposed an automated mechanism generate word-vectors by absorbing information from that word's environment (neighbouring words).
+One such example was learning [continuous vector representations of words][word embeddings] (2013). They proposed an automated mechanism generate word-vectors by absorbing information from that word's environment (neighbouring words).
 
 Materials science has exploited the same ideas, for example:
 
@@ -78,7 +78,7 @@ Attention-masks and disentangled representations are closer to this.
 
 [SkipAtom]: https://www.nature.com/articles/s41524-022-00729-3
 [Atom2Vec]: https://pnas.org/doi/full/10.1073/pnas.1801181115
-[arxiv]: https://arxiv.org/abs/1301.3781v3
+[word embeddings]: https://arxiv.org/abs/1301.3781v3
 [comparison]: https://www.researchgate.net/profile/Taylor-Sparks-2/publication/343926838_Is_Domain_Knowledge_Necessary_for_Machine_Learning_Materials_Properties
 [ehme]: https://www.fruct.org/files/publications/volume-38/fruct38/Urs.pdf
 

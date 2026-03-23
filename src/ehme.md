@@ -2,12 +2,12 @@
 
 In the paper [Domain Independent XAI for Material Science][EHME] the model Explainable Hierarchical Monte Carlo Ensemble (EHME) is proposed.
 
-We can clarify some of the terms:
+Let's expand some of the terms:
 
-- **Domain Independent**: They use composition vectors; it is "domain independent" within materials science,
-- **Explainable**: Simple input (composition vector), euclidean distance classification (their model),
-- **Hierarchical**: Involves passing on what isn't classified to other classifiers up the hierarchy,
-- **Monte Carlo Ensemble**: Multiple Monte Carlo models. It's is unclear how is this used, but is is coupled with the euclidean distance model.
+- **Domain Independent**: They use composition vectors which are domain independent _within_ materials science.
+- **Explainable**: Composition vectors are intuitive, and so is euclidean distance which is the base of their classification models.
+- **Hierarchical**: Involves passing on what isn't classified to other classifiers up the hierarchy.
+- **Monte Carlo Ensemble**: Multiple Monte Carlo models. It's unclear how is this used, but it is coupled with the euclidean distance model.
 
 ## Hierarchical Learning
 
@@ -32,7 +32,7 @@ The stages are pre-modelling, modelling and post-modelling; each stage is somewh
 
 ### Pre-modelling: composition vector
 
-They use ElemNet's _fractional_ representation is $\mathbf{v} = \frac{1}{N}\sum_a n_a \mathbf{h}_a$; an average of one-hot encoded vectors $\mathbf{h}$ of atoms $a$.[^2]
+They use [ElemNet]'s _fractional_ representation is $\mathbf{v} = \frac{1}{N}\sum_a n_a \mathbf{h}_a$; an average of one-hot encoded vectors $\mathbf{h}$ of atoms $a$.[^2]
 
 ### Modelling: euclidean-based probabilities
 
@@ -53,11 +53,11 @@ They propose two methods to generate centroids. In both cases, the centroids are
 
 According to the paper, TDC differs from KNN, which uses _actual centroids_ rather than _trained centroids_.
 
-In TCC, to generate the vector for class $i$, compare components of the common centroid $cc$ to the class parameter $p_i$, that is: $\mathbf{v^{(i)}} = (min (cc_j, p_i))_{j=1}^{n}$.
+In TCC, to generate the vector for class $i$, compare components of the common centroid $cc$ to the class parameter $p_i$, that is: $\mathbf{v}^{(i)} = (min (cc_j, p_i))_{j=1}^{n}$.
 
 ### Post-modelling
 
-Seems to be just selecting $\delta$ in the probability formula given earlier.
+Seems to be just selecting $\delta$ which helps define regions of interest. This is not the calculation of centroids (previous step), but a vector that makes the probabilities of interest equal (0.5 for two classes.)
 
 ## My questions so far
 
@@ -74,6 +74,8 @@ Or could also use other kinds of hierarchies: for example to train a model to pr
 Another idea would be to have a "routing" network that delegates to each based on a higher classification (could be what they did).
 (Some of these may be what they did, still unsure)
 
+[ElemNet]: https://www.nature.com/articles/s41598-018-35934-y
 [EHME]: https://fruct.org/files/publications/volume-38/fruct38/Urs.pdf
 [^1]: In my view the paper's use of the term _hyperspace_ is inaccurate; hyperspace is $\mathbb{R}^{N > 3}$. What they have seem _subsets of hyperspace_ given by the probability condition above.
 [^2]: Other approaches require training to produce higher-quality element vectors, such as Mat2Vec or SkipAtom. The performance is not too different though.
+
