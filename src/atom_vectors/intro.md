@@ -78,7 +78,7 @@ Attention-masks and disentangled representations are closer to this.
 
 [SkipAtom]: https://www.nature.com/articles/s41524-022-00729-3
 [Atom2Vec]: https://pnas.org/doi/full/10.1073/pnas.1801181115
-[arxiv]: https://arxiv.org/1301.3781v3
+[arxiv]: https://arxiv.org/abs/1301.3781v3
 [comparison]: https://www.researchgate.net/profile/Taylor-Sparks-2/publication/343926838_Is_Domain_Knowledge_Necessary_for_Machine_Learning_Materials_Properties
 [ehme]: https://www.fruct.org/files/publications/volume-38/fruct38/Urs.pdf
 

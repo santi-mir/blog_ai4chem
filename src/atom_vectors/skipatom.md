@@ -61,4 +61,4 @@ However, there isn't a simple answer to which representation is best, it depends
 [Atom2Vec]: https://arxiv.org/pdf/1807.05617
 [SkipAtom]: https://www.nature.com/articles/s41524-022-00729-3.pdf
 [ElemNet]: https://www.nature.com/articles/s41598-018-35934-y
-[Results]: /vectors_for_atoms_3.md
+[Results]: ./results.md
