@@ -12,11 +12,13 @@
     font-weight: 500;
     font-style: normal;
 }
+
 :root{
-  font-size:clamp(13px, 2vw, 22px)!important;
+  font-size:clamp(13px, 2vw, 20px)!important;
     --sidebar-target-width: max(20vw, 300px);
     --sidebar-width: min(var(--sidebar-target-width), 80vw);
 }
+
 html {
   font-family: Ubuntu, Roboto, system-ui, sans-serif;
 }
