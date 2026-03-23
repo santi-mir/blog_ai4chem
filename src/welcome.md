@@ -4,7 +4,7 @@ Welcome to the blog!
 
 ## Organisation
 
-Clicking on the topleft hamburger icon <img style="display:inline; width:36px" src="./assets/hamburger.svg"/> you can toggle the table of contents.
+Clicking on the top-left hamburger icon <img style="display:inline; width:36px" src="./assets/hamburger.svg"/> you can toggle the table of contents.
 
 ## License
 
