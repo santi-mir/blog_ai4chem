@@ -23,7 +23,6 @@ Or could also use other kinds of hierarchies: for example to train a model to pr
 Another idea would be to have a "routing" network that delegates to each based on a higher classification (could be what they did).
 (Some of these may be what they did, still unsure)
 
-
 ## Terminology breakdown
 
 The title of the paper is _Domain Independent XAI for Material Science_. This is confusing: is it domain-independent or for the domain of
@@ -38,5 +37,3 @@ These terms can be clarified further:
 - **Explainable**: Composition vectors are intuitive, and so is euclidean distance which is the base of their classification models.
 - **Hierarchical**: Passing on what isn't classified to other classifiers up the hierarchy.
 - **Monte Carlo Ensemble**: Multiple Monte Carlo models. It's unclear how is this used, but it is coupled with the euclidean distance model.
-
-

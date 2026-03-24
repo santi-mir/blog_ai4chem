@@ -16,7 +16,7 @@ The ideas below help define an _explainable model_ that will use _hierarchical l
 
 1. A complex dataset can be split into clusters, each one following a simpler pattern, each captured by a simpler model,
 2. To handle model participation they use a confidence test: rank classes using $P$ then calculate $P^i_{max} \gt P^j_{max_2} + \delta$
-    - Input is from $i$ if met, else it is passed to the next predictor.
+   - Input is from $i$ if met, else it is passed to the next predictor.
 3. Models from each cluster can be ordered hierarchically. So the $P$s always start from a first model and follow an order.
 
 Which aims to connect hierarchical learning to explainability. How? Because each _model_ in the hierarchy is explainable.
@@ -33,7 +33,7 @@ The stages are pre-modelling, modelling and post-modelling; each stage is somewh
 
 ### Pre-modelling: composition vector
 
-They use [ElemNet]'s _fractional_ representation is $\mathbf{v} = \frac{1}{N}\sum_a n_a \mathbf{h}_a$; an average of one-hot encoded vectors $\mathbf{h}$ of atoms $a$.[^2]
+They use [ElemNet]'s _fractional_ representation is $\mathbf{v} = \frac{1}{N}\sum_a n_a \mathbf{h}_a$; an average of one-hot encoded vectors $\mathbf{h}$ of atoms $a$.[^1]
 
 ### Modelling: euclidean-based probabilities
 
@@ -59,7 +59,6 @@ In TCC, to generate the vector for class $i$, compare components of the common c
 ### Post-modelling
 
 Seems to be just selecting $\delta$ which helps define regions of interest. This is not the calculation of centroids (previous step), but a vector that makes the probabilities of interest equal (0.5 for two classes.)
-
 
 [ElemNet]: https://www.nature.com/articles/s41598-018-35934-y
 [EHME]: https://fruct.org/files/publications/volume-38/fruct38/Urs.pdf
