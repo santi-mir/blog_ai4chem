@@ -192,24 +192,12 @@
 </ul>
 <p>They also talk about KNN as a model, and argue that their centroids are trained vs just actual centroids (which is used in KNN). So that is the main difference.</p>
 <ul>
-<li>
-<p><q>However, they are not suitable for incorporating a Euclidean distance model.</q> Can't DL use this?</p>
-</li>
-<li>
-<p>How are the datasets split, and which role does Monte Carlo Ensemble play?</p>
-</li>
-<li>
-<p>Even though the pieces are simple, explainability in the sense of <em>how and why</em> the model proposes a candidate is not achieved.</p>
-</li>
-<li>
-<p>In my view the paper's use of the term <em>hyperspace</em> is inaccurate; hyperspace is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span><span class="mrel mtight">&gt;</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span>. What they have seem <em>subsets of hyperspace</em> given by the probability condition above.</p>
-</li>
-<li>
-<p>It's not described here (but elsewhere) <em>how</em> the hierarchy of models is produced; that is which one is executed after which. However, it seems to involve an ensemble of models trained together to run sequentially (hierarchically if the sequence is imagined vertically?).</p>
-</li>
-<li>
-<p>The paper does not describe exactly how the dataset is split, nor is detailed enough about the training.</p>
-</li>
+<li><q>However, they are not suitable for incorporating a Euclidean distance model.</q> Can't DL use this?</li>
+<li>How are the datasets split, and which role does Monte Carlo Ensemble play?</li>
+<li>Even though the pieces are simple, explainability in the sense of <em>how and why</em> the model proposes a candidate is not achieved.</li>
+<li>In my view the paper's use of the term <em>hyperspace</em> is inaccurate; hyperspace is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span><span class="mrel mtight">&gt;</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span>. What they have seem <em>subsets of hyperspace</em> given by the probability condition above.</li>
+<li>It's not described here (but elsewhere) <em>how</em> the hierarchy of models is produced; that is which one is executed after which. However, it seems to involve an ensemble of models trained together to run sequentially (hierarchically if the sequence is imagined vertically?).</li>
+<li>The paper does not describe exactly how the dataset is split, nor is detailed enough about the training.</li>
 </ul>
 <h2 id="other-avenues"><a class="header" href="#other-avenues">Other avenues</a></h2>
 <p>One could also test the opposite Hypothesis to B, i.e that those regions actually are or can-be-made to reside quite close.</p>
