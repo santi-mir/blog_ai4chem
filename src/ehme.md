@@ -2,19 +2,15 @@
 
 In [this paper][EHME] the model _Explainable Hierarchical Monte Carlo Ensemble_ (EHME) is proposed.
 
+--------------
+
 In short, _simple models are used to fit a split dataset_.
 
-Three stages of explainability are defined: pre-modelling, modelling and post-modelling explainability. Let's expand on some of the ideas behind this.
+Three stages of explainability are defined: pre-modelling, modelling and post-modelling explainability.
 
-## Pre-modelling Explainability
+**Pre-modelling** explainability is about preparing the dataset to make it suitable for training of explainable models. To this end, they **split the dataset** and fit each subset with simpler (more explainable) models. They also use [ElemNet]-like composition vectors, so that the model's input is interpretable.[^1]
 
-The paper states:
-
-> Pre-modelling explainability refers to dataset preparation to make it suitable for training of explainable models.
-
-The core idea is to **split the dataset** and then use simpler models.
-
-They also use [ElemNet]'s _fractional_ representation is $\mathbf{v} = \frac{1}{N}\sum_a n_a \mathbf{h}_a$; an average of one-hot encoded vectors $\mathbf{h}$ of atoms $a$.[^1] This does not make the model later on explainable, but seems reasonable to consider it here.
+The remaining stages are more complex and deserve full sections.
 
 ## Modelling Explainability
 
@@ -50,10 +46,14 @@ When the confidence test fails, a new model is run (from another cluster). This 
 
 ## Post-modelling explainability
 
-The hierarchy stems from the _constrain_ in the probability $P$ of membership: $P_{i=max} \gt P_{j=max_2} + \delta$. The test input is passed on to the next model if this doesn't hold.
+Given probability $P$ of membership: $P^i_{max} \gt P^j_{max_2} + \delta$, a region of interest can be defined. But how, exactly?
 
-This stage seems to be just selecting $\delta$ which helps define regions of interest. This is not the calculation of centroids (previous step), but a vector that makes the probabilities of interest equal (0.5 for two classes.)
+Given the centroids of two classes, we can walk the line from one centroid to the other, until the probability decays a desired amount $\delta$. That is called the "up" boundary, and walking opposite direction is the "down" boundary (which decays slower).
+
+This can also be done in different directions. Then we can consider any vector within that area as a vector of interest. This is the coolest idea in the paper, and it is quite badly explained (the figure isn't too bad though).
+
+The point at which they become equal is called Rocchio boundary. And the surface defined at the distance we decide for (given the probability we aimed at) defines a hyper-ball / hypersphere.
 
 [ElemNet]: https://www.nature.com/articles/s41598-018-35934-y
 [EHME]: https://fruct.org/files/publications/volume-38/fruct38/Urs.pdf
-[^1]: Other approaches require training to produce higher-quality element vectors, such as Mat2Vec or SkipAtom. The performance is not too different though.
+[^1]: Other approaches require training to produce higher-quality element vectors, such as Mat2Vec or SkipAtom. These are not intrinsically interpretable nor always produce better results.
