@@ -8,17 +8,26 @@ In short, _simple models are used to fit a split dataset_.
 
 Three stages of explainability are defined: pre-modelling, modelling and post-modelling explainability.
 
-**Pre-modelling** explainability is about preparing the dataset to make it suitable for training of explainable models. To this end, they **split the dataset** and fit each subset with simpler (more explainable) models. They also use [ElemNet]-like composition vectors, so that the model's input is interpretable.[^1]
+**Pre-modelling** explainability is about preparing the dataset to make it suitable for the training of explainable models. To this end, they **split the dataset** and fit each subset with simpler (more explainable) models. They also use [ElemNet]-like composition vectors, so that the model's input is interpretable.[^1]
 
 The remaining stages are more complex and deserve full sections.
 
 ## Modelling Explainability
 
-The core idea for model explainability is to use euclidean-based probabilities, which is considered explainable.
+The core idea for model explainability is to use euclidean-based probabilities, which is considered explainable. The _model_ is:
 
-The _model_ is: $P_i = {\Large \frac{||\mathbf{v}-\mathbf{c}^i||^{-1}}{\sum_{j=1}^m ||\mathbf{v}-\mathbf{c}^j||^{-1}}}$ where $m$ is the number of classes and $||\cdot||$ are euclidean distances between test vectors $\mathbf{v}$ and centroids $\mathbf{c}$.
+$$P_i = {\large \frac{||\mathbf{v}-\mathbf{c}^i||^{-1}}{\sum_{j=1}^m ||\mathbf{v}-\mathbf{c}^j||^{-1}}}$$
 
-The closer the vector and centroid are, the higher the probability of the test item belonging to that class.
+Where $m$ is the number of classes and $||\cdot||$ are euclidean distances. When the vector $\mathbf{v}$ and centroid $\mathbf{c}^i$ (for class $i$) are closer, the probability $P_i$ of the test item belonging to that class increases.
+
+
+### Where do models come from?
+
+Remember that the dataset is split into clusters, and each cluster has its own centroids, hence own euclidean distance model.
+
+In other words, a model exists for each cluster (with its own centroid); we could use $P_i^k$, indicating model $k$, but it makes it harder to read.
+
+When the confidence test fails (see [next section][post_modelling]), a new model is run (from another cluster). This repeats until one is confident enough.
 
 <details>
 <summary>Centroids (optional)</summary>
@@ -38,15 +47,9 @@ In TCC, to generate the vector for class $i$, compare components of the common c
 
 </details>
 
-### Where do models come from?
-
-Remember that the dataset is split into clusters, and each cluster has its own centroids, hence own euclidean distance model.
-
-When the confidence test fails, a new model is run (from another cluster). This repeats until one is confident enough.
-
 ## Post-modelling explainability
 
-Given probability $P$ of membership: $P^i_{max} \gt P^j_{max_2} + \delta$, a region of interest can be defined. But how, exactly?
+Given a probability $P_x$ of membership to class $x$, the confidence test $P^i_{max} \gt P^j_{max_2} + \delta$ can be used to define a region of interest. But how, exactly?
 
 Given the centroids of two classes, we can walk the line from one centroid to the other, until the probability decays a desired amount $\delta$. That is called the "up" boundary, and walking opposite direction is the "down" boundary (which decays slower).
 
@@ -56,4 +59,6 @@ The point at which they become equal is called Rocchio boundary. And the surface
 
 [ElemNet]: https://www.nature.com/articles/s41598-018-35934-y
 [EHME]: https://fruct.org/files/publications/volume-38/fruct38/Urs.pdf
+[post_modelling]: #post-modelling-explainability
 [^1]: Other approaches require training to produce higher-quality element vectors, such as Mat2Vec or SkipAtom. These are not intrinsically interpretable nor always produce better results.
+
