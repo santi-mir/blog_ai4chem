@@ -27,7 +27,18 @@ In a way, still looks at the model as a black box, with questions such as _how d
 - Validity Interval Analysis: another technique fitting the NN behaviour to try to extract explanations.
 - Principal Component Analysis, Independent Component Analysis, Non-negative Matrix Factorisation can all help as well. But in a way this is better done by architectures with disentangled representations.
 
+#### Mathematical Aspects
+
 Both SHAP and LIME are affected by feature collinearity and non-linear dependencies across features (LIME assumes they are independent and linear).
+
+We can use LIME to illustrate this, since it's much simpler. A linear model can be described as $y(\mathbf{x}) = \sum_i \alpha_i^n x_i$, with $\alpha_i$ being coefficients and $x_i$ features. For $n=1$ we have just a line in 2D, for $n=2$ a plane in 3D, for $n>2$ we have a n-dimensional hyperplane in n+1 dimensions.
+
+But the important aspects can be captured imagining a plane in 3D.
+
+**Collinearity** implies correlated features, for example $x_1(x_2)$ so the model will fail there.
+
+**Non-linearity** is about input output relations. For example, having a table of x-y values generated with $y = x^N$, then fitting a line $y' = \alpha x'$ would not help.
+
 
 ### Explanation-Producing systems
 

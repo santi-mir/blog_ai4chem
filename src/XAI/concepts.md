@@ -12,7 +12,7 @@ flowchart LR
 
 ```
 
-These are some of my opinions and ideas after reading [Interpretable and Explainable Machine Learning for Materials Science and Chemistry][XAI4MAT] (2022), [Explaining Explanations: An Overview of Interpretability of Machine Learning][XX] (2019) and [A Perspective on Explainable Artificial Intelligence Methods: SHAP and LIME][SHAP and LIME] (2024)
+These are some of my opinions and ideas after reading [Explaining Explanations: An Overview of Interpretability of Machine Learning][XX] (2019), [Interpretable and Explainable Machine Learning for Materials Science and Chemistry][XAI4MAT] (2022), and [A Perspective on Explainable Artificial Intelligence Methods: SHAP and LIME][SHAP and LIME] (2024).
 
 A very interesting experiment in terms of explainability was <https://distill.pub>.
 
