@@ -27,9 +27,7 @@ In a way, still looks at the model as a black box, with questions such as _how d
 - Validity Interval Analysis: another technique fitting the NN behaviour to try to extract explanations.
 - Principal Component Analysis, Independent Component Analysis, Non-negative Matrix Factorisation can all help as well. But in a way this is better done by architectures with disentangled representations.
 
-
 Both SHAP and LIME are affected by feature collinearity and non-linear dependencies across features (LIME assumes they are independent and linear).
-
 
 ### Explanation-Producing systems
 
