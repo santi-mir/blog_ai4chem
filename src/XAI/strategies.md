@@ -39,7 +39,6 @@ But the important aspects can be captured imagining a plane in 3D.
 
 **Non-linearity** is about input output relations. For example, having a table of x-y values generated with $y = x^N$, then fitting a line $y' = \alpha x'$ would not help.
 
-
 ### Explanation-Producing systems
 
 Architectures designed to make explaining part of their operation easier.
