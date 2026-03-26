@@ -30,10 +30,9 @@ Calculates a score (SHAP values) for each feature in the model, representing the
 - It Applies to the model as-is;
 - Assumes features are independent (that there is no correlation), it offers both global (average across instances) and local (instance), but still looks at the model as black box.
 
-
 #### Mathematical Aspects
 
-In their basic form, neither SHAP nor LIME account for feature collinearity or non-linear dependencies across features.[^2]
+In their basic form, neither SHAP nor LIME account for feature collinearity or non-linear dependencies across features.[^1]
 
 We can use LIME to illustrate this. A linear model is described by $y(\mathbf{x}) = \alpha_0 + \sum_{i=1}^n \alpha_i x_i$ each $\alpha_i$ being a coefficient and each $x_i$ a feature. For $n=1$ we have just a line in 2D, for $n=2$ a plane in 3D, for $n>2$ we have a n-dimensional hyperplane in n+1 dimensions.
 
@@ -47,10 +46,10 @@ The issues can be captured imagining a plane in 3D.
 **Non-linearity**: output changes are not proportional to input changes. For example $y = \beta x^N$ is non-linear, and fitting a line $y' = \alpha x$ to it would be inaccurate. Some SHAP models can model this correctly.
 
 Luckily, we can get some help:
+
 - Normalised Moving Rate (NMR) can be used to assess the stability of the ordering. Intuitively, removing one shouldn't affect the order of the rest, unless there was correlation. Smaller NMR means more stable ordering.
 
 - Modified Index Position (MIP) can be used to re-order the importance of features considering their multicollinearity.
-
 
 #### Other methods
 
@@ -85,7 +84,7 @@ These study the model's behaviour, as a black box. Most below, correlate changes
 
 - Partial Dependence Plots (PDPs). Though it masks possible correlations between features (if all are kept constant but one).
 - Individual Conditional Expectations (ICE) overcomes the limitation above.
-- Feature Importance methods: partial derivative of an output w.r.t some input feature.[^1]
+- Feature Importance methods: partial derivative of an output w.r.t some input feature.[^2]
 - Shapley Analysis: fits a linear model to nearby input-points.
     - The coefficients of the linear fit quantify the contribution / effect of each input feature to the output value.
     - We get insight on which features are locally relevant, by looking at the accompanying coefficients.
@@ -103,5 +102,5 @@ These study the model's behaviour, as a black box. Most below, correlate changes
 
 [XX]: http://arxiv.org/abs/1806.00069
 [SHAP AND LIME]: https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304
-[^1]: This I think can be done also numerically, without actually calculating the derivative. See refs 20 and 21 in the paper for more detail.
-[^2]: Although some strategies do take non-linearity into account.
+[^1]: Although some strategies do take non-linearity into account.
+[^2]: This I think can be done also numerically, without actually calculating the derivative. See refs 20 and 21 in the paper for more detail.
