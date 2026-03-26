@@ -60,7 +60,6 @@ In the image below, note that _understandability_ replaces _simplicity_, and _co
     </p>
 </div>
 
-
 [XAI4MAT]: https://pubs.acs.org/doi/10.1021/accountsmr.1c00244
 [SHAP and LIME]: https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304
 [XX]: http://arxiv.org/abs/1806.00069

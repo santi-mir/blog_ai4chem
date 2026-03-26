@@ -2,7 +2,6 @@
 
 This post is about explainability for deep learning, focusing on some popular ones and their limitations or pitfalls.
 
-
 ## Extrinsic or Processing Methods
 
 Many extrinsic methods measure importance of input features determining the output. Two examples are SHAP and LIME. They look at the model as black-box.
@@ -58,7 +57,6 @@ Architectures designed to make explaining part of their operation easier.
 
 - Dissentangled Representations: "Disentangled representations have individual dimensions that describe meaningful and independent factors of variation." from [Explaining Explainability][XX], 2018. Examples of architectures are $\beta$-VAE, INFOGan, capsule networks.
 
-
 ## Intrinsic or Representation Methods
 
 <details><summary>Intrinsic Methods</summary>
@@ -78,7 +76,6 @@ Another way is to introduce biases like symmetry considerations which can help i
 </details>
 
 This is all regarding explainability for the moment!
-
 
 [XX]: http://arxiv.org/abs/1806.00069
 [SHAP AND LIME]: https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304
