@@ -27,6 +27,7 @@ _Explanation_ can be defined in an intuitive way. First, phrase what we want to 
 > However, some questions are clearly useful and not "Why" questions, for example: "What role does this neuron play?" In certain sense, any question regarding the "behaviour" or operation of the model is valid, and should admit an explanation as a response.
 
 ### Characteristics
+
 We can characterise explanations using:
 
 - _Simplicity_: how easy to understand the explanation is. (The opposite term, _complexity_, could be used as well.)
