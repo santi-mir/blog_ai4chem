@@ -10,6 +10,12 @@ On the right hand side, the distance of each $n$ dimensional vector $\mathbf{a}\
 
 The result, on the left hand side, is a reduced $d$-dimensional sample vector $x_d$.
 
+An important point is raised in the paper:
+
+> To avoid degeneracies arising from equidistant configurations, the reference points must span the structure of the dataset.
+
+Which means the reference vectors (centroids) should be able to reach any point in the original dataset, and not lose expressivity.
+
 The method has useful properties:
 
 1. Compared to a large vector, it is cheaper to use to train a model (and can still be accurate),
