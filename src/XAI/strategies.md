@@ -1,6 +1,6 @@
 # Explainable AI - Strategies
 
-This post is about explainability for deep learning, focusing on some popular ones and their limitations or pitfalls.
+This post is about explainability for deep learning, focusing on some popular methods and their limitations.
 
 ## Extrinsic or Processing Methods
 
@@ -8,9 +8,9 @@ Many extrinsic methods measure importance of input features determining the outp
 
 ### Shapley Additive Explanations (SHAP)
 
-SHAP applies to the model as-is. It calculates a score for each feature in the model, representing the contribution of that feature to the model's output.[^1]
+SHAP applies to the model as-is. SHAP _values_ measure the contribution of each feature to the model's output.[^1]
 
-SHAP can do both global (average across inputs) and local (an given input). It is model-dependent, so different models may yield different scores even using the exact same data and task.
+SHAP provides both global (average across inputs) and local (for a given input). It is model-dependent, so different models may yield different scores even using the exact same data and task.
 
 - **Pitfall 1**: The feature-contribution is not a weight or derivative with respect to the inputs. The main focus should be on the order of values (Paper, [Section 2.1][SHAP AND LIME]),
 - **Pitfall 2**: It is model dependent: two models trained with same data may have different ranking,
@@ -43,8 +43,10 @@ These two methods (MIP, NMR) can be useful both in having a reliable sorting of 
 
 ### LIME and other methods
 
-- Linear Proxy Models: Fits a surrogate linear model to the original. For example, Local Interpretable Model Agnostic Explanation (LIME) and Generalised Linear Models (GLMs).
-    - LIME does model-agnostic local explanations (for a given input) only. For this reason, it can not be considered an explanation of the whole model (but globals can).
+- Linear Proxy Models: Fits a surrogate linear model to the original. For example, Local Interpretable Model Agnostic Explanation (LIME) and Generalised Linear Models (GLMs). How is the fit _local_?
+    1. Given an input $\mathbf{x}$, element-wise binary masks $\mathbf{m}_i$ are applied to it, switching components on and off.
+    2. We run the model with original and masked $y=f(\mathbf{x})$.
+    3. We now have a table of $y$ values, masks $\mathbf{m}$ and linearly fit a surrogate model to those $y$ values.
 - Salience Maps: aim to explain which portions of the computation (original model) are most important for different inputs.
 - Validity Interval Analysis: another technique fitting the NN behaviour to try to extract explanations.
 - Principal Component Analysis, Independent Component Analysis, Non-negative Matrix Factorisation can all help as well. But in a way this is better done by architectures with disentangled representations.
@@ -79,6 +81,7 @@ This is all regarding explainability for the moment!
 
 [XX]: http://arxiv.org/abs/1806.00069
 [SHAP AND LIME]: https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304
+<!-- [SHAP values]: https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html -->
 
 [^1]: Score refers to the SHAP values / explainability score.
 [^2]: Although some strategies do take non-linearity into account.

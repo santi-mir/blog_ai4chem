@@ -14,8 +14,10 @@ These are some of my opinions and ideas after reading a few papers:
 
 Scientific models are expected to be explainable; that is, an expert human can respond to _why_ questions about it.
 
-And yet, deep learning models' operation remains opaque.
-So how can we explain deep-learning models? That is what this blog explores.
+A simple model, e.g. a linear model, is easy to understand.
+However, deep learning models are highly complex.
+How can we explain deep-learning models?
+That is what this blog explores.
 
 (Admittedly, in some cases we may be satisfied with the predictive power alone.)
 
