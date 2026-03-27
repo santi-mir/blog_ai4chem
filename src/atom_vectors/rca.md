@@ -16,5 +16,4 @@ The method has useful properties:
 2. Compared to other dimensionality reduction methods, it is easier to extend,
 3. With certain care, the dimensions may be interpretable.
 
-
 [RCA]:https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000944/v1
