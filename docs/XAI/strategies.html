@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-5bd9d13c.js";
+            window.path_to_searchindex_js = "../searchindex-730f0568.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-789f6850.js"></script>
@@ -183,12 +183,12 @@
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="explainable-ai---strategies"><a class="header" href="#explainable-ai---strategies">Explainable AI - Strategies</a></h1>
-<p>This post is about explainability for deep learning, focusing on some popular ones and their limitations or pitfalls.</p>
+<p>This post is about explainability for deep learning, focusing on some popular methods and their limitations.</p>
 <h2 id="extrinsic-or-processing-methods"><a class="header" href="#extrinsic-or-processing-methods">Extrinsic or Processing Methods</a></h2>
 <p>Many extrinsic methods measure importance of input features determining the output. Two examples are SHAP and LIME. They look at the model as black-box.</p>
 <h3 id="shapley-additive-explanations-shap"><a class="header" href="#shapley-additive-explanations-shap">Shapley Additive Explanations (SHAP)</a></h3>
-<p>SHAP applies to the model as-is. It calculates a score for each feature in the model, representing the contribution of that feature to the model's output.<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup></p>
-<p>SHAP can do both global (average across inputs) and local (an given input). It is model-dependent, so different models may yield different scores even using the exact same data and task.</p>
+<p>SHAP applies to the model as-is. SHAP <em>values</em> measure the contribution of each feature to the model's output.<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup></p>
+<p>SHAP provides both global (average across inputs) and local (for a given input). It is model-dependent, so different models may yield different scores even using the exact same data and task.</p>
 <ul>
 <li><strong>Pitfall 1</strong>: The feature-contribution is not a weight or derivative with respect to the inputs. The main focus should be on the order of values (Paper, <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">Section 2.1</a>),</li>
 <li><strong>Pitfall 2</strong>: It is model dependent: two models trained with same data may have different ranking,</li>
@@ -215,10 +215,12 @@
 <p>These two methods (MIP, NMR) can be useful both in having a reliable sorting of features, and on selecting one —most stable— of several methods.</p>
 <h3 id="lime-and-other-methods"><a class="header" href="#lime-and-other-methods">LIME and other methods</a></h3>
 <ul>
-<li>Linear Proxy Models: Fits a surrogate linear model to the original. For example, Local Interpretable Model Agnostic Explanation (LIME) and Generalised Linear Models (GLMs).
-<ul>
-<li>LIME does model-agnostic local explanations (for a given input) only. For this reason, it can not be considered an explanation of the whole model (but globals can).</li>
-</ul>
+<li>Linear Proxy Models: Fits a surrogate linear model to the original. For example, Local Interpretable Model Agnostic Explanation (LIME) and Generalised Linear Models (GLMs). How is the fit <em>local</em>?
+<ol>
+<li>Given an input <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4444em;"></span><span class="mord mathbf">x</span></span></span></span>, element-wise binary masks <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5944em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> are applied to it, switching components on and off.</li>
+<li>We run the model with original and masked <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathbf">x</span><span class="mclose">)</span></span></span></span>.</li>
+<li>We now have a table of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> values, masks <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4444em;"></span><span class="mord mathbf">m</span></span></span></span> and linearly fit a surrogate model to those <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> values.</li>
+</ol>
 </li>
 <li>Salience Maps: aim to explain which portions of the computation (original model) are most important for different inputs.</li>
 <li>Validity Interval Analysis: another technique fitting the NN behaviour to try to extract explanations.</li>
@@ -244,6 +246,7 @@
 <p>Another way is to introduce biases like symmetry considerations which can help interpretability.</p>
 </details>
 <p>This is all regarding explainability for the moment!</p>
+<!-- [SHAP values]: https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html -->
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-1">
