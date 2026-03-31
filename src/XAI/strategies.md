@@ -1,8 +1,6 @@
-# Explainable AI - Strategies
+# Explainable AI - Methods
 
-We want to explain the operation or "behaviour" of a model, such as a deep learning model.
-
-There are many classifications; instead, the post focuses on particular methods.
+We want to explain the operation or "behaviour" of a model, such as a deep learning model. There are many classifications; instead, the post focuses on particular methods.
 
 ## Linear Combination of Binary Features
 
@@ -60,20 +58,6 @@ Approximate the original model with a simpler, linear one. For example, Local In
 4. The coefficients $\phi_i$ are found minimising an objective function. This is similar to MSE objective function, minimised in standard linear regression in order to find the coefficients.
 
 "Local" in the name refers to being for a _particular input_, not "Global" which would be general.
-
-## Other Methods
-
-- Salience Maps: aim to explain which portions of the computation (original model) are most important for different inputs.
-- Validity Interval Analysis: another technique fitting the NN behaviour to try to extract explanations.
-- Principal Component Analysis, t-SNE, Dimensionality Reduction, Independent Component Analysis, Non-negative Matrix Factorisation can all help as well. But in a way this is better done by architectures with disentangled representations.
-
-## Architectures
-
-Architectures designed to make explaining part of their operation easier.
-
-- Using Explicit Attention: An attention layer/mask learns how parts of an input embedding pay attention to other parts. The layer is somewhat interpretable. In chemistry, it could learn which atoms connect (or pay attention to) other atoms.
-
-- Dissentangled Representations: "Disentangled representations have individual dimensions that describe meaningful and independent factors of variation." from [Explaining Explainability][XX], 2018. Examples of architectures are $\beta$-VAE, INFOGan, capsule networks.
 
 [XX]: http://arxiv.org/abs/1806.00069
 [using_shap_lime]: https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304

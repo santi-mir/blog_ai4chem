@@ -18,6 +18,7 @@
 
 - [Concepts](./XAI/concepts.md)
 - [Strategies](./XAI/strategies.md)
+- [Strategies II](./XAI/strategies_2.md)
 
 -----
 
