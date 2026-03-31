@@ -55,6 +55,7 @@ Approximate the original model with a simpler, linear one. For example, Local In
 3. We now have a table of $y$ values, masks $\mathbf{m}$ and linearly fit a surrogate model to those $y$ values.
 
 ### Other Methods
+
 - Salience Maps: aim to explain which portions of the computation (original model) are most important for different inputs.
 - Validity Interval Analysis: another technique fitting the NN behaviour to try to extract explanations.
 - Principal Component Analysis, Independent Component Analysis, Non-negative Matrix Factorisation can all help as well. But in a way this is better done by architectures with disentangled representations.

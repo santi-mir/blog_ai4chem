@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-730f0568.js";
+            window.path_to_searchindex_js = "../searchindex-821a9544.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-789f6850.js"></script>
@@ -192,24 +192,13 @@
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
 <hr>
 <h2 id="explanations"><a class="header" href="#explanations">Explanations</a></h2>
-<p>Scientific models are expected to be explainable; that is, an expert human can respond to <em>why</em> questions about it.</p>
-<p>A simple model, e.g. a linear model, is easy to understand.
-However, deep learning models are highly complex.
-How can we explain deep-learning models?
-That is what this blog explores.</p>
-<p>(Admittedly, in some cases we may be satisfied with the predictive power alone.)</p>
-<h3 id="definition"><a class="header" href="#definition">Definition</a></h3>
-<p><em>Explanation</em> can be defined in an intuitive way. First, phrase what we want to know as a "Why question", the answer is a candidate-explanation. Keep asking "Why" until satisfied. Call the process an explanation.</p>
-<blockquote class="blockquote-tag blockquote-tag-note">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>However, some questions are clearly useful and not "Why" questions, for example: "What role does this neuron play?" In certain sense, any question regarding the "behaviour" or operation of the model is valid, and should admit an explanation as a response.</p>
-</blockquote>
-<h3 id="characteristics"><a class="header" href="#characteristics">Characteristics</a></h3>
+<p>Scientific models are expected to be explainable; that is, to admit explanations of <em>why</em> they make certain prediction, <em>how</em> they operate, <em>what</em> the role of certain part of it is, and so on.</p>
+<p>So we refer to explanation as responses to questions about model "behaviour" or operation.</p>
 <p>We can characterise explanations using:</p>
 <ul>
-<li><em>Simplicity</em>: how easy to understand the explanation is. (The opposite term, <em>complexity</em>, could be used as well.)
+<li><strong>Simplicity</strong>: how easy to understand the explanation is. (The opposite term, <em>complexity</em>, could be used as well.)
 - This is correlated with how simple <em>the model itself</em> is.</li>
-<li><em>Completeness</em>: how accurately it describes the model's behaviour.</li>
+<li><strong>Completeness</strong>: how accurately it describes the model's behaviour.</li>
 </ul>
 <div class="w40 center">
 <a href="../assets/tradeoff.png">
@@ -221,7 +210,7 @@ That is what this blog explores.</p>
 
 <p>This trade-off isn't universal but just a common case, particularly in deep learning; some other models are straightforward, in which case both characteristics can be high.</p>
 <h3 id="predictive-power"><a class="header" href="#predictive-power">Predictive power</a></h3>
-<p>Predictive power is a characteristic of a model, not of an explanation of a model, but is often correlated to those: more predictive models tend to be more complex and the explanation tends to be more complex.</p>
+<p><strong>Predictive power</strong> is a characteristic of a model, not of an explanation of a model, but is often correlated to those: more predictive models tend to be more complex and the explanation tends to be more complex.</p>
 <p>The reason to include it here is that <em>predictive power</em> plays an important role deciding which model to use.</p>
 <p>In the image below, note that <em>understandability</em> replaces <em>simplicity</em>, and <em>correctness</em> replaces <em>predictive power</em>.</p>
 <div class="center w40"> <!--other classes: w220, w420-->
