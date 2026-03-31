@@ -13,7 +13,7 @@ These are some of my opinions and ideas after reading a few papers:
 
 ## Explanations
 
-For a system, explanations are responses to questions about its "behaviour" or operation.[^1]
+For a system, explanations are responses to questions about its "behaviour" or operation.
 
 Scientific models are expected to be explainable; that is, they admit explanations about:
 
@@ -26,7 +26,7 @@ We can characterise explanations using:
 - __Simplicity__: how easy to understand the explanation is. (The opposite term, _complexity_, could be used as well.)
         - This is correlated with how simple _the model itself_ is.
 - __Completeness__: how accurately it describes the model's behaviour.
-- __Level__ /  __Mereological__: High level or lower level; coarse grained or detailed; selection of parts and functions.
+- __Level__ / __Mereological__: High level or lower level; coarse grained or detailed; selection of parts and functions.
 - __Internal__ or __external__
 
 Not all will be examined, just some, in some depth.
@@ -56,7 +56,6 @@ In the image below, note that _understandability_ replaces _simplicity_, and _co
     Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
     </p>
 </div>
-
 
 <!-- ## Complex Systems View -->
 <!---->
@@ -90,7 +89,7 @@ In the image below, note that _understandability_ replaces _simplicity_, and _co
 <!---->
 <!-- However, there may be a critical difference which is DL systems may be used to make decisions in our behalf. But in this case, we can still push the analogy to another human making a decision. What would be require of the human? -->
 <!---->
-<!-- Where does this analogy hold, where does it break? One currently missing characteristic is for models to be **accountable**, and to be able to learn on the fly, when shown to be wrong. -->
+<!-- Where does this analogy hold, where does it break? One currently missing characteristic is for models to be __accountable__, and to be able to learn on the fly, when shown to be wrong. -->
 <!---->
 <!-- What is quite obvious from the start, is that we do not have access to the lower level model, such as the neurons or the processes within a cell (for a single celled organism). -->
 <!---->
@@ -102,4 +101,3 @@ In the image below, note that _understandability_ replaces _simplicity_, and _co
 [using_shap_lime]: https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304
 [XX]: http://arxiv.org/abs/1806.00069
 [SHAP values]: https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html
-

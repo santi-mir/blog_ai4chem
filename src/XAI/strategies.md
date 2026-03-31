@@ -14,7 +14,7 @@ This models form a _class_ in that all methods follow this formula:
 
 $$f(x) \approx g(z') = \phi_0 + \sum_{i=1} \phi_i z_i$$
 
-$g$ is a linear model fitting  $f$, the complex model. $\phi_i$ is the effect of each binary feature $z_i$ in the output.
+$g$ is a linear model fitting $f$, the complex model. $\phi_i$ is the effect of each binary feature $z_i$ in the output.
 
 Different methods in the class make different assumptions, and result in different contributions.
 
@@ -74,7 +74,6 @@ Architectures designed to make explaining part of their operation easier.
 - Using Explicit Attention: An attention layer/mask learns how parts of an input embedding pay attention to other parts. The layer is somewhat interpretable. In chemistry, it could learn which atoms connect (or pay attention to) other atoms.
 
 - Dissentangled Representations: "Disentangled representations have individual dimensions that describe meaningful and independent factors of variation." from [Explaining Explainability][XX], 2018. Examples of architectures are $\beta$-VAE, INFOGan, capsule networks.
-
 
 [XX]: http://arxiv.org/abs/1806.00069
 [using_shap_lime]: https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304

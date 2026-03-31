@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-821a9544.js";
+            window.path_to_searchindex_js = "../searchindex-7c000a93.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-789f6850.js"></script>
@@ -188,18 +188,27 @@
 <li><a href="http://arxiv.org/abs/1806.00069">Explaining Explanations: An Overview of Interpretability of Machine Learning</a> (2018),</li>
 <li><a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Interpretable and Explainable Machine Learning for Materials Science and Chemistry</a> (2022),</li>
 <li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">A Perspective on Explainable Artificial Intelligence Methods: SHAP and LIME</a> (2024).</li>
+<li><a href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">A Unified Approach to Interpreting Model Predictions</a> (2017).</li>
 </ol>
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
 <hr>
 <h2 id="explanations"><a class="header" href="#explanations">Explanations</a></h2>
-<p>Scientific models are expected to be explainable; that is, to admit explanations of <em>why</em> they make certain prediction, <em>how</em> they operate, <em>what</em> the role of certain part of it is, and so on.</p>
-<p>So we refer to explanation as responses to questions about model "behaviour" or operation.</p>
+<p>For a system, explanations are responses to questions about its "behaviour" or operation.[^1]</p>
+<p>Scientific models are expected to be explainable; that is, they admit explanations about:</p>
+<ul>
+<li><em>how</em> they operate,</li>
+<li><em>why</em> they make certain prediction,</li>
+<li><em>what</em> the role of certain part of it is, and so on.</li>
+</ul>
 <p>We can characterise explanations using:</p>
 <ul>
 <li><strong>Simplicity</strong>: how easy to understand the explanation is. (The opposite term, <em>complexity</em>, could be used as well.)
 - This is correlated with how simple <em>the model itself</em> is.</li>
 <li><strong>Completeness</strong>: how accurately it describes the model's behaviour.</li>
+<li><strong>Level</strong> /  <strong>Mereological</strong>: High level or lower level; coarse grained or detailed; selection of parts and functions.</li>
+<li><strong>Internal</strong> or <strong>external</strong></li>
 </ul>
+<p>Not all will be examined, just some, in some depth.</p>
 <div class="w40 center">
 <a href="../assets/tradeoff.png">
 <img alt="graph looking like completeness is the inverse of simplitity." src="../assets/tradeoff.png" />
@@ -224,6 +233,45 @@
 
 </div>
 
+<!-- ## Complex Systems View -->
+<!---->
+<!-- Think of complex objects such as: -->
+<!---->
+<!-- - a car, -->
+<!-- - a computer -->
+<!-- - the atmosphere, -->
+<!-- - a unicellular organism, -->
+<!-- - a brain, -->
+<!-- - a mammal -->
+<!---->
+<!-- There are many ways in which we study these things. They roughly correspond to scale and mereology, of parts and functions. We have associated techniques for to measuring and testing them at each level. -->
+<!-- Some levels map to disciplines like physical, chemical, biological, neurobiological; some are more informational some are emergent; some use analogies of metaphors. We also study them as entire systems, observing their external behaviour, interactions and response to stimuli. -->
+<!---->
+<!-- Now, play with the idea of studying a deep learning model in a variety of such ways. Can we extract any insight from analogies to those above? -->
+<!---->
+<!-- To make it a bit more concrete, let's say we have: -->
+<!---->
+<!-- 1. Intrinsic / Mereological Levels (neurons, layers,...) -->
+<!--     - The connection between parts and levels -->
+<!--     - Informational aspects, mathematical aspects -->
+<!--     - Parts and functions -->
+<!--     - How? Is there emergent behaviour? -->
+<!--     - Lower level, Higher level -->
+<!-- 2. Extrinsic / The system as a totality and its environment -->
+<!--     - Testing, -->
+<!--     - Fitting simpler models -->
+<!---->
+<!-- Besides we can think of questions. The questions XAI asks are: How does it make this or that decision? Which inputs were most important? Which questions do we ask elsewhere about such complex systems? How do you trust your dog, or your partner, or another human? -->
+<!---->
+<!-- However, there may be a critical difference which is DL systems may be used to make decisions in our behalf. But in this case, we can still push the analogy to another human making a decision. What would be require of the human? -->
+<!---->
+<!-- Where does this analogy hold, where does it break? One currently missing characteristic is for models to be **accountable**, and to be able to learn on the fly, when shown to be wrong. -->
+<!---->
+<!-- What is quite obvious from the start, is that we do not have access to the lower level model, such as the neurons or the processes within a cell (for a single celled organism). -->
+<!---->
+<!-- What we have are higher level theories of how they work, and we test them to that extent. A similar thing with other humans. -->
+<!---->
+<!-- In a way, we are then looking for higher-level theories that makes us trust the model. -->
 
                     </main>
 
