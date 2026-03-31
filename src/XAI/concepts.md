@@ -29,7 +29,7 @@ We can characterise explanations using:
 - __Level__ / __Mereological__: High level or lower level; coarse grained or detailed; selection of parts and functions.
 - __Internal__ or __external__
 
-Not all will be examined, just some, in some depth.
+<!-- Not all will be examined, just some, in some depth. -->
 
 <div class="w40 center">
 <a href="../assets/tradeoff.png">
@@ -40,9 +40,9 @@ Not all will be examined, just some, in some depth.
 
 This trade-off isn't universal but just a common case, particularly in deep learning; some other models are straightforward, in which case both characteristics can be high.
 
-### Predictive power
+## Predictive power
 
-__Predictive power__ is a characteristic of a model, not of an explanation of a model, but is often correlated to those: more predictive models tend to be more complex and the explanation tends to be more complex.
+__Predictive power__ is a characteristic of a _model_, not of an _explanation_ of a model. Yet it is correlated to the characteristics given earlier: more predictive models tend to be more complex making harder to explain them.
 
 The reason to include it here is that _predictive power_ plays an important role deciding which model to use.
 
@@ -56,6 +56,8 @@ In the image below, note that _understandability_ replaces _simplicity_, and _co
     Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
     </p>
 </div>
+
+Let's now look at some actual methods.
 
 <!-- ## Complex Systems View -->
 <!---->
