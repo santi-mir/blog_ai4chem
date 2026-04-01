@@ -17,11 +17,13 @@ A system is explainable if a scientist can provide answer questions about the sy
 
 In particular, scientific models are expected to be explainable.
 Examples of such questions are:
+
 - _how_ it operates,
 - _why_ it makes certain prediction,
 - _what_ the role of certain part of it is, and so on.
 
 ## Characteristics
+
 We can _characterise_ explanations using:
 
 - __Simplicity__: how easy to understand the explanation is. (The opposite term, _complexity_, could be used as well.)

@@ -13,6 +13,7 @@ $g$ is a linear model fitting $f$, the complex model. $\phi_i$ is the effect of 
 Different methods in the class make different assumptions, and result in different contributions ($\phi_i$).
 
 ### Pitfalls
+
 This class of methods all share pitfalls:
 
 - **Pitfall 1**: The weights are _not_ a derivative with respect to the model's inputs, but it _is_ a measure of the effect in the output,
@@ -20,6 +21,7 @@ This class of methods all share pitfalls:
 - **Pitfall 3**: Methods don't protect from a biased model.
 
 ### Limitations
+
 _Some_ models in the class do not capture _multicollinearity_ between features, nor _non-linear effects_ of the features to the output.
 
 **Collinearity**: one feature is a linear combination of one or more other features. For example, $x_3 = \beta_2 x_2 + \beta_1 x_1 + \beta_0$; assuming linear independence would be an error.
