@@ -22,7 +22,7 @@ Scientific models are expected to be explainable. Explanations are responses to 
 We can _characterise_ explanations using:
 
 - __Simplicity__: how easy to understand the explanation is. (The opposite term, _complexity_, could be used as well.)
-   - This is correlated with how simple _the model itself_ is.
+    - This is correlated with how simple _the model itself_ is.
 - __Completeness__: how accurately it describes the model's behaviour.
 - __Level__ / __Mereological__: High level or lower level; coarse grained or detailed; selection of parts and functions.
 - __Internal__ or __external__
