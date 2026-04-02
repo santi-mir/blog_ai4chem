@@ -12,8 +12,8 @@ $\phi_i$s are the effect of each _binary_ feature $z_i$ in the output. Clarifica
 
 Minor note: Linear Combination (of features) is easier for me to remember; but [the unified framework][unified_framework_lcobf] paper calls these Additive Feature Attribution Methods.
 
-
 ## Best coefficients?
+
 Existing linear combination methods (e.g. SHAP, LIME) calculate $\phi_i$s differently, in turn yielding different coefficients. But...which one obtains the _best_ coefficients $\phi_i$? A definition of _best_ is needed.
 
 The [Unified Framework][unified_framework_lcobf] proposes that models should have _local accuracy_, _missingness_, _consistency_. With these requirements, they show that Shapley values are the best coefficients. Other methods violate some of these 3 properties.
