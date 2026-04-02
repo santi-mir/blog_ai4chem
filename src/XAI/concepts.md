@@ -1,13 +1,14 @@
 # Explainable AI - Concepts
 
-There are many definitions of what explanations are in the context of explainable AI. For example:
+There are many definitions of what explanations are in the context of explainable AI, such as:
 
-> [!IMPORTANT]
-> Explanations are answers to questions about the model's "behaviour" or operation. Examples of such questions are: _how_ it operates, _why_ it makes certain prediction, _what_ the role of certain part of it is, and so on.
+> Explanations are _answers to questions about the model's predictions or operation_.
+>
+> _How_ does it operate? _Why_ does it makes certain prediction? _What_ is the role of certain neuron or layer?
 
-This is in contrast to black-box models where no explanations are given except the model itself, and accuracy metrics.
+In contrast to explainable models, black-box models share no insight about their operation or predictions.
 
-The kind of explanation will depend on the _audience_, _context_, _AI development stages_ an so forth; [for example][radiology]:
+The questions and the answers depend on the _audience_, the _context_ and so forth; [for example][radiology]:
 
 > (...) there are two competing broad definitions of interpretability. Machine learning specialists seek to understand the mechanisms underlying their models, but doctors and other end-users simply want "human-style" explanations; the same sort of explanations they currently receive from other humans.
 
@@ -15,11 +16,7 @@ They further say:
 
 > description is often post-hoc and may not accurately reflect the decision making process, it is the form of explanation that end-users currently expect and are satisfied with.
 
-In that case, the important step was to train an RNN to emit text for any decision. The output is then judged by a clinician or field-expert.
-
-Similarly, in synthetic chemistry, new candidates are vetted by expert chemists. Again, text can be a useful piece of information for the expert to work on, consider, evaluate.
-
-If there is no human in the loop, this approach isn't enough.
+Doctors preferred an RNN's **text outputs** &mdash;besides the saliency map&mdash; for any decision. The output was then evaluated by a clinician. Similarly, in synthetic chemistry, new candidates are vetted by expert chemists. Again, text can be a useful piece of information for the expert to work on, consider, evaluate. However, with no "human in the loop", this approach isn't enough.
 
 There are many dimensions to explanations, besides the _audience_:
 
@@ -66,18 +63,19 @@ In the image below, note that _understandability_ replaces _simplicity_, and _co
 
 Let's now look at some actual methods.
 
-## Sources
+--------------------
+
+Sources:
 
 1. [A Unified Approach to Interpreting Model Predictions][SHAP values] (2017),
 2. [Explaining Explanations: An Overview of Interpretability of Machine Learning][XX] (2018),
-3. [Producing radiologist-quality reports for interpretable artificial intelligence.][radiology] (2018),
+3. [Producing radiologist-quality reports for interpretable artificial intelligence][radiology] (2018),
 4. [Interpretable and Explainable Machine Learning for Materials Science and Chemistry][XAI4MAT] (2022),
 5. Blog Posts: [What is Explainable AI?][What is XAI] (2022) and from [IBM][XAI IBM],
 6. [A Perspective on Explainable Artificial Intelligence Methods: SHAP and LIME][using_shap_lime] (2024).
 
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
 
---------------------
 
 [XAI4MAT]: https://pubs.acs.org/doi/10.1021/accountsmr.1c00244
 [using_shap_lime]: https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304

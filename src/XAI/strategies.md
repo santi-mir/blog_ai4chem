@@ -1,24 +1,32 @@
-# Explainable AI - Methods
+# XAI - Linear Methods
 
-There are many classifications that could be laid out; instead, the post focuses on particular methods.
-
-## Linear Combination of Binary Features
-
-These models form a _class_ in that all methods follow this formula:
+Linear methods, including Shapley Values and LIME, result from linear approximations ($g$) to the original ($f$). Mathematically:
 
 $$f(x) \approx g(z') = \phi_0 + \sum_{i=1} \phi_i z_i$$
 
-$g$ is a linear model fitting $f$, the complex model. $\phi_i$ is the effect of each binary feature $z_i$ in the output.
+$\phi_i$ is the effect of each _binary_ feature $z_i$ in the output.
 
-Different methods in the class make different assumptions, and result in different contributions ($\phi_i$).
+>[!important]
+> The methods differ in how they estimate the coefficients $\phi_i$ &mdash;and their resulting coefficients are normally differ.
 
-### Pitfalls
+It should be noted that:
 
-1. $\phi_i$s are $g$'s contributions not $f$'s,
-2. Methods are model-dependent; two models trained with same data may have different ranking,
+1. $\phi_i$s are contributions of the linear approximation $g$,
+2. Two complex models $f_1, f_2$ trained with same data likely have different $\phi_i$s,
 3. Methods don't protect from a biased model.
 
-### Important Concepts
+## Best coefficients
+
+So which model gets the _best_ coefficients $\phi_i$? We need to define _best_.
+
+> [!important]
+> It can be shown Shapley values are unique/best solution for the coefficients of the linear combination requiring [3 desirable properties][unified_framework_lcobf] (local accuracy, missingness, consistency). Other methods violate some of the 3 properties.
+
+Bear in mind, this is _their definition_ of best.
+
+Technicalities aside, the authors argue these coefficients are more intuitive for humans.
+
+## Important Concepts
 
 **Multicollinearity**: one feature is a linear combination of one or more other features. For example, $x_3 = \beta_2 x_2 + \beta_1 x_1 + \beta_0$; assuming linear independence would be an error. In the [paper's words][using_shap_lime]:
 
@@ -34,29 +42,26 @@ In summary,
 
 Let's now look at popular methods of this kind, SHAP and LIME.
 
-### Shapley Additive Explanations (SHAP)
+## Shapley Additive Explanations (SHAP)
 
-Different models in the class calculate $\phi_i$s differently.
-The [SHAP method][shap original] (1953) calls the coefficients SHAP values.
+The Shapley values $\phi_i$ result from an expensive combinatorial ([A value for n-person games][shap original], 1952). Approximations to the exact formula can be made, with extra assumptions, which **may not hold!!**:
 
-But anyway, which model in the class is _best_? We need a definition of _best_.
-
-The paper proposing the [Unified Framework][unified_framework_lcobf] (the linear combination at the top) suggests 3 desirable properties for any methods. Young (1985) proved that SHAP has the 3 properties(is best); other methods violate some of the 3 properties. But again, according to _their definition_ of best.
-
-Exact Shapley values are expensive to calculate; approximations to the exact formula can be made, with extra assumptions, which **may not hold!!**:
-
-- Assumption 1: Feature independence (stronger than non-multicollinearity). Then we can use _Shapley Sampling Values_ method or _Quantitative Input Influence_;
-- Assumption 2: Model linearity.
+- Assumption 1: Feature independence (implies non-multicollinearity).
+    - Shapley sampling values method,
+    - _Quantitative Input Influence_,
+    - Plus assumption 2, model linearity: Kernel SHAP (LIME + Shapley values)
+- Assumption 2, model linearity: Shapley regression values.
 
 SHAP provides both global (average across inputs) and local (for a given input).
 
-### LIME
+## LIME
 
-Local Interpretable Model Agnostic Explanation (LIME) and Generalised Linear Models (GLMs) are both methods in the class, and exactly obey the [formula at the top][lcobf].[^1]
+Local Interpretable Model Agnostic Explanation (LIME) and Generalised Linear Models (GLMs).
 
-All methods in the class simply differ in _how_ the $\phi_i$ are calculated, and the assumptions they make.
+For LIME, the coefficients $\phi_i$ are found minimising an objective function. The coefficients resulting from the optimisation do not necessarily obey the 3 desired properties listed earlier.
 
-For LIME, the coefficients $\phi_i$ are found minimising an objective function. The process is similar to MSE objective function, minimised in standard linear regression in order to find the coefficients.
+Assuming feature independence and model linearity, the objective function can be modified and the SHAP values obtained through weighted linear regression (no slow combinatorics). This is called **Kernel SHAP**, and obeys the 3 properties listed earlier.
+
 
 ## Fixes
 
@@ -66,9 +71,12 @@ For LIME, the coefficients $\phi_i$ are found minimising an objective function. 
 
 These two methods (MIP, NMR) can be useful both in having a reliable sorting of features, and on selecting one &mdash;most stable&mdash; of several methods.
 
-[shap original]: https://sites.math.rutgers.edu/~zeilberg/EM22/Shapley1952.pdf
 [using_shap_lime]: https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304
 [unified_framework_lcobf]: https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html
 [lcobf]: #linear-combination-of-binary-features
 
 [^1]: _Local_ in the name refers to being for a _particular input_, not _Global_ which would be general.
+
+
+[shap original]: https://sites.math.rutgers.edu/~zeilberg/EM22/Shapley1952.pdf
+
