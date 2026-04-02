@@ -9,6 +9,7 @@
 - [Introduction](./atom_vectors/intro.md)
 - [Atom2Vec](./atom_vectors/atom2vec.md)
 - [SkipAtom](./atom_vectors/skipatom.md)
+- [RCA](./atom_vectors/rca.md)
 - [Results](./atom_vectors/results.md)
 
 -----
@@ -16,7 +17,8 @@
 # Explainable AI
 
 - [Concepts](./XAI/concepts.md)
-- [Strategies](./XAI/strategies.md)
+- [Linear Methods](./XAI/strategies.md)
+- [Visuals and Arch](./XAI/strategies_2.md)
 
 -----
 

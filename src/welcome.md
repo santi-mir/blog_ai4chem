@@ -8,9 +8,7 @@ Clicking on the top-left hamburger icon <img style="display:inline; width:36px" 
 
 ## License
 
-The content here is under [CC BY 4.0] with exception of paper quotes which use whichever license they provided.
-
-All paper quotes with references had the references removed (it's too much work to link them all); if they are otherwise modified this is stated in the text.
+The prose is all under [CC BY 4.0], external content is linked and if I find the license it is explicitly stated (in image captions, for example).
 
 ## Tools Used
 

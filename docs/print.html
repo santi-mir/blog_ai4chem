@@ -37,10 +37,10 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-95c510ba.js";
+            window.path_to_searchindex_js = "searchindex-107e084a.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-713fc51a.js"></script>
+        <script src="toc-7c8355c2.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -185,8 +185,7 @@
 <h2 id="organisation"><a class="header" href="#organisation">Organisation</a></h2>
 <p>Clicking on the top-left hamburger icon <img style="display:inline; width:36px" src="assets/hamburger.svg" /> you can toggle the table of contents.</p>
 <h2 id="license"><a class="header" href="#license">License</a></h2>
-<p>The content here is under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> with exception of paper quotes which use whichever license they provided.</p>
-<p>All paper quotes with references had the references removed (it's too much work to link them all); if they are otherwise modified this is stated in the text.</p>
+<p>The prose is all under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, external content is linked and if I find the license it is explicitly stated (in image captions, for example).</p>
 <h2 id="tools-used"><a class="header" href="#tools-used">Tools Used</a></h2>
 <ul>
 <li><a href="https://github.com/rust-lang/mdBook"><code>mdbook</code></a>.</li>
@@ -383,6 +382,24 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <p>They conclude that these methods are most useful when no structural info is available.</p>
 <p>However, there isn't a simple answer to which representation is best, it depends in the task. This is discussed in more detailed in <a href="#comparison">Results</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="reference-based-coordinate-assignment"><a class="header" href="#reference-based-coordinate-assignment">Reference-based Coordinate Assignment</a></h1>
+<p><a href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000944/v1">RCA</a> is a dimensionality reduction method. Importantly, this implies we already have some representation available, which we may want to reduce.</p>
+<p>The main idea could be conceptually represented as:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5944em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">an</span><span class="mord mathnormal">ce</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>On the right hand side, the distance of each <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> dimensional vector <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathbf">a</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"></span><span class="mord mathbf">d</span></span></span></span> to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is calculated. Each of these vectors is a centroid calculated from a cluster of embeddings.</p>
+<p>The result, on the left hand side, is a reduced <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>-dimensional sample vector <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</p>
+<p>An important point is raised in the paper:</p>
+<blockquote>
+<p>To avoid degeneracies arising from equidistant configurations, the reference points must span the structure of the dataset.</p>
+</blockquote>
+<p>Which means the reference vectors (centroids) should be able to reach any point in the original dataset, and not lose expressivity.</p>
+<p>The method has useful properties:</p>
+<ol>
+<li>Compared to a large vector, it is cheaper to use to train a model (and can still be accurate),</li>
+<li>Compared to other dimensionality reduction methods, it is easier to extend,</li>
+<li>With certain care, the dimensions may be interpretable.</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="comparison"><a class="header" href="#comparison">Comparison</a></h1>
 <p>SkipVec and Atom2Vec were previously discussed.</p>
 <p>The paper <a href="https://link.springer.com/article/10.1007/s40192-020-00179-z">Is domain knowledge necessary for machine learning materials properties?</a> compared descriptors (same as vector representations) generated in different ways for downstream tasks.</p>
@@ -422,31 +439,42 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <p>It is computationally cheap, and can help screen large number of compounds as a first selection step.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="explainable-ai---concepts"><a class="header" href="#explainable-ai---concepts">Explainable AI - Concepts</a></h1>
-<p>These are some of my opinions and ideas after reading a few papers:</p>
-<ol>
-<li><a href="http://arxiv.org/abs/1806.00069">Explaining Explanations: An Overview of Interpretability of Machine Learning</a> (2018),</li>
-<li><a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Interpretable and Explainable Machine Learning for Materials Science and Chemistry</a> (2022),</li>
-<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">A Perspective on Explainable Artificial Intelligence Methods: SHAP and LIME</a> (2024).</li>
-</ol>
-<!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
-<hr>
-<h2 id="explanations"><a class="header" href="#explanations">Explanations</a></h2>
-<p>Scientific models are expected to be explainable; that is, an expert human can respond to <em>why</em> questions about it.</p>
-<p>And yet, deep learning models' operation remains opaque.
-So how can we explain deep-learning models? That is what this blog explores.</p>
-<p>(Admittedly, in some cases we may be satisfied with the predictive power alone.)</p>
-<h3 id="definition"><a class="header" href="#definition">Definition</a></h3>
-<p><em>Explanation</em> can be defined in an intuitive way. First, phrase what we want to know as a "Why question", the answer is a candidate-explanation. Keep asking "Why" until satisfied. Call the process an explanation.</p>
-<blockquote class="blockquote-tag blockquote-tag-note">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>However, some questions are clearly useful and not "Why" questions, for example: "What role does this neuron play?" In certain sense, any question regarding the "behaviour" or operation of the model is valid, and should admit an explanation as a response.</p>
+<p>There are many definitions of what explanations are in the context of explainable AI, such as:</p>
+<blockquote>
+<p>Explanations are <em>answers to questions about the model's predictions or operation</em>.</p>
+<p><em>How</em> does it operate? <em>Why</em> does it makes certain prediction? <em>What</em> is the role of certain neuron or layer?</p>
 </blockquote>
-<h3 id="characteristics"><a class="header" href="#characteristics">Characteristics</a></h3>
-<p>We can characterise explanations using:</p>
+<p>In contrast to explainable models, black-box models share no insight about their operation or predictions.</p>
+<h2 id="multiple-dimensions"><a class="header" href="#multiple-dimensions">Multiple Dimensions</a></h2>
+<p>The questions and the answers depend on the <em>audience</em>, the <em>context</em> and other dimensions.</p>
+<p>One paper on <a href="https://arxiv.org/abs/1806.00340">XAI for radiology</a> found that doctors preferred <strong>text outputs</strong> + <strong>saliency maps</strong> to aid their decisions (in a sense, emulating doctor-to-doctor communication). The output was then evaluated by a clinician.</p>
+<p>Similarly, in synthetic chemistry, new candidates are vetted by expert chemists. Again, text can be a useful piece of information for the expert to work on, consider, evaluate. However, with no "human in the loop", this approach isn't enough.</p>
+<p>The list of explanation dimensions may be infinite. A few are:</p>
 <ul>
-<li><em>Simplicity</em>: how easy to understand the explanation is. (The opposite term, <em>complexity</em>, could be used as well.)
-- This is correlated with how simple <em>the model itself</em> is.</li>
-<li><em>Completeness</em>: how accurately it describes the model's behaviour.</li>
+<li>Intend, Purpose, Stakes: such as transparency, trust, ethical reasons. Healthcare, finance, energy, military, general agentic-systems and automated decision-making.
+<ul>
+<li>Yet in other scenarios, explainability may not matter —but only the model's output, which a human expert could evaluate.</li>
+</ul>
+</li>
+<li>User Type / Audiences: Each audience has goals, risks, and preferences. Scientists, ML practitioners, developers, non-experts.</li>
+<li>Stages: pre-modelling, modelling, post-modelling.</li>
+<li>Kind: Visual, Textual, Formal. More below.</li>
+</ul>
+<p>Yet another dimension related to the explanation kind and its complexity is recalled in <a href="https://www.sciencedirect.com/science/article/pii/S0740624X21001027">The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making</a>:</p>
+<blockquote>
+<p>Belle and Papantonis (2021) provide four suggestions for creating explainability, including explanation by simplification, describing the contribution of each feature to the decisions, explaining an instance instead of in general, and using graphical visualization methods for explanations. At the same time, they also discuss the complexity of realizing such suggestions. Simplifications might not be correct, features can be interrelated, local explanations can fail to provide the complete picture, and graphical visualization requires assumptions about data that might not necessarily be true.</p>
+</blockquote>
+<h3 id="disentangling-dimensions"><a class="header" href="#disentangling-dimensions">Disentangling Dimensions</a></h3>
+<p>We can consider characteristics of explanations independent of the audience and context:</p>
+<ul>
+<li><strong>Simplicity</strong>: how easy to understand the explanation is. (The opposite term, <em>complexity</em>, could be used as well.)
+<ul>
+<li>This is correlated with how simple <em>the model itself</em> is.</li>
+</ul>
+</li>
+<li><strong>Completeness</strong>: how accurately it describes the model's behaviour.</li>
+<li><strong>Level</strong> / <strong>Mereological</strong>: High level or lower level; coarse grained or detailed; selection of parts and functions.</li>
+<li><strong>Internal</strong> or <strong>external</strong></li>
 </ul>
 <div class="w40 center">
 <a href="assets/tradeoff.png">
@@ -457,8 +485,8 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 </div>
 
 <p>This trade-off isn't universal but just a common case, particularly in deep learning; some other models are straightforward, in which case both characteristics can be high.</p>
-<h3 id="predictive-power"><a class="header" href="#predictive-power">Predictive power</a></h3>
-<p>Predictive power is a characteristic of a model, not of an explanation of a model, but is often correlated to those: more predictive models tend to be more complex and the explanation tends to be more complex.</p>
+<h2 id="predictive-power"><a class="header" href="#predictive-power">Predictive power</a></h2>
+<p><strong>Predictive power</strong> is a characteristic of a <em>model</em>, not of an <em>explanation</em> of a model. Yet, it is correlated to the characteristics given earlier: more predictive models tend to be more complex making harder to explain them.</p>
 <p>The reason to include it here is that <em>predictive power</em> plays an important role deciding which model to use.</p>
 <p>In the image below, note that <em>understandability</em> replaces <em>simplicity</em>, and <em>correctness</em> replaces <em>predictive power</em>.</p>
 <div class="center w40"> <!--other classes: w220, w420-->
@@ -472,78 +500,112 @@ So how can we explain deep-learning models? That is what this blog explores.</p>
 
 </div>
 
+<p>Let's now look at some actual methods.</p>
+<hr>
+<p>Sources:</p>
+<ol>
+<li><a href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">A Unified Approach to Interpreting Model Predictions</a> (2017),</li>
+<li><a href="http://arxiv.org/abs/1806.00069">Explaining Explanations: An Overview of Interpretability of Machine Learning</a> (2018),</li>
+<li>[Producing radiologist-quality reports for interpretable artificial intelligence][radiology] (2018),</li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0740624X21001027">The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making</a> (2021) this paper is a particularly short and amenable introduction;</li>
+<li><a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Interpretable and Explainable Machine Learning for Materials Science and Chemistry</a> (2022),</li>
+<li>Blog Posts: <a href="https://www.sei.cmu.edu/blog/what-is-explainable-ai/">What is Explainable AI?</a> (2022) and from <a href="https://www.sei.cmu.edu/blog/what-is-explainable-ai/">IBM</a>,</li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">A Perspective on Explainable Artificial Intelligence Methods: SHAP and LIME</a> (2024).</li>
+</ol>
+<!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
+<!-- [XAI for whom]: http://arxiv.org/abs/2106.05568 -->
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="explainable-ai---strategies"><a class="header" href="#explainable-ai---strategies">Explainable AI - Strategies</a></h1>
-<p>This post is about explainability for deep learning, focusing on some popular ones and their limitations or pitfalls.</p>
-<h2 id="extrinsic-or-processing-methods"><a class="header" href="#extrinsic-or-processing-methods">Extrinsic or Processing Methods</a></h2>
-<p>Many extrinsic methods measure importance of input features determining the output. Two examples are SHAP and LIME. They look at the model as black-box.</p>
-<h3 id="shapley-additive-explanations-shap"><a class="header" href="#shapley-additive-explanations-shap">Shapley Additive Explanations (SHAP)</a></h3>
-<p>SHAP applies to the model as-is. It calculates a score for each feature in the model, representing the contribution of that feature to the model's output.<sup class="footnote-reference" id="fr-1-1-2"><a href="#footnote-1-2">1</a></sup></p>
-<p>SHAP can do both global (average across inputs) and local (an given input). It is model-dependent, so different models may yield different scores even using the exact same data and task.</p>
+<h1 id="linear-combination-of-features"><a class="header" href="#linear-combination-of-features">Linear Combination of Features</a></h1>
+<p>An important set of methods are linear approximations (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span>) to the original (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>). Mathematically:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0519em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8019em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.3277em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>s are the effect of each <em>binary</em> feature <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> in the output. Clarifications:</p>
+<ol>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>s do not belong to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>, but to the approximation <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span>,</li>
+<li>Two complex models <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> trained with same data likely have different <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>s,</li>
+<li>Methods don't protect from a biased model.</li>
+</ol>
+<p>Minor note: Linear Combination (of features) is easier for me to remember; but <a href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">the unified framework</a> paper calls these Additive Feature Attribution Methods.</p>
+<h2 id="best-coefficients"><a class="header" href="#best-coefficients">Best coefficients?</a></h2>
+<p>Existing linear combination methods (e.g. SHAP, LIME) calculate <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>s differently, in turn yielding different coefficients. But...which one obtains the <em>best</em> coefficients <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>? A definition of <em>best</em> is needed.</p>
+<p>The <a href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">Unified Framework</a> proposes that models should have <em>local accuracy</em>, <em>missingness</em>, <em>consistency</em>. With these requirements, they show that Shapley values are the best coefficients. Other methods violate some of these 3 properties.</p>
+<p>Technicalities aside, the authors argue these coefficients are more intuitive for humans.</p>
+<h2 id="method-shap"><a class="header" href="#method-shap">Method: SHAP</a></h2>
+<p>SHAP stands for SHapley Additive exPlanations.</p>
+<p>The exact Shapley values <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> result from an expensive combinatorial (<a href="https://sites.math.rutgers.edu/~zeilberg/EM22/Shapley1952.pdf">A value for n-person games</a>, 1952). Approximations to the exact formula can be made, with extra assumptions, which <strong>may not hold!!</strong>:</p>
 <ul>
-<li><strong>Pitfall 1</strong>: The feature-contribution is not a weight or derivative with respect to the inputs. The main focus should be on the order of values (Paper, <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">Section 2.1</a>),</li>
-<li><strong>Pitfall 2</strong>: It is model dependent: two models trained with same data may have different ranking,</li>
-<li><strong>Pitfall 3</strong>: does not protect from a biased model.</li>
+<li>Assumption 1: Feature independence (implies non-multicollinearity).
+<ul>
+<li>Shapley sampling values method,</li>
+<li><em>Quantitative Input Influence</em>,</li>
+<li>Plus assumption 2, model linearity: Kernel SHAP (LIME + Shapley values)</li>
 </ul>
-<h3 id="limitations"><a class="header" href="#limitations">Limitations</a></h3>
-<p>In the most basic form, both SHAP and LIME methods do not capture multicollinearity between features, and non-linear effects of the features in the output.<sup class="footnote-reference" id="fr-2-1"><a href="#footnote-2">2</a></sup> They are also model dependent.</p>
-<p>Let's describe these effects.</p>
-<p><strong>Collinearity</strong>: one feature is a linear combination of one or more other features. For example, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>; assuming linear independence would be an error.</p>
-<p>In the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">paper's words</a>:</p>
+</li>
+<li>Assumption 2, model linearity: Shapley regression values.</li>
+</ul>
+<p>SHAP provides both global (average across inputs) and local (for a given input).</p>
+<h2 id="method-lime"><a class="header" href="#method-lime">Method: LIME</a></h2>
+<p>Local Interpretable Model Agnostic Explanation (LIME) and Generalised Linear Models (GLMs).<sup class="footnote-reference" id="fr-1-1-2"><a href="#footnote-1-2">1</a></sup></p>
+<p>For LIME, the coefficients <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> are found minimising an objective function. The coefficients resulting from the optimisation do not necessarily obey the 3 desired properties listed earlier.</p>
+<p>Assuming feature independence and model linearity, the objective function can be modified and the SHAP values obtained through weighted linear regression (no slow combinatorics). This is called <strong>Kernel SHAP</strong>, and obeys the 3 properties listed earlier.</p>
+<h2 id="fixes"><a class="header" href="#fixes">Fixes</a></h2>
+<ul>
+<li>Normalised Moving Rate (NMR): tests the stability of the list against the collinearity. Smaller NMR means more stable ordering.</li>
+<li>Modified Index Position, in the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">paper's words</a>:
+<blockquote>
+<p>[MIP] works similarly to NMR by iteratively removing the top feature and retraining and testing the model. Thereafter, it examines how the features are reordered in the model which implies the effect of collinearity.</p>
+</blockquote>
+</li>
+</ul>
+<p>These two methods (MIP, NMR) can be useful both in having a reliable sorting of features, and on selecting one —most stable— of several methods.</p>
+<h2 id="definition-of-a-few-concepts"><a class="header" href="#definition-of-a-few-concepts">Definition of a few concepts</a></h2>
+<details><summary>Aside: Collinearity and Non-linearity</summary>
+<p><strong>Multicollinearity</strong>: one feature is a linear combination of one or more other features. For example, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>; assuming linear independence would be an error. In the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">paper's words</a>:</p>
 <blockquote>
 <p>Indeed, some features might be assigned a low score despite being significantly associated with the outcome. This is because they do not improve the model performance due to their collinearity with other features whose impact has already been accounted for.</p>
 </blockquote>
 <p><strong>Non-linearity</strong>: output changes are not proportional to input changes. For example <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0358em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span></span></span></span> is non-linear, and fitting a line <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9463em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">αx</span></span></span></span> to it would be inaccurate. Some SHAP models can model this correctly.</p>
-<p>Luckily, we can get some help:</p>
-<ul>
-<li>Normalised Moving Rate (NMR): tests the stability of the list against the collinearity. Smaller NMR means more stable ordering.</li>
-<li>Modified Index Position (MIP) can be used to address just that, and re-order the importance of features considering their multicollinearity.</li>
-</ul>
-<p>In the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">paper's words</a>:</p>
-<blockquote>
-<p>[MIP] works similarly to NMR by iteratively removing the top feature and retraining and testing the model. Thereafter, it examines how the features are reordered in the model which implies the effect of collinearity.</p>
-</blockquote>
-<p>These two methods (MIP, NMR) can be useful both in having a reliable sorting of features, and on selecting one —most stable— of several methods.</p>
-<h3 id="lime-and-other-methods"><a class="header" href="#lime-and-other-methods">LIME and other methods</a></h3>
-<ul>
-<li>Linear Proxy Models: Fits a surrogate linear model to the original. For example, Local Interpretable Model Agnostic Explanation (LIME) and Generalised Linear Models (GLMs).
-<ul>
-<li>LIME does model-agnostic local explanations (for a given input) only. For this reason, it can not be considered an explanation of the whole model (but globals can).</li>
-</ul>
+</details>
+<p>Let's now look at other methods.</p>
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-1-2">
+<p><em>Local</em> in the name refers to being for a <em>particular input</em>, not <em>Global</em> which would be general. <a href="#fr-1-1-2">↩</a></p>
 </li>
-<li>Salience Maps: aim to explain which portions of the computation (original model) are most important for different inputs.</li>
-<li>Validity Interval Analysis: another technique fitting the NN behaviour to try to extract explanations.</li>
-<li>Principal Component Analysis, Independent Component Analysis, Non-negative Matrix Factorisation can all help as well. But in a way this is better done by architectures with disentangled representations.</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="explainable-ai---methods-ii"><a class="header" href="#explainable-ai---methods-ii">Explainable AI - Methods II</a></h1>
+<h2 id="other-explainability-methods"><a class="header" href="#other-explainability-methods">Other Explainability Methods</a></h2>
+<ul>
+<li>
+<p><strong>Saliency Maps</strong>: visually show which features are most important in a particular prediction. They can be generated for 1D, 2D and ND inputs. For example, here is for radiology:</p>
+  
+<div class="center w60">
+      <a href="assets/saliency_map_plus_rnn_text.png">
+      <img src="assets/saliency_map_plus_rnn_text.png" alt="Image with saliency map overlay" />
+      </a>
+      
+<p><strong>Left-most</strong>: input image; <strong>next</strong>: input + saliency map; <strong>right-most</strong>: doctor's annotation (top) and RNN-model generated annotation (bottom). Image taken from <a href="https://arxiv.org/abs/1806.00340">paper</a>.</p>
+
+  </div>
+
+</li>
+<li>
+<p><strong>Validity Interval Analysis</strong>: another technique fitting the NN behaviour to try to extract explanations.</p>
+</li>
+<li>
+<p><strong>Dimensionality Reduction</strong>: Principal Component Analysis, t-SNE, Dimensionality Reduction, Independent Component Analysis, Non-negative Matrix Factorisation can all help as well.</p>
+</li>
 </ul>
-<h2 id="explanation-producing-systems"><a class="header" href="#explanation-producing-systems">Explanation-Producing systems</a></h2>
+<h2 id="explanation-producing-architectures"><a class="header" href="#explanation-producing-architectures">Explanation-producing Architectures</a></h2>
 <p>Architectures designed to make explaining part of their operation easier.</p>
 <ul>
 <li>
 <p>Using Explicit Attention: An attention layer/mask learns how parts of an input embedding pay attention to other parts. The layer is somewhat interpretable. In chemistry, it could learn which atoms connect (or pay attention to) other atoms.</p>
 </li>
 <li>
-<p>Dissentangled Representations: "Disentangled representations have individual dimensions that describe meaningful and independent factors of variation." from <a href="http://arxiv.org/abs/1806.00069">Explaining Explainability</a>, 2018. Examples of architectures are <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span>-VAE, INFOGan, capsule networks.</p>
+<p>Dissentangled Representations: <q>Disentangled representations have individual dimensions that describe meaningful and independent factors of variation.</q> —<a href="http://arxiv.org/abs/1806.00069">Explaining Explainability</a> (2018). Examples of architectures are <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span>-VAE, INFOGan, capsule networks.</p>
 </li>
 </ul>
-<h2 id="intrinsic-or-representation-methods"><a class="header" href="#intrinsic-or-representation-methods">Intrinsic or Representation Methods</a></h2>
-<details><summary>Intrinsic Methods</summary>
-<p>Interpreting the model from the inside (intrinsic), with questions such as <em>what information does the network contain?</em>.</p>
-<p><a href="http://arxiv.org/abs/1806.00069">Explaining explainability</a> classifies these at the level of Layer, Neuron, and Vector.</p>
-<p><strong>Role of Layers</strong>: for example, transfer learning, reusing output of some layers for another task.</p>
-<p><strong>Role of Units</strong>: <q>The role of such individual units can be understood qualitatively, by creating visualizations of the input patterns that maximize the response of a single unit, or quantitatively, by testing the ability of a unit to solve a transfer problem.</q> from <a href="http://arxiv.org/abs/1806.00069">Explaining Explainability</a>, 2018.</p>
-<p><strong>Role of Vectors</strong>: for example using Concept Activation Vectors framework.</p>
-<p>Another way is to introduce biases like symmetry considerations which can help interpretability.</p>
-</details>
-<p>This is all regarding explainability for the moment!</p>
-<hr>
-<ol class="footnote-definition">
-<li id="footnote-1-2">
-<p>Score refers to the SHAP values / explainability score. <a href="#fr-1-1-2">↩</a></p>
-</li>
-<li id="footnote-2">
-<p>Although some strategies do take non-linearity into account. <a href="#fr-2-1">↩</a></p>
-</li>
-</ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="discovering-inorganic-solids"><a class="header" href="#discovering-inorganic-solids">Discovering Inorganic Solids</a></h1>
 <p>These are some of my opinions and ideas after reading two papers by Rosseinsky group:</p>
@@ -920,6 +982,8 @@ A --&gt; Direct
 <ul>
 <li>Splits for datasets, validation / testing.</li>
 <li>Balancing datasets.</li>
+<li>Evaluation metrics, loss functions,</li>
+<li>ROC classification performance metric</li>
 </ul>
 <h2 id="ideas"><a class="header" href="#ideas">Ideas</a></h2>
 <ul>
