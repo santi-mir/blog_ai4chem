@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-107e084a.js";
+            window.path_to_searchindex_js = "../searchindex-e79fab09.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-7c8355c2.js"></script>
@@ -185,51 +185,47 @@
 <h1 id="explainable-ai---concepts"><a class="header" href="#explainable-ai---concepts">Explainable AI - Concepts</a></h1>
 <p>There are many definitions of what explanations are in the context of explainable AI, such as:</p>
 <blockquote>
-<p>Explanations are <em>answers to questions about the model's predictions or operation</em>.</p>
+<p>Explainable AI aims to <em>describe a model's predictions or operation</em>.</p>
 <p><em>How</em> does it operate? <em>Why</em> does it makes certain prediction? <em>What</em> is the role of certain neuron or layer?</p>
 </blockquote>
-<p>In contrast to explainable models, black-box models share no insight about their operation or predictions.</p>
+<p>In contrast to explainable models, black-box or opaque models hardly explainable.</p>
 <h2 id="multiple-dimensions"><a class="header" href="#multiple-dimensions">Multiple Dimensions</a></h2>
-<p>The questions and the answers depend on the <em>audience</em>, the <em>context</em> and other dimensions.</p>
 <p>One paper on <a href="https://arxiv.org/abs/1806.00340">XAI for radiology</a> found that doctors preferred <strong>text outputs</strong> + <strong>saliency maps</strong> to aid their decisions (in a sense, emulating doctor-to-doctor communication). The output was then evaluated by a clinician.</p>
 <p>Similarly, in synthetic chemistry, new candidates are vetted by expert chemists. Again, text can be a useful piece of information for the expert to work on, consider, evaluate. However, with no "human in the loop", this approach isn't enough.</p>
-<p>The list of explanation dimensions may be infinite. A few are:</p>
-<ul>
-<li>Intend, Purpose, Stakes: such as transparency, trust, ethical reasons. Healthcare, finance, energy, military, general agentic-systems and automated decision-making.
-<ul>
-<li>Yet in other scenarios, explainability may not matter —but only the model's output, which a human expert could evaluate.</li>
-</ul>
-</li>
-<li>User Type / Audiences: Each audience has goals, risks, and preferences. Scientists, ML practitioners, developers, non-experts.</li>
-<li>Stages: pre-modelling, modelling, post-modelling.</li>
-<li>Kind: Visual, Textual, Formal. More below.</li>
-</ul>
-<p>Yet another dimension related to the explanation kind and its complexity is recalled in <a href="https://www.sciencedirect.com/science/article/pii/S0740624X21001027">The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making</a>:</p>
+<p>Relevant dimensions for explaining AI are both social and technical, and these are intertwined. Public organisations use AI in automated decision-making, to increase efficiency and effectiveness. But, as stated in <a href="https://www.sciencedirect.com/science/article/pii/S0740624X21001027">The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making</a>:</p>
 <blockquote>
-<p>Belle and Papantonis (2021) provide four suggestions for creating explainability, including explanation by simplification, describing the contribution of each feature to the decisions, explaining an instance instead of in general, and using graphical visualization methods for explanations. At the same time, they also discuss the complexity of realizing such suggestions. Simplifications might not be correct, features can be interrelated, local explanations can fail to provide the complete picture, and graphical visualization requires assumptions about data that might not necessarily be true.</p>
+<p>But also other public values like accountability, transparency, equality, privacy and security, sustainability, and interoperability should be given attention when designing AI for public use</p>
+</blockquote>
+<p>They also recall an explanation "accuracy vs simplicity" trade-off:</p>
+<blockquote>
+<p>Belle and Papantonis (2021) (...) also discuss the complexity of realizing such suggestions. Simplifications might not be correct, features can be interrelated, local explanations can fail to provide the complete picture, and graphical visualization requires assumptions about data that might not necessarily be true.</p>
 </blockquote>
 <h3 id="disentangling-dimensions"><a class="header" href="#disentangling-dimensions">Disentangling Dimensions</a></h3>
-<p>We can consider characteristics of explanations independent of the audience and context:</p>
+<p>We can focus on <em>some</em> aspects of explanations (not of the model):</p>
 <ul>
-<li><strong>Simplicity</strong>: how easy to understand the explanation is. (The opposite term, <em>complexity</em>, could be used as well.)
+<li><strong>Simplicity</strong>: how easy to understand the explanation is.
 <ul>
-<li>This is correlated with how simple <em>the model itself</em> is.</li>
+<li>How much expertise does a human needed to understand it?</li>
+<li>This is also correlated with how simple <em>the model itself</em> is.</li>
 </ul>
 </li>
-<li><strong>Completeness</strong>: how accurately it describes the model's behaviour.</li>
-<li><strong>Level</strong> / <strong>Mereological</strong>: High level or lower level; coarse grained or detailed; selection of parts and functions.</li>
-<li><strong>Internal</strong> or <strong>external</strong></li>
+<li><strong>Accuracy</strong>: how accurately it describes the model's behaviour.
+<ul>
+<li>Does it lead to wild surprises, or obvious contradictions?</li>
+</ul>
+</li>
+<li><strong>Level</strong> / <strong>Mereological</strong>: High-level or lower-level? Instance or general? Global or local? Coarse grained or detailed? Internal/Intrinsic or External/Extrinsic?</li>
 </ul>
 <div class="w40 center">
 <a href="../assets/tradeoff.png">
 <img alt="graph looking like completeness is the inverse of simplitity." src="../assets/tradeoff.png" />
 </a>
-<p>Completeness v. Simplicity tradeoff.</p>
+<p>Explanation Accuracy v. Explanation Simplicity tradeoff.</p>
 
 </div>
 
 <p>This trade-off isn't universal but just a common case, particularly in deep learning; some other models are straightforward, in which case both characteristics can be high.</p>
-<h2 id="predictive-power"><a class="header" href="#predictive-power">Predictive power</a></h2>
+<h3 id="predictive-power"><a class="header" href="#predictive-power">Predictive power</a></h3>
 <p><strong>Predictive power</strong> is a characteristic of a <em>model</em>, not of an <em>explanation</em> of a model. Yet, it is correlated to the characteristics given earlier: more predictive models tend to be more complex making harder to explain them.</p>
 <p>The reason to include it here is that <em>predictive power</em> plays an important role deciding which model to use.</p>
 <p>In the image below, note that <em>understandability</em> replaces <em>simplicity</em>, and <em>correctness</em> replaces <em>predictive power</em>.</p>
@@ -244,6 +240,14 @@
 
 </div>
 
+<h2 id="explanation-strategies"><a class="header" href="#explanation-strategies">Explanation Strategies</a></h2>
+<p><a href="https://www.sciencedirect.com/science/article/pii/S0740624X21001027">The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making</a> recalls a few also from Belle and Papantonis:</p>
+<ul>
+<li>By simplification,</li>
+<li>Feature contributions to output/prediction/decision,</li>
+<li>Explaining instance instead of general,</li>
+<li>Graphical Visualisation.</li>
+</ul>
 <p>Let's now look at some actual methods.</p>
 <hr>
 <p>Sources:</p>
