@@ -2,52 +2,47 @@
 
 There are many definitions of what explanations are in the context of explainable AI, such as:
 
-> Explanations are _answers to questions about the model's predictions or operation_.
+> Explainable AI aims to _describe a model's predictions or operation_.
 >
 > _How_ does it operate? _Why_ does it makes certain prediction? _What_ is the role of certain neuron or layer?
 
-In contrast to explainable models, black-box models share no insight about their operation or predictions.
+In contrast to explainable models, black-box or opaque models hardly explainable.
 
 ## Multiple Dimensions
-
-The questions and the answers depend on the _audience_, the _context_ and other dimensions.
 
 One paper on [XAI for radiology][xai_rnn_radiology] found that doctors preferred __text outputs__ + __saliency maps__ to aid their decisions (in a sense, emulating doctor-to-doctor communication). The output was then evaluated by a clinician.
 
 Similarly, in synthetic chemistry, new candidates are vetted by expert chemists. Again, text can be a useful piece of information for the expert to work on, consider, evaluate. However, with no "human in the loop", this approach isn't enough.
 
-The list of explanation dimensions may be infinite. A few are:
+Relevant dimensions for explaining AI are both social and technical, and these are intertwined. Public organisations use AI in automated decision-making, to increase efficiency and effectiveness. But, as stated in [The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making][perils_and_pitfalls]:
 
-- Intend, Purpose, Stakes: such as transparency, trust, ethical reasons. Healthcare, finance, energy, military, general agentic-systems and automated decision-making.
-    - Yet in other scenarios, explainability may not matter &mdash;but only the model's output, which a human expert could evaluate.
-- User Type / Audiences: Each audience has goals, risks, and preferences. Scientists, ML practitioners, developers, non-experts.
-- Stages: pre-modelling, modelling, post-modelling.
-- Kind: Visual, Textual, Formal. More below.
+> But also other public values like accountability, transparency, equality, privacy and security, sustainability, and interoperability should be given attention when designing AI for public use
 
-Yet another dimension related to the explanation kind and its complexity is recalled in [The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making][perils_and_pitfalls]:
+They also recall an explanation "accuracy vs simplicity" trade-off:
 
-> Belle and Papantonis (2021) provide four suggestions for creating explainability, including explanation by simplification, describing the contribution of each feature to the decisions, explaining an instance instead of in general, and using graphical visualization methods for explanations. At the same time, they also discuss the complexity of realizing such suggestions. Simplifications might not be correct, features can be interrelated, local explanations can fail to provide the complete picture, and graphical visualization requires assumptions about data that might not necessarily be true.
+> Belle and Papantonis (2021) (...) also discuss the complexity of realizing such suggestions. Simplifications might not be correct, features can be interrelated, local explanations can fail to provide the complete picture, and graphical visualization requires assumptions about data that might not necessarily be true.
 
 ### Disentangling Dimensions
 
-We can consider characteristics of explanations independent of the audience and context:
+We can focus on _some_ aspects of explanations (not of the model):
 
-- __Simplicity__: how easy to understand the explanation is. (The opposite term, _complexity_, could be used as well.)
-    - This is correlated with how simple _the model itself_ is.
-- __Completeness__: how accurately it describes the model's behaviour.
-- __Level__ / __Mereological__: High level or lower level; coarse grained or detailed; selection of parts and functions.
-- __Internal__ or __external__
+- __Simplicity__: how easy to understand the explanation is.
+    - How much expertise does a human needed to understand it?
+    - This is also correlated with how simple _the model itself_ is.
+- __Accuracy__: how accurately it describes the model's behaviour.
+    - Does it lead to wild surprises, or obvious contradictions?
+- __Level__ / __Mereological__: High-level or lower-level? Instance or general? Global or local? Coarse grained or detailed? Internal/Intrinsic or External/Extrinsic?
 
 <div class="w40 center">
 <a href="../assets/tradeoff.png">
 <img alt="graph looking like completeness is the inverse of simplitity." src="../assets/tradeoff.png"/>
 </a>
-<p>Completeness v. Simplicity tradeoff.</p>
+<p>Explanation Accuracy v. Explanation Simplicity tradeoff.</p>
 </div>
 
 This trade-off isn't universal but just a common case, particularly in deep learning; some other models are straightforward, in which case both characteristics can be high.
 
-## Predictive power
+### Predictive power
 
 __Predictive power__ is a characteristic of a _model_, not of an _explanation_ of a model. Yet, it is correlated to the characteristics given earlier: more predictive models tend to be more complex making harder to explain them.
 
@@ -63,6 +58,15 @@ In the image below, note that _understandability_ replaces _simplicity_, and _co
     Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
     </p>
 </div>
+
+## Explanation Strategies
+
+[The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making][perils_and_pitfalls] recalls a few also from Belle and Papantonis:
+
+- By simplification,
+- Feature contributions to output/prediction/decision,
+- Explaining instance instead of general,
+- Graphical Visualisation.
 
 Let's now look at some actual methods.
 
