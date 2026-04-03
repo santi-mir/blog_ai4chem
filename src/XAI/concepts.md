@@ -8,7 +8,6 @@ There are many definitions of what explanations are in the context of explainabl
 
 In this post, _model_ refers to the deep learning model; and _method_ refers to the explanation aspects.
 
-
 ## Dimensions of interest
 
 Here the focus is on _some_ aspects of explanations (not of the model):
@@ -67,7 +66,6 @@ Let's now look at some actual methods.
 
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
 
-
 [xai4mat]: https://pubs.acs.org/doi/10.1021/accountsmr.1c00244
 [using_shap_lime]: https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304
 [xx]: http://arxiv.org/abs/1806.00069
@@ -78,5 +76,3 @@ Let's now look at some actual methods.
 [xai_rnn_radiology]: https://arxiv.org/abs/1806.00340
 [perils_and_pitfalls]: https://www.sciencedirect.com/science/article/pii/S0740624X21001027
 [principles_and_practices]: https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full
-
-
