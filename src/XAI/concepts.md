@@ -4,9 +4,8 @@ There are many definitions of what XAI is. I like to define it as:
 
 > XAI aims to make a model's predictions and operation understandable to humans by providing insights into _why_ a prediction was made and _how_ the model uses input features.
 
-Note: in this post _model_ refers to the deep learning model, and _method_ refers to the explanation aspects.
-
-Explainability can be viewed as a trade-off between how empowering an explanation is and how complex it is. This is explored next.
+<!-- I want to make the posts very essential, but in case I regret it I leave the commented out paragraphs. -->
+<!-- Explainability can be viewed as a trade-off between how empowering an explanation is and how complex it is. This is explored next. -->
 
 ## Dimensions of interest
 
@@ -14,23 +13,11 @@ Here the focus is on _some_ aspects of explanations (not of the model).
 
 __Complexity__: how hard it is to understand, operationally measured relative to a reference human or target audience.
 
-__Insight__: how much the explanation empowers users to understand the model, either intuitively or quantitatively.
+__Insight__: how much the explanation empowers users to understand the model, either intuitively or quantitatively. _How does the output change_ if we change this or that feature? _Does it fail in some specific cases_?
 
-- Can we directionally predict using the explanation?
-- Does it fail in some specific cases? Does it lead to surprises or obvious contradictions?
-- Helps form an intuition of the model's workings?
+__Other variables__: intrinsic-global, intrinsic-local, extrinsic-global, and extrinsic-local explanations. Given a category from the 4 above, we can think of explainability as $X_p = \frac{I}{C}$, that is, equals explanation-insight divided by explanation-complexity.
 
-__Other variables__: local vs global; intrinsic vs extrinsic. This forms four categories: intrinsic-global, intrinsic-local, extrinsic-global, and extrinsic-local explanations.
-
-Given a category from the 4 above, we can think of explainability as $X_p = \frac{I}{C}$, that is, equals explanation-insight divided by explanation-complexity.
-
-Opaque or black-box models are usually complex and have low intrinsic explainability (local or global), but they may have allow reasonably good extrinsic explanations (local and/or global).
-
-__Predictive power__ is a property of the model, not of the explanation.
-
-Highly predictive models (often more complex) are also harder to interpret, especially intrinsically (globally or locally).
-
-Explainability methods often aim to approximate or simplify these models and explain them extrinsically (globally or locally).
+__Predictive power__ is a property of the _model_, not of the explanation. Highly predictive models such as DL models are usually complex with low intrinsic explainability, but they may allow for insightful extrinsic explanations.
 
 ## Taxonomy
 
@@ -47,6 +34,10 @@ An interesting map using __Category, Principle, and Technique__ is given in [Pri
 </div>
 
 The image also shows a useful classification of explanations by type or kind. Some of these are: textual, visual, Local / Global, Intrinsic / Extrinsic, by examples, using simplification (e.g. fitting a simpler model), feature contributions.
+
+_By examples_ is quite interesting; quoting from [Principles and practices paper][principles_and_practices]:
+
+> (...) inspect the training dataset in order to sample a number of data points that are representative members of their corresponding class.
 
 Let's now look at some methods.
 
