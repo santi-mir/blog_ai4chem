@@ -1,51 +1,53 @@
 # Explainable AI - Concepts
 
-There are many definitions of what explanations are in the context of explainable AI (XAI), such as:
+There are many definitions of what XAI is. I like to define it as:
 
-> Explainable AI aims to _describe a model's predictions or operation_.
->
-> _How_ does it operate? _Why_ does it makes certain prediction? _What_ is the role of certain neuron or layer?
+> XAI aims to make a model's predictions and operation understandable to humans by providing insights into _why_ a prediction was made and _how_ the model uses input features.
 
-In this post, _model_ refers to the deep learning model; and _method_ refers to the explanation aspects.
+Note: in this post _model_ refers to the deep learning model, and _method_ refers to the explanation aspects.
+
+Explainability can be viewed as a trade-off between how empowering an explanation is and how complex it is. This is explored next.
 
 ## Dimensions of interest
 
-Here the focus is on _some_ aspects of explanations (not of the model):
+Here the focus is on _some_ aspects of explanations (not of the model).
 
-- __Simplicity__: how easy to understand the explanation is.
-    - How much expertise does a human needed to understand it?
-    - This is also correlated with how simple _the model itself_ is.
-- __Accuracy__: How accurately it describes the model's behaviour? Can we predict using the explanation?
-    - Does it lead to surprises or obvious contradictions?
-- __Kind__: Textual, Visual, Local (some restricted domain) v Global, by example, by simplification (fitting a simpler model), feature contributions (measuring each input-feature contribution), Intrinsic vs Extrinsic, and so forth!
+__Complexity__: how hard it is to understand, operationally measured relative to a reference human or target audience.
 
-<div class="w40 center">
-<a href="../assets/tradeoff.png">
-<img alt="graph looking like completeness is the inverse of simplitity." src="../assets/tradeoff.png"/>
-</a>
-<p>Explanation Accuracy v. Explanation Simplicity tradeoff.</p>
-</div>
+__Insight__: how much the explanation empowers users to understand the model, either intuitively or quantitatively.
+- Can we directionally predict using the explanation?
+- Does it fail in some specific cases? Does it lead to surprises or obvious contradictions?
+- Helps form an intuition of the model's workings?
 
-This trade-off isn't universal but just a common case, particularly in deep learning; some other models are straightforward, in which case both characteristics can be high.
+**Other variables**: local vs global; intrinsic vs extrinsic. This forms four categories: intrinsic-global, intrinsic-local, extrinsic-global, and extrinsic-local explanations.
 
-### Predictive power
+Given a category from the 4 above, we can think of explainability as $X_p = \frac{I}{C}$, that is, equals explanation-insight divided by explanation-complexity.
 
-__Predictive power__ is a characteristic of a _model_, not of an _explanation_ of a model. Yet, it is correlated to the characteristics given earlier: more predictive models tend to be more complex making harder to explain them.
+Opaque or black-box models are usually complex and have low intrinsic explainability (local or global), but they may have allow reasonably good extrinsic explanations (local and/or global).
 
-The reason to include it here is that _predictive power_ plays an important role deciding which model to use.
+__Predictive power__ is a property of the model, not of the explanation.
 
-In the image below, note that _understandability_ replaces _simplicity_, and _correctness_ replaces _predictive power_.
+Highly predictive models (often more complex) are also harder to interpret, especially intrinsically (globally or locally).
 
-<div class="center w40"> <!--other classes: w220, w420-->
-    <a href="../assets/radar_plot.png">
-    <img src="../assets/radar_plot.png" alt="Plot of the three dimensions"/>
+Explainability methods often aim to approximate or simplify these models and explain them extrinsically (globally or locally).
+
+## Taxonomy
+
+Let's now look at how XAI methods are categorized in practice.
+An interesting map using **Category, Principle, and Technique** is given in [Principles and practices][principles_and_practices] (2021); a modified (crop) of the image is reproduced below:
+
+<div class="center w25"> <!--other classes: w220, w420-->
+    <a href="../assets/model_agnostic_explanations.png">
+    <img src="../assets/model_agnostic_explanations.png" alt="Plot of the three dimensions"/>
     </a>
     <p>
-    Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
+    Image from <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>
     </p>
 </div>
 
-Let's now look at some actual methods.
+The image also shows a useful classification of explanations by type or kind. Some of these are: textual, visual, Local / Global, Intrinsic / Extrinsic, by examples, using simplification (e.g. fitting a simpler model), feature contributions.
+
+Let's now look at some methods.
 
 --------------------
 

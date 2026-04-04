@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-7bd69a59.js";
+            window.path_to_searchindex_js = "../searchindex-b853492b.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-7c8355c2.js"></script>
@@ -183,53 +183,43 @@
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="explainable-ai---concepts"><a class="header" href="#explainable-ai---concepts">Explainable AI - Concepts</a></h1>
-<p>There are many definitions of what explanations are in the context of explainable AI (XAI), such as:</p>
+<p>There are many definitions of what XAI is. I like to define it as:</p>
 <blockquote>
-<p>Explainable AI aims to <em>describe a model's predictions or operation</em>.</p>
-<p><em>How</em> does it operate? <em>Why</em> does it makes certain prediction? <em>What</em> is the role of certain neuron or layer?</p>
+<p>XAI aims to make a model's predictions and operation understandable to humans by providing insights into <em>why</em> a prediction was made and <em>how</em> the model uses input features.</p>
 </blockquote>
-<p>In this post, <em>model</em> refers to the deep learning model; and <em>method</em> refers to the explanation aspects.</p>
+<p>Note: in this post <em>model</em> refers to the deep learning model, and <em>method</em> refers to the explanation aspects.</p>
+<p>Explainability can be viewed as a trade-off between how empowering an explanation is and how complex it is. This is explored next.</p>
 <h2 id="dimensions-of-interest"><a class="header" href="#dimensions-of-interest">Dimensions of interest</a></h2>
-<p>Here the focus is on <em>some</em> aspects of explanations (not of the model):</p>
+<p>Here the focus is on <em>some</em> aspects of explanations (not of the model).</p>
+<p><strong>Complexity</strong>: how hard it is to understand, operationally measured relative to a reference human or target audience.</p>
+<p><strong>Insight</strong>: how much the explanation empowers users to understand the model, either intuitively or quantitatively.</p>
 <ul>
-<li><strong>Simplicity</strong>: how easy to understand the explanation is.
-<ul>
-<li>How much expertise does a human needed to understand it?</li>
-<li>This is also correlated with how simple <em>the model itself</em> is.</li>
+<li>Can we directionally predict using the explanation?</li>
+<li>Does it fail in some specific cases? Does it lead to surprises or obvious contradictions?</li>
+<li>Helps form an intuition of the model's workings?</li>
 </ul>
-</li>
-<li><strong>Accuracy</strong>: How accurately it describes the model's behaviour? Can we predict using the explanation?
-<ul>
-<li>Does it lead to surprises or obvious contradictions?</li>
-</ul>
-</li>
-<li><strong>Kind</strong>: Textual, Visual, Local (some restricted domain) v Global, by example, by simplification (fitting a simpler model), feature contributions (measuring each input-feature contribution), Intrinsic vs Extrinsic, and so forth!</li>
-</ul>
-<div class="w40 center">
-<a href="../assets/tradeoff.png">
-<img alt="graph looking like completeness is the inverse of simplitity." src="../assets/tradeoff.png" />
-</a>
-<p>Explanation Accuracy v. Explanation Simplicity tradeoff.</p>
-
-</div>
-
-<p>This trade-off isn't universal but just a common case, particularly in deep learning; some other models are straightforward, in which case both characteristics can be high.</p>
-<h3 id="predictive-power"><a class="header" href="#predictive-power">Predictive power</a></h3>
-<p><strong>Predictive power</strong> is a characteristic of a <em>model</em>, not of an <em>explanation</em> of a model. Yet, it is correlated to the characteristics given earlier: more predictive models tend to be more complex making harder to explain them.</p>
-<p>The reason to include it here is that <em>predictive power</em> plays an important role deciding which model to use.</p>
-<p>In the image below, note that <em>understandability</em> replaces <em>simplicity</em>, and <em>correctness</em> replaces <em>predictive power</em>.</p>
-<div class="center w40"> <!--other classes: w220, w420-->
-    <a href="../assets/radar_plot.png">
-    <img src="../assets/radar_plot.png" alt="Plot of the three dimensions" />
+<p><strong>Other variables</strong>: local vs global; intrinsic vs extrinsic. This forms four categories: intrinsic-global, intrinsic-local, extrinsic-global, and extrinsic-local explanations.</p>
+<p>Given a category from the 4 above, we can think of explainability as <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>, that is, equals explanation-insight divided by explanation-complexity.</p>
+<p>Opaque or black-box models are usually complex and have low intrinsic explainability (local or global), but they may have allow reasonably good extrinsic explanations (local and/or global).</p>
+<p><strong>Predictive power</strong> is a property of the model, not of the explanation.</p>
+<p>Highly predictive models (often more complex) are also harder to interpret, especially intrinsically (globally or locally).</p>
+<p>Explainability methods often aim to approximate or simplify these models and explain them extrinsically (globally or locally).</p>
+<h2 id="taxonomy"><a class="header" href="#taxonomy">Taxonomy</a></h2>
+<p>Let's now look at how XAI methods are categorized in practice.
+An interesting map using <strong>Category, Principle, and Technique</strong> is given in <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practices</a> (2021); a modified (crop) of the image is reproduced below:</p>
+<div class="center w25"> <!--other classes: w220, w420-->
+    <a href="../assets/model_agnostic_explanations.png">
+    <img src="../assets/model_agnostic_explanations.png" alt="Plot of the three dimensions" />
     </a>
     
 <p>
-    Image from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
+    Image from <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>
     </p>
 
 </div>
 
-<p>Let's now look at some actual methods.</p>
+<p>The image also shows a useful classification of explanations by type or kind. Some of these are: textual, visual, Local / Global, Intrinsic / Extrinsic, by examples, using simplification (e.g. fitting a simpler model), feature contributions.</p>
+<p>Let's now look at some methods.</p>
 <hr><details>
 <summary>Sources</summary>
 <ol>
@@ -281,6 +271,22 @@
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>
