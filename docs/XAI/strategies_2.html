@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-c28adb6e.js";
+            window.path_to_searchindex_js = "../searchindex-4e87c509.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-7c8355c2.js"></script>
+        <script src="../toc-06cc9e3d.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -183,7 +183,7 @@
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="explainable-ai---methods-ii"><a class="header" href="#explainable-ai---methods-ii">Explainable AI - Methods II</a></h1>
-<h2 id="other-explainability-methods"><a class="header" href="#other-explainability-methods">Other Explainability Methods</a></h2>
+<h2 id="visual-explainability-methods"><a class="header" href="#visual-explainability-methods">Visual Explainability Methods</a></h2>
 <ul>
 <li>
 <p><strong>Saliency Maps</strong>: visually show which features are most important in a particular prediction. They can be generated for 1D, 2D and ND inputs. For example, here is for radiology:</p>
@@ -199,19 +199,28 @@
 
 </li>
 <li>
+<p><strong>Variations</strong>: Individual Conditional Expectation, Partial Dependency Plots, can all help as well.</p>
+<ul>
+<li>ICE: <q>(...) operates on instance level, depicting the model’s decision boundary as a function of a single feature, with the rest of them staying fixed</q>. PDPs are a similar idea, but the remaining features are average values over the dataset points, rather than particular values of an instance.</li>
+</ul>
+</li>
+<li>
 <p><strong>Validity Interval Analysis</strong>: another technique fitting the NN behaviour to try to extract explanations.</p>
 </li>
-<li>
-<p><strong>Dimensionality Reduction</strong>: Principal Component Analysis, t-SNE, Dimensionality Reduction, Independent Component Analysis, Non-negative Matrix Factorisation can all help as well.</p>
-</li>
-<li>
-<p><strong>Anchors</strong>: the authors of LIME also proposed this method, described by <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainability in ML</a>:</p>
+</ul>
+<h2 id="simplification"><a class="header" href="#simplification">Simplification</a></h2>
+<ul>
+<li>LIME: explained in previous post,</li>
+<li><strong>Anchors</strong>: the authors of LIME also proposed this method, described by <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainability in ML</a>:
 <blockquote>
 <p>A similar technique, called anchors, can be found in (Ribeiro et al., 2018). Here the objective is again to approximate a model locally, but this time not by using a linear model. Instead, easy to understand "if-then" rules that anchor the model's decision are employed. The rules aim at capturing the essential features, omitting the rest, so it results in more sparse explanations.</p>
 </blockquote>
 </li>
-<li>
-<p><strong>Counterfactuals</strong>: The same paper as above describes:</p>
+</ul>
+<h2 id="other-methods"><a class="header" href="#other-methods">Other methods</a></h2>
+<ul>
+<li><strong>Dimensionality Reduction</strong>: Principal Component Analysis, t-SNE, Dimensionality Reduction, Independent Component Analysis, Non-negative Matrix Factorisation.</li>
+<li><strong>Counterfactuals</strong>: The same paper as above describes:
 <blockquote>
 <p>There has been considerable recent development in the socalled counterfactual explanations (Wachter et al., 2018). Here, the objective is to create instances as close as possible to the instance we wish to explain, but such that the model classifies the new instance in a different category.</p>
 </blockquote>
@@ -263,6 +272,22 @@
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>

@@ -4,8 +4,7 @@ There are many definitions of what XAI is. I like to define it as:
 
 > XAI aims to make a model's predictions and operation understandable to humans by providing insights into _why_ a prediction was made and _how_ the model uses input features.
 
-<!-- I want to make the posts very essential, but in case I regret it I leave the commented out paragraphs. -->
-<!-- Explainability can be viewed as a trade-off between how empowering an explanation is and how complex it is. This is explored next. -->
+<!-- trade-off between how empowering an explanation is and how complex it is. This is explored next. -->
 
 ## Dimensions of interest
 
@@ -25,21 +24,19 @@ Let's now look at how XAI methods are categorized in practice.
 An interesting map using __Category, Principle, and Technique__ is given in [Principles and practice of explainable ML][principles_and_practice] (2021); a modified (crop) of the image is reproduced below:
 
 <div class="center w25"> <!--other classes: w220, w420-->
-    <a href="../assets/model_agnostic_explanations.png">
-    <img src="../assets/model_agnostic_explanations.png" alt="Plot of the three dimensions"/>
+    <a href="../assets/taxonomy.webp">
+    <img src="../assets/taxonomy.webp" alt="Complex Graph linking prediction models such as SVMs, kinds of explanations such as text or graph, and explanation methods such as SHAP."/>
     </a>
     <p>
     Image from <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>
     </p>
 </div>
 
-The image also shows a useful classification of explanations by type or kind. Some of these are: textual, visual, Local / Global, Intrinsic / Extrinsic, by examples, using simplification (e.g. fitting a simpler model), feature contributions.
+The classic ML models "bracketed" by the arrow are instrinsically explainable but may &mdash;optionally&mdash; benefit of post-hoc (post training) explanations, such as visualising it.
 
-_By examples_ is quite interesting; quoting from [Principles and practice of explainable ML][principles_and_practice]:
+The focus here though, is in explaining _deep learning_ models, not classical ML models, but many methods apply to both.
 
-> (...) inspect the training dataset in order to sample a number of data points that are representative members of their corresponding class.
-
-Let's now look at some methods.
+Let's now peek at methods.
 
 --------------------
 
