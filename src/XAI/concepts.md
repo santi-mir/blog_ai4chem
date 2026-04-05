@@ -23,7 +23,7 @@ __Predictive power__ is a property of the _model_, not of the explanation. Highl
 Let's now look at how XAI methods are categorized in practice.
 An interesting map using __Category, Principle, and Technique__ is given in [Principles and practice of explainable ML][principles_and_practice] (2021); a modified (crop) of the image is reproduced below:
 
-<div class="center w25"> <!--other classes: w220, w420-->
+<div class="center w50"> <!--other classes: w220, w420-->
     <a href="../assets/taxonomy.webp">
     <img src="../assets/taxonomy.webp" alt="Complex Graph linking prediction models such as SVMs, kinds of explanations such as text or graph, and explanation methods such as SHAP."/>
     </a>
@@ -32,7 +32,7 @@ An interesting map using __Category, Principle, and Technique__ is given in [Pri
     </p>
 </div>
 
-The classic ML models "bracketed" by the arrow are instrinsically explainable but may &mdash;optionally&mdash; benefit of post-hoc (post training) explanations, such as visualising it.
+The bracketed classic-ML models are intrinsically explainable but _may_ also benefit of post-hoc (post training) explanations, such as visualising it.
 
 The focus here though, is in explaining _deep learning_ models, not classical ML models, but many methods apply to both.
 

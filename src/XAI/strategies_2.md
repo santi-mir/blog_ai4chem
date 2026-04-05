@@ -15,9 +15,12 @@
 
 - **Validity Interval Analysis**: another technique fitting the NN behaviour to try to extract explanations.
 
-## Simplification
+## Feature Relevance
+- SHAP (possibly also LIME),
+- Influence Functions.
 
-- LIME: explained in previous post,
+## Simplification
+- LIME (possibly also SHAP). Explained in previous post,
 - **Anchors**: the authors of LIME also proposed this method, described by [Principles and practice of explainability in ML][principles_and_practice]:
     > A similar technique, called anchors, can be found in (Ribeiro et al., 2018). Here the objective is again to approximate a model locally, but this time not by using a linear model. Instead, easy to understand "if-then" rules that anchor the model's decision are employed. The rules aim at capturing the essential features, omitting the rest, so it results in more sparse explanations.
 
