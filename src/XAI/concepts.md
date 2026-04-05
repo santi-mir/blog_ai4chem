@@ -10,18 +10,18 @@ There are many definitions of what XAI is. I like to define it as:
 
 Here the focus is on _some_ aspects of explanations (not of the model).
 
-__Complexity__: how hard it is to understand, operationally measured relative to a reference human or target audience.
+**Complexity**: how hard it is to understand, operationally measured relative to a reference human or target audience.
 
-__Insight__: how much the explanation empowers users to understand the model, either intuitively or quantitatively. _How does the output change_ if we change this or that feature? _Does it fail in some specific cases_?
+**Insight**: how much the explanation empowers users to understand the model, either intuitively or quantitatively. _How does the output change_ if we change this or that feature? _Does it fail in some specific cases_?
 
-__Other variables__: intrinsic-global, intrinsic-local, extrinsic-global, and extrinsic-local explanations. Given a category from the 4 above, we can think of explainability as $X_p = \frac{I}{C}$, that is, equals explanation-insight divided by explanation-complexity.
+**Other variables**: intrinsic-global, intrinsic-local, extrinsic-global, and extrinsic-local explanations. Given a category from the 4 above, we can think of explainability as $X_p = \frac{I}{C}$, that is, equals explanation-insight divided by explanation-complexity.
 
-__Predictive power__ is a property of the _model_, not of the explanation. Highly predictive models such as DL models are usually complex with low intrinsic explainability, but they may allow for insightful extrinsic explanations.
+**Predictive power** is a property of the _model_, not of the explanation. Highly predictive models such as DL models are usually complex with low intrinsic explainability, but they may allow for insightful extrinsic explanations.
 
 ## Taxonomy
 
 Let's now look at how XAI methods are categorized in practice.
-An interesting map using __Category, Principle, and Technique__ is given in [Principles and practice of explainable ML][principles_and_practice] (2021); a modified (crop) of the image is reproduced below:
+An interesting map using **Category, Principle, and Technique** is given in [Principles and practice of explainable ML][principles_and_practice] (2021); a modified (crop) of the image is reproduced below:
 
 <div class="center w50"> <!--other classes: w220, w420-->
     <a href="../assets/taxonomy.webp">
