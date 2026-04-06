@@ -1,32 +1,50 @@
 # Explainable AI - Concepts
 
-There are many definitions of what XAI is. I like to define it as:
+I like to define the discipline of **Explainable Artificial Intelligence** (XAI) as:
 
-> XAI aims to make a model's predictions and operation understandable to humans by providing insights into _why_ a prediction was made and _how_ the model uses input features.
+> XAI aims to explain _why_ a model makes certain predictions and _how_ it operates.
 
-<!-- trade-off between how empowering an explanation is and how complex it is. This is explored next. -->
+Then, we can define **model explainability** as:
+> Model explainability is the degree to which we can answer those questions about a model, either directly or using explainability methods.
+
+## Explainability - Accuracy Trade-off
+
+This trade-off is not universal. Simple models such as linear regression or decision trees are fully explainable, but they are also quite limited.
+
+More complex and accurate models tend to be less explainable, as conceptually shown below:
+
+<div class="center w40">
+    <a href="../assets/tradeoff.webp">
+    <img src="../assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff."/>
+    </a>
+    <p>Model accuracy vs Model explainability tradeoff.</p>
+</div>
 
 ## Dimensions of interest
 
-Here the focus is on _some_ aspects of explanations _and_ of the model.
+Here, we emphasise two _model explanation_ dimensions:
 
-**Insight of the explanation** : how much the it empowers users to understand the model, either intuitively or quantitatively. _How does the output change_ if we change this or that feature? _Does it fail in some specific cases_?
+- **Complexity** : how hard or how much expertise is needed to understand the explanation.
+- **Insight** : how much the explanation empowers users to understand the model, either intuitively or quantitatively. _How does the output change_ if we change this or that feature? _Does it fail in some specific cases_?
 
-**Complexity of the explanation** : how hard or how much expertise is needed to understand it.
+And one _model_ dimension:
 
-**Accuracy of the model**: Accurate models such as DL models are usually complex with low intrinsic explainability; but they may allow for insightful extrinsic explanations. In the model, accuracy, predictive power and complexity are also inter-related.
+- **Accuracy** (model): DL models are usually accurate and complex, and have low _intrinsic_ explainability. Yet, they may allow for insightful _extrinsic_ explanations. For a model, accuracy, predictive power and complexity are also inter-related.
+
+Complexity-Insight-Accuracy trade-off:
 
 <div class="center w50">
     <a href="../assets/radial_plot.jpeg">
     <img src="../assets/radial_plot.jpeg" alt="Complex Graph linking prediction models such as SVMs, kinds of explanations such as text or graph, and explanation methods such as SHAP."/>
     </a>
     <p>
-    Radial plot showing examples of how this variables interrelate.
-    Original from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>. The image was substantially changed.
+    Dimensions of interest linked in a radial plot. The image was altered from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>.
     </p>
 </div>
 
-**Other variables**: intrinsic-global, intrinsic-local, extrinsic-global, and extrinsic-local explanations. For a given category from the 4 above, we can think of explainability as $X_p = \frac{I}{C}$ or plain words: e**X**plainability equals **I**nsight divided by **C**omplexity.
+We can lump together other, less important, dimensions:
+
+- **Other variables**: intrinsic-global, intrinsic-local, extrinsic-global, and extrinsic-local explanations. For a given category from the 4 above, we can think of explainability as $X_p = \frac{I}{C}$ or plain words: e**X**plainability equals **I**nsight divided by **C**omplexity.
 
 ## Map of XAI
 
@@ -41,17 +59,18 @@ An interesting map of XAI is given in the survey [Principles and practice of exp
     </p>
 </div>
 
-The <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> **Model types** are classic ML models. These are _transparent_ (intrinsically explainable) but _may_ also benefit of post-hoc (post training) explanations, such as visualising it. When transparency is key and their predictions are accurate enough, these may be preferred.
+Most _classic ML_ models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under **Model types** column.
 
-The focus here though, is in XAI methods for explaining _deep learning_ models rather than classic ML models. Complex DL models are usually _opaque_ or "_black-boxes_", but their predictive power is usually higher than classic ML models.
+These are _transparent_ (intrinsically explainable) but _may_ also benefit of post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.
+
+The focus here though, is explaining _deep learning_ models.
+These are usually _opaque_ or "_black-boxes_", but their predictive power is usually higher than classic ML models.
 
 In other words, there are use-cases for each classical and deep learning _models_.
 
-Regarding the explanation _methods_ the paper states:
+When using explanation techniques, we should remember that (same paper):
 
 > Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),
-
-Which is very interesting!
 
 ## Explanation kinds
 
@@ -77,7 +96,7 @@ Let's now look at methods.
 1. [A Unified Approach to Interpreting Model Predictions][shap_values] (2017): paper proposing SHAP, that is, showing Shapley values as the best coefficients in linear combination of features, given 3 requirements (local accuracy, missingness and consistency),
 1. [Explaining Explanations: An Overview of Interpretability of Machine Learning][xx] (2018),
 1. [Producing radiologist-quality reports for interpretable artificial intelligence][xai_rnn_radiology] (2018): a "case study",
-1. [Principles and practice of explainable machine-learning][principles_and_practice] (2021, 25 pages): Sections 8&ndash;10 are a useful review of explainability methods. All images/tables are also good.
+1. [Principles and practice of explainable machine-learning][principles_and_practice] (2021, 25 pages): Sections 8&ndash;11 are a useful review of explainability methods.
 1. [The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making][perils_and_pitfalls] (2021): emphasis on socio-political aspects,
 1. [Interpretable and Explainable Machine Learning for Materials Science and Chemistry][xai4mat] (2022),
 1. Blog Posts: [What is Explainable AI?][what_is_xai] (2022) and from [IBM][xai_ibm],
