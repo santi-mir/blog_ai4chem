@@ -1,53 +1,69 @@
 # Explainable AI - Concepts
 
-One focus of Explainable Artificial Intelligence (XAI) is _model explainability_, which could be defined as:
+One focus of Explainable Artificial Intelligence (XAI) is _model explainability_, which we could defined as:
+
+> finding the causes underlying a model's predictions or operation,
+
+Or, more broadly,
 
 > the degree to which humans can answer questions about a model's predictions or operation, either directly or using explainability methods.
 
-[Explanations in AI, section 2.1.3][explanations_social] includes _why_, _what_ and _how_ questions. The definition given above uses "questions" to include these cases.
+The last definition uses "questions" to include questions other than just why-questions.
 
-The answers to such questions &mdash;the explanations&mdash; are themselves hypotheses. And that which best explains the data is selected. Of course, it could be none of them is good enough.
+More comprehensively, [Explanations in AI, section 2.1.2][explanations_social] defines explanation as a 3-legged concept: a cognitive process, a product, a social process. This is itself an extension of previous work by Lombrozo on [The structure and function of explanations][lombrozo]
 
-Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves).
+The definitions don't reference the _social_ aspects, such as the context, the audience, the communication or transfer of knowledge, but these must be considered to select _good explanations_ (next sections).
 
-## A trade-off
+Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves); in a sense, that allows us to focus on the causal attribution / cognitive process.
 
-Complex and accurate models tend to be less explainable. This is referred to as the Explainability v. Accuracy trade-off (see image below). The finding is an empirical rather than theoretical.
+## Explanations
 
-<div class="center w40">
+An explanation / answer can be thought as the process of
+
+1. Hypothesis generation using abductive inference,
+2. Selection of the best hypothesis
+
+```mermaid
+flowchart TB
+A(Why W?) -- abduction -->B(H1: Because X)
+A -- abduction -->C(H2: Because Y)
+A -- abduction -->D(H3: Because Z)
+
+style C fill:#050
+```
+
+It usually invokes causal inference because the hypotheses are proposed causes. Particularly for questions such as "Why X" asks for "What is the cause of / leads to X?" or for "What is the purpose of X".
+
+The is also the _communication_ part, which is at the moment ignored.
+
+### Good Explanations
+
+[Gricean Maxims][gricean_maxims] are rules observed in _good_ communication. We can use these rules as a guide for good _model explanations_ as well.
+
+1. **Informative** (Quantity): right amount of context and details,
+2. **Truthful** (Quality, or Fidelity): Try to make it true,
+3. **Relevance** (Relation): do not state things that aren't needed (provide insight),
+4. **Manner** (clarity): express it in elegant terms.
+
+For our case, where the object to explain is the DL model, it also matters if the _model explanation_ is intrinsic-global, intrinsic-local, extrinsic-global or extrinsic-local. This is expanded later on.
+
+### Model Complexity v. Explanation Fidelity
+
+Complex and accurate models tend to be less explainable. This is not universal, but we could represent this common case as:
+<div class="center w30">
     <a href="../assets/tradeoff.webp">
     <img src="../assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff."/>
     </a>
     <p>Model accuracy vs Model explainability tradeoff.</p>
 </div>
 
-## Dimensions of interest
-
-Here, we emphasise two _explanation_ dimensions, and one _model_ dimension:[^1]
-
-- **Complexity** : expertise is needed to understand the explanation,
-- **Insight** : degree to which an explanation enables prediction or conceptual understanding,
-- **Accuracy** (model): predictive performance of the underlying models.
-
-Complexity-Insight-Accuracy trade-off:
-
-<div class="center w50">
-    <a href="../assets/radial_plot.jpeg">
-    <img src="../assets/radial_plot.jpeg" alt="Complex Graph linking prediction models such as SVMs, kinds of explanations such as text or graph, and explanation methods such as SHAP."/>
-    </a>
-    <p>
-    Dimensions of interest linked in a radial plot. The image was altered from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>.
-    </p>
-</div>
-
-Other dimensions, that the posts do not focus on:
-
-- **Other variables**: intrinsic-global, intrinsic-local, extrinsic-global, and extrinsic-local explanations. For a given category from the 4 above, we can think of explainability as $X_p = \frac{I}{C}$ or plain words: e**X**plainability equals **I**nsight divided by **C**omplexity.
-- **Fidelity**: how accurately the explanation reflects the true behaviour of the model.
-
 ## Map of XAI
 
-An interesting map of XAI is given in the survey [Principles and practice of explainable ML][principles_and_practice] (2021); and is reproduced below:
+An interesting map of XAI is given in the survey [Principles and practice of explainable ML][principles_and_practice] (2021).
+
+Most _classic ML_ models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under **Model types** column.
+
+These are _transparent_ (intrinsically explainable) but _may_ benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.
 
 <div class="center w50">
     <a href="../assets/taxonomy.webp">
@@ -58,23 +74,13 @@ An interesting map of XAI is given in the survey [Principles and practice of exp
     </p>
 </div>
 
-Most _classic ML_ models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under **Model types** column.
+The focus here though, is explaining _deep learning_ models. These are usually _opaque_ ("_black-box_") models, and their accuracy is usually higher than classic ML models.
 
-These are _transparent_ (intrinsically explainable) but _may_ also benefit of post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.
-
-The focus here though, is explaining _deep learning_ models.
-These are usually _opaque_ ("_black-box_") models, but their predictive power is usually higher than classic ML models.
-
-In other words, there are use-cases for each classical and deep learning _models_.
-
-When using explanation techniques, we should remember that (same paper):
-
-> Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),
+In other words, classical ML and DL models each have their use-cases.
 
 ## Explanation kinds
 
-The survey [Principles and practise of explaining ML models][principles_and_practice] also includes a great table of **explanation kinds**.
-A modified version of the table is below:
+The survey [Principles and practise of explaining ML models][principles_and_practice] also includes a great table of **explanation kinds**. A modified version of the table is below:
 
 | Explanation         | Advantages    | Disadvantages | Question |
 |---------------------|---------------|---------------|----------|
@@ -84,7 +90,11 @@ A modified version of the table is below:
 | **Simplification**  | Simple surrogate models explain opaque ones. | Surrogate models may not approximate original models well. | Can we get local insights by using a simpler model? |
 | **Visualizations**  | Easier to communicate to non-technical audiences. Most approaches are intuitive and not hard to implement. | There is an upper bound on how many features can be considered at once. Humans must inspect plots to derive explanations. | Class boundaries? |
 
-In the next post, we look at methods.
+We should remember that:
+
+> Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),
+
+In the next post, we will look at methods.
 
 --------------------
 
@@ -171,17 +181,6 @@ It seems plausible that some explanations can't be simplified further without be
 [explanations_social]: https://www.sciencedirect.com/science/article/pii/S0004370218305988
 [gricean_maxims]: https://effectiviology.com/principles-of-effective-communication/
 [wikipedia_gricean]: https://en.wikipedia.org/wiki/Cooperative_principle
+[lombrozo]: https://fitelson.org/few/few_08/lombrozo_reading.pdf
 
-[^1]: **Insight** could be conceived, at least partially, as the [Gricean maxim][wikipedia_gricean] of relation (relevance). **Complexity**: If we think of a specific audience, we could remove this characteristic, because only explanations that are of quality and relevant should be considered, and that implies of the right level of complexity. There is also an issue: it may not be possible to explain a certain event without a certain level of complexity; in other words, the are constrains given by the social interaction and constrains given by the problem itself and the goals.
-
-<!--Parts I removed to keep it shorter.-->
-<!-- DL models are usually complex, and have low _intrinsic_ explainability. Yet, they may allow for insightful _extrinsic_ explanations. For a model, accuracy, predictive power and complexity are also inter-related. -->
-<!-- _How does the output change_ if we change this or that feature? _Does it fail in some specific cases_? -->
-<!-- how much the explanation empowers users to understand the model, either intuitively or quantitatively. -->
-
-<!-- > D is a collection of data (facts, observations, givens).\ -->
-<!-- > H explains D (would, if true, explain D).\ -->
-<!-- > No other hypothesis can explain D _as well as_ H does.\ -->
-<!-- > Therefore, H is probably true. -->
-
-<!-- This defines a kind of inference / logical reasoning, called _abduction_ (besides induction and deduction), which ends up in a hypothesis or explanation. The process is also referred to as _inference to the best explanation_ (or to the best hypothesis). The selection is based on _how well_ it explains the events. -->
+[^1]:  _Why X_ is either asking for _What is the cause of X_ (events leading to X) or _What is X for_ (the purpose, for designed items.) We are interested in the former sense. Hume's understood causes with _counterfactuals_: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.

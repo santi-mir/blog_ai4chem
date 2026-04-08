@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-99692127.js";
+            window.path_to_searchindex_js = "searchindex-078accfb.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-06cc9e3d.js"></script>
@@ -446,16 +446,46 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <p>It is computationally cheap, and can help screen large number of compounds as a first selection step.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="explainable-ai---concepts"><a class="header" href="#explainable-ai---concepts">Explainable AI - Concepts</a></h1>
-<p>One focus of Explainable Artificial Intelligence (XAI) is <em>model explainability</em>, which could be defined as:</p>
+<p>One focus of Explainable Artificial Intelligence (XAI) is <em>model explainability</em>, which we could defined as:</p>
+<blockquote>
+<p>finding the causes underlying a model's predictions or operation,</p>
+</blockquote>
+<p>Or, more broadly,</p>
 <blockquote>
 <p>the degree to which humans can answer questions about a model's predictions or operation, either directly or using explainability methods.</p>
 </blockquote>
-<p><a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanations in AI, section 2.1.3</a> includes <em>why</em>, <em>what</em> and <em>how</em> questions. The definition given above uses "questions" to include these cases.</p>
-<p>The answers to such questions —the explanations— are themselves hypotheses. And that which best explains the data is selected. Of course, it could be none of them is good enough.</p>
-<p>Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves).</p>
-<h2 id="a-trade-off"><a class="header" href="#a-trade-off">A trade-off</a></h2>
-<p>Complex and accurate models tend to be less explainable. This is referred to as the Explainability v. Accuracy trade-off (see image below). The finding is an empirical rather than theoretical.</p>
-<div class="center w40">
+<p>The last definition uses "questions" to include questions other than just why-questions.</p>
+<p>More comprehensively, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanations in AI, section 2.1.2</a> defines explanation as a 3-legged concept: a cognitive process, a product, a social process. This is itself an extension of previous work by Lombrozo on <a href="https://fitelson.org/few/few_08/lombrozo_reading.pdf">The structure and function of explanations</a></p>
+<p>The definitions don't reference the <em>social</em> aspects, such as the context, the audience, the communication or transfer of knowledge, but these must be considered to select <em>good explanations</em> (next sections).</p>
+<p>Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves); in a sense, that allows us to focus on the causal attribution / cognitive process.</p>
+<h2 id="explanations"><a class="header" href="#explanations">Explanations</a></h2>
+<p>An explanation / answer can be thought as the process of</p>
+<ol>
+<li>Hypothesis generation using abductive inference,</li>
+<li>Selection of the best hypothesis</li>
+</ol>
+<pre class="mermaid">flowchart TB
+A(Why W?) -- abduction --&gt;B(H1: Because X)
+A -- abduction --&gt;C(H2: Because Y)
+A -- abduction --&gt;D(H3: Because Z)
+
+style C fill:#050
+</pre>
+
+<p>It usually invokes causal inference because the hypotheses are proposed causes. Particularly for questions such as "Why X" asks for "What is the cause of / leads to X?" or for "What is the purpose of X".</p>
+<p>The is also the <em>communication</em> part, which is at the moment ignored.</p>
+<h3 id="good-explanations"><a class="header" href="#good-explanations">Good Explanations</a></h3>
+<p><a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. We can use these rules as a guide for good <em>model explanations</em> as well.</p>
+<ol>
+<li><strong>Informative</strong> (Quantity): right amount of context and details,</li>
+<li><strong>Truthful</strong> (Quality, or Fidelity): Try to make it true,</li>
+<li><strong>Relevance</strong> (Relation): do not state things that aren't needed (provide insight),</li>
+<li><strong>Manner</strong> (clarity): express it in elegant terms.</li>
+</ol>
+<p>For our case, where the object to explain is the DL model, it also matters if the <em>model explanation</em> is intrinsic-global, intrinsic-local, extrinsic-global or extrinsic-local. This is expanded later on.</p>
+<h3 id="model-complexity-v-explanation-fidelity"><a class="header" href="#model-complexity-v-explanation-fidelity">Model Complexity v. Explanation Fidelity</a></h3>
+<p>Complex and accurate models tend to be less explainable. This is not universal, but we could represent this common case as:</p>
+<div class="center w30">
     <a href="assets/tradeoff.webp">
     <img src="assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff." />
     </a>
@@ -464,32 +494,10 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 
 </div>
 
-<h2 id="dimensions-of-interest"><a class="header" href="#dimensions-of-interest">Dimensions of interest</a></h2>
-<p>Here, we emphasise two <em>explanation</em> dimensions, and one <em>model</em> dimension:<sup class="footnote-reference" id="fr-1-1-2"><a href="#footnote-1-2">1</a></sup></p>
-<ul>
-<li><strong>Complexity</strong> : expertise is needed to understand the explanation,</li>
-<li><strong>Insight</strong> : degree to which an explanation enables prediction or conceptual understanding,</li>
-<li><strong>Accuracy</strong> (model): predictive performance of the underlying models.</li>
-</ul>
-<p>Complexity-Insight-Accuracy trade-off:</p>
-<div class="center w50">
-    <a href="assets/radial_plot.jpeg">
-    <img src="assets/radial_plot.jpeg" alt="Complex Graph linking prediction models such as SVMs, kinds of explanations such as text or graph, and explanation methods such as SHAP." />
-    </a>
-    
-<p>
-    Dimensions of interest linked in a radial plot. The image was altered from <a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>.
-    </p>
-
-</div>
-
-<p>Other dimensions, that the posts do not focus on:</p>
-<ul>
-<li><strong>Other variables</strong>: intrinsic-global, intrinsic-local, extrinsic-global, and extrinsic-local explanations. For a given category from the 4 above, we can think of explainability as <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> or plain words: e<strong>X</strong>plainability equals <strong>I</strong>nsight divided by <strong>C</strong>omplexity.</li>
-<li><strong>Fidelity</strong>: how accurately the explanation reflects the true behaviour of the model.</li>
-</ul>
 <h2 id="map-of-xai"><a class="header" href="#map-of-xai">Map of XAI</a></h2>
-<p>An interesting map of XAI is given in the survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable ML</a> (2021); and is reproduced below:</p>
+<p>An interesting map of XAI is given in the survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable ML</a> (2021).</p>
+<p>Most <em>classic ML</em> models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under <strong>Model types</strong> column.</p>
+<p>These are <em>transparent</em> (intrinsically explainable) but <em>may</em> benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.</p>
 <div class="center w50">
     <a href="assets/taxonomy.webp">
     <img src="assets/taxonomy.webp" alt="Complex Graph linking prediction models such as SVMs, kinds of explanations such as text or graph, and explanation methods such as SHAP." />
@@ -501,18 +509,10 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 
 </div>
 
-<p>Most <em>classic ML</em> models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under <strong>Model types</strong> column.</p>
-<p>These are <em>transparent</em> (intrinsically explainable) but <em>may</em> also benefit of post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.</p>
-<p>The focus here though, is explaining <em>deep learning</em> models.
-These are usually <em>opaque</em> ("<em>black-box</em>") models, but their predictive power is usually higher than classic ML models.</p>
-<p>In other words, there are use-cases for each classical and deep learning <em>models</em>.</p>
-<p>When using explanation techniques, we should remember that (same paper):</p>
-<blockquote>
-<p>Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),</p>
-</blockquote>
+<p>The focus here though, is explaining <em>deep learning</em> models. These are usually <em>opaque</em> ("<em>black-box</em>") models, and their accuracy is usually higher than classic ML models.</p>
+<p>In other words, classical ML and DL models each have their use-cases.</p>
 <h2 id="explanation-kinds"><a class="header" href="#explanation-kinds">Explanation kinds</a></h2>
-<p>The survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practise of explaining ML models</a> also includes a great table of <strong>explanation kinds</strong>.
-A modified version of the table is below:</p>
+<p>The survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practise of explaining ML models</a> also includes a great table of <strong>explanation kinds</strong>. A modified version of the table is below:</p>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -527,7 +527,11 @@ A modified version of the table is below:</p>
 </tbody>
 </table>
 </div>
-<p>In the next post, we look at methods.</p>
+<p>We should remember that:</p>
+<blockquote>
+<p>Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),</p>
+</blockquote>
+<p>In the next post, we will look at methods.</p>
 <hr><details>
 <summary>More on Communicating Explanations</summary>
 <h2 id="audience"><a class="header" href="#audience">Audience</a></h2>
@@ -589,21 +593,8 @@ A modified version of the table is below:</p>
 </details>
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
 <!-- [XAI for whom]: http://arxiv.org/abs/2106.05568 -->
-<!--Parts I removed to keep it shorter.-->
-<!-- DL models are usually complex, and have low _intrinsic_ explainability. Yet, they may allow for insightful _extrinsic_ explanations. For a model, accuracy, predictive power and complexity are also inter-related. -->
-<!-- _How does the output change_ if we change this or that feature? _Does it fail in some specific cases_? -->
-<!-- how much the explanation empowers users to understand the model, either intuitively or quantitatively. -->
-<!-- > D is a collection of data (facts, observations, givens).\ -->
-<!-- > H explains D (would, if true, explain D).\ -->
-<!-- > No other hypothesis can explain D _as well as_ H does.\ -->
-<!-- > Therefore, H is probably true. -->
-<!-- This defines a kind of inference / logical reasoning, called _abduction_ (besides induction and deduction), which ends up in a hypothesis or explanation. The process is also referred to as _inference to the best explanation_ (or to the best hypothesis). The selection is based on _how well_ it explains the events. -->
 <hr>
-<ol class="footnote-definition">
-<li id="footnote-1-2">
-<p><strong>Insight</strong> could be conceived, at least partially, as the <a href="https://en.wikipedia.org/wiki/Cooperative_principle">Gricean maxim</a> of relation (relevance). <strong>Complexity</strong>: If we think of a specific audience, we could remove this characteristic, because only explanations that are of quality and relevant should be considered, and that implies of the right level of complexity. There is also an issue: it may not be possible to explain a certain event without a certain level of complexity; in other words, the are constrains given by the social interaction and constrains given by the problem itself and the goals. <a href="#fr-1-1-2">↩</a></p>
-</li>
-</ol>
+<ol class="footnote-definition"></ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="additive-feature-attribution-methods"><a class="header" href="#additive-feature-attribution-methods">Additive Feature Attribution Methods</a></h1>
 <p>These set of methods are linear approximations (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span>) to the original model (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>). Mathematically:</p>
@@ -637,7 +628,7 @@ A modified version of the table is below:</p>
 </ul>
 <p>SHAP provides both global (average across inputs) and local (for a given input).</p>
 <h2 id="method-lime"><a class="header" href="#method-lime">Method: LIME</a></h2>
-<p>Local Interpretable Model Agnostic Explanation (LIME) and Generalised Linear Models (GLMs).<sup class="footnote-reference" id="fr-1-1-3"><a href="#footnote-1-3">1</a></sup> <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable ML</a> describes LIME as:</p>
+<p>Local Interpretable Model Agnostic Explanation (LIME) and Generalised Linear Models (GLMs).<sup class="footnote-reference" id="fr-1-1-2"><a href="#footnote-1-3">1</a></sup> <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable ML</a> describes LIME as:</p>
 <blockquote>
 <p>LIME approximates an opaque model locally, in the surrounding area of the prediction we are interested in explaining, (...) using the resulting model as a surrogate in order to explain the more complex one. Furthermore, this approach requires a transformation of the input data to an "interpretable representation," so the resulting features are understandable to humans, regardless of the actual features used by the model (...)</p>
 </blockquote>
@@ -675,7 +666,7 @@ A modified version of the table is below:</p>
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-1-3">
-<p><em>Local</em> in the name refers to being for a <em>particular input</em>, not <em>Global</em> which would be general. <a href="#fr-1-1-3">↩</a></p>
+<p><em>Local</em> in the name refers to being for a <em>particular input</em>, not <em>Global</em> which would be general. <a href="#fr-1-1-2">↩</a></p>
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
@@ -741,15 +732,25 @@ A modified version of the table is below:</p>
 <h2 id="other-methods"><a class="header" href="#other-methods">Other methods</a></h2>
 <ul>
 <li><strong>Dimensionality Reduction</strong>: Principal Component Analysis, t-SNE, Dimensionality Reduction, Independent Component Analysis, Non-negative Matrix Factorisation.</li>
-<li><strong>Counterfactuals</strong>: <q>concept of counterfactuals: the state of affairs that would have resulted from some event that did not occur.</q>
+<li><strong>Counterfactuals</strong>: We replace the problem by a hypothetical opposite:
 <ul>
-<li>They are normally weirdly phrased as: "A was the cause of B if, in an imaginary situation A not happening implies B not happening." which is related to <em>What ifs</em>: What if A didn't happen?</li>
+<li>A was the cause of B if, in an imaginary situation, A not happening implies B not happening.</li>
 <li>Change the instance slightly, but such that the model classifies the new instance in a different category.</li>
 <li>
 <blockquote>
 <p>(...) the applicant had missed one payment that led to this outcome, and that had he/she missed none the application would had been accepted</p>
 </blockquote>
 </li>
+</ul>
+</li>
+<li><strong>Contrastive</strong>: Is about comparing carefully selected instances: <em>Why P rather than Q?</em>
+<ul>
+<li>
+<blockquote>
+<p>In such cases, people expect to observe a particular event, but then observe another, with the observed event being the fact and the expected event being the foil.</p>
+</blockquote>
+</li>
+<li>It's a good "question generator". What do you expect if X is done, rather than Y?</li>
 </ul>
 </li>
 </ul>
@@ -828,7 +829,7 @@ A modified version of the table is below:</p>
 <li>Computationally search in composition-space (Crystal Structure Prediction, CSP), find low-energy probe structures, e.g. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathrm">L</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">Sn</span><span class="mord"><span class="mord mathrm">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">Cl</span></span></span></span></span>.
 <ul>
 <li>Can use physical constraints (like max n of atoms).</li>
-<li>Calculate thermodynamically stable<sup class="footnote-reference" id="fr-1-1-4"><a href="#footnote-1-4">1</a></sup> probe structure (this step is complex).
+<li>Calculate thermodynamically stable<sup class="footnote-reference" id="fr-1-1-3"><a href="#footnote-1-4">1</a></sup> probe structure (this step is complex).
 Hints experimentalists of promising region.</li>
 </ul>
 </li>
@@ -853,7 +854,7 @@ style A fill:#123456,color:#f4f4f4,stroke-width:0px
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-1-4">
-<p>With respect to the convex hull. <a href="#fr-1-1-4">↩</a></p>
+<p>With respect to the convex hull. <a href="#fr-1-1-3">↩</a></p>
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">

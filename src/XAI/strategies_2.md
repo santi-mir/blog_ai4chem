@@ -32,10 +32,13 @@
 ## Other methods
 
 - **Dimensionality Reduction**: Principal Component Analysis, t-SNE, Dimensionality Reduction, Independent Component Analysis, Non-negative Matrix Factorisation.
-- **Counterfactuals**: <q>concept of counterfactuals: the state of affairs that would have resulted from some event that did not occur.</q>
-    - They are normally weirdly phrased as: "A was the cause of B if, in an imaginary situation A not happening implies B not happening." which is related to _What ifs_: What if A didn't happen?
+- **Counterfactuals**: We replace the problem by a hypothetical opposite:
+    - A was the cause of B if, in an imaginary situation, A not happening implies B not happening.
     - Change the instance slightly, but such that the model classifies the new instance in a different category.
     - > (...) the applicant had missed one payment that led to this outcome, and that had he/she missed none the application would had been accepted
+- **Contrastive**: Is about comparing carefully selected instances: _Why P rather than Q?_
+    - > In such cases, people expect to observe a particular event, but then observe another, with the observed event being the fact and the expected event being the foil.
+    - It's a good "question generator". What do you expect if X is done, rather than Y?
 
 ## Explanation-producing Architectures
 
