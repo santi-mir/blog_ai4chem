@@ -16,7 +16,7 @@
 
 # Explainable AI
 
-- [Concepts](./XAI/concepts.md)
+- [Explaining Things](./XAI/concepts.md)
 - [Additive Features](./XAI/strategies.md)
 - [Visuals and Arch](./XAI/strategies_2.md)
 

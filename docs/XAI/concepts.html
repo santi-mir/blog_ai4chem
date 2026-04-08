@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Concepts - AI for Chemistry</title>
+        <title>Explaining Things - AI for Chemistry</title>
 
 
         <!-- Custom HTML head -->
@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-078accfb.js";
+            window.path_to_searchindex_js = "../searchindex-47a127bb.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-06cc9e3d.js"></script>
+        <script src="../toc-40e02f6a.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -182,23 +182,22 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="explainable-ai---concepts"><a class="header" href="#explainable-ai---concepts">Explainable AI - Concepts</a></h1>
-<p>One focus of Explainable Artificial Intelligence (XAI) is <em>model explainability</em>, which we could defined as:</p>
-<blockquote>
-<p>finding the causes underlying a model's predictions or operation,</p>
-</blockquote>
-<p>Or, more broadly,</p>
-<blockquote>
-<p>the degree to which humans can answer questions about a model's predictions or operation, either directly or using explainability methods.</p>
-</blockquote>
-<p>The last definition uses "questions" to include questions other than just why-questions.</p>
-<p>More comprehensively, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanations in AI, section 2.1.2</a> defines explanation as a 3-legged concept: a cognitive process, a product, a social process. This is itself an extension of previous work by Lombrozo on <a href="https://fitelson.org/few/few_08/lombrozo_reading.pdf">The structure and function of explanations</a></p>
-<p>The definitions don't reference the <em>social</em> aspects, such as the context, the audience, the communication or transfer of knowledge, but these must be considered to select <em>good explanations</em> (next sections).</p>
-<p>Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves); in a sense, that allows us to focus on the causal attribution / cognitive process.</p>
-<h2 id="explanations"><a class="header" href="#explanations">Explanations</a></h2>
+<h1 id="explaining-things"><a class="header" href="#explaining-things">Explaining Things</a></h1>
+<p>This post discusses explanations first, then arrives at a definition of explainable AI focusing on model explainability.</p>
+<h2 id="what-is-an-explanation"><a class="header" href="#what-is-an-explanation">What is an explanation?</a></h2>
+<p><a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanations in AI, section 2.1.2</a> <strong>defines explanation</strong> as a 3-legged concept: a cognitive process, a product, a social process. This is itself an extension of previous work by Lombrozo on <a href="https://fitelson.org/few/few_08/lombrozo_reading.pdf">The structure and function of explanations</a>. Central to their model are the definitions:</p>
+<ul>
+<li><strong>Causal attribution</strong>: Finding causes<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup>, a cognitive process,</li>
+<li><strong>Causal explanation</strong>: Causal attribution (cognitive process) + Communicating it (social process).</li>
+</ul>
+<h3 id="causal-attribution"><a class="header" href="#causal-attribution">Causal Attribution</a></h3>
 <p>An explanation / answer can be thought as the process of</p>
 <ol>
-<li>Hypothesis generation using abductive inference,</li>
+<li>Hypothesis generation using abductive inference,
+<ul>
+<li>These will be <em>proposed</em> causes/explanations/</li>
+</ul>
+</li>
 <li>Selection of the best hypothesis</li>
 </ol>
 <pre class="mermaid">flowchart TB
@@ -209,9 +208,8 @@ A -- abduction --&gt;D(H3: Because Z)
 style C fill:#050
 </pre>
 
-<p>It usually invokes causal inference because the hypotheses are proposed causes. Particularly for questions such as "Why X" asks for "What is the cause of / leads to X?" or for "What is the purpose of X".</p>
-<p>The is also the <em>communication</em> part, which is at the moment ignored.</p>
-<h3 id="good-explanations"><a class="header" href="#good-explanations">Good Explanations</a></h3>
+<p>Questions such as "Why X" can be rephrased as "What is the cause of / leads to X?" or for "What is the purpose of X". The former asks for a hypothetical cause.</p>
+<h3 id="causal-explanation--good-explanations"><a class="header" href="#causal-explanation--good-explanations">Causal Explanation / Good Explanations</a></h3>
 <p><a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. We can use these rules as a guide for good <em>model explanations</em> as well.</p>
 <ol>
 <li><strong>Informative</strong> (Quantity): right amount of context and details,</li>
@@ -220,6 +218,19 @@ style C fill:#050
 <li><strong>Manner</strong> (clarity): express it in elegant terms.</li>
 </ol>
 <p>For our case, where the object to explain is the DL model, it also matters if the <em>model explanation</em> is intrinsic-global, intrinsic-local, extrinsic-global or extrinsic-local. This is expanded later on.</p>
+<h2 id="explainable-ai"><a class="header" href="#explainable-ai">Explainable AI</a></h2>
+<p>One focus of Explainable Artificial Intelligence (XAI) is <em>model explainability</em>, which we could narrowly defined as:</p>
+<blockquote>
+<p>finding the causes underlying a model's predictions or operation,</p>
+</blockquote>
+<p>However, can a model be pragmatically considered explainable if it can not be communicated to the target audience?</p>
+<p>We can adapt the definition to include the 3-legged concept of explanations given earlier (of primary focus of XAI):</p>
+<blockquote>
+<p>the degree to which humans can effectively answer questions about a model's predictions or operation, either directly or using explainability methods.</p>
+</blockquote>
+<p><em>Questions</em> includes more than just why-questions; <em>effectively</em> includes the social aspect of it.</p>
+<p>The next sections expand on selecting <em>good explanations</em> (next sections).</p>
+<p>Note: This post assumes a scientific audience, focuses on methods to make deep learning models explainable to other scientists (or ourselves). In a sense, that allows us to focus on the causal attribution / cognitive process.</p>
 <h3 id="model-complexity-v-explanation-fidelity"><a class="header" href="#model-complexity-v-explanation-fidelity">Model Complexity v. Explanation Fidelity</a></h3>
 <p>Complex and accurate models tend to be less explainable. This is not universal, but we could represent this common case as:</p>
 <div class="center w30">
@@ -231,7 +242,7 @@ style C fill:#050
 
 </div>
 
-<h2 id="map-of-xai"><a class="header" href="#map-of-xai">Map of XAI</a></h2>
+<h3 id="map-of-xai"><a class="header" href="#map-of-xai">Map of XAI</a></h3>
 <p>An interesting map of XAI is given in the survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable ML</a> (2021).</p>
 <p>Most <em>classic ML</em> models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under <strong>Model types</strong> column.</p>
 <p>These are <em>transparent</em> (intrinsically explainable) but <em>may</em> benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.</p>
@@ -248,7 +259,7 @@ style C fill:#050
 
 <p>The focus here though, is explaining <em>deep learning</em> models. These are usually <em>opaque</em> ("<em>black-box</em>") models, and their accuracy is usually higher than classic ML models.</p>
 <p>In other words, classical ML and DL models each have their use-cases.</p>
-<h2 id="explanation-kinds"><a class="header" href="#explanation-kinds">Explanation kinds</a></h2>
+<h3 id="explanation-kinds"><a class="header" href="#explanation-kinds">Explanation kinds</a></h3>
 <p>The survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practise of explaining ML models</a> also includes a great table of <strong>explanation kinds</strong>. A modified version of the table is below:</p>
 <div class="table-wrapper">
 <table>
@@ -271,15 +282,6 @@ style C fill:#050
 <p>In the next post, we will look at methods.</p>
 <hr><details>
 <summary>More on Communicating Explanations</summary>
-<h2 id="audience"><a class="header" href="#audience">Audience</a></h2>
-<p>The definition given earlier uses <q>can answer questions</q> without considering that different audiences have different expertise and goals.</p>
-<p>This posts is concerned with methods to "find explanations" to be explained to a scientific audience. What about for any audience?</p>
-<p>Assuming we have all the explanations at our disposal, our task would be twofold:</p>
-<ol>
-<li>Select a relevant one for the audience,</li>
-<li>Communicate it correctly (<a href="https://en.wikipedia.org/wiki/Cooperative_principle">Gricean maxims</a>).</li>
-</ol>
-<p>Scientist may see a deep learning model through the metaphor of a machine. Next, I describe two metaphors, for different audiences.</p>
 <h3 id="the-machine-and-the-agent"><a class="header" href="#the-machine-and-the-agent">The Machine and The Agent</a></h3>
 <p>Let's assume we have a set of explanations at our disposal. The <a href="https://en.wikipedia.org/wiki/Cooperative_principle">Gricean Observations</a> of effective communication can help us, if taken as a prescription.</p>
 <p>The maxims are that statements (such as explanations) during effective communication are <strong>true</strong> (quality, fidelity), <strong>informative</strong> (quantity, not too long or short), <strong>relevant</strong> (relation, filling audience gaps) and <strong>clear</strong> (manner, avoid ambiguity).</p>
@@ -331,7 +333,11 @@ style C fill:#050
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
 <!-- [XAI for whom]: http://arxiv.org/abs/2106.05568 -->
 <hr>
-<ol class="footnote-definition"></ol>
+<ol class="footnote-definition">
+<li id="footnote-1">
+<p><em>Why X</em> is either asking for <em>What is the cause of X</em> (events leading to X) or <em>What is X for</em> (the purpose, for designed items.) We are interested in the former sense. Hume's understood causes with <em>counterfactuals</em>: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern. <a href="#fr-1-1">↩</a></p>
+</li>
+</ol>
 
                     </main>
 
@@ -368,6 +374,22 @@ style C fill:#050
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>

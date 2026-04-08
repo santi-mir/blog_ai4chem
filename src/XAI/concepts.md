@@ -1,26 +1,20 @@
-# Explainable AI - Concepts
+# Explaining Things
 
-One focus of Explainable Artificial Intelligence (XAI) is _model explainability_, which we could defined as:
+This post discusses explanations first, then arrives at a definition of explainable AI focusing on model explainability.
 
-> finding the causes underlying a model's predictions or operation,
+## What is an explanation?
 
-Or, more broadly,
+[Explanations in AI, section 2.1.2][explanations_social] **defines explanation** as a 3-legged concept: a cognitive process, a product, a social process. This is itself an extension of previous work by Lombrozo on [The structure and function of explanations][lombrozo]. Central to their model are the definitions:
 
-> the degree to which humans can answer questions about a model's predictions or operation, either directly or using explainability methods.
+- **Causal attribution**: Finding causes[^1], a cognitive process,
+- **Causal explanation**: Causal attribution (cognitive process) + Communicating it (social process).
 
-The last definition uses "questions" to include questions other than just why-questions.
-
-More comprehensively, [Explanations in AI, section 2.1.2][explanations_social] defines explanation as a 3-legged concept: a cognitive process, a product, a social process. This is itself an extension of previous work by Lombrozo on [The structure and function of explanations][lombrozo]
-
-The definitions don't reference the _social_ aspects, such as the context, the audience, the communication or transfer of knowledge, but these must be considered to select _good explanations_ (next sections).
-
-Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves); in a sense, that allows us to focus on the causal attribution / cognitive process.
-
-## Explanations
+### Causal Attribution
 
 An explanation / answer can be thought as the process of
 
 1. Hypothesis generation using abductive inference,
+   - These will be _proposed_ causes/explanations/
 2. Selection of the best hypothesis
 
 ```mermaid
@@ -32,11 +26,9 @@ A -- abduction -->D(H3: Because Z)
 style C fill:#050
 ```
 
-It usually invokes causal inference because the hypotheses are proposed causes. Particularly for questions such as "Why X" asks for "What is the cause of / leads to X?" or for "What is the purpose of X".
+Questions such as "Why X" can be rephrased as "What is the cause of / leads to X?" or for "What is the purpose of X". The former asks for a hypothetical cause.
 
-The is also the _communication_ part, which is at the moment ignored.
-
-### Good Explanations
+### Causal Explanation / Good Explanations
 
 [Gricean Maxims][gricean_maxims] are rules observed in _good_ communication. We can use these rules as a guide for good _model explanations_ as well.
 
@@ -46,6 +38,24 @@ The is also the _communication_ part, which is at the moment ignored.
 4. **Manner** (clarity): express it in elegant terms.
 
 For our case, where the object to explain is the DL model, it also matters if the _model explanation_ is intrinsic-global, intrinsic-local, extrinsic-global or extrinsic-local. This is expanded later on.
+
+## Explainable AI
+
+One focus of Explainable Artificial Intelligence (XAI) is _model explainability_, which we could narrowly defined as:
+
+> finding the causes underlying a model's predictions or operation,
+
+However, can a model be pragmatically considered explainable if it can not be communicated to the target audience?
+
+We can adapt the definition to include the 3-legged concept of explanations given earlier (of primary focus of XAI):
+
+> the degree to which humans can effectively answer questions about a model's predictions or operation, either directly or using explainability methods.
+
+_Questions_ includes more than just why-questions; _effectively_ includes the social aspect of it.
+
+The next sections expand on selecting _good explanations_ (next sections).
+
+Note: This post assumes a scientific audience, focuses on methods to make deep learning models explainable to other scientists (or ourselves). In a sense, that allows us to focus on the causal attribution / cognitive process.
 
 ### Model Complexity v. Explanation Fidelity
 
@@ -57,7 +67,7 @@ Complex and accurate models tend to be less explainable. This is not universal, 
     <p>Model accuracy vs Model explainability tradeoff.</p>
 </div>
 
-## Map of XAI
+### Map of XAI
 
 An interesting map of XAI is given in the survey [Principles and practice of explainable ML][principles_and_practice] (2021).
 
@@ -78,7 +88,7 @@ The focus here though, is explaining _deep learning_ models. These are usually _
 
 In other words, classical ML and DL models each have their use-cases.
 
-## Explanation kinds
+### Explanation kinds
 
 The survey [Principles and practise of explaining ML models][principles_and_practice] also includes a great table of **explanation kinds**. A modified version of the table is below:
 
@@ -100,19 +110,6 @@ In the next post, we will look at methods.
 
 <details>
 <summary>More on Communicating Explanations</summary>
-
-## Audience
-
-The definition given earlier uses <q>can answer questions</q> without considering that different audiences have different expertise and goals.
-
-This posts is concerned with methods to "find explanations" to be explained to a scientific audience. What about for any audience?
-
-Assuming we have all the explanations at our disposal, our task would be twofold:
-
-1. Select a relevant one for the audience,
-2. Communicate it correctly ([Gricean maxims][wikipedia_gricean]).
-
-Scientist may see a deep learning model through the metaphor of a machine. Next, I describe two metaphors, for different audiences.
 
 ### The Machine and The Agent
 
