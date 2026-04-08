@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-a8a98f1b.js";
+            window.path_to_searchindex_js = "searchindex-b0e2c0e1.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-06cc9e3d.js"></script>
@@ -453,9 +453,9 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <p>A similar definition is in <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">explanations in AI, section 2.1.3</a> which includes <em>why</em>/<em>what</em>/<em>how</em>-questions. The definition given above uses "questions" to include these cases.<sup class="footnote-reference" id="fr-1-1-2"><a href="#footnote-1-2">1</a></sup></p>
 <p>The answers to such questions —explanations— are themselves hypotheses. The one selected is that which best explains the data. Of course, it could be none of them is good enough.</p>
 <p><small>Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves).</small></p>
-<h2 id="a-trade-off"><a class="header" href="#a-trade-off">A trade-off</a></h2>
-<p>Complex and accurate models tend to be less explainable. This is referred to as the Explainability v. Accuracy trade-off (see image below). The finding is an empirical rather than theoretical.</p>
-<div class="center w40">
+<h2 id="explainability-limits"><a class="header" href="#explainability-limits">Explainability limits</a></h2>
+<p>Complex and accurate models tend to be less explainable. This is not universal, but we could represent this common case as:</p>
+<div class="center w30">
     <a href="assets/tradeoff.webp">
     <img src="assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff." />
     </a>
@@ -464,7 +464,7 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 
 </div>
 
-<h2 id="gricean-maxims"><a class="header" href="#gricean-maxims">Gricean Maxims</a></h2>
+<h2 id="desiderata-for-explanations"><a class="header" href="#desiderata-for-explanations">Desiderata for Explanations</a></h2>
 <p><a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. We can use these rules as a guide for good <em>model explanations</em> as well.</p>
 <ol>
 <li><strong>Informative</strong> (Quantity): right amount of context and details,</li>
@@ -472,11 +472,7 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <li><strong>Relevance</strong> (Relation): do not state things that aren't needed (provide insight),</li>
 <li><strong>Manner</strong> (clarity): express it in elegant terms.</li>
 </ol>
-<p>These will vary depending on the audience.</p>
-<p>There is also a trade-off between truthfulness of an explanation (shown in the image earlier) and model complexity. Other dimensions will be specific of AI models:</p>
-<ul>
-<li><strong>Other variables</strong>: intrinsic-global, intrinsic-local, extrinsic-global, and extrinsic-local explanations.</li>
-</ul>
+<p>For our case, where the object to explain is the DL model, it also matters if the <em>model explanation</em> is intrinsic-global, intrinsic-local, extrinsic-global or extrinsic-local. This is expanded later on.</p>
 <h2 id="map-of-xai"><a class="header" href="#map-of-xai">Map of XAI</a></h2>
 <p>An interesting map of XAI is given in the survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable ML</a> (2021); and is reproduced below:</p>
 <div class="center w50">
@@ -491,17 +487,11 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 </div>
 
 <p>Most <em>classic ML</em> models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under <strong>Model types</strong> column.</p>
-<p>These are <em>transparent</em> (intrinsically explainable) but <em>may</em> also benefit of post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.</p>
-<p>The focus here though, is explaining <em>deep learning</em> models.
-These are usually <em>opaque</em> ("<em>black-box</em>") models, but their predictive power is usually higher than classic ML models.</p>
-<p>In other words, there are use-cases for each classical and deep learning <em>models</em>.</p>
-<p>When using explanation techniques, we should remember that (same paper):</p>
-<blockquote>
-<p>Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),</p>
-</blockquote>
+<p>These are <em>transparent</em> (intrinsically explainable) but <em>may</em> benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.</p>
+<p>The focus here though, is explaining <em>deep learning</em> models. These are usually <em>opaque</em> ("<em>black-box</em>") models, and their accuracy is usually higher than classic ML models.</p>
+<p>In other words, classical ML and DL models each have their use-cases.</p>
 <h2 id="explanation-kinds"><a class="header" href="#explanation-kinds">Explanation kinds</a></h2>
-<p>The survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practise of explaining ML models</a> also includes a great table of <strong>explanation kinds</strong>.
-A modified version of the table is below:</p>
+<p>The survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practise of explaining ML models</a> also includes a great table of <strong>explanation kinds</strong>. A modified version of the table is below:</p>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -516,7 +506,11 @@ A modified version of the table is below:</p>
 </tbody>
 </table>
 </div>
-<p>In the next post, we look at methods.</p>
+<p>We should remember that:</p>
+<blockquote>
+<p>Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),</p>
+</blockquote>
+<p>In the next post, we will look at methods.</p>
 <hr><details>
 <summary>More on Communicating Explanations</summary>
 <h2 id="audience"><a class="header" href="#audience">Audience</a></h2>
@@ -1174,6 +1168,22 @@ A --&gt; Direct
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>

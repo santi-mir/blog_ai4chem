@@ -10,18 +10,17 @@ The answers to such questions &mdash;explanations&mdash; are themselves hypothes
 
 <small>Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves).</small>
 
-## A trade-off
+## Explainability limits
 
-Complex and accurate models tend to be less explainable. This is referred to as the Explainability v. Accuracy trade-off (see image below). The finding is an empirical rather than theoretical.
-
-<div class="center w40">
+Complex and accurate models tend to be less explainable. This is not universal, but we could represent this common case as:
+<div class="center w30">
     <a href="../assets/tradeoff.webp">
     <img src="../assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff."/>
     </a>
     <p>Model accuracy vs Model explainability tradeoff.</p>
 </div>
 
-## Gricean Maxims
+## Desiderata for Explanations
 
 [Gricean Maxims][gricean_maxims] are rules observed in _good_ communication. We can use these rules as a guide for good _model explanations_ as well.
 
@@ -30,11 +29,7 @@ Complex and accurate models tend to be less explainable. This is referred to as 
 3. **Relevance** (Relation): do not state things that aren't needed (provide insight),
 4. **Manner** (clarity): express it in elegant terms.
 
-These will vary depending on the audience.
-
-There is also a trade-off between truthfulness of an explanation (shown in the image earlier) and model complexity. Other dimensions will be specific of AI models:
-
-- **Other variables**: intrinsic-global, intrinsic-local, extrinsic-global, and extrinsic-local explanations.
+For our case, where the object to explain is the DL model, it also matters if the _model explanation_ is intrinsic-global, intrinsic-local, extrinsic-global or extrinsic-local. This is expanded later on.
 
 ## Map of XAI
 
@@ -51,21 +46,15 @@ An interesting map of XAI is given in the survey [Principles and practice of exp
 
 Most _classic ML_ models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under **Model types** column.
 
-These are _transparent_ (intrinsically explainable) but _may_ also benefit of post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.
+These are _transparent_ (intrinsically explainable) but _may_ benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.
 
-The focus here though, is explaining _deep learning_ models.
-These are usually _opaque_ ("_black-box_") models, but their predictive power is usually higher than classic ML models.
+The focus here though, is explaining _deep learning_ models. These are usually _opaque_ ("_black-box_") models, and their accuracy is usually higher than classic ML models.
 
-In other words, there are use-cases for each classical and deep learning _models_.
-
-When using explanation techniques, we should remember that (same paper):
-
-> Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),
+In other words, classical ML and DL models each have their use-cases.
 
 ## Explanation kinds
 
-The survey [Principles and practise of explaining ML models][principles_and_practice] also includes a great table of **explanation kinds**.
-A modified version of the table is below:
+The survey [Principles and practise of explaining ML models][principles_and_practice] also includes a great table of **explanation kinds**. A modified version of the table is below:
 
 | Explanation         | Advantages    | Disadvantages | Question |
 |---------------------|---------------|---------------|----------|
@@ -75,7 +64,11 @@ A modified version of the table is below:
 | **Simplification**  | Simple surrogate models explain opaque ones. | Surrogate models may not approximate original models well. | Can we get local insights by using a simpler model? |
 | **Visualizations**  | Easier to communicate to non-technical audiences. Most approaches are intuitive and not hard to implement. | There is an upper bound on how many features can be considered at once. Humans must inspect plots to derive explanations. | Class boundaries? |
 
-In the next post, we look at methods.
+We should remember that:
+
+> Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),
+
+In the next post, we will look at methods.
 
 --------------------
 
