@@ -10,17 +10,7 @@ The answers to such questions &mdash;explanations&mdash; are themselves hypothes
 
 <small>Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves).</small>
 
-## Explainability limits
-
-Complex and accurate models tend to be less explainable. This is not universal, but we could represent this common case as:
-<div class="center w30">
-    <a href="../assets/tradeoff.webp">
-    <img src="../assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff."/>
-    </a>
-    <p>Model accuracy vs Model explainability tradeoff.</p>
-</div>
-
-## Desiderata for Explanations
+## Good Explanations
 
 [Gricean Maxims][gricean_maxims] are rules observed in _good_ communication. We can use these rules as a guide for good _model explanations_ as well.
 
@@ -30,6 +20,16 @@ Complex and accurate models tend to be less explainable. This is not universal, 
 4. **Manner** (clarity): express it in elegant terms.
 
 For our case, where the object to explain is the DL model, it also matters if the _model explanation_ is intrinsic-global, intrinsic-local, extrinsic-global or extrinsic-local. This is expanded later on.
+
+### Model Complexity v. Explanation Fidelity
+
+Complex and accurate models tend to be less explainable. This is not universal, but we could represent this common case as:
+<div class="center w30">
+    <a href="../assets/tradeoff.webp">
+    <img src="../assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff."/>
+    </a>
+    <p>Model accuracy vs Model explainability tradeoff.</p>
+</div>
 
 ## Map of XAI
 
