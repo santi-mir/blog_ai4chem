@@ -33,7 +33,11 @@ Complex and accurate models tend to be less explainable. This is not universal, 
 
 ## Map of XAI
 
-An interesting map of XAI is given in the survey [Principles and practice of explainable ML][principles_and_practice] (2021); and is reproduced below:
+An interesting map of XAI is given in the survey [Principles and practice of explainable ML][principles_and_practice] (2021).
+
+Most _classic ML_ models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under **Model types** column.
+
+These are _transparent_ (intrinsically explainable) but _may_ benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.
 
 <div class="center w50">
     <a href="../assets/taxonomy.webp">
@@ -44,9 +48,6 @@ An interesting map of XAI is given in the survey [Principles and practice of exp
     </p>
 </div>
 
-Most _classic ML_ models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under **Model types** column.
-
-These are _transparent_ (intrinsically explainable) but _may_ benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.
 
 The focus here though, is explaining _deep learning_ models. These are usually _opaque_ ("_black-box_") models, and their accuracy is usually higher than classic ML models.
 
