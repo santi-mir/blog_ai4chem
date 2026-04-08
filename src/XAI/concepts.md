@@ -1,16 +1,42 @@
 # Explainable AI - Concepts
 
-One focus of Explainable Artificial Intelligence (XAI) is _model explainability_, which could be defined as:
+One focus of Explainable Artificial Intelligence (XAI) is _model explainability_, which we could defined as:
+
+> finding the causes underlying a model's predictions or operation,
+
+Or, more broadly,
 
 > the degree to which humans can answer questions about a model's predictions or operation, either directly or using explainability methods.
 
-A similar definition is in [explanations in AI, section 2.1.3][explanations_social] which includes _why_/_what_/_how_-questions. The definition given above uses "questions" to include these cases.[^1]
+The last definition uses "questions" to include questions other than just why-questions.
 
-The answers to such questions &mdash;explanations&mdash; are themselves hypotheses. The one selected is that which best explains the data. Of course, it could be none of them is good enough.
+More comprehensively, [Explanations in AI, section 2.1.2][explanations_social] defines explanation as a 3-legged concept: a cognitive process, a product, a social process. This is itself an extension of previous work by Lombrozo on [The structure and function of explanations][lombrozo]
 
-<small>Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves).</small>
+The definitions don't reference the _social_ aspects, such as the context, the audience, the communication or transfer of knowledge, but these must be considered to select _good explanations_ (next sections).
 
-## Good Explanations
+Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves); in a sense, that allows us to focus on the causal attribution / cognitive process.
+
+## Explanations
+
+An explanation / answer can be thought as the process of
+
+1. Hypothesis generation using abductive inference,
+2. Selection of the best hypothesis
+
+```mermaid
+flowchart TB
+A(Why W?) -- abduction -->B(H1: Because X)
+A -- abduction -->C(H2: Because Y)
+A -- abduction -->D(H3: Because Z)
+
+style C fill:#050
+```
+
+It usually invokes causal inference because the hypotheses are proposed causes. Particularly for questions such as "Why X" asks for "What is the cause of / leads to X?" or for "What is the purpose of X".
+
+The is also the _communication_ part, which is at the moment ignored.
+
+### Good Explanations
 
 [Gricean Maxims][gricean_maxims] are rules observed in _good_ communication. We can use these rules as a guide for good _model explanations_ as well.
 
@@ -155,5 +181,6 @@ It seems plausible that some explanations can't be simplified further without be
 [explanations_social]: https://www.sciencedirect.com/science/article/pii/S0004370218305988
 [gricean_maxims]: https://effectiviology.com/principles-of-effective-communication/
 [wikipedia_gricean]: https://en.wikipedia.org/wiki/Cooperative_principle
+[lombrozo]: https://fitelson.org/few/few_08/lombrozo_reading.pdf
 
 [^1]:  _Why X_ is either asking for _What is the cause of X_ (events leading to X) or _What is X for_ (the purpose, for designed items.) We are interested in the former sense. Hume's understood causes with _counterfactuals_: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.

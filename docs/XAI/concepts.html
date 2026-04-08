@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-b70594d4.js";
+            window.path_to_searchindex_js = "../searchindex-078accfb.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-06cc9e3d.js"></script>
@@ -183,14 +183,35 @@
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="explainable-ai---concepts"><a class="header" href="#explainable-ai---concepts">Explainable AI - Concepts</a></h1>
-<p>One focus of Explainable Artificial Intelligence (XAI) is <em>model explainability</em>, which could be defined as:</p>
+<p>One focus of Explainable Artificial Intelligence (XAI) is <em>model explainability</em>, which we could defined as:</p>
+<blockquote>
+<p>finding the causes underlying a model's predictions or operation,</p>
+</blockquote>
+<p>Or, more broadly,</p>
 <blockquote>
 <p>the degree to which humans can answer questions about a model's predictions or operation, either directly or using explainability methods.</p>
 </blockquote>
-<p>A similar definition is in <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">explanations in AI, section 2.1.3</a> which includes <em>why</em>/<em>what</em>/<em>how</em>-questions. The definition given above uses "questions" to include these cases.<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup></p>
-<p>The answers to such questions —explanations— are themselves hypotheses. The one selected is that which best explains the data. Of course, it could be none of them is good enough.</p>
-<p><small>Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves).</small></p>
-<h2 id="good-explanations"><a class="header" href="#good-explanations">Good Explanations</a></h2>
+<p>The last definition uses "questions" to include questions other than just why-questions.</p>
+<p>More comprehensively, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanations in AI, section 2.1.2</a> defines explanation as a 3-legged concept: a cognitive process, a product, a social process. This is itself an extension of previous work by Lombrozo on <a href="https://fitelson.org/few/few_08/lombrozo_reading.pdf">The structure and function of explanations</a></p>
+<p>The definitions don't reference the <em>social</em> aspects, such as the context, the audience, the communication or transfer of knowledge, but these must be considered to select <em>good explanations</em> (next sections).</p>
+<p>Note: This post assumes a scientific audience, and the methods are tools for explaining deep learning models to other scientists (or ourselves); in a sense, that allows us to focus on the causal attribution / cognitive process.</p>
+<h2 id="explanations"><a class="header" href="#explanations">Explanations</a></h2>
+<p>An explanation / answer can be thought as the process of</p>
+<ol>
+<li>Hypothesis generation using abductive inference,</li>
+<li>Selection of the best hypothesis</li>
+</ol>
+<pre class="mermaid">flowchart TB
+A(Why W?) -- abduction --&gt;B(H1: Because X)
+A -- abduction --&gt;C(H2: Because Y)
+A -- abduction --&gt;D(H3: Because Z)
+
+style C fill:#050
+</pre>
+
+<p>It usually invokes causal inference because the hypotheses are proposed causes. Particularly for questions such as "Why X" asks for "What is the cause of / leads to X?" or for "What is the purpose of X".</p>
+<p>The is also the <em>communication</em> part, which is at the moment ignored.</p>
+<h3 id="good-explanations"><a class="header" href="#good-explanations">Good Explanations</a></h3>
 <p><a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. We can use these rules as a guide for good <em>model explanations</em> as well.</p>
 <ol>
 <li><strong>Informative</strong> (Quantity): right amount of context and details,</li>
@@ -310,11 +331,7 @@
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
 <!-- [XAI for whom]: http://arxiv.org/abs/2106.05568 -->
 <hr>
-<ol class="footnote-definition">
-<li id="footnote-1">
-<p><em>Why X</em> is either asking for <em>What is the cause of X</em> (events leading to X) or <em>What is X for</em> (the purpose, for designed items.) We are interested in the former sense. Hume's understood causes with <em>counterfactuals</em>: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern. <a href="#fr-1-1">↩</a></p>
-</li>
-</ol>
+<ol class="footnote-definition"></ol>
 
                     </main>
 
@@ -351,6 +368,22 @@
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>
