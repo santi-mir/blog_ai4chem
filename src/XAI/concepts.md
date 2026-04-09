@@ -14,11 +14,11 @@ To a first approximation, an explanation is
 
 But there is more to it: _answering_ is a communication process, _why questions_ have a complex structure and not only _why questions_ can be asked. Let's explore these a bit further.
 
-[Explanations in AI, section 2.1.2][explanations_social] defines an _explanation_ as a 3-legged concept, extending previous work by Lombrozo on [The structure and function of explanations][lombrozo]. An  _explanation_ (causal or contrastive), is:
+[Explanations in AI, section 2.1.2][explanations_social] defines an _explanation_ as a 3-legged concept, extending previous work by Lombrozo on [The structure and function of explanations][lombrozo]. An _explanation_ (causal or contrastive), is:
 
 1. **Cognitive process**: involves finding the cause of an event, known as the causal attribution,
-    - Usually, the attribution implicitly answers a _contrastive question_ "Why P rather than Q?".
-    - _Contrast_ is an important component of the structure of _why-questions_, highlighted by the paper above.
+   - Usually, the attribution implicitly answers a _contrastive question_ "Why P rather than Q?".
+   - _Contrast_ is an important component of the structure of _why-questions_, highlighted by the paper above.
 2. **Product**: The result of the cognitive process,
 3. **Social process**: communicating it.
 
@@ -151,7 +151,7 @@ So explanations are answers to _why-questions_; _good_ explanation is dependent 
 
 </details>
 
-----------
+------------
 
 <details>
 <summary>List of sources used in this blogpost</summary>
@@ -187,6 +187,5 @@ So explanations are answers to _why-questions_; _good_ explanation is dependent 
 [gricean_maxims]: https://effectiviology.com/principles-of-effective-communication/
 [wikipedia_gricean]: https://en.wikipedia.org/wiki/Cooperative_principle
 [lombrozo]: https://fitelson.org/few/few_08/lombrozo_reading.pdf
-
 
 <!-- _Why X_ questions can be rephrased as either _What is X for_, its purpose, or _What is the cause of X_, that is, the events leading to X. These are different questions, and we are interested in the latter sense, in _causes_ rather than _purposes_. -->
