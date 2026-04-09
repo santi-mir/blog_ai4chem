@@ -9,35 +9,45 @@ The goals of the post are:
 
 ## What is an explanation?
 
-[Explanations in AI, section 2.1.2][explanations_social] **defines explanation** as a 3-legged concept. This is itself an extension of previous work by Lombrozo on [The structure and function of explanations][lombrozo]. Central to their model are the definitions:
+To a first approximation, an explanation is
+> An answer to a why-question by referring to causes.
 
-- **Causal explanation**: Or just _explanation_. Involves:
-    - Cognitive process: causal attribution; that is, finding the causes of an event,
-    - Product: The result,
-    - Social process: communicating it.
+But there is more to it: _answering_ is a communication process, _why questions_ have a complex structure and not only _why questions_ can be asked. Let's explore these a bit further.
 
-### Causal Attribution
+[Explanations in AI, section 2.1.2][explanations_social] defines an _explanation_ as a 3-legged concept, extending previous work by Lombrozo on [The structure and function of explanations][lombrozo]. An  _explanation_ (causal or contrastive), is:
 
-_Why X_ can be rephrased as either _What is X for_, its purpose, or _What is the cause of X_, that is, the events leading to X.
+1. **Cognitive process**: involves finding the cause of an event, known as the causal attribution,
+    - Usually, the attribution implicitly answers a _contrastive question_ "Why P rather than Q?".
+    - _Contrast_ is an important component of the structure of _why-questions_, highlighted by the paper above.
+2. **Product**: The result of the cognitive process,
+3. **Social process**: communicating it.
 
-We are interested in the latter. Hume understood causes with _counterfactuals_: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.
+Let's zoom into the cognitive process part (`1.`) of explanations.
 
-It normally involves an inference for the _best_ cause (best candidate hypothesis for cause), or in steps:
+### Cognitive process
 
-1. Hypothesis generation using abductive inference,
-   - These will be _proposed_ causes/explanations/
-2. Selection of the best hypothesis
+This process involves assigning _causes_ by _causal attribution_ and also _abductive reasoning_.
+
+Causes themselves were understood by Hume through _counterfactuals_: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.
+
+As noted earlier _why-questions_ have a structure and normally a contrastive question _why P rather than Q_ is answered.
+
+Abductive inference is the generation of a hypothesis (candidate cause), and also the selection of the best one given the available evidence; in other words, a two step process:
+
+1. Hypothesis generation,
+   - These will be _proposed_ causes
+2. Selection of the best hypothesis (akin to _attribution_)
 
 ```mermaid
 flowchart TB
-A(Why W?) -- abduction -->B(H1: Because X)
-A -- abduction -->C(H2: Because Y)
-A -- abduction -->D(H3: Because Z)
+A(Why W?) -->B(H1: Because X)
+A -->C(H2: Because Y)
+A -->D(H3: Because Z)
 
 style C fill:#050
 ```
 
-### Causal Explanation / Good Explanations
+### Social or Communicative Process
 
 The causal-hypothesis must then be communicated, and there are expectations about it.
 
@@ -116,12 +126,9 @@ We should remember that:
 
 In the next posts, we focus on **methods** that aid _causal attribution_ (or cognitive process) with a scientific audience in mind.
 
-------------
+### Aside: Methaphors
 
-<details>
-<summary>Aside: Methaphors</summary>
-
-## The Machine and The Agent
+<details><summary>The Machine and The Agent</summary>
 
 In the scientific and science-adjacent domains, models are conceptualised as _machines_:
 
@@ -144,9 +151,10 @@ So explanations are answers to _why-questions_; _good_ explanation is dependent 
 
 </details>
 
-<details>
+----------
 
-<summary>Sources</summary>
+<details>
+<summary>List of sources used in this blogpost</summary>
 
 1. [On the mechanization of abductive logic][abductive_logic] (1973). The first page is quite interesting.
 <!-- A **deduction** (proof) is e.g. "All cats are animals (I); animals are big (II); then cats are big (III)", whereas **abduction** (hypothesis) would be "III; I; maybe II" notice the _maybe_ (anti-clockwise rotation). Another anti-clockwise rotation takes us to **induction** (generalisation,hypothesis): "II; III; maybe all I". -->
@@ -179,3 +187,6 @@ So explanations are answers to _why-questions_; _good_ explanation is dependent 
 [gricean_maxims]: https://effectiviology.com/principles-of-effective-communication/
 [wikipedia_gricean]: https://en.wikipedia.org/wiki/Cooperative_principle
 [lombrozo]: https://fitelson.org/few/few_08/lombrozo_reading.pdf
+
+
+<!-- _Why X_ questions can be rephrased as either _What is X for_, its purpose, or _What is the cause of X_, that is, the events leading to X. These are different questions, and we are interested in the latter sense, in _causes_ rather than _purposes_. -->
