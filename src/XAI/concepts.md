@@ -1,6 +1,7 @@
 # Explaining Things
 
 The goals of the post are:
+
 1. Discuss general aspects about explanations,
 2. Propose a definition of explainable AI focusing on _model explainability_.
 
@@ -11,7 +12,7 @@ The goals of the post are:
 [Explanations in AI, section 2.1.2][explanations_social] **defines explanation** as a 3-legged concept. This is itself an extension of previous work by Lombrozo on [The structure and function of explanations][lombrozo]. Central to their model are the definitions:
 
 - **Causal explanation**: Or just _explanation_. Involves:
-    - Cognitive process: causal attribution[^1]; that is, finding the causes of an event,
+    - Cognitive process: causal attribution; that is, finding the causes of an event,
     - Product: The result,
     - Social process: communicating it.
 
@@ -49,7 +50,7 @@ The causal-hypothesis must then be communicated, and there are expectations abou
 
 ## Explainable AI
 
-Having defined _causal explanations_ we can define _model explainability_ &mdash; the focus of  Explainable Artificial Intelligence&mdash as:
+Having defined _causal explanations_ we can define _model explainability_ &mdash; the focus of Explainable Artificial Intelligence&mdash as:
 
 > finding the causes underlying a model's predictions or operation,
 
@@ -75,7 +76,6 @@ This is not universal, but we could represent this common case as:
     </a>
     <p>Model accuracy vs Model explainability tradeoff.</p>
 </div>
-
 
 ## Map of XAI
 
@@ -116,7 +116,7 @@ We should remember that:
 
 In the next posts, we focus on **methods** that aid _causal attribution_ (or cognitive process) with a scientific audience in mind.
 
---------------------
+------------
 
 <details>
 <summary>Aside: Methaphors</summary>
