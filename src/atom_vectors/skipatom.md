@@ -1,4 +1,4 @@
-# Atoms Vectors - SkipAtom
+# SkipAtom
 
 [Atom2Vec] was already described; now it's time for [SkipAtom], another algorithm to learn atom embeddings.
 

@@ -24,14 +24,14 @@ Dense vectors are useful because training will be faster (than a similar sparse 
 
 Embeddings for atoms were inspired by NLP models from the 2010s.
 
-One such example was learning [continuous vector representations of words][word embeddings] (2013). They proposed an automated mechanism generate word-vectors by absorbing information from that word's environment (neighbouring words).
+One such example was learning [continuous vector representations of words][word embeddings] (2013). They proposed an automated mechanism to generate word-vectors by absorbing information from that word's environment (neighbouring words).
 
 Materials science has exploited the same ideas, for example:
 
 - <q>properties of an atom can be inferred from the environments it lives in</q> ([Atom2Vec], 2018),
 - <q>atoms are to compounds as words are to sentences</q> ([SkipAtom], 2022),
 
-The surprise was that similar words (or atoms) produce similar vectors. The vectors also support semantically meaningful arithmetic operations, and became useful for downstream tasks. A classic example was:
+The surprise was that similar words (or atoms) end up with similar vectors. The vectors also support semantically meaningful arithmetic operations, and became useful for downstream tasks. A classic example was:
 
 ```txt
 vector("Queen") = vector("King") - vector("Man") + vector("Woman")
@@ -39,7 +39,7 @@ vector("Queen") = vector("King") - vector("Man") + vector("Woman")
 
 ## Vectors in Chemistry
 
-As dicussed earlier, atom vectors can be expert-designed or they can be _learnt_ by an algorithm. Learning vectors yields more general-purpose vectors, and has won in popularity.
+As discussed earlier, atom vectors can be expert-designed or they can be _learnt_ by an algorithm. Learning vectors yields more general-purpose vectors, and has won in popularity.
 
 Both [Atom2Vec] (2018) and [SkipAtom] (2022) are unsupervised algorithms that obtain their atom vectors from databases of compounds. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.
 

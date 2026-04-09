@@ -2,6 +2,8 @@
 
 This post discusses explanations first, then arrives at a definition of explainable AI focusing on model explainability.
 
+Note: This post assumes a scientific audience, focuses on methods to make deep learning models explainable to other scientists (or ourselves). This allows us to focus on more technical aspects (later on called causal attribution or cognitive process).
+
 ## What is an explanation?
 
 [Explanations in AI, section 2.1.2][explanations_social] **defines explanation** as a 3-legged concept: a cognitive process, a product, a social process. This is itself an extension of previous work by Lombrozo on [The structure and function of explanations][lombrozo]. Central to their model are the definitions:
@@ -53,10 +55,6 @@ We can adapt the definition to include the 3-legged concept of explanations give
 
 _Questions_ includes more than just why-questions; _effectively_ includes the social aspect of it.
 
-The next sections expand on selecting _good explanations_ (next sections).
-
-Note: This post assumes a scientific audience, focuses on methods to make deep learning models explainable to other scientists (or ourselves). In a sense, that allows us to focus on the causal attribution / cognitive process.
-
 ### Model Complexity v. Explanation Fidelity
 
 Complex and accurate models tend to be less explainable. This is not universal, but we could represent this common case as:
@@ -73,7 +71,7 @@ An interesting map of XAI is given in the survey [Principles and practice of exp
 
 Most _classic ML_ models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under **Model types** column.
 
-These are _transparent_ (intrinsically explainable) but _may_ benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred.
+_Classic ML_ models are usually _transparent_ (intrinsically explainable) but _may_ benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred over DL models.
 
 <div class="center w50">
     <a href="../assets/taxonomy.webp">
@@ -104,18 +102,14 @@ We should remember that:
 
 > Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),
 
-In the next post, we will look at methods.
+In the next posts, we will look at methods.
 
 --------------------
 
 <details>
-<summary>More on Communicating Explanations</summary>
+<summary>Aside: Methaphors</summary>
 
 ### The Machine and The Agent
-
-Let's assume we have a set of explanations at our disposal. The [Gricean Observations][wikipedia_gricean] of effective communication can help us, if taken as a prescription.
-
-The maxims are that statements (such as explanations) during effective communication are **true** (quality, fidelity), **informative** (quantity, not too long or short), **relevant** (relation, filling audience gaps) and **clear** (manner, avoid ambiguity).
 
 In the scientific and science-adjacent domains, models are conceptualised as _machines_:
 
@@ -134,13 +128,13 @@ The audiences' have different goals or expectations and expertise (which exists 
 | **Scientific**   | Machine     | Mechanistic, causal, formal | Experts             |
 | **Human-facing** | Agent       | Intentional, narrative      | Users, stakeholders |
 
-So explanations are answers to _why-questions_ but a _good_ explanation is dependent on the audience (their expertise, expectations) and so forth.
-
-In a sense, I would be implicitly considering what are those _good_ explanations, which in term is implicitly assuming a scientific audience looking for methods to explain models that _do not lose much fidelity to the original_.
+So explanations are answers to _why-questions_; _good_ explanation is dependent on the audience (their expertise, expectations) and so forth.
 
 ### Constrains on explanations
 
-It seems plausible that some explanations can't be simplified further without being misleading or false, hence being a constrain _of the problem itself_.
+Each audience will demand certain guarantees, and have expectations. For example, in scientific domains, we do not want lose much fidelity to the original model.
+
+Besides, it seems plausible that some explanations can't be simplified further without being misleading or false, hence being a constrain _of the problem itself_ (make things as simple as possible, but not simpler).
 
 </details>
 
@@ -148,7 +142,7 @@ It seems plausible that some explanations can't be simplified further without be
 
 <summary>Sources</summary>
 
-1. [On the mechanization of abductive logic][abductive_logic] (1973). The relation to this post is a bit far fetched though: _abductive logic_ is a key component of explanations. The first page is quite interesting.
+1. [On the mechanization of abductive logic][abductive_logic] (1973). The first page is quite interesting.
 <!-- A **deduction** (proof) is e.g. "All cats are animals (I); animals are big (II); then cats are big (III)", whereas **abduction** (hypothesis) would be "III; I; maybe II" notice the _maybe_ (anti-clockwise rotation). Another anti-clockwise rotation takes us to **induction** (generalisation,hypothesis): "II; III; maybe all I". -->
 1. [A Unified Approach to Interpreting Model Predictions][shap_values] (2017): paper proposing SHAP, that is, showing Shapley values as the best coefficients in linear combination of features, given 3 requirements (local accuracy, missingness and consistency),
 1. [Explaining Explanations: An Overview of Interpretability of Machine Learning][xx] (2018),

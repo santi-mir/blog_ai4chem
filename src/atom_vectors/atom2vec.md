@@ -1,4 +1,4 @@
-# Atom Vectors - Atom2Vec
+# Atom2Vec
 
 A popular representation of atoms as vectors appeared in (2018): [Atom2Vec].
 
