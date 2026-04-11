@@ -84,6 +84,7 @@ The way we generate hypothesis is very complex. It may involve creativity, metap
 The plausibility of a hypothesis or causal claim is affected by different aspects.
 
 Beliefs, prior knowledge and assumptions play an important role in:
+
 - The generation and veto of hypotheses;
     - For example, this can't happen, or is unlikely, because of X,Y,Z...
 - Selecting what seems causally / explanatory relevant from what is not.
