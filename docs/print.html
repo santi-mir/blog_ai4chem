@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-9f1ec14a.js";
+            window.path_to_searchindex_js = "searchindex-68728869.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-e2ff8d5b.js"></script>
@@ -446,16 +446,30 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <p>It is computationally cheap, and can help screen large number of compounds as a first selection step.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="what-is-an-explanation"><a class="header" href="#what-is-an-explanation">What is an explanation?</a></h1>
-<p>One simple definition of an explanation is:</p>
+<p>Let's start with an example, bringing up concepts as we need them, and very minimally. They are expanded in the remaining sections.</p>
+<blockquote>
+<p>(1) You open a drawer, and it slides out.<br>(2) A friend asks: Why did the drawer slide out?<br>(3) You: Because I pulled it out. Had I not, the drawer wouldn't have slide.<br>(4) Friend: I know that. But why does it <em>slide</em> rather than opening like a lid?<br>(5) You: Oh! I see. The drawer sits on rails which allow it to slide out.<br>(6) Friend: Why do rails let it slide?</p>
+</blockquote>
+<p><code>(3)</code> is a mechanistic cause (efficient cause). Aristotle proposed 4 of them: <em>efficient</em> (mechanism), <em>formal</em> (form, shape), <em>material</em> (properties), <em>final</em> (purposes).</p>
+<p>Hume understood causes through <em>counterfactuals</em>. <code>(3)</code> is also a <em>counterfactual</em>: A hypothetical claiming that without the previous event X, we don't expect the posterior event Y.</p>
+<p>The addition after <em>rather than</em> <code>(4)</code> is a contrast called <em>foil</em>. If the foil is absent, we may guess it, or ask further clarifications. <em>Foils</em> make answering easier.</p>
+<p>In Aristotelian terms, <code>(4)</code> a <em>formal</em> cause, based on the form. It is also a contrastive explanation (there is a foil). Other Aristotelian causes would be used in answers like "Why did it burn? Because it's made of wood (Material); or because they wanted to get rid of it (Final)."</p>
+<p>The friend may keep asking "Why" <code>(6)</code> and eventually reject or accept the causal chain (or remain sceptical).</p>
+<p>Another aspect brought up here is the <strong>social process</strong>: we tried to guess the friend's actual <em>knowledge gap</em>, besides the <em>cognitive</em> task (cause finding).
+There are also other aspects that matter, such as testing the claim, finding a useful contrast, and so forth.</p>
+<p>This complexity makes the boundaries defining an explanation quite fuzzy. Often taking examples as reference can help guide us.</p>
+<p>You may come back to this example after reading the rest.</p>
+<h2 id="definition"><a class="header" href="#definition">Definition</a></h2>
+<p>One narrow and simple definition of an explanation is:</p>
 <blockquote>
 <p>An answer to a why-question that accounts for the cause of an event.</p>
 </blockquote>
-<p>Although not only <em>why-questions</em> prompt explanations.</p>
+<p>Although not only <em>why-questions</em> prompt explanations, and not only <em>causes</em> (Humean or Aristotelian) are accepted as explanations. (This claim needs further development).</p>
 <p><a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in artificial intelligence: insights from the social sciences</a>—section 2.1.2, characterises an explanation as:</p>
-<p>A <strong>cognitive process</strong>, which involves finding the cause of an event, known as the <em>causal attribution</em>. A <strong>product</strong>, resulting from the cognitive process. A <strong>social process</strong>, which involves communicating the product.</p>
+<p>A <strong>cognitive process</strong>, which involves finding and assigning the cause of an event, known as <em>causal attribution</em>. A <strong>product</strong>, resulting from the cognitive process. A <strong>social process</strong>, which involves communicating the product.</p>
 <p>Let's expand on these characteristics.</p>
 <h2 id="cognitive-process"><a class="header" href="#cognitive-process">Cognitive process</a></h2>
-<p>This process involves assigning <em>causes</em> to events —known as <em>causal attribution</em>— and <em>abductive reasoning</em>.</p>
+<p>We now discuss <em>causes</em>, <em>causal attribution</em> and <em>abductive reasoning</em> in the context of the cognitive process.</p>
 <h3 id="causes"><a class="header" href="#causes">Causes</a></h3>
 <p>Aristotle proposed 4 kinds of <em>causes</em> that pick on different aspects to answer a <em>why-question</em> (part of explaining): Efficient (a mechanism), Final (a purpose), Formal (structure or form), Material(constitution).</p>
 <p>These explanations are not always exclusive, they can be complementary.</p>
@@ -484,6 +498,7 @@ style C fill:#050
 <li>Its <em>generality</em>: if it explains other cases, it is preferred,</li>
 <li>Fits prior knowledge (or beliefs): if so it is preferred; if it contradicts many other patterns it may be rejected.</li>
 </ul>
+<p>Most inferences can be explanations: deductive (derivation from true propositions), abductive (a selected hypothesis, which may engulf <em>deduction</em>), inductive (sample<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>population); also general category, which is similar to induction, such as "it is a kind of mammal hence ...".</p>
 <p>I don't have much to say about <em>product</em> (<code>2.</code>), so we jump to <code>3</code>.</p>
 <h2 id="social-process"><a class="header" href="#social-process">Social Process</a></h2>
 <p>The causal-hypothesis must then be communicated, and there are expectations about it.</p>
@@ -494,25 +509,6 @@ style C fill:#050
 <li><strong>Relevance</strong> (Relation): do not state things that aren't needed (provide insight),</li>
 <li><strong>Manner</strong> (clarity): express it in elegant terms.</li>
 </ol>
-<h2 id="a-complete-example"><a class="header" href="#a-complete-example">A complete example</a></h2>
-<blockquote class="blockquote-tag blockquote-tag-note">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>You open a drawer, and it slides out. A friend asks: Why did the drawer slide out?</p>
-</blockquote>
-<p>Notice that the <em>foil</em> is implicit; <em>slide rather than staying at rest?</em> We must guess it, or ask further clarifications.</p>
-<blockquote>
-<p>You: It slides because a force was applied on it. Without the force, it stays at rest.</p>
-</blockquote>
-<p>That is an <em>efficient cause</em>.</p>
-<blockquote>
-<p>Friend: But why does it <em>slide</em>?
-You: Do you mean slide rather than opening like (as a lid)?
-The rails allow it to slide out; to open like a lid it would need hinges or other system.</p>
-</blockquote>
-<p>Or "You" could say: Had the rails not been there, the drawer wouldn't have slide.</p>
-<p>This a <em>formal</em> cause, based on the form. It is also clear that it is a <em>contrastive explanation</em>. The other causes would be used in answers like "Why did it burn? Because it's made of wood (Material); or because they wanted to get rid of it (Final)."</p>
-<p>The friend could recursively ask "Why" and finally reject or accept the explanation (or remain sceptical).</p>
-<p>The <em>social process</em> of guessing the friend's actual <em>knowledge gap</em>, assumptions, intentions, is also clear, besides the <em>cognitive</em> task.</p>
 <h2 id="metaphors-the-machine-and-the-agent"><a class="header" href="#metaphors-the-machine-and-the-agent">Metaphors: The Machine and The Agent</a></h2>
 <p>In the scientific and science-adjacent domains, models are conceptualised as <em>machines</em>:</p>
 <ol>
@@ -1236,6 +1232,22 @@ A --&gt; Direct
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>

@@ -1,20 +1,48 @@
 # What is an explanation?
 
-One simple definition of an explanation is:
+Let's start with an example, bringing up concepts as we need them, and very minimally. They are expanded in the remaining sections.
+
+> (1) You open a drawer, and it slides out.\
+> (2) A friend asks: Why did the drawer slide out?\
+> (3) You: Because I pulled it out. Had I not, the drawer wouldn't have slide.\
+> (4) Friend: I know that. But why does it _slide_ rather than opening like a lid?\
+> (5) You: Oh! I see. The drawer sits on rails which allow it to slide out.\
+> (6) Friend: Why do rails let it slide?
+
+`(3)` is a mechanistic cause (efficient cause). Aristotle proposed 4 of them: _efficient_ (mechanism), _formal_ (form, shape), _material_ (properties), _final_ (purposes).
+
+Hume understood causes through _counterfactuals_. `(3)` is also a _counterfactual_: A hypothetical claiming that without the previous event X, we don't expect the posterior event Y.
+
+The addition after _rather than_ `(4)` is a contrast called _foil_. If the foil is absent, we may guess it, or ask further clarifications. _Foils_ make answering easier.
+
+In Aristotelian terms, `(4)` a _formal_ cause, based on the form. It is also a contrastive explanation (there is a foil). Other Aristotelian causes would be used in answers like "Why did it burn? Because it's made of wood (Material); or because they wanted to get rid of it (Final)."
+
+The friend may keep asking "Why" `(6)` and eventually reject or accept the causal chain (or remain sceptical).
+
+Another aspect brought up here is the **social process**: we tried to guess the friend's actual _knowledge gap_, besides the _cognitive_ task (cause finding).
+There are also other aspects that matter, such as testing the claim, finding a useful contrast, and so forth.
+
+This complexity makes the boundaries defining an explanation quite fuzzy. Often taking examples as reference can help guide us.
+
+You may come back to this example after reading the rest.
+
+## Definition
+
+One narrow and simple definition of an explanation is:
 
 > An answer to a why-question that accounts for the cause of an event.
 
-Although not only _why-questions_ prompt explanations.
+Although not only _why-questions_ prompt explanations, and not only _causes_ (Humean or Aristotelian) are accepted as explanations. (This claim needs further development).
 
 [Explanation in artificial intelligence: insights from the social sciences][explanations_social]&mdash;section 2.1.2, characterises an explanation as:
 
-A **cognitive process**, which involves finding the cause of an event, known as the _causal attribution_. A **product**, resulting from the cognitive process. A **social process**, which involves communicating the product.
+A **cognitive process**, which involves finding and assigning the cause of an event, known as _causal attribution_. A **product**, resulting from the cognitive process. A **social process**, which involves communicating the product.
 
 Let's expand on these characteristics.
 
 ## Cognitive process
 
-This process involves assigning _causes_ to events &mdash;known as _causal attribution_&mdash; and _abductive reasoning_.
+We now discuss _causes_, _causal attribution_ and _abductive reasoning_ in the context of the cognitive process.
 
 ### Causes
 
@@ -53,6 +81,8 @@ The plausibility of a hypothesis or causal claim is affected by different aspect
 - Its _generality_: if it explains other cases, it is preferred,
 - Fits prior knowledge (or beliefs): if so it is preferred; if it contradicts many other patterns it may be rejected.
 
+Most inferences can be explanations: deductive (derivation from true propositions), abductive (a selected hypothesis, which may engulf _deduction_), inductive (sample$\rightarrow$population); also general category, which is similar to induction, such as "it is a kind of mammal hence ...".
+
 I don't have much to say about _product_ (`2.`), so we jump to `3`.
 
 ## Social Process
@@ -65,29 +95,6 @@ The causal-hypothesis must then be communicated, and there are expectations abou
 2. **Truthful** (Quality, or Fidelity): Try to make it true,
 3. **Relevance** (Relation): do not state things that aren't needed (provide insight),
 4. **Manner** (clarity): express it in elegant terms.
-
-## A complete example
-
-> [!Note]
-> You open a drawer, and it slides out. A friend asks: Why did the drawer slide out?
-
-Notice that the _foil_ is implicit; _slide rather than staying at rest?_ We must guess it, or ask further clarifications.
-
-> You: It slides because a force was applied on it. Without the force, it stays at rest.
-
-That is an _efficient cause_.
-
-> Friend: But why does it _slide_?
-> You: Do you mean slide rather than opening like (as a lid)?
-> The rails allow it to slide out; to open like a lid it would need hinges or other system.
-
-Or "You" could say: Had the rails not been there, the drawer wouldn't have slide.
-
-This a _formal_ cause, based on the form. It is also clear that it is a _contrastive explanation_. The other causes would be used in answers like "Why did it burn? Because it's made of wood (Material); or because they wanted to get rid of it (Final)."
-
-The friend could recursively ask "Why" and finally reject or accept the explanation (or remain sceptical).
-
-The _social process_ of guessing the friend's actual _knowledge gap_, assumptions, intentions, is also clear, besides the _cognitive_ task.
 
 ## Metaphors: The Machine and The Agent
 
