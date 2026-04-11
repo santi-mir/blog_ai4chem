@@ -19,8 +19,7 @@ In Aristotelian terms, `(4)` a _formal_ cause, based on the form. It is also a c
 
 The friend may keep asking "Why" `(6)` and eventually reject or accept the causal chain (or remain sceptical).
 
-Another aspect brought up here is the **social process**: we tried to guess the friend's actual _knowledge gap_, besides the _cognitive_ task (cause finding).
-There are also other aspects that matter, such as testing the claim, finding a useful contrast, and so forth.
+Another aspect brought up here is the **social process**: we tried to guess the friend's actual _knowledge gap_, and to avoid repeating things the friend already knows. There are also other aspects that matter, such as testing the claim, finding a useful contrast, and so forth.
 
 This complexity makes the boundaries defining an explanation quite fuzzy. Often taking examples as reference can help guide us.
 
