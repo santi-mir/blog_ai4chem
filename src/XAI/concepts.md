@@ -1,42 +1,46 @@
-# Explaining Things
+# Explanations
 
-The goals of the post are:
+The goal of this post is to discuss the concepts of _explanation_ and _explainable AI_.
 
-1. Discuss general aspects about explanations,
-2. Propose a definition of explainable AI focusing on _model explainability_.
-
-------------
+The literature is huge and complex, so I describe what seems relevant as a basis of sound XAI judgement.
 
 ## What is an explanation?
 
-To a first approximation, an explanation is
-> An answer to a why-question by referring to causes.
+One simple definition of an explanation is:
 
-But there is more to it: _answering_ is a communication process, _why questions_ have a complex structure and not only _why questions_ can be asked. Let's explore these a bit further.
+> An answer to a why-question that accounts for the cause of an event.
 
-[Explanations in AI, section 2.1.2][explanations_social] defines an _explanation_ as a 3-legged concept, extending previous work by Lombrozo on [The structure and function of explanations][lombrozo]. An _explanation_ (causal or contrastive), is:
+Although not only _why-questions_ prompt explanations.
 
-1. **Cognitive process**: involves finding the cause of an event, known as the causal attribution,
-   - Usually, the attribution implicitly answers a _contrastive question_ "Why P rather than Q?".
-   - _Contrast_ is an important component of the structure of _why-questions_, highlighted by the paper above.
-2. **Product**: The result of the cognitive process,
-3. **Social process**: communicating it.
+[Explanation in artificial intelligence: insights from the social sciences][explanations_social]&mdash;section 2.1.2, characterises an explanation as:
+
+A **cognitive process**, which involves finding the cause of an event, known as the _causal attribution_. A **product**, the result of the cognitive process. A **social process**, which involves communicating the product.
 
 Let's zoom into the cognitive process part (`1.`) of explanations.
 
 ### Cognitive process
 
-This process involves assigning _causes_ by _causal attribution_ and also _abductive reasoning_.
+This process involves assigning _causes_, known as _causal attribution_, and also _abductive reasoning_.
 
-Causes themselves were understood by Hume through _counterfactuals_: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.
+Before analysing it, let's state two views on causes.
 
-As noted earlier _why-questions_ have a structure and normally a contrastive question _why P rather than Q_ is answered.
+- Aristotle proposed 4 kinds of _causes_ that pick on different aspects to answer a _why-question_ (part of explaining): Efficient (a mechanism), Final (a purpose), Formal (structure or form), Material(constitution).
+    - These explanations are not always exclusive, they can be complementary.
+    - The next section explains each one.
+- Hume understood _causes_ through _counterfactuals_: A is the cause of B if, had A not happened, B wouldn't have happened.
+    - This view was formalised by Pearl and Halpern.
 
-Abductive inference is the generation of a hypothesis (candidate cause), and also the selection of the best one given the available evidence; in other words, a two step process:
+Are all Aristotelian causes Humean causes? The one that best fits the definition is _efficient_ causes; the rest are not naturally understood as events so they don't easily fit as counterfactuals.
 
-1. Hypothesis generation,
-   - These will be _proposed_ causes
-2. Selection of the best hypothesis (akin to _attribution_)
+In science, _effective causes_ and _counterfactuals_ are most useful. But in everyday life, all Aristotelian causes are used.
+
+In addition, [Explanation in AI: insights from the social sciences][explanations_social] notes that _why-questions_ are usually contrastive questions, phrased as _why P rather than Q_ instead of _why P_. In this latter case, the _foil_ (Q) is implicit.
+
+Abduction is 3-step process, not too different from the scientific process itself:
+
+1. Propose hypothetical causes (or chains of causes, meaning a series of causally connected events), this is a creative process
+2. Select the best given the available evidence; this filtering process is dependent upon prior knowledge,
+3. Maintain until contradicted by experience or super-seeded (e.g. by a simpler explanation).
 
 ```mermaid
 flowchart TB
@@ -47,7 +51,13 @@ A -->D(H3: Because Z)
 style C fill:#050
 ```
 
-Since there isn't much to say on product (`2.`), we jump to `3`.
+The plausibility of a hypothesis or causal claim is affected by different aspects, such as:
+
+- Its _simplicity_: if it involves a shorter chain of causes, it is preferred,
+- Its _generality_: if it explains other cases, it is preferred,
+- Fits prior knowledge (or beliefs): if so it is preferred; if it contradicts many other patterns it may be rejected.
+
+I don't have much to say about _product_ (`2.`), so we jump to `3`.
 
 ### Social or Communicative Process
 
@@ -60,19 +70,46 @@ The causal-hypothesis must then be communicated, and there are expectations abou
 3. **Relevance** (Relation): do not state things that aren't needed (provide insight),
 4. **Manner** (clarity): express it in elegant terms.
 
+### An example
+
+> [!Note]
+> You open a drawer, and it slides out. A friend asks: Why did the drawer slide out?
+
+Notice that the _foil_ is implicit; _slide rather than staying at rest?_ We must guess it, or ask further clarifications.
+
+> You: It slides because a force was applied on it. Without the force, it stays at rest.
+
+That is an _efficient cause_.
+
+> Friend: But why does it _slide_?
+> You: Do you mean slide rather than opening like (as a lid)?
+> The rails allow it to slide out; to open like a lid it would need hinges or other system.
+
+Or "You" could say: Had the rails not been there, the drawer wouldn't have slide.
+
+This a _formal_ cause, based on the form. It is also clear that it is a _contrastive explanation_. The other causes would be used in answers like "Why did it burn? Because it's made of wood (Material); or because they wanted to get rid of it (Final)."
+
+The friend could recursively ask "Why" and finally reject or accept the explanation (or remain sceptical).
+
+The _social process_ of guessing the friend's actual _knowledge gap_, assumptions, intentions, is also clear, besides the _cognitive_ task.
+
 ## Explainable AI
 
-Having defined _causal explanations_ we can define _model explainability_ &mdash; the focus of Explainable Artificial Intelligence&mdash as:
+Having defined _causal explanations_ we can define _model explainability_ &mdash; the focus of Explainable Artificial Intelligence&mdash; as:
 
 > finding the causes underlying a model's predictions or operation,
 
 But can a model be pragmatically considered explainable if it can not be communicated to the target audience?
 
+It should also be noted that, while explanations are often framed causally, they may involve non-causal relations such as correlations, constraints, or contributions (LIME, SHAP). Especially in XAI.
+
 We can amend the definition of _model explainability_ to better fit the 3-legged definition of explanations given earlier:
 
 > the degree to which humans can effectively answer questions about a model's predictions or operation, either directly or using explainability methods.
 
-_Questions_ includes more than just why-questions; _effectively_ includes the social and communicational aspect of it (which Grice's Maxims aid).
+_Questions_ includes more than just why-questions, and also accepts associations and contributions; we won't necessarily get to a causal structure.
+
+_Effectively_ includes the social and communicational aspect of it (which Grice's Maxims aid).
 
 ### Trade-off
 
@@ -89,46 +126,7 @@ This is not universal, but we could represent this common case as:
     <p>Model accuracy vs Model explainability tradeoff.</p>
 </div>
 
-## Map of XAI
-
-An interesting map of XAI is given in the survey [Principles and practice of explainable ML][principles_and_practice] (2021).
-
-Most _classic ML_ models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under **Model types** column.
-
-_Classic ML_ models are usually _transparent_ (intrinsically explainable) but _may_ benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred over DL models.
-
-<div class="center w50">
-    <a href="../assets/taxonomy.webp">
-    <img src="../assets/taxonomy.webp" alt="Complex Graph linking prediction models such as SVMs, kinds of explanations such as text or graph, and explanation methods such as SHAP."/>
-    </a>
-    <p>
-    Image from <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>
-    </p>
-</div>
-
-The focus here though, is explaining _deep learning_ models. These are usually _opaque_ ("_black-box_") models, and their accuracy is usually higher than classic ML models.
-
-In other words, classical ML and DL models each have their use-cases.
-
-### Explanation kinds
-
-The survey [Principles and practise of explaining ML models][principles_and_practice] also includes a great table of **explanation kinds**. A modified version of the table is below:
-
-| Explanation         | Advantages    | Disadvantages | Question |
-|---------------------|---------------|---------------|----------|
-| **Local explanations** | Explains the model's behaviour in a local area of interest. Operates on instance-level explanations. | Explanations do not generalize on a global scale. Small **perturbations** might result in very different explanations.| How do small perturbations affect the output / prediction? |
-| **Examples**      | Representative items for each class provide insights about the model's internal reasoning. | Examples require human selection. They do not explicitly state what parts of the example influence the model. | How do inputs from different classes compare? And same? |
-| **Feature relevance** | They operate on an instance level (some can operate globally). | Methods may make assumptions which do not hold (e.g. feature independence, linearity).| Which input features are most important? |
-| **Simplification**  | Simple surrogate models explain opaque ones. | Surrogate models may not approximate original models well. | Can we get local insights by using a simpler model? |
-| **Visualizations**  | Easier to communicate to non-technical audiences. Most approaches are intuitive and not hard to implement. | There is an upper bound on how many features can be considered at once. Humans must inspect plots to derive explanations. | Class boundaries? |
-
-We should remember that:
-
-> Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),
-
-In the next posts, we focus on **methods** that aid _causal attribution_ (or cognitive process) with a scientific audience in mind.
-
-### Aside: Methaphors
+### Aside: Metaphors
 
 <details><summary>The Machine and The Agent</summary>
 
@@ -164,7 +162,7 @@ So explanations are answers to _why-questions_; _good_ explanation is dependent 
 1. [Explaining Explanations: An Overview of Interpretability of Machine Learning][xx] (2018),
 1. [Producing radiologist-quality reports for interpretable artificial intelligence][xai_rnn_radiology] (2018): a "case study",
 1. The paper ["Explanation in artificial intelligence: insights from the social sciences"][explanations_social] (2019, 38 pages). Once the why-cause is found (diagnosis), it may be communicated, making rules of conversation relevant: [Gricean Maxims of Communication][gricean_maxims] (blog-post), or [Wikipedia's][wikipedia_gricean].
-1. [Principles and practice of explainable machine-learning][principles_and_practice] (2021, 25 pages): Sections 8&ndash;11 are a useful review of explainability methods.
+   - The definition of explanation extends previous work by Lombrozo on [The structure and function of explanations][lombrozo].
 1. [The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making][perils_and_pitfalls] (2021): emphasis on socio-political aspects,
 1. [Interpretable and Explainable Machine Learning for Materials Science and Chemistry][xai4mat] (2022),
 1. Blog Posts: [What is Explainable AI?][what_is_xai] (2022) and from [IBM][xai_ibm],
@@ -183,7 +181,6 @@ So explanations are answers to _why-questions_; _good_ explanation is dependent 
 [xai_ibm]: https://www.sei.cmu.edu/blog/what-is-explainable-ai/
 [xai_rnn_radiology]: https://arxiv.org/abs/1806.00340
 [perils_and_pitfalls]: https://www.sciencedirect.com/science/article/pii/S0740624X21001027
-[principles_and_practice]: https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full
 [abductive_logic]:https://www.ijcai.org/Proceedings/73/Papers/017.pdf
 [explanations_social]: https://www.sciencedirect.com/science/article/pii/S0004370218305988
 [gricean_maxims]: https://effectiviology.com/principles-of-effective-communication/

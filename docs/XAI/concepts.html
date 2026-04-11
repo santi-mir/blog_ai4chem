@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Explaining Things - AI for Chemistry</title>
+        <title>Explanations - AI for Chemistry</title>
 
 
         <!-- Custom HTML head -->
@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-7dfd7bec.js";
+            window.path_to_searchindex_js = "../searchindex-c1528573.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-40e02f6a.js"></script>
+        <script src="../toc-b6f2115e.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -182,43 +182,26 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="explaining-things"><a class="header" href="#explaining-things">Explaining Things</a></h1>
-<p>The goals of the post are:</p>
-<ol>
-<li>Discuss general aspects about explanations,</li>
-<li>Propose a definition of explainable AI focusing on <em>model explainability</em>.</li>
-</ol>
-<hr>
+<h1 id="explanations"><a class="header" href="#explanations">Explanations</a></h1>
+<p>The goal of this post is to define <em>explanations</em> and <em>explainable AI</em>.</p>
 <h2 id="what-is-an-explanation"><a class="header" href="#what-is-an-explanation">What is an explanation?</a></h2>
 <p>To a first approximation, an explanation is</p>
 <blockquote>
-<p>An answer to a why-question by referring to causes.</p>
+<p>An answer to a why-question that accounts for the cause of an event.</p>
 </blockquote>
-<p>But there is more to it: <em>answering</em> is a communication process, <em>why questions</em> have a complex structure and not only <em>why questions</em> can be asked. Let's explore these a bit further.</p>
-<p><a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanations in AI, section 2.1.2</a> defines an <em>explanation</em> as a 3-legged concept, extending previous work by Lombrozo on <a href="https://fitelson.org/few/few_08/lombrozo_reading.pdf">The structure and function of explanations</a>. An <em>explanation</em> (causal or contrastive), is:</p>
-<ol>
-<li><strong>Cognitive process</strong>: involves finding the cause of an event, known as the causal attribution,
-<ul>
-<li>Usually, the attribution implicitly answers a <em>contrastive question</em> "Why P rather than Q?".</li>
-<li><em>Contrast</em> is an important component of the structure of <em>why-questions</em>, highlighted by the paper above.</li>
-</ul>
-</li>
-<li><strong>Product</strong>: The result of the cognitive process,</li>
-<li><strong>Social process</strong>: communicating it.</li>
-</ol>
+<p>But there is more to it: <em>answering</em> is a communication process, <em>why questions</em> have a complex structure, and not only <em>why questions</em> can be asked. Let's explore these extra aspects a bit further.</p>
+<p>The paper <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in artificial intelligence: insights from the social sciences</a>—section 2.1.2, defines an <em>explanation</em> (causal or contrastive) as a 3-legged concept:</p>
+<p>A <strong>cognitive process</strong>, which involves finding the cause of an event, known as the causal attribution. A <strong>product</strong>, the result of the cognitive process. A <strong>social process</strong>, which involves communicating the product.</p>
 <p>Let's zoom into the cognitive process part (<code>1.</code>) of explanations.</p>
 <h3 id="cognitive-process"><a class="header" href="#cognitive-process">Cognitive process</a></h3>
 <p>This process involves assigning <em>causes</em> by <em>causal attribution</em> and also <em>abductive reasoning</em>.</p>
 <p>Causes themselves were understood by Hume through <em>counterfactuals</em>: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.</p>
-<p>As noted earlier <em>why-questions</em> have a structure and normally a contrastive question <em>why P rather than Q</em> is answered.</p>
-<p>Abductive inference is the generation of a hypothesis (candidate cause), and also the selection of the best one given the available evidence; in other words, a two step process:</p>
+<p>They note <em>why-questions</em> are usually contrastive questions, phrased as <em>why P rather than Q</em> instead of <em>why P</em>. In this latter case, the <em>foil</em> (Q) is implicit.</p>
+<p>Abduction is 3-step process, not too different from the scientific process itself:</p>
 <ol>
-<li>Hypothesis generation,
-<ul>
-<li>These will be <em>proposed</em> causes</li>
-</ul>
-</li>
-<li>Selection of the best hypothesis (akin to <em>attribution</em>)</li>
+<li>Propose hypothetical causes,</li>
+<li>Select the best given the available evidence,</li>
+<li>Maintain until contradicted by experience or super-seeded (e.g. by a simpler explanation).</li>
 </ol>
 <pre class="mermaid">flowchart TB
 A(Why W?) --&gt;B(H1: Because X)
@@ -239,7 +222,7 @@ style C fill:#050
 <li><strong>Manner</strong> (clarity): express it in elegant terms.</li>
 </ol>
 <h2 id="explainable-ai"><a class="header" href="#explainable-ai">Explainable AI</a></h2>
-<p>Having defined <em>causal explanations</em> we can define <em>model explainability</em> — the focus of Explainable Artificial Intelligence&amp;mdash as:</p>
+<p>Having defined <em>causal explanations</em> we can define <em>model explainability</em> — the focus of Explainable Artificial Intelligence— as:</p>
 <blockquote>
 <p>finding the causes underlying a model's predictions or operation,</p>
 </blockquote>
@@ -262,44 +245,6 @@ style C fill:#050
 
 </div>
 
-<h2 id="map-of-xai"><a class="header" href="#map-of-xai">Map of XAI</a></h2>
-<p>An interesting map of XAI is given in the survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable ML</a> (2021).</p>
-<p>Most <em>classic ML</em> models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under <strong>Model types</strong> column.</p>
-<p><em>Classic ML</em> models are usually <em>transparent</em> (intrinsically explainable) but <em>may</em> benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred over DL models.</p>
-<div class="center w50">
-    <a href="../assets/taxonomy.webp">
-    <img src="../assets/taxonomy.webp" alt="Complex Graph linking prediction models such as SVMs, kinds of explanations such as text or graph, and explanation methods such as SHAP." />
-    </a>
-    
-<p>
-    Image from <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>
-    </p>
-
-</div>
-
-<p>The focus here though, is explaining <em>deep learning</em> models. These are usually <em>opaque</em> ("<em>black-box</em>") models, and their accuracy is usually higher than classic ML models.</p>
-<p>In other words, classical ML and DL models each have their use-cases.</p>
-<h3 id="explanation-kinds"><a class="header" href="#explanation-kinds">Explanation kinds</a></h3>
-<p>The survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practise of explaining ML models</a> also includes a great table of <strong>explanation kinds</strong>. A modified version of the table is below:</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>Explanation</th><th>Advantages</th><th>Disadvantages</th><th>Question</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Local explanations</strong></td><td>Explains the model's behaviour in a local area of interest. Operates on instance-level explanations.</td><td>Explanations do not generalize on a global scale. Small <strong>perturbations</strong> might result in very different explanations.</td><td>How do small perturbations affect the output / prediction?</td></tr>
-<tr><td><strong>Examples</strong></td><td>Representative items for each class provide insights about the model's internal reasoning.</td><td>Examples require human selection. They do not explicitly state what parts of the example influence the model.</td><td>How do inputs from different classes compare? And same?</td></tr>
-<tr><td><strong>Feature relevance</strong></td><td>They operate on an instance level (some can operate globally).</td><td>Methods may make assumptions which do not hold (e.g. feature independence, linearity).</td><td>Which input features are most important?</td></tr>
-<tr><td><strong>Simplification</strong></td><td>Simple surrogate models explain opaque ones.</td><td>Surrogate models may not approximate original models well.</td><td>Can we get local insights by using a simpler model?</td></tr>
-<tr><td><strong>Visualizations</strong></td><td>Easier to communicate to non-technical audiences. Most approaches are intuitive and not hard to implement.</td><td>There is an upper bound on how many features can be considered at once. Humans must inspect plots to derive explanations.</td><td>Class boundaries?</td></tr>
-</tbody>
-</table>
-</div>
-<p>We should remember that:</p>
-<blockquote>
-<p>Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),</p>
-</blockquote>
-<p>In the next posts, we focus on <strong>methods</strong> that aid <em>causal attribution</em> (or cognitive process) with a scientific audience in mind.</p>
 <h3 id="aside-methaphors"><a class="header" href="#aside-methaphors">Aside: Methaphors</a></h3>
 <details><summary>The Machine and The Agent</summary>
 <p>In the scientific and science-adjacent domains, models are conceptualised as <em>machines</em>:</p>
@@ -336,8 +281,11 @@ style C fill:#050
 <li><a href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">A Unified Approach to Interpreting Model Predictions</a> (2017): paper proposing SHAP, that is, showing Shapley values as the best coefficients in linear combination of features, given 3 requirements (local accuracy, missingness and consistency),</li>
 <li><a href="http://arxiv.org/abs/1806.00069">Explaining Explanations: An Overview of Interpretability of Machine Learning</a> (2018),</li>
 <li><a href="https://arxiv.org/abs/1806.00340">Producing radiologist-quality reports for interpretable artificial intelligence</a> (2018): a "case study",</li>
-<li>The paper <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">"Explanation in artificial intelligence: insights from the social sciences"</a> (2019, 38 pages). Once the why-cause is found (diagnosis), it may be communicated, making rules of conversation relevant: <a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims of Communication</a> (blog-post), or <a href="https://en.wikipedia.org/wiki/Cooperative_principle">Wikipedia's</a>.</li>
-<li><a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable machine-learning</a> (2021, 25 pages): Sections 8–11 are a useful review of explainability methods.</li>
+<li>The paper <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">"Explanation in artificial intelligence: insights from the social sciences"</a> (2019, 38 pages). Once the why-cause is found (diagnosis), it may be communicated, making rules of conversation relevant: <a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims of Communication</a> (blog-post), or <a href="https://en.wikipedia.org/wiki/Cooperative_principle">Wikipedia's</a>.
+<ul>
+<li>The definition of explanation extends previous work by Lombrozo on <a href="https://fitelson.org/few/few_08/lombrozo_reading.pdf">The structure and function of explanations</a>.</li>
+</ul>
+</li>
 <li><a href="https://www.sciencedirect.com/science/article/pii/S0740624X21001027">The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making</a> (2021): emphasis on socio-political aspects,</li>
 <li><a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Interpretable and Explainable Machine Learning for Materials Science and Chemistry</a> (2022),</li>
 <li>Blog Posts: <a href="https://www.sei.cmu.edu/blog/what-is-explainable-ai/">What is Explainable AI?</a> (2022) and from <a href="https://www.sei.cmu.edu/blog/what-is-explainable-ai/">IBM</a>,</li>
@@ -356,7 +304,7 @@ style C fill:#050
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../XAI/strategies.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../XAI/concepts_2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -370,7 +318,7 @@ style C fill:#050
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../XAI/strategies.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../XAI/concepts_2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
@@ -383,6 +331,22 @@ style C fill:#050
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>
