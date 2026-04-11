@@ -37,10 +37,10 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-7dfd7bec.js";
+            window.path_to_searchindex_js = "searchindex-b42d7940.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-40e02f6a.js"></script>
+        <script src="toc-e2ff8d5b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -445,43 +445,51 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <p>Similar compounds have similar vectors, which is useful. But without structural information, all isomers have the same vector, which is a limitation.</p>
 <p>It is computationally cheap, and can help screen large number of compounds as a first selection step.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="explaining-things"><a class="header" href="#explaining-things">Explaining Things</a></h1>
-<p>The goals of the post are:</p>
-<ol>
-<li>Discuss general aspects about explanations,</li>
-<li>Propose a definition of explainable AI focusing on <em>model explainability</em>.</li>
-</ol>
-<hr>
-<h2 id="what-is-an-explanation"><a class="header" href="#what-is-an-explanation">What is an explanation?</a></h2>
-<p>To a first approximation, an explanation is</p>
+<h1 id="what-is-an-explanation"><a class="header" href="#what-is-an-explanation">What is an explanation?</a></h1>
+<p>Let's start with an example. Concepts are expanded in the remaining sections.</p>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<p>You open a drawer, and a conversation with a friend starts.</p>
 <blockquote>
-<p>An answer to a why-question by referring to causes.</p>
+<p>Friend: Why did the drawer slide out?<br>You: Because I pulled it out? Had I not, the drawer wouldn't have slide.</p>
 </blockquote>
-<p>But there is more to it: <em>answering</em> is a communication process, <em>why questions</em> have a complex structure and not only <em>why questions</em> can be asked. Let's explore these a bit further.</p>
-<p><a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanations in AI, section 2.1.2</a> defines an <em>explanation</em> as a 3-legged concept, extending previous work by Lombrozo on <a href="https://fitelson.org/few/few_08/lombrozo_reading.pdf">The structure and function of explanations</a>. An <em>explanation</em> (causal or contrastive), is:</p>
-<ol>
-<li><strong>Cognitive process</strong>: involves finding the cause of an event, known as the causal attribution,
+<p>The answer is an <em>efficient</em> cause. Aristotle proposed 4 causes: <em>efficient</em> (mechanism), <em>formal</em> (form, shape), <em>material</em> (properties), <em>final</em> (purposes).</p>
+<p>Hume instead, understood causes through <em>counterfactuals</em>. The answer is also a <em>counterfactual</em>: the hypothesis that <em>without</em> the event X, there wouldn't be the consequence Y. In other words, X is necessary for Y to happen (its cause).</p>
+<blockquote>
+<p>Friend: I <em>know</em> that. But why does it slide <em>rather than</em> opening like a lid?<br>You: Oh! I see. The drawer sits on rails allowing it to slide.\</p>
+</blockquote>
+<p>The <em>rather than ...</em> is a contrast called <em>foil</em>. If the foil is absent, we may guess it, or ask for further clarifications. <em>Foils</em> make answering easier.</p>
+<p>The friend may keep asking "Why" and eventually reject or accept the causal chain (or remain sceptical).</p>
+<p>Notice the <strong>social process</strong> involved: we tried to guess the friend's actual <em>knowledge gap</em> (first wrongly, he <em>knew</em> that), and to emit relevant information. There are also other aspects that matter, such as testing the claim, finding a useful contrast, and so forth.</p>
+<h2 id="definition-of-explanation"><a class="header" href="#definition-of-explanation">Definition of Explanation</a></h2>
+<p>We can start with an oversimplified definition, an <em>explanation</em> is:</p>
+<blockquote>
+<p>An answer to a why-question referring to the cause of an event, or see it as an instance of a general pattern. It is also expected that it does not contradict prior beliefs or knowledge.</p>
+</blockquote>
+<p>Although not only <em>why-questions</em> prompt explanations. Inferential reasoning (next section) plays an interesting role. Also class-membership can help explain events: "Light interferes because it is a wave.".</p>
+<p>The <em>cause</em> will usually be a hypothesis, and packed in there is our prior knowledge, biases, and so forth. These are explored in the next section.</p>
+<p>In section <strong>2.1.2</strong>, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in artificial intelligence: insights from the social sciences</a> characterises an explanation as:</p>
+<p>A <strong>cognitive process</strong>, which involves finding and assigning the cause of an event, known as <em>causal attribution</em>. A <strong>product</strong>, resulting from the cognitive process. A <strong>social process</strong>, which involves communicating the product.</p>
+<p>Let's now expand on the <em>cognitive</em> and <em>social</em> processes of an explanation.</p>
+<h2 id="cognitive-process"><a class="header" href="#cognitive-process">Cognitive process</a></h2>
+<p>We now discuss <em>causes</em>, <em>causal attribution</em> and <em>abductive reasoning</em> in the context of the cognitive process.</p>
+<h3 id="causes"><a class="header" href="#causes">Causes</a></h3>
+<p>We already mentioned Aristotle's 4 kinds of <em>causes</em> that pick on different aspects to answer a <em>why-question</em>. These explanations are not always exclusive, they can be complementary.</p>
+<p>We also causes derived from <em>counterfactuals</em>: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.</p>
+<p><em>Are all Aristotelian causes Humean causes?</em> The one that best fits the definition is the <em>efficient</em> cause; the rest are not naturally understood as events so they don't easily fit as counterfactuals.</p>
+<p>In science, <em>effective causes</em> and <em>counterfactuals</em> are most common. But in everyday life, all Aristotelian causes are used.</p>
+<p>In addition, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in AI: insights from the social sciences</a> notes that <em>why-questions</em> are usually contrastive questions, phrased as <em>why P rather than Q</em> instead of <em>why P</em>. In this latter case, the <em>foil</em> (Q) is implicit.</p>
+<h3 id="inference"><a class="header" href="#inference">Inference</a></h3>
+<p>Inference can play an important role in explanations:</p>
 <ul>
-<li>Usually, the attribution implicitly answers a <em>contrastive question</em> "Why P rather than Q?".</li>
-<li><em>Contrast</em> is an important component of the structure of <em>why-questions</em>, highlighted by the paper above.</li>
+<li>Deductive: Light is a wave; all waves interfere; then light beams interfere,</li>
+<li>Inductive (generalisation): Bats are mammals; bats fly; maybe all mammals fly,</li>
+<li><strong>Abductive</strong>: Light shows interference patterns, waves interfere, maybe light is a wave. It proposes a hypothesis to explain a fact.</li>
 </ul>
-</li>
-<li><strong>Product</strong>: The result of the cognitive process,</li>
-<li><strong>Social process</strong>: communicating it.</li>
-</ol>
-<p>Let's zoom into the cognitive process part (<code>1.</code>) of explanations.</p>
-<h3 id="cognitive-process"><a class="header" href="#cognitive-process">Cognitive process</a></h3>
-<p>This process involves assigning <em>causes</em> by <em>causal attribution</em> and also <em>abductive reasoning</em>.</p>
-<p>Causes themselves were understood by Hume through <em>counterfactuals</em>: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.</p>
-<p>As noted earlier <em>why-questions</em> have a structure and normally a contrastive question <em>why P rather than Q</em> is answered.</p>
-<p>Abductive inference is the generation of a hypothesis (candidate cause), and also the selection of the best one given the available evidence; in other words, a two step process:</p>
+<p>Causal attribution is closely related to <strong>abductive inference</strong>. Abduction is 3-step process, not too different from the scientific process itself:</p>
 <ol>
-<li>Hypothesis generation,
-<ul>
-<li>These will be <em>proposed</em> causes</li>
-</ul>
-</li>
-<li>Selection of the best hypothesis (akin to <em>attribution</em>)</li>
+<li>Propose hypothetical causes (or chains of causes, meaning a series of causally connected events), this is a creative process</li>
+<li>Select the best given the available evidence; this filtering process is dependent upon prior knowledge,</li>
+<li>Maintain until contradicted by experience or super-seeded (e.g. by a simpler explanation).</li>
 </ol>
 <pre class="mermaid">flowchart TB
 A(Why W?) --&gt;B(H1: Because X)
@@ -491,8 +499,35 @@ A --&gt;D(H3: Because Z)
 style C fill:#050
 </pre>
 
-<p>Since there isn't much to say on product (<code>2.</code>), we jump to <code>3</code>.</p>
-<h3 id="social-or-communicative-process"><a class="header" href="#social-or-communicative-process">Social or Communicative Process</a></h3>
+<p>The way we generate hypothesis is very complex. It may involve creativity, metaphors, analogies; we won't go further into this aspect.</p>
+<h3 id="strength-of-a-hypothesis"><a class="header" href="#strength-of-a-hypothesis">Strength of a Hypothesis</a></h3>
+<p>The plausibility of a hypothesis or causal claim is affected by different aspects.</p>
+<p>Beliefs, prior knowledge and assumptions play an important role in:</p>
+<ul>
+<li>The generation and veto of hypotheses;
+<ul>
+<li>For example, this can't happen, or is unlikely, because of X,Y,Z...</li>
+</ul>
+</li>
+<li>Selecting what seems causally / explanatory relevant from what is not.
+<ul>
+<li>Consider two light beams interfering on a Sunday. The day is irrelevant (usually), we disregard a confounding factor.</li>
+</ul>
+</li>
+</ul>
+<p>In a sense, the hypothesis generated (cause-candidate) is conditioned on knowledge. Here is a cute example from <a href="https://fitelson.org/few/few_08/lombrozo_reading.pdf">The structure and function of explanations</a>:</p>
+<blockquote>
+<p>explanations [hypotheses] can lead reasoners to override the influence of similarity. If told that herring and tuna have a disease, naive participants are more likely to extend the property to wolffish, the more similar item, than to dolphins. However, among fishing experts, who can generate an explanation for why the property might hold (e.g. tuna contract the disease by eating infected herring), similarity is less predictive of property extensions. Instead, properties are extended if the explanation generalizes (e.g. to dolphins, who also eat herring).</p>
+</blockquote>
+<p>Other important aspects are:</p>
+<ul>
+<li>Its <em>simplicity</em>: if it involves a shorter chain of causes, it is preferred,</li>
+<li>Its <em>generality</em>: if it explains other cases, it is preferred,</li>
+<li>The role of <em>prior knowledge</em> (or beliefs) generating and filtering hypotheses is quite important. An answer like "The drawer slides because it has a motor", may be ignored in different basis.</li>
+</ul>
+<!-- Most inferences can be explanations: deductive (derivation from true propositions), abductive (a selected hypothesis, which may engulf _deduction_), inductive (sample<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>population); also general category, which is similar to induction, such as "it is a kind of mammal hence ...". -->
+<p>I don't have much to say about <em>product</em> (<code>2.</code>), so we jump to <code>3</code>.</p>
+<h2 id="social-process"><a class="header" href="#social-process">Social Process</a></h2>
 <p>The causal-hypothesis must then be communicated, and there are expectations about it.</p>
 <p><a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. We can use these rules as a guide for good <em>model explanations</em> as well.</p>
 <ol>
@@ -501,18 +536,71 @@ style C fill:#050
 <li><strong>Relevance</strong> (Relation): do not state things that aren't needed (provide insight),</li>
 <li><strong>Manner</strong> (clarity): express it in elegant terms.</li>
 </ol>
-<h2 id="explainable-ai"><a class="header" href="#explainable-ai">Explainable AI</a></h2>
-<p>Having defined <em>causal explanations</em> we can define <em>model explainability</em> — the focus of Explainable Artificial Intelligence&amp;mdash as:</p>
+<h2 id="metaphors"><a class="header" href="#metaphors">Metaphors</a></h2>
+<details><summary>The Machine and The Agent (click to open)</summary>
+<p>In the scientific and science-adjacent domains, models are conceptualised as <em>machines</em>:</p>
+<ol>
+<li>They have parts, each with a function, a role,</li>
+<li>They correspond with some aspect of the reality being modelled.</li>
+</ol>
+<p>Outside of science or the technical domain, they're conceptualised as <em>human-like agents</em>:</p>
+<ol>
+<li>They tend to be explained in human terms,</li>
+<li>They are expected to be reliable, consistent, ...</li>
+</ol>
+<p>So explanations are answers to <em>why-questions</em>; <em>good</em> explanations respect the Gricean maxims, and will be dependent on the audience (their preferred style, expectations, expertise).</p>
+<p>We could also select more metaphors and more audiences, or make divisions within each; the table below summarises key aspects.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Perspective</th><th>Model is a…</th><th>Preferred Explanation style</th><th>Audience</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Scientific</strong></td><td>Machine</td><td>Mechanistic, causal, formal</td><td>Experts</td></tr>
+<tr><td><strong>Human-facing</strong></td><td>Agent</td><td>Intentional, narrative</td><td>Users, stakeholders</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+<p>In the next post we use our knowledge to define Explainable AI.</p>
+<hr><details>
+<summary>List of sources used in this blogpost</summary>
+<ol>
+<li><a href="https://www.ijcai.org/Proceedings/73/Papers/017.pdf">On the mechanization of abductive logic</a> (1973). The first page is quite interesting.</li>
+</ol>
+<!-- A **deduction** (proof) is e.g. "All cats are animals (I); animals are big (II); then cats are big (III)", whereas **abduction** (hypothesis) would be "III; I; maybe II" notice the _maybe_ (anti-clockwise rotation). Another anti-clockwise rotation takes us to **induction** (generalisation,hypothesis): "II; III; maybe all I". -->
+<ol>
+<li><a href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">A Unified Approach to Interpreting Model Predictions</a> (2017): paper proposing SHAP, that is, showing Shapley values as the best coefficients in linear combination of features, given 3 requirements (local accuracy, missingness and consistency),</li>
+<li><a href="http://arxiv.org/abs/1806.00069">Explaining Explanations: An Overview of Interpretability of Machine Learning</a> (2018),</li>
+<li><a href="https://arxiv.org/abs/1806.00340">Producing radiologist-quality reports for interpretable artificial intelligence</a> (2018): a "case study",</li>
+<li>The paper <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">"Explanation in artificial intelligence: insights from the social sciences"</a> (2019, 38 pages). Once the why-cause is found (diagnosis), it may be communicated, making rules of conversation relevant: <a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims of Communication</a> (blog-post), or <a href="https://en.wikipedia.org/wiki/Cooperative_principle">Wikipedia's</a>.
+<ul>
+<li>The definition of explanation extends previous work by Lombrozo on <a href="https://fitelson.org/few/few_08/lombrozo_reading.pdf">The structure and function of explanations</a> (2006).</li>
+</ul>
+</li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0740624X21001027">The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making</a> (2021): emphasis on socio-political aspects,</li>
+<li><a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Interpretable and Explainable Machine Learning for Materials Science and Chemistry</a> (2022),</li>
+<li>Blog Posts: <a href="https://www.sei.cmu.edu/blog/what-is-explainable-ai/">What is Explainable AI?</a> (2022) and from <a href="https://www.sei.cmu.edu/blog/what-is-explainable-ai/">IBM</a>,</li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">A Perspective on Explainable Artificial Intelligence Methods: SHAP and LIME</a> (2024).</li>
+</ol>
+</details>
+<!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
+<!-- [XAI for whom]: http://arxiv.org/abs/2106.05568 -->
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="explainable-ai"><a class="header" href="#explainable-ai">Explainable AI</a></h1>
+<p>Having defined <em>causal explanations</em> we can define <em>model explainability</em> —the focus of Explainable Artificial Intelligence— as:</p>
 <blockquote>
-<p>finding the causes underlying a model's predictions or operation,</p>
+<p>finding the causes underlying a model's predictions or operation.</p>
 </blockquote>
-<p>But can a model be pragmatically considered explainable if it can not be communicated to the target audience?</p>
+<p>But <em>can a model be pragmatically considered explainable if it can not be communicated to the target audience?</em></p>
+<p>It should also be noted that, while explanations are often framed causally, they may involve non-causal relations such as correlations, constraints, or contributions (LIME, SHAP). Especially in XAI.</p>
 <p>We can amend the definition of <em>model explainability</em> to better fit the 3-legged definition of explanations given earlier:</p>
 <blockquote>
 <p>the degree to which humans can effectively answer questions about a model's predictions or operation, either directly or using explainability methods.</p>
 </blockquote>
-<p><em>Questions</em> includes more than just why-questions; <em>effectively</em> includes the social and communicational aspect of it (which Grice's Maxims aid).</p>
-<h3 id="trade-off"><a class="header" href="#trade-off">Trade-off</a></h3>
+<p><em>Questions</em> includes more than just why-questions, and also accepts associations and contributions; we won't necessarily get to a causal structure.</p>
+<p><em>Effectively</em> includes the social and communicational aspect of it (which Grice's Maxims aid).</p>
+<h2 id="trade-off"><a class="header" href="#trade-off">Trade-off</a></h2>
 <p>One trade-off is that each audience will demand certain guarantees, and have expectations, and expertise, but we do not want lose much fidelity to the original model.</p>
 <p>Simplification loses fidelity. Care must be taken to make "things as simple as possible, but not simpler" or there is risk of <strong>oversimplifying</strong>. This is compounded by the fact that more complex and accurate models tend to be less explainable.</p>
 <p>This is not universal, but we could represent this common case as:</p>
@@ -525,7 +613,31 @@ style C fill:#050
 
 </div>
 
-<h2 id="map-of-xai"><a class="header" href="#map-of-xai">Map of XAI</a></h2>
+<h2 id="overview-of-methods"><a class="header" href="#overview-of-methods">Overview of methods</a></h2>
+<p>Within the <em>cognitive process</em> of explanations, <em>model explainability</em> benefits from methods to identify causes or relevant properties.</p>
+<p>For all audiences, we can group these methods into more general categories, and then go into specific cases for a certain audience.</p>
+<h3 id="kinds-of-methods"><a class="header" href="#kinds-of-methods">Kinds of Methods</a></h3>
+<p>The survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practise of explaining ML models</a> includes a table of <strong>method kinds</strong>. A modified version of the table is below:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Kind</th><th>Advantages</th><th>Disadvantages</th><th>Question</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Local explanations</strong></td><td>Explains the model's behaviour in a local area of interest. Operates on instance-level explanations.</td><td>Explanations do not generalize on a global scale. Small <strong>perturbations</strong> might result in very different explanations.</td><td>How do small perturbations affect the output / prediction?</td></tr>
+<tr><td><strong>Examples</strong></td><td>Representative items for each class provide insights about the model's internal reasoning.</td><td>Examples require human selection. They do not explicitly state what parts of the example influence the model.</td><td>How do inputs from different classes compare? And same?</td></tr>
+<tr><td><strong>Feature relevance</strong></td><td>They operate on an instance level (some can operate globally).</td><td>Methods may make assumptions which do not hold (e.g. feature independence, linearity).</td><td>Which input features are most important?</td></tr>
+<tr><td><strong>Simplification</strong></td><td>Simple surrogate models explain opaque ones.</td><td>Surrogate models may not approximate original models well.</td><td>Can we get local insights by using a simpler model?</td></tr>
+<tr><td><strong>Visualizations</strong></td><td>Easier to communicate to non-technical audiences. Most approaches are intuitive and not hard to implement.</td><td>There is an upper bound on how many features can be considered at once. Humans must inspect plots to derive explanations.</td><td>Class boundaries?</td></tr>
+</tbody>
+</table>
+</div>
+<p>We should remember that:</p>
+<blockquote>
+<p>Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),</p>
+</blockquote>
+<p>In the next posts, we focus on <strong>methods</strong> that aid <em>causal attribution</em> (or cognitive process) with a scientific audience in mind.</p>
+<h3 id="map-of-xai"><a class="header" href="#map-of-xai">Map of XAI</a></h3>
 <p>An interesting map of XAI is given in the survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable ML</a> (2021).</p>
 <p>Most <em>classic ML</em> models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under <strong>Model types</strong> column.</p>
 <p><em>Classic ML</em> models are usually <em>transparent</em> (intrinsically explainable) but <em>may</em> benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred over DL models.</p>
@@ -542,74 +654,13 @@ style C fill:#050
 
 <p>The focus here though, is explaining <em>deep learning</em> models. These are usually <em>opaque</em> ("<em>black-box</em>") models, and their accuracy is usually higher than classic ML models.</p>
 <p>In other words, classical ML and DL models each have their use-cases.</p>
-<h3 id="explanation-kinds"><a class="header" href="#explanation-kinds">Explanation kinds</a></h3>
-<p>The survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practise of explaining ML models</a> also includes a great table of <strong>explanation kinds</strong>. A modified version of the table is below:</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>Explanation</th><th>Advantages</th><th>Disadvantages</th><th>Question</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Local explanations</strong></td><td>Explains the model's behaviour in a local area of interest. Operates on instance-level explanations.</td><td>Explanations do not generalize on a global scale. Small <strong>perturbations</strong> might result in very different explanations.</td><td>How do small perturbations affect the output / prediction?</td></tr>
-<tr><td><strong>Examples</strong></td><td>Representative items for each class provide insights about the model's internal reasoning.</td><td>Examples require human selection. They do not explicitly state what parts of the example influence the model.</td><td>How do inputs from different classes compare? And same?</td></tr>
-<tr><td><strong>Feature relevance</strong></td><td>They operate on an instance level (some can operate globally).</td><td>Methods may make assumptions which do not hold (e.g. feature independence, linearity).</td><td>Which input features are most important?</td></tr>
-<tr><td><strong>Simplification</strong></td><td>Simple surrogate models explain opaque ones.</td><td>Surrogate models may not approximate original models well.</td><td>Can we get local insights by using a simpler model?</td></tr>
-<tr><td><strong>Visualizations</strong></td><td>Easier to communicate to non-technical audiences. Most approaches are intuitive and not hard to implement.</td><td>There is an upper bound on how many features can be considered at once. Humans must inspect plots to derive explanations.</td><td>Class boundaries?</td></tr>
-</tbody>
-</table>
-</div>
-<p>We should remember that:</p>
-<blockquote>
-<p>Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),</p>
-</blockquote>
-<p>In the next posts, we focus on <strong>methods</strong> that aid <em>causal attribution</em> (or cognitive process) with a scientific audience in mind.</p>
-<h3 id="aside-methaphors"><a class="header" href="#aside-methaphors">Aside: Methaphors</a></h3>
-<details><summary>The Machine and The Agent</summary>
-<p>In the scientific and science-adjacent domains, models are conceptualised as <em>machines</em>:</p>
-<ol>
-<li>They have parts, each with a function, a role,</li>
-<li>They correspond with some aspect of the reality being modelled.</li>
-</ol>
-<p>Outside of science or the technical domain, they're conceptualised as <em>human-like agents</em>:</p>
-<ol>
-<li>They tend to be explained in human terms,</li>
-<li>They are expected to be reliable, consistent, ...</li>
-</ol>
-<p>The audiences' have different goals or expectations and expertise (which exists within each level as well). We could also select more metaphors and more audiences, or make divisions within each.</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>Perspective</th><th>Model is a…</th><th>Explanation style</th><th>Audience</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Scientific</strong></td><td>Machine</td><td>Mechanistic, causal, formal</td><td>Experts</td></tr>
-<tr><td><strong>Human-facing</strong></td><td>Agent</td><td>Intentional, narrative</td><td>Users, stakeholders</td></tr>
-</tbody>
-</table>
-</div>
-<p>So explanations are answers to <em>why-questions</em>; <em>good</em> explanation is dependent on the audience (their expertise, expectations) and so forth.</p>
-</details>
 <hr><details>
 <summary>List of sources used in this blogpost</summary>
 <ol>
-<li><a href="https://www.ijcai.org/Proceedings/73/Papers/017.pdf">On the mechanization of abductive logic</a> (1973). The first page is quite interesting.</li>
-</ol>
-<!-- A **deduction** (proof) is e.g. "All cats are animals (I); animals are big (II); then cats are big (III)", whereas **abduction** (hypothesis) would be "III; I; maybe II" notice the _maybe_ (anti-clockwise rotation). Another anti-clockwise rotation takes us to **induction** (generalisation,hypothesis): "II; III; maybe all I". -->
-<ol>
-<li><a href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">A Unified Approach to Interpreting Model Predictions</a> (2017): paper proposing SHAP, that is, showing Shapley values as the best coefficients in linear combination of features, given 3 requirements (local accuracy, missingness and consistency),</li>
-<li><a href="http://arxiv.org/abs/1806.00069">Explaining Explanations: An Overview of Interpretability of Machine Learning</a> (2018),</li>
-<li><a href="https://arxiv.org/abs/1806.00340">Producing radiologist-quality reports for interpretable artificial intelligence</a> (2018): a "case study",</li>
-<li>The paper <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">"Explanation in artificial intelligence: insights from the social sciences"</a> (2019, 38 pages). Once the why-cause is found (diagnosis), it may be communicated, making rules of conversation relevant: <a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims of Communication</a> (blog-post), or <a href="https://en.wikipedia.org/wiki/Cooperative_principle">Wikipedia's</a>.</li>
 <li><a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable machine-learning</a> (2021, 25 pages): Sections 8–11 are a useful review of explainability methods.</li>
-<li><a href="https://www.sciencedirect.com/science/article/pii/S0740624X21001027">The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making</a> (2021): emphasis on socio-political aspects,</li>
-<li><a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Interpretable and Explainable Machine Learning for Materials Science and Chemistry</a> (2022),</li>
-<li>Blog Posts: <a href="https://www.sei.cmu.edu/blog/what-is-explainable-ai/">What is Explainable AI?</a> (2022) and from <a href="https://www.sei.cmu.edu/blog/what-is-explainable-ai/">IBM</a>,</li>
-<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">A Perspective on Explainable Artificial Intelligence Methods: SHAP and LIME</a> (2024).</li>
 </ol>
 </details>
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
-<!-- [XAI for whom]: http://arxiv.org/abs/2106.05568 -->
-<!-- _Why X_ questions can be rephrased as either _What is X for_, its purpose, or _What is the cause of X_, that is, the events leading to X. These are different questions, and we are interested in the latter sense, in _causes_ rather than _purposes_. -->
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="additive-feature-attribution-methods"><a class="header" href="#additive-feature-attribution-methods">Additive Feature Attribution Methods</a></h1>
 <p>These set of methods are linear approximations (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span>) to the original model (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>). Mathematically:</p>
@@ -1013,7 +1064,7 @@ For example, <span class="katex"><span class="katex-html" aria-hidden="true"><sp
 <p>In all reports, remember to cite the methods and packages employed to ensure that the development community receive the recognition they deserve.</p>
 </blockquote>
 <p>They provide a great checklist but since the license is a mess I am not including it here.</p>
-<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<h2 id="example-1"><a class="header" href="#example-1">Example</a></h2>
 <p>Take <a href="https://www.nature.com/articles/s41598-018-35934-y">ElemNet</a> as an example and go through the checklist.</p>
 <ul>
 <li><em>Database</em>:
