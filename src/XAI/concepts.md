@@ -30,15 +30,11 @@ We can start with an oversimplified definition, an _explanation_ is:
 
 Although not only _why-questions_ prompt explanations. Inferential reasoning (next section) plays an interesting role. Also class-membership can help explain events: "Light interferes because it is a wave.".
 
+The _cause_ will usually be a hypothesis, and packed in there is our prior knowledge, biases, and so forth. These are explored in the next section.
+
 In section **2.1.2**, [Explanation in artificial intelligence: insights from the social sciences][explanations_social] characterises an explanation as:
 
 A **cognitive process**, which involves finding and assigning the cause of an event, known as _causal attribution_. A **product**, resulting from the cognitive process. A **social process**, which involves communicating the product.
-
-Another interesting aspect is the identification of what is explanatory relevant, and what is not. Consider two light beams interfering on a Sunday. The day _should_ be of little relevance (not always). We are disregarding a confounding factor.
-
-Beliefs, prior knowledge and assumptions play an important role in the generation of hypotheses. In a sense, the hypothesis generated (cause-candidate) is conditioned on knowledge. Here is a cute example from [The structure and function of explanations][lombrozo]:
-
-> explanations [hypotheses] can lead reasoners to override the influence of similarity. If told that herring and tuna have a disease, naive participants are more likely to extend the property to wolffish, the more similar item, than to dolphins. However, among fishing experts, who can generate an explanation for why the property might hold (e.g. tuna contract the disease by eating infected herring), similarity is less predictive of property extensions.
 
 Let's now expand on the _cognitive_ and _social_ processes of an explanation.
 
@@ -85,7 +81,19 @@ The way we generate hypothesis is very complex. It may involve creativity, metap
 
 ### Strength of a Hypothesis
 
-The plausibility of a hypothesis or causal claim is affected by different aspects, such as:
+The plausibility of a hypothesis or causal claim is affected by different aspects.
+
+Beliefs, prior knowledge and assumptions play an important role in:
+- The generation and veto of hypotheses;
+    - For example, this can't happen, or is unlikely, because of X,Y,Z...
+- Selecting what seems causally / explanatory relevant from what is not.
+    - Consider two light beams interfering on a Sunday. The day is irrelevant (usually), we disregard a confounding factor.
+
+In a sense, the hypothesis generated (cause-candidate) is conditioned on knowledge. Here is a cute example from [The structure and function of explanations][lombrozo]:
+
+> explanations [hypotheses] can lead reasoners to override the influence of similarity. If told that herring and tuna have a disease, naive participants are more likely to extend the property to wolffish, the more similar item, than to dolphins. However, among fishing experts, who can generate an explanation for why the property might hold (e.g. tuna contract the disease by eating infected herring), similarity is less predictive of property extensions. Instead, properties are extended if the explanation generalizes (e.g. to dolphins, who also eat herring).
+
+Other important aspects are:
 
 - Its _simplicity_: if it involves a shorter chain of causes, it is preferred,
 - Its _generality_: if it explains other cases, it is preferred,
