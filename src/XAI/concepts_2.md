@@ -1,10 +1,43 @@
-# Overview of methods
+# Explainable AI
+
+Having defined _causal explanations_ we can define _model explainability_ &mdash;the focus of Explainable Artificial Intelligence&mdash; as:
+
+> finding the causes underlying a model's predictions or operation.
+
+But _can a model be pragmatically considered explainable if it can not be communicated to the target audience?_
+
+It should also be noted that, while explanations are often framed causally, they may involve non-causal relations such as correlations, constraints, or contributions (LIME, SHAP). Especially in XAI.
+
+We can amend the definition of _model explainability_ to better fit the 3-legged definition of explanations given earlier:
+
+> the degree to which humans can effectively answer questions about a model's predictions or operation, either directly or using explainability methods.
+
+_Questions_ includes more than just why-questions, and also accepts associations and contributions; we won't necessarily get to a causal structure.
+
+_Effectively_ includes the social and communicational aspect of it (which Grice's Maxims aid).
+
+## Trade-off
+
+One trade-off is that each audience will demand certain guarantees, and have expectations, and expertise, but we do not want lose much fidelity to the original model.
+
+Simplification loses fidelity. Care must be taken to make "things as simple as possible, but not simpler" or there is risk of **oversimplifying**. This is compounded by the fact that more complex and accurate models tend to be less explainable.
+
+This is not universal, but we could represent this common case as:
+
+<div class="center w30">
+    <a href="../assets/tradeoff.webp">
+    <img src="../assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff."/>
+    </a>
+    <p>Model accuracy vs Model explainability tradeoff.</p>
+</div>
+
+## Overview of methods
 
 Within the _cognitive process_ of explanations, _model explainability_ benefits from methods to identify causes or relevant properties.
 
 For all audiences, we can group these methods into more general categories, and then go into specific cases for a certain audience.
 
-## Kinds of Methods
+### Kinds of Methods
 
 The survey [Principles and practise of explaining ML models][principles_and_practice] includes a table of **method kinds**. A modified version of the table is below:
 
@@ -22,7 +55,7 @@ We should remember that:
 
 In the next posts, we focus on **methods** that aid _causal attribution_ (or cognitive process) with a scientific audience in mind.
 
-## Map of XAI
+### Map of XAI
 
 An interesting map of XAI is given in the survey [Principles and practice of explainable ML][principles_and_practice] (2021).
 
@@ -42,6 +75,8 @@ _Classic ML_ models are usually _transparent_ (intrinsically explainable) but _m
 The focus here though, is explaining _deep learning_ models. These are usually _opaque_ ("_black-box_") models, and their accuracy is usually higher than classic ML models.
 
 In other words, classical ML and DL models each have their use-cases.
+
+-------------------
 
 <details>
 <summary>List of sources used in this blogpost</summary>

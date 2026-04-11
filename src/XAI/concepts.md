@@ -1,10 +1,4 @@
-# Explanations
-
-The goal of this post is to discuss the concepts of _explanation_ and _explainable AI_.
-
-The literature is huge and complex, so I describe what seems relevant as a basis of sound XAI judgement.
-
-## What is an explanation?
+# What is an explanation?
 
 One simple definition of an explanation is:
 
@@ -14,29 +8,31 @@ Although not only _why-questions_ prompt explanations.
 
 [Explanation in artificial intelligence: insights from the social sciences][explanations_social]&mdash;section 2.1.2, characterises an explanation as:
 
-A **cognitive process**, which involves finding the cause of an event, known as the _causal attribution_. A **product**, the result of the cognitive process. A **social process**, which involves communicating the product.
+A **cognitive process**, which involves finding the cause of an event, known as the _causal attribution_. A **product**, resulting from the cognitive process. A **social process**, which involves communicating the product.
 
-Let's zoom into the cognitive process part (`1.`) of explanations.
+Let's expand on these characteristics.
 
-### Cognitive process
+## Cognitive process
 
-This process involves assigning _causes_, known as _causal attribution_, and also _abductive reasoning_.
+This process involves assigning _causes_ to events &mdash;known as _causal attribution_&mdash; and _abductive reasoning_.
 
-Before analysing it, let's state two views on causes.
+### Causes
 
-- Aristotle proposed 4 kinds of _causes_ that pick on different aspects to answer a _why-question_ (part of explaining): Efficient (a mechanism), Final (a purpose), Formal (structure or form), Material(constitution).
-    - These explanations are not always exclusive, they can be complementary.
-    - The next section explains each one.
-- Hume understood _causes_ through _counterfactuals_: A is the cause of B if, had A not happened, B wouldn't have happened.
-    - This view was formalised by Pearl and Halpern.
+Aristotle proposed 4 kinds of _causes_ that pick on different aspects to answer a _why-question_ (part of explaining): Efficient (a mechanism), Final (a purpose), Formal (structure or form), Material(constitution).
 
-Are all Aristotelian causes Humean causes? The one that best fits the definition is _efficient_ causes; the rest are not naturally understood as events so they don't easily fit as counterfactuals.
+These explanations are not always exclusive, they can be complementary.
+
+Hume understood _causes_ through _counterfactuals_: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.
+
+_Are all Aristotelian causes Humean causes?_ The one that best fits the definition is the _efficient_ cause; the rest are not naturally understood as events so they don't easily fit as counterfactuals.
 
 In science, _effective causes_ and _counterfactuals_ are most useful. But in everyday life, all Aristotelian causes are used.
 
 In addition, [Explanation in AI: insights from the social sciences][explanations_social] notes that _why-questions_ are usually contrastive questions, phrased as _why P rather than Q_ instead of _why P_. In this latter case, the _foil_ (Q) is implicit.
 
-Abduction is 3-step process, not too different from the scientific process itself:
+### Abductive Inference
+
+Causal attribution is closely related to abductive inference. Abduction is 3-step process, not too different from the scientific process itself:
 
 1. Propose hypothetical causes (or chains of causes, meaning a series of causally connected events), this is a creative process
 2. Select the best given the available evidence; this filtering process is dependent upon prior knowledge,
@@ -59,7 +55,7 @@ The plausibility of a hypothesis or causal claim is affected by different aspect
 
 I don't have much to say about _product_ (`2.`), so we jump to `3`.
 
-### Social or Communicative Process
+## Social Process
 
 The causal-hypothesis must then be communicated, and there are expectations about it.
 
@@ -70,7 +66,7 @@ The causal-hypothesis must then be communicated, and there are expectations abou
 3. **Relevance** (Relation): do not state things that aren't needed (provide insight),
 4. **Manner** (clarity): express it in elegant terms.
 
-### An example
+## A complete example
 
 > [!Note]
 > You open a drawer, and it slides out. A friend asks: Why did the drawer slide out?
@@ -93,42 +89,7 @@ The friend could recursively ask "Why" and finally reject or accept the explanat
 
 The _social process_ of guessing the friend's actual _knowledge gap_, assumptions, intentions, is also clear, besides the _cognitive_ task.
 
-## Explainable AI
-
-Having defined _causal explanations_ we can define _model explainability_ &mdash; the focus of Explainable Artificial Intelligence&mdash; as:
-
-> finding the causes underlying a model's predictions or operation,
-
-But can a model be pragmatically considered explainable if it can not be communicated to the target audience?
-
-It should also be noted that, while explanations are often framed causally, they may involve non-causal relations such as correlations, constraints, or contributions (LIME, SHAP). Especially in XAI.
-
-We can amend the definition of _model explainability_ to better fit the 3-legged definition of explanations given earlier:
-
-> the degree to which humans can effectively answer questions about a model's predictions or operation, either directly or using explainability methods.
-
-_Questions_ includes more than just why-questions, and also accepts associations and contributions; we won't necessarily get to a causal structure.
-
-_Effectively_ includes the social and communicational aspect of it (which Grice's Maxims aid).
-
-### Trade-off
-
-One trade-off is that each audience will demand certain guarantees, and have expectations, and expertise, but we do not want lose much fidelity to the original model.
-
-Simplification loses fidelity. Care must be taken to make "things as simple as possible, but not simpler" or there is risk of **oversimplifying**. This is compounded by the fact that more complex and accurate models tend to be less explainable.
-
-This is not universal, but we could represent this common case as:
-
-<div class="center w30">
-    <a href="../assets/tradeoff.webp">
-    <img src="../assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff."/>
-    </a>
-    <p>Model accuracy vs Model explainability tradeoff.</p>
-</div>
-
-### Aside: Metaphors
-
-<details><summary>The Machine and The Agent</summary>
+## Metaphors: The Machine and The Agent
 
 In the scientific and science-adjacent domains, models are conceptualised as _machines_:
 
@@ -140,16 +101,16 @@ Outside of science or the technical domain, they're conceptualised as _human-lik
 1. They tend to be explained in human terms,
 2. They are expected to be reliable, consistent, ...
 
-The audiences' have different goals or expectations and expertise (which exists within each level as well). We could also select more metaphors and more audiences, or make divisions within each.
+So explanations are answers to _why-questions_; _good_ explanations respect the Gricean maxims, and will be dependent on the audience (their preferred style, expectations, expertise).
 
-| Perspective      | Model is a… | Explanation style           | Audience            |
+We could also select more metaphors and more audiences, or make divisions within each; the table below summarises key aspects.
+
+| Perspective      | Model is a… | Preferred Explanation style           | Audience            |
 | ---------------- | ----------- | --------------------------- | ------------------- |
 | **Scientific**   | Machine     | Mechanistic, causal, formal | Experts             |
 | **Human-facing** | Agent       | Intentional, narrative      | Users, stakeholders |
 
-So explanations are answers to _why-questions_; _good_ explanation is dependent on the audience (their expertise, expectations) and so forth.
-
-</details>
+Let's now use the concepts learnt to define Explainable AI.
 
 ------------
 
@@ -186,5 +147,3 @@ So explanations are answers to _why-questions_; _good_ explanation is dependent 
 [gricean_maxims]: https://effectiviology.com/principles-of-effective-communication/
 [wikipedia_gricean]: https://en.wikipedia.org/wiki/Cooperative_principle
 [lombrozo]: https://fitelson.org/few/few_08/lombrozo_reading.pdf
-
-<!-- _Why X_ questions can be rephrased as either _What is X for_, its purpose, or _What is the cause of X_, that is, the events leading to X. These are different questions, and we are interested in the latter sense, in _causes_ rather than _purposes_. -->

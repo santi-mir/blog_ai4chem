@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Explanations - AI for Chemistry</title>
+        <title>What are explanations? - AI for Chemistry</title>
 
 
         <!-- Custom HTML head -->
@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-70cf1069.js";
+            window.path_to_searchindex_js = "../searchindex-9f1ec14a.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b6f2115e.js"></script>
+        <script src="../toc-e2ff8d5b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -182,38 +182,26 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="explanations"><a class="header" href="#explanations">Explanations</a></h1>
-<p>The goal of this post is to discuss the concepts of <em>explanation</em> and <em>explainable AI</em>.</p>
-<p>The literature is huge and complex, so I describe what seems relevant as a basis of sound XAI judgement.</p>
-<h2 id="what-is-an-explanation"><a class="header" href="#what-is-an-explanation">What is an explanation?</a></h2>
+<h1 id="what-is-an-explanation"><a class="header" href="#what-is-an-explanation">What is an explanation?</a></h1>
 <p>One simple definition of an explanation is:</p>
 <blockquote>
 <p>An answer to a why-question that accounts for the cause of an event.</p>
 </blockquote>
 <p>Although not only <em>why-questions</em> prompt explanations.</p>
 <p><a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in artificial intelligence: insights from the social sciences</a>—section 2.1.2, characterises an explanation as:</p>
-<p>A <strong>cognitive process</strong>, which involves finding the cause of an event, known as the <em>causal attribution</em>. A <strong>product</strong>, the result of the cognitive process. A <strong>social process</strong>, which involves communicating the product.</p>
-<p>Let's zoom into the cognitive process part (<code>1.</code>) of explanations.</p>
-<h3 id="cognitive-process"><a class="header" href="#cognitive-process">Cognitive process</a></h3>
-<p>This process involves assigning <em>causes</em>, known as <em>causal attribution</em>, and also <em>abductive reasoning</em>.</p>
-<p>Before analysing it, let's state two views on causes.</p>
-<ul>
-<li>Aristotle proposed 4 kinds of <em>causes</em> that pick on different aspects to answer a <em>why-question</em> (part of explaining): Efficient (a mechanism), Final (a purpose), Formal (structure or form), Material(constitution).
-<ul>
-<li>These explanations are not always exclusive, they can be complementary.</li>
-<li>The next section explains each one.</li>
-</ul>
-</li>
-<li>Hume understood <em>causes</em> through <em>counterfactuals</em>: A is the cause of B if, had A not happened, B wouldn't have happened.
-<ul>
-<li>This view was formalised by Pearl and Halpern.</li>
-</ul>
-</li>
-</ul>
-<p>Are all Aristotelian causes Humean causes? The one that best fits the definition is <em>efficient</em> causes; the rest are not naturally understood as events so they don't easily fit as counterfactuals.</p>
+<p>A <strong>cognitive process</strong>, which involves finding the cause of an event, known as the <em>causal attribution</em>. A <strong>product</strong>, resulting from the cognitive process. A <strong>social process</strong>, which involves communicating the product.</p>
+<p>Let's expand on these characteristics.</p>
+<h2 id="cognitive-process"><a class="header" href="#cognitive-process">Cognitive process</a></h2>
+<p>This process involves assigning <em>causes</em> to events —known as <em>causal attribution</em>— and <em>abductive reasoning</em>.</p>
+<h3 id="causes"><a class="header" href="#causes">Causes</a></h3>
+<p>Aristotle proposed 4 kinds of <em>causes</em> that pick on different aspects to answer a <em>why-question</em> (part of explaining): Efficient (a mechanism), Final (a purpose), Formal (structure or form), Material(constitution).</p>
+<p>These explanations are not always exclusive, they can be complementary.</p>
+<p>Hume understood <em>causes</em> through <em>counterfactuals</em>: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.</p>
+<p><em>Are all Aristotelian causes Humean causes?</em> The one that best fits the definition is the <em>efficient</em> cause; the rest are not naturally understood as events so they don't easily fit as counterfactuals.</p>
 <p>In science, <em>effective causes</em> and <em>counterfactuals</em> are most useful. But in everyday life, all Aristotelian causes are used.</p>
 <p>In addition, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in AI: insights from the social sciences</a> notes that <em>why-questions</em> are usually contrastive questions, phrased as <em>why P rather than Q</em> instead of <em>why P</em>. In this latter case, the <em>foil</em> (Q) is implicit.</p>
-<p>Abduction is 3-step process, not too different from the scientific process itself:</p>
+<h3 id="abductive-inference"><a class="header" href="#abductive-inference">Abductive Inference</a></h3>
+<p>Causal attribution is closely related to abductive inference. Abduction is 3-step process, not too different from the scientific process itself:</p>
 <ol>
 <li>Propose hypothetical causes (or chains of causes, meaning a series of causally connected events), this is a creative process</li>
 <li>Select the best given the available evidence; this filtering process is dependent upon prior knowledge,</li>
@@ -234,7 +222,7 @@ style C fill:#050
 <li>Fits prior knowledge (or beliefs): if so it is preferred; if it contradicts many other patterns it may be rejected.</li>
 </ul>
 <p>I don't have much to say about <em>product</em> (<code>2.</code>), so we jump to <code>3</code>.</p>
-<h3 id="social-or-communicative-process"><a class="header" href="#social-or-communicative-process">Social or Communicative Process</a></h3>
+<h2 id="social-process"><a class="header" href="#social-process">Social Process</a></h2>
 <p>The causal-hypothesis must then be communicated, and there are expectations about it.</p>
 <p><a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. We can use these rules as a guide for good <em>model explanations</em> as well.</p>
 <ol>
@@ -243,7 +231,7 @@ style C fill:#050
 <li><strong>Relevance</strong> (Relation): do not state things that aren't needed (provide insight),</li>
 <li><strong>Manner</strong> (clarity): express it in elegant terms.</li>
 </ol>
-<h3 id="an-example"><a class="header" href="#an-example">An example</a></h3>
+<h2 id="a-complete-example"><a class="header" href="#a-complete-example">A complete example</a></h2>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
 <p>You open a drawer, and it slides out. A friend asks: Why did the drawer slide out?</p>
@@ -262,34 +250,7 @@ The rails allow it to slide out; to open like a lid it would need hinges or othe
 <p>This a <em>formal</em> cause, based on the form. It is also clear that it is a <em>contrastive explanation</em>. The other causes would be used in answers like "Why did it burn? Because it's made of wood (Material); or because they wanted to get rid of it (Final)."</p>
 <p>The friend could recursively ask "Why" and finally reject or accept the explanation (or remain sceptical).</p>
 <p>The <em>social process</em> of guessing the friend's actual <em>knowledge gap</em>, assumptions, intentions, is also clear, besides the <em>cognitive</em> task.</p>
-<h2 id="explainable-ai"><a class="header" href="#explainable-ai">Explainable AI</a></h2>
-<p>Having defined <em>causal explanations</em> we can define <em>model explainability</em> — the focus of Explainable Artificial Intelligence— as:</p>
-<blockquote>
-<p>finding the causes underlying a model's predictions or operation,</p>
-</blockquote>
-<p>But can a model be pragmatically considered explainable if it can not be communicated to the target audience?</p>
-<p>It should also be noted that, while explanations are often framed causally, they may involve non-causal relations such as correlations, constraints, or contributions (LIME, SHAP). Especially in XAI.</p>
-<p>We can amend the definition of <em>model explainability</em> to better fit the 3-legged definition of explanations given earlier:</p>
-<blockquote>
-<p>the degree to which humans can effectively answer questions about a model's predictions or operation, either directly or using explainability methods.</p>
-</blockquote>
-<p><em>Questions</em> includes more than just why-questions, and also accepts associations and contributions; we won't necessarily get to a causal structure.</p>
-<p><em>Effectively</em> includes the social and communicational aspect of it (which Grice's Maxims aid).</p>
-<h3 id="trade-off"><a class="header" href="#trade-off">Trade-off</a></h3>
-<p>One trade-off is that each audience will demand certain guarantees, and have expectations, and expertise, but we do not want lose much fidelity to the original model.</p>
-<p>Simplification loses fidelity. Care must be taken to make "things as simple as possible, but not simpler" or there is risk of <strong>oversimplifying</strong>. This is compounded by the fact that more complex and accurate models tend to be less explainable.</p>
-<p>This is not universal, but we could represent this common case as:</p>
-<div class="center w30">
-    <a href="../assets/tradeoff.webp">
-    <img src="../assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff." />
-    </a>
-    
-<p>Model accuracy vs Model explainability tradeoff.</p>
-
-</div>
-
-<h3 id="aside-metaphors"><a class="header" href="#aside-metaphors">Aside: Metaphors</a></h3>
-<details><summary>The Machine and The Agent</summary>
+<h2 id="metaphors-the-machine-and-the-agent"><a class="header" href="#metaphors-the-machine-and-the-agent">Metaphors: The Machine and The Agent</a></h2>
 <p>In the scientific and science-adjacent domains, models are conceptualised as <em>machines</em>:</p>
 <ol>
 <li>They have parts, each with a function, a role,</li>
@@ -300,11 +261,12 @@ The rails allow it to slide out; to open like a lid it would need hinges or othe
 <li>They tend to be explained in human terms,</li>
 <li>They are expected to be reliable, consistent, ...</li>
 </ol>
-<p>The audiences' have different goals or expectations and expertise (which exists within each level as well). We could also select more metaphors and more audiences, or make divisions within each.</p>
+<p>So explanations are answers to <em>why-questions</em>; <em>good</em> explanations respect the Gricean maxims, and will be dependent on the audience (their preferred style, expectations, expertise).</p>
+<p>We could also select more metaphors and more audiences, or make divisions within each; the table below summarises key aspects.</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Perspective</th><th>Model is a…</th><th>Explanation style</th><th>Audience</th></tr>
+<tr><th>Perspective</th><th>Model is a…</th><th>Preferred Explanation style</th><th>Audience</th></tr>
 </thead>
 <tbody>
 <tr><td><strong>Scientific</strong></td><td>Machine</td><td>Mechanistic, causal, formal</td><td>Experts</td></tr>
@@ -312,8 +274,7 @@ The rails allow it to slide out; to open like a lid it would need hinges or othe
 </tbody>
 </table>
 </div>
-<p>So explanations are answers to <em>why-questions</em>; <em>good</em> explanation is dependent on the audience (their expertise, expectations) and so forth.</p>
-</details>
+<p>Let's now use the concepts learnt to define Explainable AI.</p>
 <hr><details>
 <summary>List of sources used in this blogpost</summary>
 <ol>
@@ -337,7 +298,6 @@ The rails allow it to slide out; to open like a lid it would need hinges or othe
 </details>
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
 <!-- [XAI for whom]: http://arxiv.org/abs/2106.05568 -->
-<!-- _Why X_ questions can be rephrased as either _What is X for_, its purpose, or _What is the cause of X_, that is, the events leading to X. These are different questions, and we are interested in the latter sense, in _causes_ rather than _purposes_. -->
 
                     </main>
 
@@ -374,6 +334,22 @@ The rails allow it to slide out; to open like a lid it would need hinges or othe
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>
