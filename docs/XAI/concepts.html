@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-6beb3f89.js";
+            window.path_to_searchindex_js = "../searchindex-2ba5220f.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-e2ff8d5b.js"></script>
@@ -202,14 +202,34 @@
 <blockquote>
 <p>An answer to a why-question referring to the cause of an event, or assigning the event to a class. Prior beliefs or knowledge are used to constrain acceptable answers.</p>
 </blockquote>
-<p>The answer is usually a hypothetical cause of the event. Class-assignment can help explain events as well: "Light interferes because it is a wave."</p>
+<p>The answer is usually a hypothetical cause of the event or a class-assignment such as "Light interferes because it is a wave."</p>
 <p>Importantly, not only <em>why-questions</em> prompt explanations, but it is fine to a first approximation.</p>
-<p>We can represent the all above in a diagram:</p>
 <p>In section <strong>2.1.2</strong>, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in artificial intelligence: insights from the social sciences</a> characterises an explanation as:</p>
-<p>A <strong>cognitive process</strong>, which involves finding and assigning the cause of an event, known as <em>causal attribution</em>. A <strong>product</strong>, resulting from the cognitive process. A <strong>social process</strong>, which involves communicating the product.</p>
-<p>Let's now expand on the <em>cognitive</em> and <em>social</em> processes of an explanation.</p>
+<p>A <strong>cognitive process</strong> of finding a cause, a <strong>product</strong>, resulting from the cognitive process. A <strong>social process</strong>, which involves communicating the product.</p>
+<p>Let's now expand on the <em>cognitive</em> and <em>social</em> processes of an explanation (as I see them).</p>
 <h2 id="the-cognitive-process-of-explanations"><a class="header" href="#the-cognitive-process-of-explanations">The cognitive process of explanations</a></h2>
-<p>We now discuss <em>causes</em>, <em>causal attribution</em> and <em>abductive reasoning</em> in the context of the cognitive process.</p>
+<p>The cognitive process involves:</p>
+<ol>
+<li>Selecting/Filtering explanatory-relevant aspects of the <em>explanandum</em> (what we want to explain) and discarding irrelevant ones,</li>
+<li>Suggesting possible causes of an event, known as <em>causal attribution</em>,</li>
+<li>Selecting/Filtering most likely hypotheses.</li>
+</ol>
+<p>Or in graph form:</p>
+<pre class="mermaid">flowchart LR
+    A(("Answer why-event"))
+    subgraph hypotheses
+    B("Caused by A")
+    C("Caused by B")
+    D("Assigned to class")
+    end
+    subgraph filtered
+    E("Caused by B")
+    end
+A --suggest all (inferences)--&gt; hypotheses
+hypotheses --select best--&gt; filtered
+</pre>
+
+<p>Now we expand on <em>causes</em>, <em>causal attribution</em> and <em>abductive reasoning</em> which are important pieces of the <em>cognitive process</em>.</p>
 <h3 id="causes"><a class="header" href="#causes">Causes</a></h3>
 <p>We already mentioned Aristotle's 4 kinds of <em>causes</em> that pick on different aspects to answer a <em>why-question</em>. These explanations are not always exclusive, they can be complementary.</p>
 <p>We also causes derived from <em>counterfactuals</em>: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.</p>
@@ -252,22 +272,6 @@
 </ul>
 </li>
 </ul>
-<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
-<p>We can summarise the cognitive process in a graph:</p>
-<pre class="mermaid">flowchart LR
-    A(("Answer why-event"))
-    subgraph hypotheses
-    B("Caused by A")
-    C("Caused by B")
-    D("Assigned to class")
-    end
-    subgraph filtered
-    E("Caused by B")
-    end
-A --suggest all (inferences)--&gt; hypotheses
-hypotheses --select best--&gt; filtered
-</pre>
-
 <p>I don't have much to say about <em>product</em> (<code>2.</code>), so we jump to <code>3</code>.</p>
 <h2 id="social-process"><a class="header" href="#social-process">Social Process</a></h2>
 <p>The causal-hypothesis must then be communicated, and there are expectations about it.</p>

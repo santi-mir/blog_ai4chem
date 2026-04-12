@@ -28,21 +28,42 @@ We can start with an oversimplified definition, an _explanation_ is:
 
 > An answer to a why-question referring to the cause of an event, or assigning the event to a class. Prior beliefs or knowledge are used to constrain acceptable answers.
 
-The answer is usually a hypothetical cause of the event. Class-assignment can help explain events as well: "Light interferes because it is a wave."
+The answer is usually a hypothetical cause of the event or a class-assignment such as "Light interferes because it is a wave."
 
 Importantly, not only _why-questions_ prompt explanations, but it is fine to a first approximation.
 
-We can represent the all above in a diagram:
-
 In section **2.1.2**, [Explanation in artificial intelligence: insights from the social sciences][explanations_social] characterises an explanation as:
 
-A **cognitive process**, which involves finding and assigning the cause of an event, known as _causal attribution_. A **product**, resulting from the cognitive process. A **social process**, which involves communicating the product.
+A **cognitive process** of finding a cause, a **product**, resulting from the cognitive process. A **social process**, which involves communicating the product.
 
-Let's now expand on the _cognitive_ and _social_ processes of an explanation.
+Let's now expand on the _cognitive_ and _social_ processes of an explanation (as I see them).
 
 ## The cognitive process of explanations
 
-We now discuss _causes_, _causal attribution_ and _abductive reasoning_ in the context of the cognitive process.
+The cognitive process involves:
+
+1. Selecting/Filtering explanatory-relevant aspects of the _explanandum_ (what we want to explain) and discarding irrelevant ones,
+2. Suggesting possible causes of an event, known as _causal attribution_,
+3. Selecting/Filtering most likely hypotheses.
+
+Or in graph form:
+
+```mermaid
+flowchart LR
+    A(("Answer why-event"))
+    subgraph hypotheses
+    B("Caused by A")
+    C("Caused by B")
+    D("Assigned to class")
+    end
+    subgraph filtered
+    E("Caused by B")
+    end
+A --suggest all (inferences)--> hypotheses
+hypotheses --select best--> filtered
+```
+
+Now we expand on _causes_, _causal attribution_ and _abductive reasoning_ which are important pieces of the _cognitive process_.
 
 ### Causes
 
@@ -84,24 +105,7 @@ The plausibility of a hypothesis or causal claim is affected by different aspect
 
     - Aids selecting what seems causally / explanatory relevant from what is not. Consider two light beams interfering on a Sunday. The day is irrelevant (usually), we disregard a confounding factor.
 
-## Summary
 
-We can summarise the cognitive process in a graph:
-
-```mermaid
-flowchart LR
-    A(("Answer why-event"))
-    subgraph hypotheses
-    B("Caused by A")
-    C("Caused by B")
-    D("Assigned to class")
-    end
-    subgraph filtered
-    E("Caused by B")
-    end
-A --suggest all (inferences)--> hypotheses
-hypotheses --select best--> filtered
-```
 
 I don't have much to say about _product_ (`2.`), so we jump to `3`.
 
