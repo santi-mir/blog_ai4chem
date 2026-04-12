@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-2ba5220f.js";
+            window.path_to_searchindex_js = "searchindex-b744f976.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-e2ff8d5b.js"></script>
@@ -453,7 +453,7 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <p>Friend: Why did the drawer slide out?<br>You: Because I pulled it out? Had I not, the drawer wouldn't have slide.</p>
 </blockquote>
 <p>The answer is an <em>efficient</em> cause. Aristotle proposed 4 causes: <em>efficient</em> (mechanism), <em>formal</em> (form, shape), <em>material</em> (properties), <em>final</em> (purposes).</p>
-<p>Hume instead, understood causes through <em>counterfactuals</em>: the hypothesis that <em>hadn't X happened, Y wouldn't have happened</em>. In the answer, that event is <em>pulling</em>.<sup class="footnote-reference" id="fr-necessity-1"><a href="#footnote-necessity">1</a></sup></p>
+<p>Hume instead, understood causes through <em>counterfactuals</em>: X is the cause of why if <em>had X not happened, Y wouldn't have happened</em>. In the answer, that event is <em>pulling</em>.<sup class="footnote-reference" id="fr-necessity-1"><a href="#footnote-necessity">1</a></sup></p>
 <blockquote>
 <p>Friend: I <em>know</em> that. But why does it slide <em>rather than</em> opening like a lid?<br>You: Oh! I misunderstood. The drawer sits on rails allowing it to slide.</p>
 </blockquote>
@@ -461,23 +461,32 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <p>The friend may keep asking "Why" and eventually reject or accept the causal chain (or remain sceptical).</p>
 <p>Notice the <strong>social process</strong> involved: we tried to guess the friend's actual <em>knowledge gap</em> (first wrongly, he <em>knew</em> that), and to emit relevant information. There are also other aspects that matter, such as testing the claim, suggesting a <em>foil</em>, and so forth.</p>
 <h2 id="a-definition-of-explanation"><a class="header" href="#a-definition-of-explanation">A definition of Explanation</a></h2>
-<p>We can start with an oversimplified definition, an <em>explanation</em> is:</p>
+<p>We can start with an oversimplified definition of an <em>explanation</em> (inspired by <a href="https://fitelson.org/few/few_08/lombrozo_reading.pdf">1</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">2</a>, <a href="https://fitelson.org/woodward/hempel_oppenheim.pdf">3</a>):</p>
 <blockquote>
-<p>An answer to a why-question referring to the cause of an event, or assigning the event to a class. Prior beliefs or knowledge are used to constrain acceptable answers.</p>
+<p>An answer to a why-question that infers the cause of an event, or assigns the event to a class. Prior beliefs or knowledge are used to constrain acceptable answers.</p>
 </blockquote>
 <p>The answer is usually a hypothetical cause of the event or a class-assignment such as "Light interferes because it is a wave."</p>
-<p>Importantly, not only <em>why-questions</em> prompt explanations, but it is fine to a first approximation.</p>
+<p>Importantly, not only <em>why-questions</em> prompt explanations, but it is fine to a first approximation. In addition, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in AI: insights from the social sciences</a> notes that <em>why-questions</em> are usually contrastive questions, phrased as <em>why P rather than Q</em> instead of <em>why P</em>. In this latter case, the <em>foil</em> (Q) is implicit.</p>
 <p>In section <strong>2.1.2</strong>, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in artificial intelligence: insights from the social sciences</a> characterises an explanation as:</p>
 <p>A <strong>cognitive process</strong> of finding a cause, a <strong>product</strong>, resulting from the cognitive process. A <strong>social process</strong>, which involves communicating the product.</p>
 <p>Let's now expand on the <em>cognitive</em> and <em>social</em> processes of an explanation (as I see them).</p>
 <h2 id="the-cognitive-process-of-explanations"><a class="header" href="#the-cognitive-process-of-explanations">The cognitive process of explanations</a></h2>
-<p>The cognitive process involves:</p>
+<p>The <em>cognitive process</em> is similar to the scientific method:</p>
 <ol>
-<li>Selecting/Filtering explanatory-relevant aspects of the <em>explanandum</em> (what we want to explain) and discarding irrelevant ones,</li>
-<li>Suggesting possible causes of an event, known as <em>causal attribution</em>,</li>
-<li>Selecting/Filtering most likely hypotheses.</li>
+<li><strong>Select</strong> what seems explanatory relevant (using prior knowledge),</li>
+<li><strong>Infer</strong> possible causes of an event, known as <em>causal attribution</em>,</li>
+<li><strong>Weight</strong> the likelihood of each hypotheses.</li>
+<li><strong>Accept</strong> until contradicted by experience or super-seeded (e.g. by a simpler explanation).</li>
 </ol>
-<p>Or in graph form:</p>
+<p>Inferring a cause (or positing a class membership) usually uses a logic inference method:</p>
+<ol>
+<li>Deductive: Light is a wave; all waves interfere; then light beams interfere,</li>
+<li>Inductive (generalisation): Bats are mammals; bats fly; maybe all mammals fly,</li>
+<li>Abductive: Light shows interference patterns, waves interfere, maybe light is a wave. It proposes a hypothesis to explain a fact (closest to what is done in the science).</li>
+</ol>
+<p>The <em>inference to a cause</em> is very important at sometimes not obvious. It is made obvious when we do it wrong. For example, imagine that the drawer (in the example) actually slides when we touch it, then our inferred cause was wrong.</p>
+<p>Besides using prior knowledge, the way we come up with hypotheses may involve creativity, metaphors, analogies; this post won't go further into this aspect.</p>
+<p>The idea above can be summarised in a graph:</p>
 <pre class="mermaid">flowchart LR
     A(("Answer why-event"))
     subgraph hypotheses
@@ -494,25 +503,13 @@ hypotheses --select best--&gt; filtered
 
 <p>Now we expand on <em>causes</em>, <em>causal attribution</em> and <em>abductive reasoning</em> which are important pieces of the <em>cognitive process</em>.</p>
 <h3 id="causes"><a class="header" href="#causes">Causes</a></h3>
-<p>We already mentioned Aristotle's 4 kinds of <em>causes</em> that pick on different aspects to answer a <em>why-question</em>. These explanations are not always exclusive, they can be complementary.</p>
-<p>We also causes derived from <em>counterfactuals</em>: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.</p>
-<p><em>Are all Aristotelian causes Humean causes?</em> The one that best fits the definition is the <em>efficient</em> cause; the rest are not naturally understood as events so they don't easily fit as counterfactuals.</p>
-<p>In science, <em>effective causes</em> and <em>counterfactuals</em> are most common. But in everyday life, all Aristotelian causes are used.</p>
-<p>In addition, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in AI: insights from the social sciences</a> notes that <em>why-questions</em> are usually contrastive questions, phrased as <em>why P rather than Q</em> instead of <em>why P</em>. In this latter case, the <em>foil</em> (Q) is implicit.</p>
-<h3 id="inference"><a class="header" href="#inference">Inference</a></h3>
-<p>Inference can play an important role in explanations:</p>
+<p>Aspects of causes already mentioned, but worth putting together, were:</p>
 <ul>
-<li>Deductive: Light is a wave; all waves interfere; then light beams interfere,</li>
-<li>Inductive (generalisation): Bats are mammals; bats fly; maybe all mammals fly,</li>
-<li><strong>Abductive</strong>: Light shows interference patterns, waves interfere, maybe light is a wave. It proposes a hypothesis to explain a fact.</li>
+<li>The cognitive process involves <em>inferring a cause</em>.</li>
+<li>Aristotle's proposed 4 kinds of <em>causes</em> that pick on different aspects to answer a <em>why-question</em>. These explanations are not always exclusive, they can be complementary.</li>
+<li>Hume defined <em>causes</em> as <em>counterfactuals</em>: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.</li>
 </ul>
-<p>Causal attribution is closely related to <strong>abductive inference</strong>. Abduction is 3-step process, not too different from the scientific process itself:</p>
-<ol>
-<li>Propose hypothetical causes (or chains of causes, meaning a series of causally connected events), this is a creative process</li>
-<li>Select the best given the available evidence; this filtering process is dependent upon prior knowledge,</li>
-<li>Maintain until contradicted by experience or super-seeded (e.g. by a simpler explanation).</li>
-</ol>
-<p>The way we generate hypothesis is very complex. It may involve creativity, metaphors, analogies; we won't go further into this aspect.</p>
+<p><em>Are all Aristotelian causes Humean causes?</em> Efficient causes can be seen as counterfactuals, and both are common in science. The remaining 3 causes are not naturally seen as counterfactuals.</p>
 <h3 id="strength-of-a-hypothesis"><a class="header" href="#strength-of-a-hypothesis">Strength of a Hypothesis</a></h3>
 <p>The plausibility of a hypothesis or causal claim is affected by different aspects.</p>
 <ul>
@@ -538,7 +535,7 @@ hypotheses --select best--&gt; filtered
 <p>I don't have much to say about <em>product</em> (<code>2.</code>), so we jump to <code>3</code>.</p>
 <h2 id="social-process"><a class="header" href="#social-process">Social Process</a></h2>
 <p>The causal-hypothesis must then be communicated, and there are expectations about it.</p>
-<p><a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. We can use these rules as a guide for good <em>model explanations</em> as well.</p>
+<p><a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. These rules can also be used as a guide for good <em>model explanations</em>.</p>
 <ol>
 <li><strong>Informative</strong> (Quantity): right amount of context and details,</li>
 <li><strong>Truthful</strong> (Quality, or Fidelity): Try to make it true,</li>
@@ -558,7 +555,7 @@ hypotheses --select best--&gt; filtered
 <li>They are expected to be reliable, consistent, ...</li>
 </ol>
 <p>So explanations are answers to <em>why-questions</em>; <em>good</em> explanations respect the Gricean maxims, and will be dependent on the audience (their preferred style, expectations, expertise).</p>
-<p>We could also select more metaphors and more audiences, or make divisions within each; the table below summarises key aspects.</p>
+<p>The table below is a summary of the ideas above</p>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -570,11 +567,13 @@ hypotheses --select best--&gt; filtered
 </tbody>
 </table>
 </div>
+<p>Many other metaphors could be proposed.</p>
 </details>
 <p>In the next post we use our knowledge to define Explainable AI.</p>
 <hr><details>
 <summary>List of sources used in this blogpost</summary>
 <ol>
+<li><a href="https://fitelson.org/woodward/hempel_oppenheim.pdf">Studies in the logic of explanation</a> (1948). I just read the first few pages),</li>
 <li><a href="https://www.ijcai.org/Proceedings/73/Papers/017.pdf">On the mechanization of abductive logic</a> (1973). The first page is quite interesting.</li>
 </ol>
 <!-- A **deduction** (proof) is e.g. "All cats are animals (I); animals are big (II); then cats are big (III)", whereas **abduction** (hypothesis) would be "III; I; maybe II" notice the _maybe_ (anti-clockwise rotation). Another anti-clockwise rotation takes us to **induction** (generalisation,hypothesis): "II; III; maybe all I". -->
