@@ -14,7 +14,7 @@
 }
 
 :root{
-  font-size:clamp(13px, 2vw, 20px)!important;
+  font-size:clamp(13px, 1.8vw, 20px)!important;
     --sidebar-target-width: max(20vw, 300px);
     --sidebar-width: min(var(--sidebar-target-width), 80vw);
 }

@@ -2,7 +2,7 @@
 
 Let's start with an example. Concepts are expanded in the remaining sections.
 
-## Example
+## An explanation example
 
 You open a drawer, and a conversation with a friend starts.
 
@@ -11,26 +11,26 @@ You open a drawer, and a conversation with a friend starts.
 
 The answer is an _efficient_ cause. Aristotle proposed 4 causes: _efficient_ (mechanism), _formal_ (form, shape), _material_ (properties), _final_ (purposes).
 
-Hume instead, understood causes through _counterfactuals_. The answer is also a _counterfactual_: the hypothesis that _without_ the event X, there wouldn't be the consequence Y. In other words, X is necessary for Y to happen (its cause).
+Hume instead, understood causes through _counterfactuals_: the hypothesis that _hadn't X happened, Y wouldn't have happened_. In the answer, that event is _pulling_.[^necessity]
 
 > Friend: I _know_ that. But why does it slide _rather than_ opening like a lid?\
-> You: Oh! I see. The drawer sits on rails allowing it to slide.\
+> You: Oh! I misunderstood. The drawer sits on rails allowing it to slide.
 
-The _rather than ..._ is a contrast called _foil_. If the foil is absent, we may guess it, or ask for further clarifications. _Foils_ make answering easier.
+The "_rather than_ ..." is a contrast called _foil_, which may be implicit. _Foils_ make answering easier.
 
 The friend may keep asking "Why" and eventually reject or accept the causal chain (or remain sceptical).
 
-Notice the **social process** involved: we tried to guess the friend's actual _knowledge gap_ (first wrongly, he _knew_ that), and to emit relevant information. There are also other aspects that matter, such as testing the claim, finding a useful contrast, and so forth.
+Notice the **social process** involved: we tried to guess the friend's actual _knowledge gap_ (first wrongly, he _knew_ that), and to emit relevant information. There are also other aspects that matter, such as testing the claim, suggesting a _foil_, and so forth.
 
-## Definition of Explanation
+## A definition of Explanation
 
 We can start with an oversimplified definition, an _explanation_ is:
 
-> An answer to a why-question referring to the cause of an event, or see it as an instance of a general pattern. It is also expected that it does not contradict prior beliefs or knowledge.
+> An answer to a why-question referring to the cause of an event, or assigning the event to a class. Prior beliefs or knowledge are used to constrain acceptable answers.
 
-Although not only _why-questions_ prompt explanations. Inferential reasoning (next section) plays an interesting role. Also class-membership can help explain events: "Light interferes because it is a wave.".
+The answer is usually a hypothetical cause of the event. Class-assignment can help explain events as well: "Light interferes because it is a wave."
 
-The _cause_ will usually be a hypothesis, and packed in there is our prior knowledge, biases, and so forth. These are explored in the next section.
+Importantly, not only _why-questions_ prompt explanations, but it is fine to a first approximation.
 
 In section **2.1.2**, [Explanation in artificial intelligence: insights from the social sciences][explanations_social] characterises an explanation as:
 
@@ -38,7 +38,7 @@ A **cognitive process**, which involves finding and assigning the cause of an ev
 
 Let's now expand on the _cognitive_ and _social_ processes of an explanation.
 
-## Cognitive process
+## The cognitive process of explanations
 
 We now discuss _causes_, _causal attribution_ and _abductive reasoning_ in the context of the cognitive process.
 
@@ -83,22 +83,14 @@ The way we generate hypothesis is very complex. It may involve creativity, metap
 
 The plausibility of a hypothesis or causal claim is affected by different aspects.
 
-Beliefs, prior knowledge and assumptions play an important role in:
+- **Simplicity**: if it involves a shorter chain of causes, it is preferred,
+- **Generality**: if it explains other cases, it is preferred,
+- **Prior knowledge/beliefs**
+    - Conditions generation and veto of hypotheses. For example, "The drawer slides because it wants." may be ignored in different basis. Another illustrative example from [The structure and function of explanations][lombrozo]:
+    > (...) If told that herring and tuna have a disease, naive participants are more likely to extend the property to wolffish, the more similar item, than to dolphins. However, among fishing experts, who can generate an explanation for why the property might hold (e.g. tuna contract the disease by eating infected herring), similarity is less predictive of property extensions. (...)
 
-- The generation and veto of hypotheses;
-    - For example, this can't happen, or is unlikely, because of X,Y,Z...
-- Selecting what seems causally / explanatory relevant from what is not.
-    - Consider two light beams interfering on a Sunday. The day is irrelevant (usually), we disregard a confounding factor.
+    - Aids selecting what seems causally / explanatory relevant from what is not. Consider two light beams interfering on a Sunday. The day is irrelevant (usually), we disregard a confounding factor.
 
-In a sense, the hypothesis generated (cause-candidate) is conditioned on knowledge. Here is a cute example from [The structure and function of explanations][lombrozo]:
-
-> explanations [hypotheses] can lead reasoners to override the influence of similarity. If told that herring and tuna have a disease, naive participants are more likely to extend the property to wolffish, the more similar item, than to dolphins. However, among fishing experts, who can generate an explanation for why the property might hold (e.g. tuna contract the disease by eating infected herring), similarity is less predictive of property extensions. Instead, properties are extended if the explanation generalizes (e.g. to dolphins, who also eat herring).
-
-Other important aspects are:
-
-- Its _simplicity_: if it involves a shorter chain of causes, it is preferred,
-- Its _generality_: if it explains other cases, it is preferred,
-- The role of _prior knowledge_ (or beliefs) generating and filtering hypotheses is quite important. An answer like "The drawer slides because it has a motor", may be ignored in different basis.
 
 <!-- Most inferences can be explanations: deductive (derivation from true propositions), abductive (a selected hypothesis, which may engulf _deduction_), inductive (sample$\rightarrow$population); also general category, which is similar to induction, such as "it is a kind of mammal hence ...". -->
 
@@ -177,3 +169,5 @@ In the next post we use our knowledge to define Explainable AI.
 [gricean_maxims]: https://effectiviology.com/principles-of-effective-communication/
 [wikipedia_gricean]: https://en.wikipedia.org/wiki/Cooperative_principle
 [lombrozo]: https://fitelson.org/few/few_08/lombrozo_reading.pdf
+
+[^necessity]: Talking about _necessary_ and _sufficient_ causes would overload the example. _Counterfactuals_ use the word _happen_, so it's an event rather than a condition: The spark of a lighter would be the _cause_ of a fire, but oxygen would still be a _necessary_ cause (or condition, or setting).
