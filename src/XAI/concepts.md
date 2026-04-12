@@ -84,8 +84,8 @@ The plausibility of a hypothesis or causal claim is affected by different aspect
 
     - Aids selecting what seems causally / explanatory relevant from what is not. Consider two light beams interfering on a Sunday. The day is irrelevant (usually), we disregard a confounding factor.
 
-
 ## Summary
+
 We can summarise the cognitive process in a graph:
 
 ```mermaid
