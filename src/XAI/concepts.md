@@ -128,6 +128,7 @@ Outside of science or the technical domain, they're conceptualised as _human-lik
 So explanations are answers to _why-questions_; _good_ explanations respect the Gricean maxims, and will be dependent on the audience (their preferred style, expectations, expertise).
 
 The table below is a summary of the ideas above
+
 | Perspective      | Model is a… | Preferred Explanation style           | Audience            |
 | ---------------- | ----------- | --------------------------- | ------------------- |
 | **Scientific**   | Machine     | Mechanistic, causal, formal | Experts             |
