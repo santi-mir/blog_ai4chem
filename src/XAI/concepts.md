@@ -40,10 +40,10 @@ Let's now expand on the _cognitive_ and _social_ processes of an explanation (as
 
 The _cognitive process_ is similar to the scientific method:
 
-1. *Select* what seems explanatory relevant (using prior knowledge),
-2. *Infer* possible causes of an event, known as _causal attribution_,
-3. *Weight* the likelihood of each hypotheses.
-4. *Accept* until contradicted by experience or super-seeded (e.g. by a simpler explanation).
+1. _Select_ what seems explanatory relevant (using prior knowledge),
+2. _Infer_ possible causes of an event, known as _causal attribution_,
+3. _Weight_ the likelihood of each hypotheses.
+4. _Accept_ until contradicted by experience or super-seeded (e.g. by a simpler explanation).
 
 Inferring a cause (or positing a class membership) usually uses a logic inference method. These methods are recalled below with examples:
 
