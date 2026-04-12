@@ -32,9 +32,7 @@ The answer is usually a hypothetical cause of the event or a class-assignment su
 
 Importantly, not only _why-questions_ prompt explanations, but it is fine to a first approximation. In addition, [Explanation in AI: insights from the social sciences][explanations_social] notes that _why-questions_ are usually contrastive questions, phrased as _why P rather than Q_ instead of _why P_. In this latter case, the _foil_ (Q) is implicit.
 
-In section **2.1.2**, [Explanation in artificial intelligence: insights from the social sciences][explanations_social] characterises an explanation as:
-
-A **cognitive process** of finding a cause, a **product**, resulting from the cognitive process. A **social process**, which involves communicating the product.
+In section **2.1.2**, the same paper characterises an explanation as: a **cognitive process** of finding a cause; a **product**, resulting from the cognitive process; a **social process**, which involves communicating the product.
 
 Let's now expand on the _cognitive_ and _social_ processes of an explanation (as I see them).
 
@@ -42,16 +40,16 @@ Let's now expand on the _cognitive_ and _social_ processes of an explanation (as
 
 The _cognitive process_ is similar to the scientific method:
 
-1. **Select** what seems explanatory relevant (using prior knowledge),
-2. **Infer** possible causes of an event, known as _causal attribution_,
-3. **Weight** the likelihood of each hypotheses.
-4. **Accept** until contradicted by experience or super-seeded (e.g. by a simpler explanation).
+1. *Select* what seems explanatory relevant (using prior knowledge),
+2. *Infer* possible causes of an event, known as _causal attribution_,
+3. *Weight* the likelihood of each hypotheses.
+4. *Accept* until contradicted by experience or super-seeded (e.g. by a simpler explanation).
 
-Inferring a cause (or positing a class membership) usually uses a logic inference method:
+Inferring a cause (or positing a class membership) usually uses a logic inference method. These methods are recalled below with examples:
 
-1. Deductive: Light is a wave; all waves interfere; then light beams interfere,
-2. Inductive (generalisation): Bats are mammals; bats fly; maybe all mammals fly,
-3. Abductive: Light shows interference patterns, waves interfere, maybe light is a wave. It proposes a hypothesis to explain a fact (closest to what is done in the science).
+- Deductive: Light is a wave; all waves interfere; then light beams interfere,
+- Inductive (generalisation): Bats are mammals; bats fly; maybe all mammals fly,
+- Abductive: Light shows interference patterns, waves interfere, maybe light is a wave. It proposes a hypothesis to explain a fact (closest to what is done in the science).
 
 The _inference to a cause_ is very important and sometimes not obvious. It is made obvious when we do it wrong. For example, imagine that the drawer (in the example) actually slides when we touch it, then our inferred cause was wrong.
 
