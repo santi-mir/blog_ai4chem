@@ -24,17 +24,15 @@ Notice the **social process** involved: we tried to guess the friend's actual _k
 
 ## A definition of Explanation
 
-We can start with an oversimplified definition of an _explanation_ (inspired by [1][lombrozo], [2][explanations_social], [3][hempel], but quite different from all those):
+An explanation is an answer that makes an event or relation between items expected or likely to the explainee (or to one-self). Usually it is a _why-question_, but not always.
 
-> An answer &mdash;usually a hypothesis or observation&mdash; that makes an event or relation between items expected or likely to the explainee (or to one-self). With this aim, explainers make use of causal inference, deduction accepted facts, comparison to a reference item, noting class membership and so forth. Prior beliefs or knowledge are used to constrain acceptable answers.
+The answer may use causal inference (a hypothesis), deduction from accepted facts, comparison to a reference item, noting class membership and so forth. Prior beliefs or knowledge are also used to constrain acceptable answers.
 
-The _reference item_ is hinting to a _foil_. [Explanation in AI: insights from the social sciences][explanations_social] notes that _why-questions_ are usually contrastive questions, phrased as _why P rather than Q_ instead of _why P_. In this latter case, the _foil_ (Q) is implicit.
+The _reference item_ above is hinting to a _foil_. [Explanation in AI: insights from the social sciences][explanations_social] notes that _why-questions_ are usually contrastive questions, phrased as _why P rather than Q_ instead of _why P_. In this latter case, the _foil_ (Q) is implicit.
 
-The definition is abstract, here are some examples: non-causal answers are: "Light interferes because it is a wave." or "It chirps because it's a bird." or "It chirps because it's happy." (foil here is a human singing.); causal hypotheses may be mechanistic (such as "Because of a force/push").
+Examples of non-causal answers are: "Light interferes because it is a wave." or "It chirps because it's a bird" or "It chirps because it's happy"; and of causal answers: "The chirping is due to a vibration of its vocal strings".
 
-Importantly, not only _why-questions_ prompt explanations, but it is fine to a first approximation. Similarly, not only mechanistic causes are accepted as answer. In addition,
-
-In section **2.1.2**, the same paper characterises an explanation as: a **cognitive process** of finding a cause; a **product**, resulting from the cognitive process; a **social process**, which involves communicating the product.
+In section **2.1.2**, the same paper characterises an explanation as: a **cognitive process**, involving the generation of possible answers; a **product**, resulting from the cognitive process; a **social process**, which involves communicating the product.
 
 Let's now expand on the _cognitive_ and _social_ processes of an explanation (as I see them).
 
@@ -42,13 +40,12 @@ Let's now expand on the _cognitive_ and _social_ processes of an explanation (as
 
 The _cognitive process_ is similar to the scientific method:
 
-1. _Select_ what seems explanatory relevant (using prior knowledge),
-2. _Infer_ possible causes of an event, known as _causal attribution_,
-   - Or class membership etc.
-3. _Weight_ the likelihood of each hypotheses.
+1. _Filter_ aspects of the explanandum deemed relevant (using prior knowledge),
+2. _Propose_ different answers,
+3. _Weight_ the likelihood of each hypotheses,
 4. _Accept_ until contradicted by experience or super-seeded (e.g. by a simpler explanation).
 
-Inferring a cause (or positing a class membership) usually uses a logic inference method. These methods are recalled below with examples:
+Often a logic inference method is used to propose an answer; these methods are recalled below with examples:
 
 - Deductive: Light is a wave; all waves interfere; then light beams interfere,
 - Inductive (generalisation): Bats are mammals; bats fly; maybe all mammals fly,
@@ -81,7 +78,7 @@ Now we expand on _causes_, _causal attribution_ and _abductive reasoning_ which 
 
 Aspects of causes already mentioned, but worth putting together, were:
 
-- The cognitive process involves _inferring a cause_.
+- The cognitive process may involve _inferring a cause_.
 - Aristotle's proposed 4 kinds of _causal_ answers to a _why-question_. These explanations are not always exclusive, they can be complementary.
 - Hume defined _causes_ as _counterfactuals_: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.
 
@@ -103,7 +100,7 @@ I don't have much to say about _product_ (`2.`), so we jump to `3`.
 
 ## Social Process
 
-The causal-hypothesis must then be communicated, and there are expectations about it.
+The answer must then be communicated, and there are expectations about it.
 
 [Gricean Maxims][gricean_maxims] are rules observed in _good_ communication. These rules can also be used as a guide for good _model explanations_.
 
