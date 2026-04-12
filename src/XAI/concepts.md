@@ -32,6 +32,8 @@ The answer is usually a hypothetical cause of the event. Class-assignment can he
 
 Importantly, not only _why-questions_ prompt explanations, but it is fine to a first approximation.
 
+We can represent the all above in a diagram:
+
 In section **2.1.2**, [Explanation in artificial intelligence: insights from the social sciences][explanations_social] characterises an explanation as:
 
 A **cognitive process**, which involves finding and assigning the cause of an event, known as _causal attribution_. A **product**, resulting from the cognitive process. A **social process**, which involves communicating the product.
@@ -68,15 +70,6 @@ Causal attribution is closely related to **abductive inference**. Abduction is 3
 2. Select the best given the available evidence; this filtering process is dependent upon prior knowledge,
 3. Maintain until contradicted by experience or super-seeded (e.g. by a simpler explanation).
 
-```mermaid
-flowchart TB
-A(Why W?) -->B(H1: Because X)
-A -->C(H2: Because Y)
-A -->D(H3: Because Z)
-
-style C fill:#050
-```
-
 The way we generate hypothesis is very complex. It may involve creativity, metaphors, analogies; we won't go further into this aspect.
 
 ### Strength of a Hypothesis
@@ -91,7 +84,24 @@ The plausibility of a hypothesis or causal claim is affected by different aspect
 
     - Aids selecting what seems causally / explanatory relevant from what is not. Consider two light beams interfering on a Sunday. The day is irrelevant (usually), we disregard a confounding factor.
 
-<!-- Most inferences can be explanations: deductive (derivation from true propositions), abductive (a selected hypothesis, which may engulf _deduction_), inductive (sample$\rightarrow$population); also general category, which is similar to induction, such as "it is a kind of mammal hence ...". -->
+
+## Summary
+We can summarise the cognitive process in a graph:
+
+```mermaid
+flowchart LR
+    A(("Answer why-event"))
+    subgraph hypotheses
+    B("Caused by A")
+    C("Caused by B")
+    D("Assigned to class")
+    end
+    subgraph filtered
+    E("Caused by B")
+    end
+A --suggest all (inferences)--> hypotheses
+hypotheses --select best--> filtered
+```
 
 I don't have much to say about _product_ (`2.`), so we jump to `3`.
 

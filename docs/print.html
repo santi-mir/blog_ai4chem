@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-90ceac3b.js";
+            window.path_to_searchindex_js = "searchindex-6beb3f89.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-e2ff8d5b.js"></script>
@@ -467,6 +467,7 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 </blockquote>
 <p>The answer is usually a hypothetical cause of the event. Class-assignment can help explain events as well: "Light interferes because it is a wave."</p>
 <p>Importantly, not only <em>why-questions</em> prompt explanations, but it is fine to a first approximation.</p>
+<p>We can represent the all above in a diagram:</p>
 <p>In section <strong>2.1.2</strong>, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in artificial intelligence: insights from the social sciences</a> characterises an explanation as:</p>
 <p>A <strong>cognitive process</strong>, which involves finding and assigning the cause of an event, known as <em>causal attribution</em>. A <strong>product</strong>, resulting from the cognitive process. A <strong>social process</strong>, which involves communicating the product.</p>
 <p>Let's now expand on the <em>cognitive</em> and <em>social</em> processes of an explanation.</p>
@@ -491,14 +492,6 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <li>Select the best given the available evidence; this filtering process is dependent upon prior knowledge,</li>
 <li>Maintain until contradicted by experience or super-seeded (e.g. by a simpler explanation).</li>
 </ol>
-<pre class="mermaid">flowchart TB
-A(Why W?) --&gt;B(H1: Because X)
-A --&gt;C(H2: Because Y)
-A --&gt;D(H3: Because Z)
-
-style C fill:#050
-</pre>
-
 <p>The way we generate hypothesis is very complex. It may involve creativity, metaphors, analogies; we won't go further into this aspect.</p>
 <h3 id="strength-of-a-hypothesis"><a class="header" href="#strength-of-a-hypothesis">Strength of a Hypothesis</a></h3>
 <p>The plausibility of a hypothesis or causal claim is affected by different aspects.</p>
@@ -522,7 +515,22 @@ style C fill:#050
 </ul>
 </li>
 </ul>
-<!-- Most inferences can be explanations: deductive (derivation from true propositions), abductive (a selected hypothesis, which may engulf _deduction_), inductive (sample<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>population); also general category, which is similar to induction, such as "it is a kind of mammal hence ...". -->
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>We can summarise the cognitive process in a graph:</p>
+<pre class="mermaid">flowchart LR
+    A(("Answer why-event"))
+    subgraph hypotheses
+    B("Caused by A")
+    C("Caused by B")
+    D("Assigned to class")
+    end
+    subgraph filtered
+    E("Caused by B")
+    end
+A --suggest all (inferences)--&gt; hypotheses
+hypotheses --select best--&gt; filtered
+</pre>
+
 <p>I don't have much to say about <em>product</em> (<code>2.</code>), so we jump to <code>3</code>.</p>
 <h2 id="social-process"><a class="header" href="#social-process">Social Process</a></h2>
 <p>The causal-hypothesis must then be communicated, and there are expectations about it.</p>
