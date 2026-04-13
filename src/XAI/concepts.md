@@ -80,7 +80,6 @@ _Are all Aristotelian causes Humean causes?_ Efficient causes can be seen as cou
 
 Talking about _necessary_ and _sufficient_ causes would've overloaded the example. Briefly, _counterfactuals_ use the word _happen_, so it's an event rather than a condition: The spark of a lighter would be the _cause_ of a fire, but oxygen would still be a _necessary_ cause (or condition, or setting).
 
-
 ### Logic Inference
 
 Often logic inference is used to propose an answer or a cause, for example:
@@ -94,7 +93,6 @@ Often logic inference is used to propose an answer or a cause, for example:
     - Light shows interference patterns, waves interfere, maybe light is a wave.
 
 The _inference to a cause_ is very important and sometimes not obvious. It is made obvious when we do it wrong. For example, imagine that the drawer (in the example) actually slides when we touch it, then our inferred cause was wrong.
-
 
 ### Strength of a Hypothesis
 
@@ -187,4 +185,3 @@ In the next post we use our knowledge to define Explainable AI.
 [xai_ibm]: https://www.sei.cmu.edu/blog/what-is-explainable-ai/
 [xai_rnn_radiology]: https://arxiv.org/abs/1806.00340
 [xx]: http://arxiv.org/abs/1806.00069
-
