@@ -11,7 +11,7 @@ You open a drawer, and a conversation with a friend starts.
 
 The answer is an _efficient_ cause. Aristotle proposed 4 causes: _efficient_ (mechanism), _formal_ (form, shape), _material_ (properties), _final_ (purposes).
 
-Hume instead, understood causes through _counterfactuals_: X is the cause of why if _had X not happened, Y wouldn't have happened_. In the answer, that event is _pulling_.[^necessity]
+Hume instead, understood causes through _counterfactuals_: _had I not pulled, it wouldn't have slide_. Hence, _pulling_ is the cause.
 
 > Friend: I _know_ that. But why does it slide _rather than_ opening like a lid?\
 > You: Oh! I misunderstood. The drawer sits on rails allowing it to slide.
@@ -26,7 +26,7 @@ Notice the **social process** involved: we tried to guess the friend's actual _k
 
 An explanation is an answer to _why_ or _how_ questions that make an event or situation expected or likely to the explainee (or to one-self).
 
-The answer may use causal inference, logic inference (abductive, deductive or inductive), comparison to a reference item, noting class membership and so forth. Prior beliefs or knowledge are also used to constrain acceptable answers.
+The answer may use causal inference, logic inference, comparison to a reference item, noting class membership and so forth. Prior beliefs or knowledge are also used to constrain acceptable answers.
 
 The _reference item_ above is hinting to a _foil_. [Explanation in AI: insights from the social sciences][explanations_social] notes that _why-questions_ are usually contrastive questions, phrased as _why P rather than Q_ instead of _why P_. In this latter case, the _foil_ (Q) is implicit.
 
@@ -41,21 +41,13 @@ Let's now expand on the _cognitive_ and _social_ processes of an explanation (as
 The _cognitive process_ is similar to the scientific method:
 
 1. _Filter_ aspects of the explanandum deemed relevant (using prior knowledge),
-2. _Propose_ different answers,
+2. _Propose_ different answers, <!--or causes?-->
 3. _Weight_ the likelihood of each hypotheses,
 4. _Accept_ until contradicted by experience or super-seeded (e.g. by a simpler explanation).
 
-Often a logic inference method is used to propose an answer; these methods are recalled below with examples:
-
-- Deductive: Light is a wave; all waves interfere; then light beams interfere,
-- Inductive (generalisation): Bats are mammals; bats fly; maybe all mammals fly,
-- Abductive: Light shows interference patterns, waves interfere, maybe light is a wave. It proposes a hypothesis to explain a fact (closest to what is done in the science).
-
-The _inference to a cause_ is very important and sometimes not obvious. It is made obvious when we do it wrong. For example, imagine that the drawer (in the example) actually slides when we touch it, then our inferred cause was wrong.
-
 Besides using prior knowledge, the way we come up with hypotheses may involve creativity, metaphors, analogies and be aided by methods or techniques; this post won't go further into this aspect.
 
-The idea above can be summarised in a graph:
+The steps above can also be sketched in a graph:
 
 ```mermaid
 flowchart LR
@@ -72,7 +64,7 @@ A --suggest all (inferences)--> hypotheses
 hypotheses --select best--> filtered
 ```
 
-Now we expand on _causes_, _causal attribution_ and _abductive reasoning_ which are important pieces of the _cognitive process_.
+Next the topics of _causes_ and how are answers proposed are discussed, in the context of the _cognitive process_.
 
 ### Causes
 
@@ -83,6 +75,26 @@ Aspects of causes already mentioned, but worth putting together, were:
 - Hume defined _causes_ as _counterfactuals_: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.
 
 _Are all Aristotelian causes Humean causes?_ Efficient causes can be seen as counterfactuals, and both are common in science. The remaining 3 causes are not naturally seen as counterfactuals.
+
+#### Necessary and sufficient
+
+Talking about _necessary_ and _sufficient_ causes would've overloaded the example. Briefly, _counterfactuals_ use the word _happen_, so it's an event rather than a condition: The spark of a lighter would be the _cause_ of a fire, but oxygen would still be a _necessary_ cause (or condition, or setting).
+
+
+### Logic Inference
+
+Often logic inference is used to propose an answer or a cause, for example:
+
+- Deductive Logic: usually subsumes entities under general categories ("wave" below).
+    - Light is a wave; all waves interfere; then light beams interfere,
+    - The [Studies in the logic of explanation][logic_of_expl_hempel] (1948) use deductive logic in explanations, requiring testable claims and general deterministic laws for all cases. The usefulness depends on which "laws" are allowed.
+- Inductive: generalisation,
+    - Bats are mammals; bats fly; maybe all mammals fly,
+- Abductive: It proposes a hypothesis to explain a fact (closest to what is done in the science).
+    - Light shows interference patterns, waves interfere, maybe light is a wave.
+
+The _inference to a cause_ is very important and sometimes not obvious. It is made obvious when we do it wrong. For example, imagine that the drawer (in the example) actually slides when we touch it, then our inferred cause was wrong.
+
 
 ### Strength of a Hypothesis
 
@@ -143,7 +155,7 @@ In the next post we use our knowledge to define Explainable AI.
 <details>
 <summary>List of sources used in this blogpost</summary>
 
-1. [Studies in the logic of explanation][hempel] (1948). I just read the first few pages),
+1. [Studies in the logic of explanation][logic_of_expl_hempel] (1948). I just read the first few pages),
 1. [On the mechanization of abductive logic][abductive_logic] (1973). The first page is quite interesting.
 <!-- A **deduction** (proof) is e.g. "All cats are animals (I); animals are big (II); then cats are big (III)", whereas **abduction** (hypothesis) would be "III; I; maybe II" notice the _maybe_ (anti-clockwise rotation). Another anti-clockwise rotation takes us to **induction** (generalisation,hypothesis): "II; III; maybe all I". -->
 1. [A Unified Approach to Interpreting Model Predictions][shap_values] (2017): paper proposing SHAP, that is, showing Shapley values as the best coefficients in linear combination of features, given 3 requirements (local accuracy, missingness and consistency),
@@ -160,20 +172,19 @@ In the next post we use our knowledge to define Explainable AI.
 
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
 
-[xai4mat]: https://pubs.acs.org/doi/10.1021/accountsmr.1c00244
-[using_shap_lime]: https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304
-[xx]: http://arxiv.org/abs/1806.00069
-[shap_values]: https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html
-<!-- [XAI for whom]: http://arxiv.org/abs/2106.05568 -->
-[what_is_xai]: https://www.sei.cmu.edu/blog/what-is-explainable-ai/
-[xai_ibm]: https://www.sei.cmu.edu/blog/what-is-explainable-ai/
-[xai_rnn_radiology]: https://arxiv.org/abs/1806.00340
-[perils_and_pitfalls]: https://www.sciencedirect.com/science/article/pii/S0740624X21001027
 [abductive_logic]:https://www.ijcai.org/Proceedings/73/Papers/017.pdf
 [explanations_social]: https://www.sciencedirect.com/science/article/pii/S0004370218305988
 [gricean_maxims]: https://effectiviology.com/principles-of-effective-communication/
-[wikipedia_gricean]: https://en.wikipedia.org/wiki/Cooperative_principle
+[logic_of_expl_hempel]: https://fitelson.org/woodward/hempel_oppenheim.pdf
 [lombrozo]: https://fitelson.org/few/few_08/lombrozo_reading.pdf
-[hempel]: https://fitelson.org/woodward/hempel_oppenheim.pdf
+[perils_and_pitfalls]: https://www.sciencedirect.com/science/article/pii/S0740624X21001027
+[shap_values]: https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html
+[using_shap_lime]: https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304
+<!-- [XAI for whom]: http://arxiv.org/abs/2106.05568 -->
+[wikipedia_gricean]: https://en.wikipedia.org/wiki/Cooperative_principle
+[what_is_xai]: https://www.sei.cmu.edu/blog/what-is-explainable-ai/
+[xai4mat]: https://pubs.acs.org/doi/10.1021/accountsmr.1c00244
+[xai_ibm]: https://www.sei.cmu.edu/blog/what-is-explainable-ai/
+[xai_rnn_radiology]: https://arxiv.org/abs/1806.00340
+[xx]: http://arxiv.org/abs/1806.00069
 
-[^necessity]: Talking about _necessary_ and _sufficient_ causes would overload the example. _Counterfactuals_ use the word _happen_, so it's an event rather than a condition: The spark of a lighter would be the _cause_ of a fire, but oxygen would still be a _necessary_ cause (or condition, or setting).
