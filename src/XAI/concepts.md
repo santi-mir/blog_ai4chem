@@ -46,7 +46,6 @@ In section **2.1.2**, the paper cited above characterises an explanation as: a *
 
 Let's now expand on the _cognitive_ and _social_ processes of an explanation (as I see them).
 
-
 ## The cognitive process of explanations
 
 The _cognitive process_ is similar to the scientific method:
@@ -202,6 +201,3 @@ In the next post we use our knowledge to define Explainable AI.
 [xai_ibm]: https://www.sei.cmu.edu/blog/what-is-explainable-ai/
 [xai_rnn_radiology]: https://arxiv.org/abs/1806.00340
 [xx]: http://arxiv.org/abs/1806.00069
-
-
-
