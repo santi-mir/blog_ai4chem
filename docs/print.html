@@ -1,0 +1,1307 @@
+<!DOCTYPE HTML>
+<html lang="en" class="dark sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AI for Chemistry</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="Blogging about AI for chemistry.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./src/assets/custom.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "dark";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "searchindex-f6d07ad7.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-e2ff8d5b.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('dark')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">AI for Chemistry</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/santi-mir/blog_ai4chem/" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="blog-ai4chem"><a class="header" href="#blog-ai4chem">Blog AI4Chem</a></h1>
+<p>Welcome to the blog!</p>
+<h2 id="organisation"><a class="header" href="#organisation">Organisation</a></h2>
+<ul>
+<li>
+<p>The top-left hamburger icon <img style="display:inline; width:36px" src="assets/hamburger.svg" /> toggles the table of contents.</p>
+</li>
+<li>
+<p>At the bottom of posts there is a "Sources" which includes papers I read during the write up.</p>
+</li>
+</ul>
+<h2 id="license"><a class="header" href="#license">License</a></h2>
+<p>The prose is all under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, external content is linked and if I find the license it is explicitly stated (in image captions, for example).</p>
+<h2 id="tools-used"><a class="header" href="#tools-used">Tools Used</a></h2>
+<ul>
+<li><a href="https://github.com/rust-lang/mdBook"><code>mdbook</code></a>,</li>
+<li><a href="https://github.com/KDE/krita">Krita</a> to edit images,</li>
+<li><a href="https://www.fontsquirrel.com/fonts/computer-modern">Computer Modern</a> font or <code>Ubuntu &gt; System UI &gt; sans-serif</code>, in that order of preference.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="atom-vectors---introduction"><a class="header" href="#atom-vectors---introduction">Atom Vectors - Introduction</a></h1>
+<p><em>Atom vectors</em> is a broad category. Narrower categories are:</p>
+<ul>
+<li><em>Descriptor</em>: used for expert-designed vectors,</li>
+<li><em>Embedding</em>: used for machine-learnt vectors.</li>
+</ul>
+<p>These vector representations are of interest because they can be useful inputs for training machine-learning models.<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup></p>
+<p>Here we are interested in methods that don't require human expertise, hence <em>descriptors</em> won't be discussed.</p>
+<h2 id="embeddings"><a class="header" href="#embeddings">Embeddings</a></h2>
+<p>Embeddings are <em>machine-learnt vectors <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span></span></span></span>.</em> Normally, they are also:</p>
+<ul>
+<li>Dense rather than sparse i.e they have few zeros,</li>
+<li>Real-valued rather than discrete,</li>
+<li>Non-human-readable (though some parts may be interpretable),</li>
+<li>Belong to a structured vector space: semantically similar vectors are close together and allow for meaningful vector-arithmetic.</li>
+</ul>
+<p>Dense vectors are useful because training will be faster (than a similar sparse version).</p>
+<h3 id="some-background-on-embeddings"><a class="header" href="#some-background-on-embeddings">Some Background on Embeddings</a></h3>
+<p>Embeddings for atoms were inspired by NLP models from the 2010s.</p>
+<p>One such example was learning <a href="https://arxiv.org/abs/1301.3781v3">continuous vector representations of words</a> (2013). They proposed an automated mechanism to generate word-vectors by absorbing information from that word's environment (neighbouring words).</p>
+<p>Materials science has exploited the same ideas, for example:</p>
+<ul>
+<li><q>properties of an atom can be inferred from the environments it lives in</q> (<a href="https://pnas.org/doi/full/10.1073/pnas.1801181115">Atom2Vec</a>, 2018),</li>
+<li><q>atoms are to compounds as words are to sentences</q> (<a href="https://www.nature.com/articles/s41524-022-00729-3">SkipAtom</a>, 2022),</li>
+</ul>
+<p>The surprise was that similar words (or atoms) end up with similar vectors. The vectors also support semantically meaningful arithmetic operations, and became useful for downstream tasks. A classic example was:</p>
+<pre><code class="language-txt">vector("Queen") = vector("King") - vector("Man") + vector("Woman")
+</code></pre>
+<h2 id="vectors-in-chemistry"><a class="header" href="#vectors-in-chemistry">Vectors in Chemistry</a></h2>
+<p>As discussed earlier, atom vectors can be expert-designed or they can be <em>learnt</em> by an algorithm. Learning vectors yields more general-purpose vectors, and has won in popularity.</p>
+<p>Both <a href="https://pnas.org/doi/full/10.1073/pnas.1801181115">Atom2Vec</a> (2018) and <a href="https://www.nature.com/articles/s41524-022-00729-3">SkipAtom</a> (2022) are unsupervised algorithms that obtain their atom vectors from databases of compounds. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.</p>
+<h3 id="classifications-and-featurisers"><a class="header" href="#classifications-and-featurisers">Classifications and Featurisers</a></h3>
+<p>The method used to generate our vectors is called a <em>featuriser</em> (we can use a featuriser or create our own). There are many common approaches:</p>
+<ul>
+<li>Simple: like hot-encoded, random;</li>
+<li>Human-designed: Composition-Based Feature Vector (CBFV) which are expert-curated vectors as in Jarvis, Magpie;</li>
+<li>Machine-learnt: embeddings, like SkipAtom.</li>
+</ul>
+<p>Atom-vectors can be combined to describe compounds. Examples of combination methods are concatenation into a long vector and pooling of vectors (e.g. summing them up).</p>
+<h4 id="comparing-representations"><a class="header" href="#comparing-representations">Comparing representations</a></h4>
+<p>A performance-comparison of vector representations is carried out in <a href="https://www.researchgate.net/profile/Taylor-Sparks-2/publication/343926838_Is_Domain_Knowledge_Necessary_for_Machine_Learning_Materials_Properties">"Is domain knowledge necessary for machine learning materials properties?"</a> (2020).</p>
+<p>Their conclusion is: human-designed Composition Based Feature Vectors (CBFV like Jarvis and Olyinyk) outperform other methods if there isn't much data. This was prior to SkipAtom, but does include Atom2Vec.</p>
+<p>Otherwise, performance in downstream tasks is similar to hot-encoded or random vectors.</p>
+<blockquote>
+<p>(...) Although new, data-driven approaches are of interest, those studied here have yet to surpass CBFVs in terms of material property prediction with small data.</p>
+</blockquote>
+<p>However, <a href="https://www.fruct.org/files/publications/volume-38/fruct38/Urs.pdf">"Domain Independent XAI for Material Science"</a> (2025) challenges that conclusion:</p>
+<blockquote>
+<p>Our method challenges this perception: we obtain excellent classifiers that are interpretable and based on a small amount of training data without using any domain knowledge: (...)</p>
+</blockquote>
+<p>They assert that one-hot encoded vectors can still achieve good results using small datasets, as long as the network is designed in the way they specify.</p>
+<h3 id="thoughts"><a class="header" href="#thoughts">Thoughts</a></h3>
+<p>Human-designed vectors are easier to interpret. Machine learnt vectors require more effort.
+Can we design machine-learnt interpretable vectors that are intrinsically interpretable?</p>
+<p>Attention-masks and disentangled representations are closer to this.</p>
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-1">
+<p>Machine Learning (ML) includes deep-learning and traditional methods like regression, support vector machines, random forests and so on. <a href="#fr-1-1">↩</a></p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="atom2vec"><a class="header" href="#atom2vec">Atom2Vec</a></h1>
+<p>A popular representation of atoms as vectors appeared in (2018): <a href="https://arxiv.org/pdf/1807.05617">Atom2Vec</a>.</p>
+<p>They take compounds from a database, and build a matrix like the one below:<sup class="footnote-reference" id="fr-1-1-1"><a href="#footnote-1-1">1</a></sup></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th></th><th><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathrm">2</span><span class="mclose">)</span><span class="mord mathrm">S</span><span class="mord"><span class="mord mathrm">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></th><th><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathrm">2</span><span class="mclose">)</span><span class="mord mathrm">S</span><span class="mord"><span class="mord mathrm">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></th><th><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathrm">2</span><span class="mclose">)</span><span class="mord mathrm">T</span><span class="mord"><span class="mord mathrm">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></th><th><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathrm">3</span><span class="mclose">)</span><span class="mord mathrm">B</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></th><th><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathrm">3</span><span class="mclose">)</span><span class="mord mathrm">S</span><span class="mord"><span class="mord mathrm">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></th><th><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathrm">3</span><span class="mclose">)</span><span class="mord"><span class="mord mathrm">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></th><th><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathrm">3</span><span class="mclose">)</span><span class="mord"><span class="mord mathrm">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></th></tr>
+</thead>
+<tbody>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">Bi</span></span></span></span></span></td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathrm">Sb</span></span></span></span></span></td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>...</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+</tbody>
+</table>
+</div>
+<p>Let's describe using the compound <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathrm">B</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">S</span><span class="mord"><span class="mord mathrm">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> as an example:</p>
+<ul>
+<li>When <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">Bi</span></span></span></span></span> is the target, it generates <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mclose">)</span><span class="mord"><span class="mord mathrm">S</span><span class="mord"><span class="mord mathrm">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>, placed in the first column. <code>(2)</code> is the stoichiometry of the element <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">Bi</span></span></span></span></span> in the compound.</li>
+<li>When <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathrm">Sb</span></span></span></span></span> is the target it generates <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathrm">3</span><span class="mclose">)</span><span class="mord mathrm">B</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>, placed in the fourth column. <code>(3)</code> is the stoichiometry of the element <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathrm">Sb</span></span></span></span></span> in the compound.</li>
+</ul>
+<p>Since a particular atom binds to a very small fraction of all groups, each row is very sparse (high fraction of zeros). The same is valid for columns.</p>
+<h2 id="svd-method"><a class="header" href="#svd-method">SVD Method</a></h2>
+<p>A normalised matrix <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is obtained by normalising each row vector independently. Using the euclidean norm (2-norm) allows for an intuitive similarity metric:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">dist</span></span><span class="mopen">(</span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2355em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewbox="0 0 471 714" preserveaspectratio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5 3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11 10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63 -1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1 -7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59 H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359 c-16-25.333-24-45-24-59z" /></svg></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2355em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewbox="0 0 471 714" preserveaspectratio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5 3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11 10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63 -1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1 -7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59 H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359 c-16-25.333-24-45-24-59z" /></svg></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.864em;vertical-align:-0.15em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2355em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewbox="0 0 471 714" preserveaspectratio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5 3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11 10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63 -1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1 -7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59 H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359 c-16-25.333-24-45-24-59z" /></svg></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.864em;vertical-align:-0.15em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2355em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewbox="0 0 471 714" preserveaspectratio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5 3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11 10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63 -1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1 -7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59 H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359 c-16-25.333-24-45-24-59z" /></svg></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathrm" style="margin-right:0.01389em;">similarity</span></span></span></span></span></span></p>
+<p>In their best-performing model, they compute <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span>, collect the <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>-rows with the largest singular values, and compute <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> where <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> is the slice of rows of D with the <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span> largest singular values, and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> the corresponding columns.</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>The strategy has certain beauty to it: the new f-vectors retain the inner product similarity but are denser. Though now, the columns have no explicit meaning.</p>
+</blockquote>
+<h3 id="findings"><a class="header" href="#findings">Findings</a></h3>
+<ul>
+<li>Similar atoms have similar vectors,</li>
+<li>Increasing the distance threshold <em>in stages</em>, vectors can be clustered hierarchically, from the leaf-nodes (atoms) downwards (groups).
+<ul>
+<li>At some level, groups match the periodic table groups. (I don't know how the grouping is made unambiguous).</li>
+<li>At a very large distance, all atoms merge into a single group. The result is called <em>dendogram</em>.</li>
+</ul>
+</li>
+</ul>
+<div class="center w40">
+    <a href="assets/hierarchical_clusters.png">
+        <img src="assets/hierarchical_clusters.png" alt="Hierarchical clusters of atoms." />
+    </a>
+    
+<p>
+    Image (modified) from <a href="https://pnas.org/doi/full/10.1073/pnas.1801181115">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>. The atoms are rotated to make the image fit (rotated).
+    </p>
+
+</div>
+
+<ul>
+<li>Looking at the variation of some dimensions in the vectors, we can assign meaning to some of them.</li>
+</ul>
+<h3 id="benches"><a class="header" href="#benches">Benches</a></h3>
+<p>Then, they compared to "empirical features" —a vector <code>(group, period,...)</code>, padded to match their <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>— with the task of predicting the DFT-found formation-energies of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span></span></span></span> elpasolite crystals (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathrm">AB</span><span class="mord"><span class="mord mathrm">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathrm">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">6</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>).</p>
+<p>Each solid was represented as a concatenation of atom vectors, and feed it to a hidden layer. (They also do other tasks.)</p>
+<p>The paper ends with an interesting insight:</p>
+<blockquote>
+<p>Structural information has to be taken into account to accurately model how atoms are bound together to form either environment or compound, where the recent development on recursive and graph-based neural networks might help.</p>
+</blockquote>
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-1-1">
+<p>It would be a binary matrix but the database contains some compounds multiple times and those are left duplicated (for some strange reason). <a href="#fr-1-1-1">↩</a></p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="skipatom"><a class="header" href="#skipatom">SkipAtom</a></h1>
+<p><a href="https://arxiv.org/pdf/1807.05617">Atom2Vec</a> was already described; now it's time for <a href="https://www.nature.com/articles/s41524-022-00729-3.pdf">SkipAtom</a>, another algorithm to learn atom embeddings.</p>
+<h2 id="method"><a class="header" href="#method">Method</a></h2>
+<p>First, compounds are downloaded. Then, the Voronoi Decomposition is used to derive graphs from unit-cells, and from the graphs generate training-pairs. As they show in the paper:</p>
+<div class="center w40">
+    <a href="assets/distributed_reps_dataset_gen.png">
+        <img src="assets/distributed_reps_dataset_gen.png" alt="Using formula and Voronoi Decomposition to build a crystal-graph" />
+    </a>
+    
+<p>
+    Image from <a href="https://www.nature.com/articles/s41524-022-00729-3">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
+    </p>
+
+</div>
+
+<p>Finally, each pair X-Y is used to train a shallow network to predict the target (Y) from the reference (X).</p>
+<div class="center w40">
+    <a href="assets/shallow_net.png">
+        <img src="assets/shallow_net.png" alt="Shallow network used to create the embeddings. It consists of a projection matrix, followed by a &#39;prediction&#39; matrix." />
+    </a>
+    
+<p>
+    Image from <a href="https://www.nature.com/articles/s41524-022-00729-3">Original Paper</a> (slightly modified) under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
+    </p>
+
+</div>
+
+<ul>
+<li>The resulting representation is dense and structured/semantic. This can be shown using dimensionality reduction techniques (PCA, t-SNE,..).</li>
+<li>The architecture is described as:
+<blockquote>
+<p>(...) single hidden layer with linear activation, whose size depended on the desired dimensionality of the learned embeddings, and an output layer with 86 neurons (one for each of the utilized atom types) with softmax activation. (...) minimizing the cross-entropy loss between the predicted context atom probabilities and the one-hot vector representing the context atom, given the one-vector representing the target atom as input.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="representations-of-compounds-pooling"><a class="header" href="#representations-of-compounds-pooling">Representations of Compounds (Pooling)</a></h2>
+<p>The analogy to NLP is that <em>words are like atoms</em>, and <em>sentences are like compounds</em>. Hence, distributed representations of atoms can be combined (pooled) into a vector representing a compound.</p>
+<p>Vector-pooling options are:</p>
+<ul>
+<li><em>sum</em>: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">a</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2355em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewbox="0 0 471 714" preserveaspectratio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5 3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11 10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63 -1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1 -7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59 H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359 c-16-25.333-24-45-24-59z" /></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> where <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is the stoichiometry (can be fractional),</li>
+<li><em>mean</em>: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mord mtight"><span class="mord accent mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-2.714em;"><span class="pstrut" style="height:2.714em;"></span><span class="mord mathnormal mtight">a</span></span><span style="top:-2.714em;"><span class="pstrut" style="height:2.714em;"></span><span class="accent-body" style="left:-0.2355em;"><span class="overlay mtight" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewbox="0 0 471 714" preserveaspectratio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5 3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11 10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63 -1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1 -7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59 H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359 c-16-25.333-24-45-24-59z" /></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>, i.e. divided by total number of atoms (can be fractional too).</li>
+<li><em>max</em>: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">max</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>, reduces material matrix <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathrm">M</span></span></span></span> to vector. Selects max value of each column, each row being an atom in the compound.</li>
+</ul>
+<p>The resulting compound representation is then used for training a feed-forward NN on different tasks. Also benchmarked using MatBench.</p>
+<p>The pooling can also be done with hot-encoded vectors for atoms. This is done in <a href="https://www.nature.com/articles/s41598-018-35934-y">ElemNet</a> (mean pooling), and in Bag-of-atoms (sum pooling). The advantage: no training required, the disadvantage: the result is a <em>sparse</em> vector, and <em>can</em> be less accurate.</p>
+<h2 id="results"><a class="header" href="#results">Results</a></h2>
+<p>They run two groups of tests:</p>
+<ul>
+<li>Embeddings' quality through elpasolite task. Where the atom vectors are concatenated into a compound vector (no pooling). The vectors train a network for property prediction. SkipAtom performs best here.</li>
+<li>Embeddings quality and pooling methods, through 9 prediction tasks. The results are:
+<ul>
+<li>Pooling: sum and mean-pooling outperform max-pooling,</li>
+<li>Kind: Mat2Vec does best, and second SkipAtom,</li>
+<li>Bag-of-Atoms (sum pool of hot enc) does best in one task.</li>
+</ul>
+</li>
+</ul>
+<p>They conclude that these methods are most useful when no structural info is available.</p>
+<p>However, there isn't a simple answer to which representation is best, it depends in the task. This is discussed in more detailed in <a href="#comparison">Results</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="reference-based-coordinate-assignment"><a class="header" href="#reference-based-coordinate-assignment">Reference-based Coordinate Assignment</a></h1>
+<p><a href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000944/v1">RCA</a> is a dimensionality reduction method. Importantly, this implies we already have some representation available, which we may want to reduce.</p>
+<p>The main idea could be conceptually represented as:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5944em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">an</span><span class="mord mathnormal">ce</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>On the right hand side, the distance of each <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> dimensional vector <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathbf">a</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"></span><span class="mord mathbf">d</span></span></span></span> to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is calculated. Each of these vectors is a centroid calculated from a cluster of embeddings.</p>
+<p>The result, on the left hand side, is a reduced <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>-dimensional sample vector <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</p>
+<p>An important point is raised in the paper:</p>
+<blockquote>
+<p>To avoid degeneracies arising from equidistant configurations, the reference points must span the structure of the dataset.</p>
+</blockquote>
+<p>Which means the reference vectors (centroids) should be able to reach any point in the original dataset, and not lose expressivity.</p>
+<p>The method has useful properties:</p>
+<ol>
+<li>Compared to a large vector, it is cheaper to use to train a model (and can still be accurate),</li>
+<li>Compared to other dimensionality reduction methods, it is easier to extend,</li>
+<li>With certain care, the dimensions may be interpretable.</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="comparison"><a class="header" href="#comparison">Comparison</a></h1>
+<p>SkipVec and Atom2Vec were previously discussed.</p>
+<p>The paper <a href="https://link.springer.com/article/10.1007/s40192-020-00179-z">Is domain knowledge necessary for machine learning materials properties?</a> compared descriptors (same as vector representations) generated in different ways for downstream tasks.</p>
+<p>They find hand-crafted descriptors useful for small and large datasets, but these are cumbersome to create —expert knowledge is required. One-hot and random-vectors perform similar to hand-crafted descriptors in large datasets.</p>
+<p>With that, it seems wise to use hand-crafted descriptors for small datasets, and learnt, one-hot or random for larger ones.</p>
+<p>SkipAtom evaluates on different approaches and tasks, and finds their method outperforms one-hot and random-vector, but does not test hand-crafted ones.</p>
+<p><a href="https://www.nature.com/articles/s41524-022-00729-3.pdf">SkipAtom</a>'s comparison of representations is discussed below.</p>
+<h2 id="simple-classification"><a class="header" href="#simple-classification">Simple classification</a></h2>
+<p>We have a simple classification of the available methods:</p>
+<ol>
+<li>Human-engineered vectors;</li>
+<li>Low effort vectors: one-hot encoded (ElemNet), random, Atom2Vec;</li>
+<li>Machine-learnt vectors (SkipAtom).</li>
+</ol>
+<p>Atom2Vec may be in category 3 above; however, it is not an optimisation that creates them, it is a matrix factorisation.</p>
+<h2 id="quality-of-atom-representations"><a class="header" href="#quality-of-atom-representations">Quality of Atom Representations</a></h2>
+<p><a href="https://www.nature.com/articles/s41598-018-35934-y">ElemNet</a> (One-hot), Random, <a href="https://arxiv.org/pdf/1807.05617">Atom2Vec</a>, Mat2Vec and <a href="https://www.nature.com/articles/s41524-022-00729-3.pdf">SkipAtom</a> compared.</p>
+<p>The atom-vectors were <em>concatenated</em> into compound representations, and these used to predict elpasolites (compounds) formation-energy.</p>
+<p>SkipAtom outperformed other methods.</p>
+<h2 id="pooling-approaches"><a class="header" href="#pooling-approaches">Pooling approaches</a></h2>
+<p>Vector pooling strategies were compared through 9 prediction tasks; 5 regressions, 3 classifications and OQMD Formation Energy prediction (also a regression).</p>
+<ul>
+<li>OQDM: bag-of-atoms, which is sum-pooling hot-enc atom vectors, is best.</li>
+</ul>
+<p>The rest is summarised well in the paper:</p>
+<blockquote>
+<p>(...) the models described in this report outperform the existing benchmarks on tasks where only composition is available (namely, the Experimental Band Gap, Bulk Metallic Glass Formation, and Experimental Metallicity tasks). Also, on the Theoretical Metallicity task and the Refractive Index task, the pooled SkipAtom, Mat2Vec and one-hot vector representations perform comparably [to the SOTA], despite making use of composition information only.</p>
+</blockquote>
+<p>And an interesting observation:</p>
+<blockquote>
+<p>The ElemNet architecture demonstrated (...) Perhaps surprisingly, the combination of a deep feed-forward neural network with compound representations consisting of composition information alone results in competitive performance when comparing to approaches that make use of structural information.</p>
+</blockquote>
+<h2 id="use-cases-and-limitations"><a class="header" href="#use-cases-and-limitations">Use cases and limitations</a></h2>
+<p>Training does not rely on labelled data (unsupervised learning).</p>
+<p>The model just needs the formula at inference time, and does fine with non-stoichiometric solids. So having the material's composition —but no structural information— we can still calculate some properties.</p>
+<p>Similar compounds have similar vectors, which is useful. But without structural information, all isomers have the same vector, which is a limitation.</p>
+<p>It is computationally cheap, and can help screen large number of compounds as a first selection step.</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<!-- Should analyse at least 10 kinds of explanations -->
+<h1 id="what-is-an-explanation"><a class="header" href="#what-is-an-explanation">What is an explanation?</a></h1>
+<p>Let's start with an example. Concepts are expanded in the remaining sections.</p>
+<h2 id="definitions-of-explanation"><a class="header" href="#definitions-of-explanation">Definitions of Explanation</a></h2>
+<p>Explanations can be split into an <em>explanandum</em>, which is a description of what is explained, and the <em>explanans</em>, which are the statements adduced to account for the phenomenon. These definitions are used in what follows.</p>
+<h3 id="an-objective-account"><a class="header" href="#an-objective-account">An objective account</a></h3>
+<p>The <a href="https://fitelson.org/woodward/hempel_oppenheim.pdf">Studies in the logic of explanation</a> (1948) defines scientific explanation in a few places. For example, with emphasis on the question:</p>
+<blockquote>
+<p>To explain the phenomena in the world of our experience, to answer the question "why?" rather than only the question "what?" (...)</p>
+</blockquote>
+<p>Or the answer:</p>
+<blockquote>
+<p>The decisive requirement for every sound explanation remains that it subsume the explanandum under general laws [or theories].</p>
+</blockquote>
+<p>They do require that the <em>explanans</em> be testable, believed to be true to a high accuracy, logically lead to the <em>explanandum</em> by means of general laws.</p>
+<p>In a sense it is a "principled deduction".</p>
+<p>This definition rarely applies in everyday life, but it <em>is</em> common in mathematics, physics and chemistry. Elsewhere, explanations can't live up to this high standard of "principled deduction" —and are seldom predictive— but they also play much wider role, sometimes providing information, or a link between things and so forth.</p>
+<p>Is there anything unifying all those cases?</p>
+<h3 id="a-subjective-account"><a class="header" href="#a-subjective-account">A subjective account</a></h3>
+<p>On the opposite side, <a href="https://fitelson.org/woodward/scriven_epl.pdf">Explanations, Predictions and Laws</a> argues that no "question word" (<em>why</em> or otherwise) is <em>necessary</em> to define an explanation.</p>
+<p>The paper highlights the social aspect of an explanation: <em>explanations</em> are a description aiming to fill a gap of understanding (or correct a misunderstanding) to an explainee.</p>
+<p>In the author's words:</p>
+<blockquote>
+<p>What is it that needs explanation in a given context? It seems clear that it is those things which are not properly understood (by whomever the explanation is addressed to). Now, lack of understanding of a natural phenomenon may be due to the absence of certain information about the situation, to the presence of false beliefs about it, or to an inability to see the connections between what is understood and what is not understood.</p>
+</blockquote>
+<p>However, when there is a question, it helps to narrow down the <em>kind</em> of description expected, but are not a defining element.</p>
+<p>This is closer to the idea of explanation this post uses.</p>
+<h2 id="explanation-as-a-process"><a class="header" href="#explanation-as-a-process">Explanation as a process</a></h2>
+<p>The <em>objective</em> definition focuses explanations as answers to a <em>why-question</em> with certain properties and structure.</p>
+<p>The <em>subjective</em> definition challenges the <em>question-type</em>, and it is more flexible in terms of what counts as an answer.</p>
+<p>These definitions are about what <em>counts</em> as explanation. But we can also think of the <em>process of explaining</em> as:</p>
+<ol start="0">
+<li>There is <em>something</em> to explain,</li>
+<li>The explainer <em>filters</em> aspects of the <em>explanandum</em> deemed relevant (using prior knowledge),</li>
+<li><em>Generates</em> possible answers (through explanation techniques),</li>
+<li><em>Weight</em> the likelihood of each hypotheses,</li>
+<li>Possibly selecting the most likely until contradicted by experience or super-seeded (e.g. by a simpler explanation),</li>
+<li>Communicate it.</li>
+</ol>
+<p>Mapping this to the framework proposed in the paper <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in artificial intelligence: insights from the social sciences</a>, we have <code>1.</code>, <code>2.</code>, <code>3.</code> as part of the <em>cognitive process</em>, <code>4.</code> is the <em>product</em> or result of it, and <code>5.</code> is a _social process.</p>
+<p>If the answer is already known, only <code>5.</code> is needed.</p>
+<h3 id="cognitive-process"><a class="header" href="#cognitive-process">Cognitive process</a></h3>
+<p>Generating answers is a complex task. We can consider abstract techniques for generating answers (which concrete methods may implement):</p>
+<ul>
+<li>Subsumption into laws (first definition),</li>
+<li>Abduction, or inferring a hypotheses,</li>
+<li>Induction, involving generalisation,</li>
+<li>Deduction, from premises and principles to conclusions,</li>
+<li>Comparison to a reference item,</li>
+<li>Metaphors, analogy and so forth.</li>
+</ul>
+<p>These will depend on the context which defines what the gap is, what the explainee and explainer are familiar with, the level of detail needed and so forth. Some of these are actually aspects of the social process (next section).</p>
+<p>Prior beliefs or knowledge are also used to evaluate the answers, and to omit what is considered obvious in the given context (or audience).</p>
+<p>The <em>reference item</em> above is hinting to a <em>foil</em>. <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in AI: insights from the social sciences</a> notes that <em>why-questions</em> are usually contrastive questions, phrased as <em>why P rather than Q</em> instead of <em>why P</em>. In this latter case, the <em>foil</em> (Q) is implicit.</p>
+<p>The <em>product</em> can be skipper for now.</p>
+<h3 id="social-process"><a class="header" href="#social-process">Social Process</a></h3>
+<p>The answer must then be communicated, and there are expectations about it.</p>
+<p><a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. These rules can also be used as a guide for good <em>model explanations</em>.</p>
+<ol>
+<li><strong>Informative</strong> (Quantity): right amount of context and details,</li>
+<li><strong>Truthful</strong> (Quality, or Fidelity): Try to make it true,</li>
+<li><strong>Relevance</strong> (Relation): do not state things that aren't needed (provide insight),</li>
+<li><strong>Manner</strong> (clarity): express it in elegant terms.</li>
+</ol>
+<h2 id="explanatory-success"><a class="header" href="#explanatory-success">Explanatory success</a></h2>
+<p>There are aspects that tend to make explanations more successful:</p>
+<ul>
+<li>
+<p><strong>Simplicity</strong>: if it involves a shorter chain of causes, it is preferred,</p>
+</li>
+<li>
+<p><strong>Generality</strong>: if it explains other cases, it is preferred,</p>
+</li>
+<li>
+<p><strong>Prior knowledge/beliefs</strong></p>
+<ul>
+<li>Conditions generation and veto of hypotheses. For example, "The drawer slides because it wants." may be ignored in different basis. Another illustrative example from <a href="https://fitelson.org/few/few_08/lombrozo_reading.pdf">The structure and function of explanations</a>:</li>
+</ul>
+<blockquote>
+<p>(...) If told that herring and tuna have a disease, naive participants are more likely to extend the property to wolffish, the more similar item, than to dolphins. However, among fishing experts, who can generate an explanation for why the property might hold (e.g. tuna contract the disease by eating infected herring), similarity is less predictive of property extensions. (...)</p>
+</blockquote>
+<ul>
+<li>Aids selecting what seems causally / explanatory relevant from what is not. Consider two light beams interfering on a Sunday. The day is irrelevant (usually), we disregard a confounding factor.</li>
+</ul>
+</li>
+</ul>
+<p>I don't have much to say about <em>product</em> (<code>2.</code>), so we jump to <code>3</code>.</p>
+<h2 id="metaphors"><a class="header" href="#metaphors">Metaphors</a></h2>
+<details><summary>The Machine and The Agent (click to open)</summary>
+<p>In the scientific and science-adjacent domains, models are conceptualised as <em>machines</em>:</p>
+<ol>
+<li>They have parts, each with a function, a role,</li>
+<li>They correspond with some aspect of the reality being modelled.</li>
+</ol>
+<p>Outside of science or the technical domain, they're conceptualised as <em>human-like agents</em>:</p>
+<ol>
+<li>They tend to be explained in human terms,</li>
+<li>They are expected to be reliable, consistent, ...</li>
+</ol>
+<p>So explanations are answers to <em>why-questions</em>; <em>good</em> explanations respect the Gricean maxims, and will be dependent on the audience (their preferred style, expectations, expertise).</p>
+<p>The table below is a summary of the ideas above</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Perspective</th><th>Model is a…</th><th>Preferred Explanation style</th><th>Audience</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Scientific</strong></td><td>Machine</td><td>Mechanistic, causal, formal</td><td>Experts</td></tr>
+<tr><td><strong>Human-facing</strong></td><td>Agent</td><td>Intentional, narrative</td><td>Users, stakeholders</td></tr>
+</tbody>
+</table>
+</div>
+<p>Many other metaphors could be proposed.</p>
+</details>
+<p>In the next post we use our knowledge to define Explainable AI.</p>
+<hr><details>
+<summary>List of sources used in this blogpost</summary>
+<ol>
+<li><a href="https://fitelson.org/woodward/hempel_oppenheim.pdf">Studies in the logic of explanation</a> (1948),</li>
+<li><a href="https://fitelson.org/woodward/scriven_epl.pdf">Explanations, Predictions and Laws</a> (1948),</li>
+<li><a href="https://www.ijcai.org/Proceedings/73/Papers/017.pdf">On the mechanization of abductive logic</a> (1973). The first page is quite interesting.</li>
+</ol>
+<!-- A **deduction** (proof) is e.g. "All cats are animals (I); animals are big (II); then cats are big (III)", whereas **abduction** (hypothesis) would be "III; I; maybe II" notice the _maybe_ (anti-clockwise rotation). Another anti-clockwise rotation takes us to **induction** (generalisation,hypothesis): "II; III; maybe all I". -->
+<ol>
+<li><a href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">A Unified Approach to Interpreting Model Predictions</a> (2017): paper proposing SHAP, that is, showing Shapley values as the best coefficients in linear combination of features, given 3 requirements (local accuracy, missingness and consistency),</li>
+<li><a href="http://arxiv.org/abs/1806.00069">Explaining Explanations: An Overview of Interpretability of Machine Learning</a> (2018),</li>
+<li><a href="https://arxiv.org/abs/1806.00340">Producing radiologist-quality reports for interpretable artificial intelligence</a> (2018): a "case study",</li>
+<li>The paper <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">"Explanation in artificial intelligence: insights from the social sciences"</a> (2019, 38 pages). Once the why-cause is found (diagnosis), it may be communicated, making rules of conversation relevant: <a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims of Communication</a> (blog-post), or <a href="https://en.wikipedia.org/wiki/Cooperative_principle">Wikipedia's</a>.
+<ul>
+<li>The definition of explanation extends previous work by Lombrozo on <a href="https://fitelson.org/few/few_08/lombrozo_reading.pdf">The structure and function of explanations</a> (2006).</li>
+</ul>
+</li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0740624X21001027">The perils and pitfalls of explainable AI: Strategies for explaining algorithmic decision-making</a> (2021): emphasis on socio-political aspects,</li>
+<li><a href="https://pubs.acs.org/doi/10.1021/accountsmr.1c00244">Interpretable and Explainable Machine Learning for Materials Science and Chemistry</a> (2022),</li>
+<li>Blog Posts: <a href="https://www.sei.cmu.edu/blog/what-is-explainable-ai/">What is Explainable AI?</a> (2022) and from <a href="https://www.sei.cmu.edu/blog/what-is-explainable-ai/">IBM</a>,</li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">A Perspective on Explainable Artificial Intelligence Methods: SHAP and LIME</a> (2024).</li>
+</ol>
+</details>
+<!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
+<!-- [XAI for whom]: http://arxiv.org/abs/2106.05568 -->
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="explainable-ai"><a class="header" href="#explainable-ai">Explainable AI</a></h1>
+<p>Having defined <em>causal explanations</em> we can define <em>model explainability</em> —the focus of Explainable Artificial Intelligence— as:</p>
+<blockquote>
+<p>finding the causes underlying a model's predictions or operation.</p>
+</blockquote>
+<p>But <em>can a model be pragmatically considered explainable if it can not be communicated to the target audience?</em></p>
+<p>It should also be noted that, while explanations are often framed causally, they may involve non-causal relations such as correlations, constraints, or contributions (LIME, SHAP). Especially in XAI.</p>
+<p>We can amend the definition of <em>model explainability</em> to better fit the 3-legged definition of explanations given earlier:</p>
+<blockquote>
+<p>the degree to which humans can effectively answer questions about a model's predictions or operation, either directly or using explainability methods.</p>
+</blockquote>
+<p><em>Questions</em> includes more than just why-questions, and also accepts associations and contributions; we won't necessarily get to a causal structure.</p>
+<p><em>Effectively</em> includes the social and communicational aspect of it (which Grice's Maxims aid).</p>
+<h2 id="trade-off"><a class="header" href="#trade-off">Trade-off</a></h2>
+<p>One trade-off is that each audience will demand certain guarantees, and have expectations, and expertise, but we do not want lose much fidelity to the original model.</p>
+<p>Simplification loses fidelity. Care must be taken to make "things as simple as possible, but not simpler" or there is risk of <strong>oversimplifying</strong>. This is compounded by the fact that more complex and accurate models tend to be less explainable.</p>
+<p>This is not universal, but we could represent this common case as:</p>
+<div class="center w30">
+    <a href="assets/tradeoff.webp">
+    <img src="assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff." />
+    </a>
+    
+<p>Model accuracy vs Model explainability tradeoff.</p>
+
+</div>
+
+<h2 id="overview-of-methods"><a class="header" href="#overview-of-methods">Overview of methods</a></h2>
+<p>Within the <em>cognitive process</em> of explanations, <em>model explainability</em> benefits from methods to identify causes or relevant properties.</p>
+<p>For all audiences, we can group these methods into more general categories, and then go into specific cases for a certain audience.</p>
+<h3 id="kinds-of-methods"><a class="header" href="#kinds-of-methods">Kinds of Methods</a></h3>
+<p>The survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practise of explaining ML models</a> includes a table of <strong>method kinds</strong>. A modified version of the table is below:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Kind</th><th>Advantages</th><th>Disadvantages</th><th>Question</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Local explanations</strong></td><td>Explains the model's behaviour in a local area of interest. Operates on instance-level explanations.</td><td>Explanations do not generalize on a global scale. Small <strong>perturbations</strong> might result in very different explanations.</td><td>How do small perturbations affect the output / prediction?</td></tr>
+<tr><td><strong>Examples</strong></td><td>Representative items for each class provide insights about the model's internal reasoning.</td><td>Examples require human selection. They do not explicitly state what parts of the example influence the model.</td><td>How do inputs from different classes compare? And same?</td></tr>
+<tr><td><strong>Feature relevance</strong></td><td>They operate on an instance level (some can operate globally).</td><td>Methods may make assumptions which do not hold (e.g. feature independence, linearity).</td><td>Which input features are most important?</td></tr>
+<tr><td><strong>Simplification</strong></td><td>Simple surrogate models explain opaque ones.</td><td>Surrogate models may not approximate original models well.</td><td>Can we get local insights by using a simpler model?</td></tr>
+<tr><td><strong>Visualizations</strong></td><td>Easier to communicate to non-technical audiences. Most approaches are intuitive and not hard to implement.</td><td>There is an upper bound on how many features can be considered at once. Humans must inspect plots to derive explanations.</td><td>Class boundaries?</td></tr>
+</tbody>
+</table>
+</div>
+<p>We should remember that:</p>
+<blockquote>
+<p>Relying on only one technique will only give us a partial picture of the whole story, possibly missing out important information. Hence, combining multiple approaches together provides for a more cautious way to explain a model. (...) At this point we would like to note that there is no established way of combining techniques (in a pipeline fashion),</p>
+</blockquote>
+<p>In the next posts, we focus on <strong>methods</strong> that aid <em>causal attribution</em> (or cognitive process) with a scientific audience in mind.</p>
+<h3 id="map-of-xai"><a class="header" href="#map-of-xai">Map of XAI</a></h3>
+<p>An interesting map of XAI is given in the survey <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable ML</a> (2021).</p>
+<p>Most <em>classic ML</em> models are in the <span style="padding:0.15rem; display: inline-block; border-radius:0.5rem; border:0.15rem dashed purple">dashed</span> area under <strong>Model types</strong> column.</p>
+<p><em>Classic ML</em> models are usually <em>transparent</em> (intrinsically explainable) but <em>may</em> benefit from post-hoc (post training) explanations, such as visualising it. When transparency is key and the predictions are accurate enough, these may be preferred over DL models.</p>
+<div class="center w50">
+    <a href="assets/taxonomy.webp">
+    <img src="assets/taxonomy.webp" alt="Complex Graph linking prediction models such as SVMs, kinds of explanations such as text or graph, and explanation methods such as SHAP." />
+    </a>
+    
+<p>
+    Image from <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>
+    </p>
+
+</div>
+
+<p>The focus here though, is explaining <em>deep learning</em> models. These are usually <em>opaque</em> ("<em>black-box</em>") models, and their accuracy is usually higher than classic ML models.</p>
+<p>In other words, classical ML and DL models each have their use-cases.</p>
+<hr><details>
+<summary>List of sources used in this blogpost</summary>
+<ol>
+<li><a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable machine-learning</a> (2021, 25 pages): Sections 8–11 are a useful review of explainability methods.</li>
+</ol>
+</details>
+<!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="additive-feature-attribution-methods"><a class="header" href="#additive-feature-attribution-methods">Additive Feature Attribution Methods</a></h1>
+<p>These set of methods are linear approximations (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span>) to the original model (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>). Mathematically:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0519em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8019em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.3277em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>s are the effect of each <em>binary</em> feature <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> in the output. Clarifications:</p>
+<ol>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>s do not belong to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>, but to the approximation <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span>,</li>
+<li>Two complex models <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> trained with same data likely have different <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>s,</li>
+<li>Methods don't protect from a biased model.</li>
+</ol>
+<p><em>Note</em>: these could be called linear combination of binary features as well.</p>
+<h2 id="best-coefficients"><a class="header" href="#best-coefficients">Best coefficients?</a></h2>
+<p>Existing additive feature methods (e.g. SHAP, LIME) calculate <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>s differently, in turn yielding different coefficients. But...which one obtains the <em>best</em> coefficients <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>? A definition of <em>best</em> is needed.</p>
+<p>The <a href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">unified approach to interpret model predictions</a> proposes that models should have <em>local accuracy</em>, <em>missingness</em>, <em>consistency</em>. With these requirements, they show that Shapley values are the best coefficients. Other methods violate some of these 3 properties.</p>
+<p>The authors argue these properties lead to coefficients more intuitive for humans.</p>
+<h2 id="method-shap"><a class="header" href="#method-shap">Method: SHAP</a></h2>
+<p>SHAP stands for SHapley Additive exPlanations, it is considered a feature attribution method rather than a simplification method. The <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explaining ML</a> states:</p>
+<blockquote>
+<p>The objective in this case is to build a linear model around the instance to be explained, and then interpret the coefficients as the feature’s importance. This idea is similar to LIME, in fact LIME and SHAP are closely related, but SHAP comes with a set of nice theoretical properties.</p>
+</blockquote>
+<p>The exact Shapley values <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> result from an expensive combinatorial (see sources at the end). Approximations to the exact formula can be made, with extra assumptions, which <strong>may not hold!!</strong>:</p>
+<ul>
+<li>Assumption 1: Feature independence (implies non-multicollinearity).
+<ul>
+<li>Shapley sampling values method,</li>
+<li>Quantitative Input Influence,</li>
+<li>Plus assumption 2, model linearity: Kernel SHAP (LIME + Shapley values)</li>
+</ul>
+</li>
+<li>Assumption 2, model linearity: Shapley regression values.</li>
+</ul>
+<p>SHAP provides both global (average across inputs) and local (for a given input).</p>
+<h2 id="method-lime"><a class="header" href="#method-lime">Method: LIME</a></h2>
+<p>Local Interpretable Model Agnostic Explanation (LIME) and Generalised Linear Models (GLMs).<sup class="footnote-reference" id="fr-1-1-2"><a href="#footnote-1-2">1</a></sup> <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable ML</a> describes LIME as:</p>
+<blockquote>
+<p>LIME approximates an opaque model locally, in the surrounding area of the prediction we are interested in explaining, (...) using the resulting model as a surrogate in order to explain the more complex one. Furthermore, this approach requires a transformation of the input data to an "interpretable representation," so the resulting features are understandable to humans, regardless of the actual features used by the model (...)</p>
+</blockquote>
+<p>It is considered a simplification method rather than a feature attribution method.</p>
+<p>For LIME, the coefficients <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> are found minimising an objective function. The coefficients resulting from the optimisation do not necessarily obey the 3 desired properties listed earlier.</p>
+<p>Assuming feature independence and model linearity, the objective function can be modified and the SHAP values obtained through weighted linear regression (no slow combinatorics). This is called <strong>Kernel SHAP</strong>, and obeys the 3 properties listed earlier.</p>
+<h2 id="fixes"><a class="header" href="#fixes">Fixes</a></h2>
+<ul>
+<li>Normalised Moving Rate (NMR): tests the stability of the list against the collinearity. Smaller NMR means more stable ordering.</li>
+<li>Modified Index Position, in the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">paper's words</a>:
+<blockquote>
+<p>[MIP] works similarly to NMR by iteratively removing the top feature and retraining and testing the model. Thereafter, it examines how the features are reordered in the model which implies the effect of collinearity.</p>
+</blockquote>
+</li>
+</ul>
+<p>These two methods (MIP, NMR) can be useful both in having a reliable sorting of features, and on selecting one —most stable— of several methods.</p>
+<h2 id="definition-of-a-few-concepts"><a class="header" href="#definition-of-a-few-concepts">Definition of a few concepts</a></h2>
+<details><summary>Aside: Collinearity and Non-linearity</summary>
+<p><strong>Multicollinearity</strong>: one feature is a linear combination of one or more other features. For example, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>; assuming linear independence would be an error. In the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">paper's words</a>:</p>
+<blockquote>
+<p>Indeed, some features might be assigned a low score despite being significantly associated with the outcome. This is because they do not improve the model performance due to their collinearity with other features whose impact has already been accounted for.</p>
+</blockquote>
+<p><strong>Non-linearity</strong>: output changes are not proportional to input changes. For example <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0358em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span></span></span></span> is non-linear, and fitting a line <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9463em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">αx</span></span></span></span> to it would be inaccurate. Some SHAP models can model this correctly.</p>
+</details>
+<p>Let's now look at other methods.</p>
+<details>
+<summary>Sources</summary>
+<ol>
+<li><a href="https://sites.math.rutgers.edu/~zeilberg/EM22/Shapley1952.pdf">A value for n-person games</a> (1952)</li>
+<li><a href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">A Unified Approach to Interpreting Model Predictions</a> (2017)</li>
+<li>[Principles and practice of explainable machine-learning][principles_and_practices] (2021, 25 pages): overview of many aspects of XAI,</li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/aisy.202400304">A Perspective on Explainable Artificial Intelligence Methods: SHAP and LIME</a> (2025): conceptual aspects (weaknesses, strengths, assumptions) of the popular XAI methods SHAP and LIME.</li>
+</ol>
+</details>
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-1-2">
+<p><em>Local</em> in the name refers to being for a <em>particular input</em>, not <em>Global</em> which would be general. <a href="#fr-1-1-2">↩</a></p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="methods-ii"><a class="header" href="#methods-ii">Methods II</a></h1>
+<h2 id="visual-explainability-methods"><a class="header" href="#visual-explainability-methods">Visual Explainability Methods</a></h2>
+<ul>
+<li>
+<p><strong>Saliency Maps</strong>: visually show which features are most important in a particular prediction. They can be generated for 1D, 2D and ND inputs. For example, here is for radiology:</p>
+  
+<div class="center w60">
+      <a href="assets/saliency_map_plus_rnn_text.png">
+      <img src="assets/saliency_map_plus_rnn_text.png" alt="Image with saliency map overlay" />
+      </a>
+      
+<p><strong>Left-most</strong>: input image; <strong>next</strong>: input + saliency map; <strong>right-most</strong>: doctor's annotation (top) and RNN-model generated annotation (bottom). Image taken from <a href="https://arxiv.org/abs/1806.00340">paper</a>.</p>
+
+  </div>
+
+</li>
+<li>
+<p><strong>Variations</strong>: Individual Conditional Expectation, Partial Dependence Plots, can help visualise decision boundaries; they only vary 1 or 2 variables. Quotes below are snippets from original:</p>
+<ul>
+<li>
+<blockquote>
+<p>[ICE] operates on instance level, depicting the model's decision boundary as a function of a single feature, with the rest of them staying fixed.</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>(...) employ [ICE] plots to inspect the model's behaviour for a specific instance, where everything except salary is held constant, fixed to their observed values, while salary is free to attain different values.</p>
+</blockquote>
+</li>
+<li>PDPs are a similar idea, but the remaining features are average values over the dataset points, rather than particular values of an instance.</li>
+</ul>
+</li>
+<li>
+<p><strong>Validity Interval Analysis</strong>: another technique fitting the NN behaviour to try to extract explanations.</p>
+</li>
+</ul>
+<h2 id="feature-relevance"><a class="header" href="#feature-relevance">Feature Relevance</a></h2>
+<ul>
+<li>SHAP (possibly also LIME),</li>
+<li>Influence Functions.</li>
+</ul>
+<h2 id="simplification"><a class="header" href="#simplification">Simplification</a></h2>
+<ul>
+<li>LIME (possibly also SHAP). Explained in previous post,</li>
+<li><strong>Anchors</strong>: the authors of LIME also proposed this nice method described by <a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainability in ML</a>:
+<ul>
+<li>
+<blockquote>
+<p>A similar technique, called anchors, can be found in (Ribeiro et al., 2018). Here the objective is again to approximate a model locally, but this time not by using a linear model. Instead, easy to understand "if-then" rules that anchor the model's decision are employed. The rules aim at capturing the essential features, omitting the rest, so it results in more sparse explanations.</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>(...) decides to use anchors in order to achieve just that, generate easy-to-understand "if-then" rules that approximate the opaque model's behaviour in a local area (Figure 9). The resulting rules would now look something like "if salary is greater than 20 k£ and there are no missed payment, then the loan is approved.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="other-methods"><a class="header" href="#other-methods">Other methods</a></h2>
+<ul>
+<li><strong>Dimensionality Reduction</strong>: Principal Component Analysis, t-SNE, Dimensionality Reduction, Independent Component Analysis, Non-negative Matrix Factorisation.</li>
+<li><strong>Counterfactuals</strong>: We replace the problem by a hypothetical opposite:
+<ul>
+<li>A was the cause of B if, in an imaginary situation, A not happening implies B not happening.</li>
+<li>Change the instance slightly, but such that the model classifies the new instance in a different category.</li>
+<li>
+<blockquote>
+<p>(...) the applicant had missed one payment that led to this outcome, and that had he/she missed none the application would had been accepted</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>Contrastive</strong>: Is about comparing carefully selected instances: <em>Why P rather than Q?</em>
+<ul>
+<li>
+<blockquote>
+<p>In such cases, people expect to observe a particular event, but then observe another, with the observed event being the fact and the expected event being the foil.</p>
+</blockquote>
+</li>
+<li>It's a good "question generator". What do you expect if X is done, rather than Y?</li>
+</ul>
+</li>
+</ul>
+<h2 id="explanation-producing-architectures"><a class="header" href="#explanation-producing-architectures">Explanation-producing Architectures</a></h2>
+<p>Architectures designed to make explaining part of their operation easier.</p>
+<ul>
+<li>
+<p>Using Explicit Attention: An attention layer/mask learns how parts of an input embedding pay attention to other parts. The layer is somewhat interpretable. In chemistry, it could learn which atoms connect (or pay attention to) other atoms.</p>
+</li>
+<li>
+<p>Dissentangled Representations: <q>Disentangled representations have individual dimensions that describe meaningful and independent factors of variation.</q> —<a href="http://arxiv.org/abs/1806.00069">Explaining Explainability</a> (2018). Examples of architectures are <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span>-VAE, INFOGan, capsule networks.</p>
+</li>
+</ul>
+<details>
+<summary>Sources</summary>
+<ol>
+<li><a href="http://arxiv.org/abs/1806.00069">Explaining Explanations: An Overview of Interpretability of Machine Learning</a>,</li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in artificial intelligence: Insights from the social sciences</a> (2019),</li>
+<li><a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainability in ML</a> (2021).</li>
+</ol>
+</details>
+<!-- [whatifs_wachter]: https://arxiv.org/pdf/1711.00399 -->
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="discovering-inorganic-solids"><a class="header" href="#discovering-inorganic-solids">Discovering Inorganic Solids</a></h1>
+<p>These are some of my opinions and ideas after reading two papers by Rosseinsky group:</p>
+<ol>
+<li><a href="https://pubs.acs.org/doi/10.1021/acs.accounts.4c00694">Discovery of Crystalline Inorganic Solids in the Digital Age</a> (2025).</li>
+<li><a href="https://www.nature.com/articles/s41467-021-25343-7">Element selection for crystalline inorganic solid discovery guided by unsupervised machine learning of experimentally explored chemistry</a> (2021)</li>
+</ol>
+<hr>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>In solid-state chemistry, some elemental compositions (phase fields) are more likely to lead to isolable compounds than others.</p>
+<p>Deep learning models can help differentiate between these two groups, and lead researchers to the promising areas. The models can be trained for this task with data from ICSD, the Inorganic Crystal Structure Database.</p>
+<p>Such models would improve the allocation of resources when exploring new phase fields.</p>
+<h2 id="searching-for-new-compounds"><a class="header" href="#searching-for-new-compounds">Searching for new compounds</a></h2>
+<p>Some definitions will be used:</p>
+<ul>
+<li><em>Phase field</em>: the elements selected. Can be thought as the labels for cartesian axes.</li>
+<li><em>Composition</em>: the values or ranges of values in each axes. Once we have the axes' labels we can explore values computationally.</li>
+</ul>
+<p>We can search for compounds by <em>analogy</em> and by <em>exploration</em>, characterised in the table below:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Method</th><th>Starting Point</th><th>Concept</th><th>Success Rate</th></tr>
+</thead>
+<tbody>
+<tr><td>By analogy</td><td>Parent Compound</td><td>Change composition, same structure</td><td>Higher</td></tr>
+<tr><td>By exploration</td><td>Structural Hypothesis / Idea</td><td>Try composition and structure</td><td>Lower</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="analogy-based-search"><a class="header" href="#analogy-based-search">Analogy Based Search</a></h3>
+<p>The analogy-based search involves:</p>
+<ol>
+<li>Starts from a naturally occuring mineral, or previously discovered structures,</li>
+<li>Change its composition retaining the crystalline structure. For example, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathrm">L</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">7</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">S</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathrm">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">7</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">I</span></span></span></span></span> can be expanded by analogy to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathrm">L</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">7</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">S</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">2</span><span class="mbin mtight">−</span><span class="mord mathrm mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mord mathrm">G</span><span class="mord"><span class="mord mathrm">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathrm">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">7</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">I</span></span></span></span></span>, conserving the crystalline structure.</li>
+</ol>
+<p>With respect to analogy-based search, the paper notes:</p>
+<blockquote>
+<p>(...) it is straightforward to expand known structures by analogy through substitution, but the initial identification of such structures, which cannot be by analogy, is an entirely different question (...)</p>
+</blockquote>
+<p>And usefully,</p>
+<blockquote>
+<p>The properties of the analogy-based materials can be superior to those of the initial discovery (...)</p>
+</blockquote>
+<h3 id="exploratory-search"><a class="header" href="#exploratory-search">Exploratory Search</a></h3>
+<p>The ML-aided exploratory-search involves:</p>
+<ol>
+<li>Human selects elements or <em>phase field</em> e.g. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathrm" style="margin-right:0.025em;">Y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathrm">Sr</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathrm">Ca</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathrm">Ga</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathrm">O</span></span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathrm">LiSiX</span><span class="mord"><span class="mord mathrm">X</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span>,...
+<ul>
+<li>A VAE decodes the seed-input into similar compounds (nearby in latent space).</li>
+<li>The reconstruction loss is used as a ranking metric for the generated compounds.</li>
+</ul>
+</li>
+<li>Computationally search in composition-space (Crystal Structure Prediction, CSP), find low-energy probe structures, e.g. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathrm">L</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">Sn</span><span class="mord"><span class="mord mathrm">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">Cl</span></span></span></span></span>.
+<ul>
+<li>Can use physical constraints (like max n of atoms).</li>
+<li>Calculate thermodynamically stable<sup class="footnote-reference" id="fr-1-1-3"><a href="#footnote-1-3">1</a></sup> probe structure (this step is complex).
+Hints experimentalists of promising region.</li>
+</ul>
+</li>
+<li>Try synthesis, and find somewhat similar structures to the computationally suggested one.</li>
+</ol>
+<p>We can describe the exploration steps as a flow as well:</p>
+<pre class="mermaid">---
+config:
+  flowchart:
+    htmlLabels: true
+---
+flowchart LR
+A(("`**Input Phase**
+(e.g Na-Ca-O)`")) --&gt; B(VAE)
+B -- "`**Ranked Phases**`" --&gt; D(Distance Metric)
+D -- "`**Compositions**`" --&gt; F(Thermodynamics)
+F -- "`**Probe**`" --&gt; H(Try synthesis)
+
+style A fill:#123456,color:#f4f4f4,stroke-width:0px
+</pre>
+
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-1-3">
+<p>With respect to the convex hull. <a href="#fr-1-1-3">↩</a></p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="discovering-inorganic-solids-1"><a class="header" href="#discovering-inorganic-solids-1">Discovering Inorganic Solids</a></h1>
+<h2 id="in-depth-workflow"><a class="header" href="#in-depth-workflow">In depth workflow</a></h2>
+<h3 id="dataset"><a class="header" href="#dataset">Dataset</a></h3>
+<p>The atom descriptors are taken from a atom-property database and include atomic weight, valence, ionic radius, and others.</p>
+<p>The 4-element crystals are selected from ICSD, and only the elements are retained.
+For example, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathrm">CaNaLi</span><span class="mord"><span class="mord mathrm">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> would become <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">CaNaLiO</span></span></span></span></span> for training.</p>
+<p>The data is scaled 24 fold by performing all possible permutations of 4 elements, i.e. 4! (factorial). This enhances learning, reduces overfitting.</p>
+<h3 id="architecture-variational-autoencoder-vae"><a class="header" href="#architecture-variational-autoencoder-vae">Architecture: Variational Autoencoder (VAE)</a></h3>
+<p>Here the emphasis is on exploiting a pattern and not on interpretability, the human expert evaluates the compounds afterwards.</p>
+<p>An autoencoder consists of two parts, an encoder, and a decoder. The overall task is to reconstruct the original vector from the compressed representation.</p>
+<p>The encoder compresses the 148 vector into a 4D vector (latent vector), and the decoder decompresses it into 148D. The euclidean distance is then computed as a measure of error, and the gradient is used to correct the weights.</p>
+<p>Since the model is trained only on phase fields that lead to isolable materials, it is biased towards those compounds.</p>
+<p>Just like a single-class classifier using cat-only images, the VAE only sees positive instances, and no learning comes from predicting negatives.</p>
+<h3 id="inference-stage"><a class="header" href="#inference-stage">Inference Stage</a></h3>
+<p>Input structures are passed with a bit of noise each time and the reconstruction loss is used to rank them for synthetic exploration.</p>
+<p>A larger reconstruction loss means the phase is less likely to be synthesizable, since it learn to reconstruct only synthesizable regions.</p>
+<p>The rank will also tell how different the compound is to the original.</p>
+<h2 id="example-of-results"><a class="header" href="#example-of-results">Example of Results</a></h2>
+<p>After VAE ranking, the decision to explore Li-Sn-S-Cl phase field was based on the high conductivity of a related ternary field Li-Sn-S.</p>
+<p>The following image shows calculations performed, each a tripod, in a red background. Dark red represents little enery barrier from the convex hull, bright red the opposite.</p>
+<p>Most solids found by the group or by others are in dark areas of the plot with tripods overlaying.</p>
+<p>The magenta point A in the image is the new phase found, not far from the probe structure which was <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathrm">L</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">Sn</span><span class="mord"><span class="mord mathrm">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">Cl</span></span></span></span></span>.</p>
+<div class="center w40"> <!--other classes: w220, w420-->
+    <a href="assets/results_rosseinsky_energy_phase_map.png">
+    <img src="assets/results_rosseinsky_energy_phase_map.png" alt="Results showing compositions as S/(S+Cl) in y-axis and of Li/(Li+Sn) on the x-axis. The compositions vary from 0 to 1 for each. The point (1,1) is S and Li, the point (0,0) is SnCl. They evaluated many compositions and computed the energies." />
+    </a>
+    
+<p>
+    Image from <a href="https://www.nature.com/articles/s41467-021-25343-7">Original Paper</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-SA 4.0</a>
+    </p>
+
+</div>
+
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="machine-learning-for-molecular-and-materials-science"><a class="header" href="#machine-learning-for-molecular-and-materials-science">Machine learning for molecular and materials science</a></h1>
+<p>Useful snippets from the Perspective paper <a href="https://www.nature.com/articles/s41586-018-0337-2">Machine learning for molecular and materials science</a>.</p>
+<h2 id="representations-of-atoms-molecules-materials"><a class="header" href="#representations-of-atoms-molecules-materials">Representations of atoms, molecules, materials</a></h2>
+<p>The process of converting raw data into a format more suitable for an algorithm is called <em>feature engineering</em>.</p>
+<blockquote>
+<p>The more suitable the representation of the input data, the more accurately can an algorithm map it to the output data.</p>
+<p>Selecting how best to represent the data may require insight into both the underlying scientific problem and the operation of the learning algorithm, since it is not always obvious which choice of representation will give the best performance</p>
+</blockquote>
+<p>Some representations:</p>
+<ul>
+<li>Coulomb Matrix: atomic nuclear repulsion information.</li>
+<li>Graphs: connectivity of molecules.</li>
+<li>String representations: SMILES, SELFIES,..</li>
+<li>Solid-state unit-cells: Representations based on radial distribution functions, Voronoi tessellations, and property-labelled materials fragments (...)
+<blockquote>
+<p>In the solid-state, the conventional description of crystal structures by translation vectors and fractional coordinates of the atoms is <strong>not appropriate for ML</strong>, since a lattice can be represented in an infinite number of ways by choosing a different coordinate system.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="areas"><a class="header" href="#areas">Areas</a></h2>
+<p>They see possible impact in a few areas:</p>
+<ul>
+<li>Synthesis: retrosynthesis, crystallisation predictions, etc.</li>
+<li>Characterisation: for example analysing images (CV)</li>
+<li>Modelling: reducing time and improving accuracy of calculations</li>
+<li>Drug discovery, Drug design, Inverse Design, Property Prediction,..</li>
+</ul>
+<h2 id="algorithms"><a class="header" href="#algorithms">Algorithms</a></h2>
+<ul>
+<li>Naive Bayes:
+<blockquote>
+<p>Bayes’ theorem provides a formal way to calculate the probability that a hypothesis is correct, given a set of existing data.</p>
+</blockquote>
+</li>
+<li>Nearest Neighbour:
+<blockquote>
+<p>In nearest neighbour (k-NN) methods the distances between samples and training data in a descriptor hyperspace are calculated. k-NN methods are so-called because the output value for a prediction relies on the values of the k nearest neighbours, where k is an integer.</p>
+</blockquote>
+</li>
+<li>Decision Trees:
+<blockquote>
+<p>are flowchart-like diagrams used to determine a course of action or outcomes. (...) with branches indicating that each option is mutually exclusive. (...) Both root and leaf nodes contain questions or criteria to be answered.</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>Kernel methods are a class of algorithms; whose best known members are the support vector machine (SVM) and kernel ridge regression (KRR).</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>Artificial neural networks (ANNs) and deep neural networks (DNNs). (...) Learning is the process of adjusting the weights so that the training data are reproduced as accurately as possible. (...) The values of internal variables (hyperparameters) are estimated beforehand using systematic and random searches, or heuristics.</p>
+</blockquote>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h1>
+<p>TL;DR from the paper <a href="https://www.nature.com/articles/s41557-021-00716-z">"Best practices in machine learning for chemistry"</a> (2021), a very similar paper by the same authors is <a href="https://www.nature.com/articles/s41586-018-0337-2">"Machine learning for molecular and materials science"</a>.</p>
+<ul>
+<li><em>For Datasets</em>
+<ul>
+<li>Ensure dataset remains available, and is version-tagged (they change)</li>
+<li>For home-made or mixes, explain the process of generation</li>
+<li>Describe any data curation, balancing, augmentation, and so on.</li>
+</ul>
+</li>
+</ul>
+<p>In the <a href="https://www.nature.com/articles/s41557-021-00716-z">Best Practices</a> paper they say:</p>
+<blockquote>
+<p>For reasons of reproducibility, it is crucial that these databases use some mechanism for version control (e.g. release numbers, Git versioning, or timestamps) as part of the metadata and maintain long-term availability to previous versions of the database.</p>
+</blockquote>
+<ul>
+<li>
+<p><em>For Representations</em></p>
+<ul>
+<li>Try more than one, compare</li>
+<li>Use very basic ones as baseline representation to compare (example random or one-hot)</li>
+</ul>
+</li>
+<li>
+<p><em>Justify Model</em></p>
+<ul>
+<li>More complex isn't always better</li>
+<li>Compare to baselines (mean for regression, most common class for classification)</li>
+<li>Compare to very simple models and to SOTA</li>
+<li>Any interpretability we can offer?</li>
+</ul>
+</li>
+<li>
+<p><em>Evaluate Model</em></p>
+<ul>
+<li>Have 3 separate datasets: for training and optimising, for evaluating during training and detect overfitting, and testing for testing which should represent where it will be applied (should test what we want it to succeed on).</li>
+<li>Test extrapolative learning: leave out some class entirely, or train until a cutoff date and evaluate with dates after that.</li>
+<li>Test intrapolative learning: with varied test sets</li>
+<li>Mindful of shorcut learning (have varied test dataset).</li>
+</ul>
+</li>
+<li>
+<p><em>Reproducibility</em>: Results and code must be made available and reproducible</p>
+</li>
+</ul>
+<p>They also state:</p>
+<blockquote>
+<p>In all reports, remember to cite the methods and packages employed to ensure that the development community receive the recognition they deserve.</p>
+</blockquote>
+<p>They provide a great checklist but since the license is a mess I am not including it here.</p>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<p>Take <a href="https://www.nature.com/articles/s41598-018-35934-y">ElemNet</a> as an example and go through the checklist.</p>
+<ul>
+<li><em>Database</em>:
+<ul>
+<li>They provide a link, but no timestamped or git version,</li>
+<li>No info on curation or preprocessing (we may assume none was performed).</li>
+</ul>
+</li>
+<li><em>Representations</em>:
+<ul>
+<li>They justify and compare the results to baselines.</li>
+</ul>
+</li>
+<li><em>Model</em>:
+<ul>
+<li>Describe why is new and useful idea,</li>
+<li>Describe architecture.</li>
+</ul>
+</li>
+<li><em>Evaluation</em>:
+<ul>
+<li>Show training and different hyperparameters,</li>
+<li>Studied which compounds model is accurate vs not.</li>
+</ul>
+</li>
+<li><em>Reproducibility</em>: Results and code are available.</li>
+</ul>
+<p>The comparison would be improved if they also ran a deep learning model with human-made descriptors.</p>
+<p>They also included other useful statistics like inference time.</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="databases-and-benchmarks"><a class="header" href="#databases-and-benchmarks">Databases and Benchmarks</a></h1>
+<p>Bear in mind when using databases what this <a href="https://www.nature.com/articles/s41586-018-0337-2">Machine learning for molecular and materials science</a> states:</p>
+<blockquote>
+<p>Data may require initial pre-processing, during which missing or spurious elements are identified and handled.</p>
+<p>Identifying and removing such errors is essential if ML algorithms are not to be misled by their presence.</p>
+</blockquote>
+<ul>
+<li>The <a href="https://www.nature.com/articles/s41586-018-0337-2">Machine Learning for molecular and materials science</a> aggregates many DBs and such in tables at the end</li>
+<li>Pillong, M. et al. A publicly available crystallisation data set and its application in machine learning. CrystEngComm (2017).</li>
+<li>ICSD: Inorganic Crystal Structure Dataset</li>
+<li>Jain, A. et al. The materials project: a materials genome approach to accelerating materials innovation.
+<ul>
+<li>The materials project database <a href="https://materialsproject.org/">https://materialsproject.org/</a></li>
+</ul>
+</li>
+<li>Benchmarking materials property prediction methods: the matbench test set and automatminer reference algorithm.
+<ul>
+<li>Matbench benchmark: <a href="https://hackingmaterials.lbl.gov/automatminer/datasets.html">https://hackingmaterials.lbl.gov/automatminer/datasets.html</a></li>
+</ul>
+</li>
+<li>Materials design and discovery with high-throughput density functional theory: the open quantum materials database (OQMD)</li>
+</ul>
+<p>Also <a href="https://www.nature.com/articles/s41598-018-35934-y">ElemNet</a> lists materials-and-properties' databases (experimentally observed and hypothetical):</p>
+<blockquote>
+<p>DFT calculations have offered opportunities for large-scale data collection such as the Open Quantum Materials Database (OQMD), the Automatic Flow of Materials Discovery Library (AFLOWLIB), the Materials Project, and the Novel Materials Discovery (NoMaD); they contain DFT computed properties of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span> of experimentally-observed and hypothetical materials. In the past few decades, such materials datasets have led to the new data-driven paradigm of materials informatics</p>
+</blockquote>
+<p>ElemNet describes OQDM as well (bold is mine):</p>
+<blockquote>
+<p>OQMD is an extensive high-throughput DFT database, consisting of <strong>DFT computed</strong> crystallographic parameters and formation enthalpies of <strong>experimentally observed compounds</strong> taken from the Inorganic Crystal Structure Database (ICSD) <strong>and hypothetical structures</strong> created by decorating prototype structures from the ICSD with different compositions.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="compchem-map"><a class="header" href="#compchem-map">CompChem Map</a></h1>
+<p>This is a draft of areas I'd like to organise in some taxonomy.</p>
+<h2 id="finding-useful-molecules"><a class="header" href="#finding-useful-molecules">Finding Useful Molecules</a></h2>
+<ul>
+<li>Get a Materials Database(s), either method</li>
+</ul>
+<h3 id="method-1-direct-compounds-to-properties"><a class="header" href="#method-1-direct-compounds-to-properties">Method 1: Direct (Compounds to Properties)</a></h3>
+<ul>
+<li>Use DFT to guide towards one that fits the requirements (slow if we have billions of compounds.),</li>
+<li><em>Or</em> use the DB to train a NN to make predictions (needs labelled data for training)</li>
+<li><em>Or</em> similarity metrics to find new (similar) molecules.</li>
+<li>...</li>
+</ul>
+<h3 id="method-2-inverse-properties-to-compounds"><a class="header" href="#method-2-inverse-properties-to-compounds">Method 2: Inverse (Properties to Compounds)</a></h3>
+<ol>
+<li>Use the gradient to update embedding.</li>
+<li>Maximise or Minimise the needed properties.</li>
+</ol>
+<p>The paper's approach is more towards a <strong>Direct</strong> method. It is a method to generate embeddings that can then be used to train a neural network to predict properties.</p>
+<p>This can be arranged (not very tidily) in a chart:</p>
+<pre class="mermaid">---
+config:
+    flowchart:
+        htmlLabels:false
+---
+
+flowchart TB
+
+A[("Compounds Database")]
+
+subgraph Direct["`**Direct**`"]
+    direction LR
+    B("`Electronic Structure
+    Predictions`")
+    C("`Train NN on DB
+    (with labelled data)`")
+    D("`Use similarity metrics to
+        find nearby candidates`")
+end
+
+subgraph Inverse["`**Inverse**`"]
+    direction TB
+    E("`Train VAE to create
+    smooth surface`")
+    E --&gt; F("`Link MLP to
+        latent vector`")
+    F --&gt; G("`Minimise or Maximise pps.
+            by changing vector`")
+end
+
+A --&gt; Inverse
+A --&gt; Direct
+
+</pre>
+
+<h2 id="unsupervised-learning-of-representations-of-atoms"><a class="header" href="#unsupervised-learning-of-representations-of-atoms">Unsupervised-Learning of Representations of Atoms</a></h2>
+<p>Other investigations of unsupervised learning of machine representation of atoms are:</p>
+<ul>
+<li>Zhou, Q. et al. Learning atoms for materials discovery. (2018).</li>
+<li>Tshitoyan, V. et al. Unsupervised word embeddings capture latent knowledge from materials science literature. (2019).</li>
+<li>Chakravarti, S. K. Distributed representation of chemical fragments. (2018).</li>
+<li>Butler K. et al. Distributed Representations of Atoms and Materials for Machine Learning. (2022).</li>
+</ul>
+<h2 id="supervised-learning-of-representations-of-atoms"><a class="header" href="#supervised-learning-of-representations-of-atoms">Supervised-Learning of Representations of Atoms</a></h2>
+<ul>
+<li>Jha, D. et al. ElemNet: deep learning the chemistry of materials from only elemental composition. (2018).</li>
+<li>Goodall, R. E. &amp; Lee, A. A. Predicting materials properties without crystal structure: deep representation learning from stoichiometry. (2020).</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="visualising-high-dimensional-data"><a class="header" href="#visualising-high-dimensional-data">Visualising High Dimensional Data</a></h1>
+<ul>
+<li>PCA</li>
+<li>Dimensionality Reduction</li>
+<li>t-SNE</li>
+</ul>
+<p>Reference of some of the techniques, book cited in some papers: 18. Hastie T, Tibshirani R, Friedman J (2001) The Elements of Statistical Learning, Springer Series in Statistics (Springer, New York).</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="queries"><a class="header" href="#queries">Queries</a></h1>
+<ul>
+<li>How to build useful machine-representations of atoms?
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span> would just be a 1D vector embedding, likely of little use. But are there taxonomies of representations (including a matrix per atom?)</li>
+</ul>
+</li>
+</ul>
+<h2 id="missing"><a class="header" href="#missing">Missing</a></h2>
+<ul>
+<li>Splits for datasets, validation / testing.</li>
+<li>Balancing datasets.</li>
+<li>Evaluation metrics, loss functions,</li>
+<li>ROC classification performance metric</li>
+</ul>
+<h2 id="ideas"><a class="header" href="#ideas">Ideas</a></h2>
+<ul>
+<li>
+<p>Train and show the results of atoms for vectors in a website? With some button to load each dataset?</p>
+</li>
+<li>
+<p>List of examples of successful applications of ML in chemistry</p>
+<ol>
+<li>Anything for which there are useful datasets from experiments or from calculation:
+<ul>
+<li>orbital energies,</li>
+<li>geometries,</li>
+<li>formation energy,</li>
+<li>energy band-gap</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./src/assets/mermaid.min.js"></script>
+        <script src="./src/assets/mermaid-init.js"></script>
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>

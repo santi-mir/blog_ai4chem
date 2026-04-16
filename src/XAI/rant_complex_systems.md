@@ -30,15 +30,13 @@
 <!---->
 <!-- However, there may be a critical difference which is DL systems may be used to make decisions in our behalf. But in this case, we can still push the analogy to another human making a decision. What would be require of the human? -->
 <!---->
-<!-- Where does this analogy hold, where does it break? One currently missing characteristic is for models to be __accountable__, and to be able to learn on the fly, when shown to be wrong. -->
+<!-- Where does this analogy hold, where does it break? One currently missing characteristic is for models to be **accountable**, and to be able to learn on the fly, when shown to be wrong. -->
 <!---->
 <!-- What is quite obvious from the start, is that we do not have access to the lower level model, such as the neurons or the processes within a cell (for a single celled organism). -->
 <!---->
 <!-- What we have are higher level theories of how they work, and we test them to that extent. A similar thing with other humans. -->
 <!---->
 <!-- In a way, we are then looking for higher-level theories that makes us trust the model. -->
-
-
 
 <!--Removed since did not add much at all for our non-philosophical purposes.-->
 <!-- Next the topics of _causes_ and how are answers proposed are discussed, in the context of the _cognitive process_. -->

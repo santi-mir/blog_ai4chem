@@ -1,0 +1,112 @@
+/* Font is loaded twice, is the only way I found to make it work
+ * locally and on github */
+@font-face {
+    font-family: 'cmu-concrete';
+    src: url('/fonts/cmuconcrete_roman_macroman/cmunorm-webfont.woff') format('woff'),
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'cmu-concrete';
+    src: url('/blog_ai4chem/fonts/cmuconcrete_roman_macroman/cmunorm-webfont.woff') format('woff'),
+    font-weight: 500;
+    font-style: normal;
+}
+
+:root{
+  font-size:clamp(13px, 1.8vw, 20px)!important;
+    --sidebar-target-width: max(20vw, 300px);
+    --sidebar-width: min(var(--sidebar-target-width), 80vw);
+}
+
+html {
+  font-family: Ubuntu, Roboto, system-ui, sans-serif;
+}
+h2
+ {
+  margin-block-start: calc(2vw + 1.2rem);
+}
+h3{
+  margin-block-start: calc(2vw + 0.6rem);
+}
+
+
+.content main {
+  max-width:72ch;
+  margin:auto
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+}
+
+div img {
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: #d1d1d1;
+}
+
+div.w50 {
+  max-width: 50ch;
+}
+div.w40 {
+  max-width: 40ch;
+}
+div.w30 {
+  max-width: 30ch;
+}
+div.w25 {
+  max-width: 25ch;
+}
+div.w20 {
+  max-width: 20ch;
+}
+
+
+ol li {
+  margin: 1rem 0;
+}
+
+main ol {
+  list-style: none;
+  counter-reset: num;
+}
+
+main ol > li {
+  counter-increment: num;
+}
+
+main ol > li > p {
+  display: inline-block;
+  /* margin: min(calc(0.3rem + 0.3vh), 2rem) 0; */
+}
+
+main li {
+  margin: min(calc(0.7rem + 0.8vh), 2rem) 0;
+}
+
+main ol > li::before {
+  content: counter(num) ". ";
+}
+
+#mdbook-menu-bar{
+  padding:1rem;
+  display:flex;
+  justify-content:space-between;
+  h1 {
+    display:none
+  }
+}
+.fa-svg, .fa-svg svg {
+  font-size:clamp(22px, 3vw, 48px)!important;
+}
+
+
+div:has(>a>img) *, blockquote, q, nav#mdbook-sidebar ol>li.part-title{
+  font-family: "cmu-concrete", "serif"
+}
+
+pre.mermaid {
+  text-align: center
+}
