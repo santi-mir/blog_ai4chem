@@ -109,3 +109,58 @@
 <!---->
 <!-- Notice also the **social process** involved. For example, we tried to guess the friend's actual _knowledge gap_ and be truthful. The friend may decide to keep asking "Why" and eventually reject or accept the causal chain (or remain sceptical). -->
 <!---->
+
+
+<!-- Explanations can be split into an _explanandum_, which is a description of what is explained, and the _explanans_, which are the statements adduced to account for the phenomenon. These definitions are used in what follows. -->
+<!---->
+<!-- ## An objective account -->
+<!---->
+<!-- The [Studies in the logic of explanation][logic_of_expl_hempel] (1948) defines scientific explanation in a few places. For example, with emphasis on the question: -->
+<!---->
+<!-- > To explain the phenomena in the world of our experience, to answer the question "why?" rather than only the question "what?" (...) -->
+<!---->
+<!-- Or the answer: -->
+<!---->
+<!-- > The decisive requirement for every sound explanation remains that it subsume the explanandum under general laws [or theories]. -->
+<!---->
+<!-- They do require that the _explanans_ be testable, believed to be true to a high accuracy, logically lead to the _explanandum_ by means of general laws. -->
+<!---->
+<!-- In a sense it is a "principled deduction". -->
+<!---->
+<!-- This definition rarely applies in everyday life, but it _is_ common in mathematics, physics and chemistry. Elsewhere, explanations can't live up to this high standard of "principled deduction" &mdash;and are seldom predictive&mdash; but they also play much wider role, sometimes providing information, or a link between things and so forth. -->
+<!---->
+<!-- Is there anything unifying all those cases? -->
+<!---->
+<!-- ## A subjective account -->
+<!---->
+<!-- On the opposite side, [Explanations, Predictions and Laws][Scriven] argues that no "question word" (_why_ or otherwise) is _necessary_ to define an explanation. -->
+<!---->
+<!-- The paper highlights the social aspect of an explanation: _explanations_ are a description aiming to fill a gap of understanding (or correct a misunderstanding) to an explainee. -->
+<!---->
+<!-- In the author's words: -->
+<!---->
+<!-- > What is it that needs explanation in a given context? It seems clear that it is those things which are not properly understood (by whomever the explanation is addressed to). Now, lack of understanding of a natural phenomenon may be due to the absence of certain information about the situation, to the presence of false beliefs about it, or to an inability to see the connections between what is understood and what is not understood. -->
+<!---->
+<!-- However, when there is a question, it helps to narrow down the _kind_ of description expected, but are not a defining element. -->
+<!---->
+<!-- This is closer to the idea of explanation this post uses. -->
+<!---->
+
+<!-- Should analyse at least 10 kinds of explanations -->
+
+
+<!-- ## Cognitive process -->
+<!---->
+<!-- Generating answers is a complex task. We can consider abstract techniques for generating answers (which concrete methods may implement): -->
+<!---->
+<!-- - Subsumption into laws (first definition), -->
+<!-- - Abduction, or inferring a hypotheses, -->
+<!-- - Induction, involving generalisation, -->
+<!-- - Deduction, from premises and principles to conclusions, -->
+<!-- - Comparison to a reference item, -->
+<!-- - Metaphors, analogy and so forth. -->
+<!---->
+<!-- These will depend on the context which defines what the gap is, what the explainee and explainer are familiar with, the level of detail needed and so forth. Some of these are actually aspects of the social process (next section). -->
+<!---->
+<!-- Prior beliefs or knowledge are also used to evaluate the answers, and to omit what is considered obvious in the given context (or audience). -->
+<!---->

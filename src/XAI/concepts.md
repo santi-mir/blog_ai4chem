@@ -1,54 +1,15 @@
-<!-- Should analyse at least 10 kinds of explanations -->
+# Explainable AI - I
 
-# What is an explanation?
+Explanations are usually defined as answers to a _why-question_, with certain properties and structure; there are also those who challenge the _question-type_, and are more flexible in terms of what counts as an answer.
 
-Let's start with an example. Concepts are expanded in the remaining sections.
+In XAI we are usually concerned about _model explainability_. It can be defined as the degree to which we can answer _how_ the model functions, _why_ it operates in one way or another, and so forth.
 
-## Definitions of Explanation
+## Characteristics of explanations
 
-Explanations can be split into an _explanandum_, which is a description of what is explained, and the _explanans_, which are the statements adduced to account for the phenomenon. These definitions are used in what follows.
+We characterise explanations as a _cognitive process_ (finding an answer), a product (the answer) and a _social process_ (communicating it).
+This can be associated with a series of steps:
 
-### An objective account
-
-The [Studies in the logic of explanation][logic_of_expl_hempel] (1948) defines scientific explanation in a few places. For example, with emphasis on the question:
-
-> To explain the phenomena in the world of our experience, to answer the question "why?" rather than only the question "what?" (...)
-
-Or the answer:
-
-> The decisive requirement for every sound explanation remains that it subsume the explanandum under general laws [or theories].
-
-They do require that the _explanans_ be testable, believed to be true to a high accuracy, logically lead to the _explanandum_ by means of general laws.
-
-In a sense it is a "principled deduction".
-
-This definition rarely applies in everyday life, but it _is_ common in mathematics, physics and chemistry. Elsewhere, explanations can't live up to this high standard of "principled deduction" &mdash;and are seldom predictive&mdash; but they also play much wider role, sometimes providing information, or a link between things and so forth.
-
-Is there anything unifying all those cases?
-
-### A subjective account
-
-On the opposite side, [Explanations, Predictions and Laws][Scriven] argues that no "question word" (_why_ or otherwise) is _necessary_ to define an explanation.
-
-The paper highlights the social aspect of an explanation: _explanations_ are a description aiming to fill a gap of understanding (or correct a misunderstanding) to an explainee.
-
-In the author's words:
-
-> What is it that needs explanation in a given context? It seems clear that it is those things which are not properly understood (by whomever the explanation is addressed to). Now, lack of understanding of a natural phenomenon may be due to the absence of certain information about the situation, to the presence of false beliefs about it, or to an inability to see the connections between what is understood and what is not understood.
-
-However, when there is a question, it helps to narrow down the _kind_ of description expected, but are not a defining element.
-
-This is closer to the idea of explanation this post uses.
-
-## Explanation as a process
-
-The _objective_ definition focuses explanations as answers to a _why-question_ with certain properties and structure.
-
-The _subjective_ definition challenges the _question-type_, and it is more flexible in terms of what counts as an answer.
-
-These definitions are about what _counts_ as explanation. But we can also think of the _process of explaining_ as:
-
-0. There is _something_ to explain,
+0. There is _something_ to explain (_explanandum_),
 1. The explainer _filters_ aspects of the _explanandum_ deemed relevant (using prior knowledge),
 2. _Generates_ possible answers (through explanation techniques),
 3. _Weight_ the likelihood of each hypotheses,
@@ -59,27 +20,9 @@ Mapping this to the framework proposed in the paper [Explanation in artificial i
 
 If the answer is already known, only `5.` is needed.
 
-### Cognitive process
+The paper above notes that _why-questions_ are usually contrastive questions, phrased as _why P rather than Q_ instead of _why P_. In this latter case, the _foil_ (Q) is implicit.
 
-Generating answers is a complex task. We can consider abstract techniques for generating answers (which concrete methods may implement):
-
-- Subsumption into laws (first definition),
-- Abduction, or inferring a hypotheses,
-- Induction, involving generalisation,
-- Deduction, from premises and principles to conclusions,
-- Comparison to a reference item,
-- Metaphors, analogy and so forth.
-
-These will depend on the context which defines what the gap is, what the explainee and explainer are familiar with, the level of detail needed and so forth. Some of these are actually aspects of the social process (next section).
-
-Prior beliefs or knowledge are also used to evaluate the answers, and to omit what is considered obvious in the given context (or audience).
-
-The _reference item_ above is hinting to a _foil_. [Explanation in AI: insights from the social sciences][explanations_social] notes that _why-questions_ are usually contrastive questions, phrased as _why P rather than Q_ instead of _why P_. In this latter case, the _foil_ (Q) is implicit.
-
-The _product_ can be skipper for now.
-
-### Social Process
-
+## Social Process
 The answer must then be communicated, and there are expectations about it.
 
 [Gricean Maxims][gricean_maxims] are rules observed in _good_ communication. These rules can also be used as a guide for good _model explanations_.
@@ -171,3 +114,5 @@ In the next post we use our knowledge to define Explainable AI.
 [xai_ibm]: https://www.sei.cmu.edu/blog/what-is-explainable-ai/
 [xai_rnn_radiology]: https://arxiv.org/abs/1806.00340
 [xx]: http://arxiv.org/abs/1806.00069
+
+

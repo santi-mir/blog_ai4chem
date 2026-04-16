@@ -1,28 +1,10 @@
-# Explainable AI
+# Explainable AI - II
 
-Having defined _causal explanations_ we can define _model explainability_ &mdash;the focus of Explainable Artificial Intelligence&mdash; as:
+The goal is to explain a model, and do it to some audience (which could be ourselves).
 
-> finding the causes underlying a model's predictions or operation.
+It should be remembered that simplification loses fidelity; and should be made "as simple as possible, but not simpler" or avoid **oversimplifying**.
 
-But _can a model be pragmatically considered explainable if it can not be communicated to the target audience?_
-
-It should also be noted that, while explanations are often framed causally, they may involve non-causal relations such as correlations, constraints, or contributions (LIME, SHAP). Especially in XAI.
-
-We can amend the definition of _model explainability_ to better fit the 3-legged definition of explanations given earlier:
-
-> the degree to which humans can effectively answer questions about a model's predictions or operation, either directly or using explainability methods.
-
-_Questions_ includes more than just why-questions, and also accepts associations and contributions; we won't necessarily get to a causal structure.
-
-_Effectively_ includes the social and communicational aspect of it (which Grice's Maxims aid).
-
-## Trade-off
-
-One trade-off is that each audience will demand certain guarantees, and have expectations, and expertise, but we do not want lose much fidelity to the original model.
-
-Simplification loses fidelity. Care must be taken to make "things as simple as possible, but not simpler" or there is risk of **oversimplifying**. This is compounded by the fact that more complex and accurate models tend to be less explainable.
-
-This is not universal, but we could represent this common case as:
+This is compounded by the fact that more complex and accurate models tend to be less explainable. Without claiming universality, but we could represent this common case as:
 
 <div class="center w30">
     <a href="../assets/tradeoff.webp">
@@ -88,3 +70,4 @@ In other words, classical ML and DL models each have their use-cases.
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
 
 [principles_and_practice]: https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full
+
