@@ -2,7 +2,9 @@
 
 Explanations are usually defined as answers to a _why-question_, with certain properties and structure; there are also those who challenge the _question-type_, and are more flexible in terms of what counts as an answer.
 
-In XAI we are usually concerned about _model explainability_. It can be defined as the degree to which we can answer _how_ the model functions, _why_ it operates in one way or another, and so forth.
+In Explainable AI (XAI), the central focus is _model explainability_. It can be defined as:
+
+> The degree to which we can answer questions about the model's inner working and outputs.
 
 ## Characteristics of explanations
 

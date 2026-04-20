@@ -4,7 +4,7 @@ Where I write my thoughts on topics related to AI for chemistry.
 
 The posts are normally very short, some of them in a few parts.
 
-**URL**: <https://santi-mir.github.io/blog_ai4chem>.
+**URL**: <https://santi-mir.github.io/notes>.
 
 ## Build
 
