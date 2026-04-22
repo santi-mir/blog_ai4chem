@@ -1,10 +1,14 @@
-# Explainable AI - II
+# Model Explainability
 
+Explanations were defined and characterised &mdash;in simple terms&mdash; in the previous post.
+
+In Explainable AI (XAI), what primarily needs explanation is the model. _Model explainability_ can be defined as:
+
+> The degree to which we can answer questions about the model's inner working and outputs.
 The goal is to explain a model, and do it to some audience (which could be ourselves).
 
-It should be remembered that simplification loses fidelity; and should be made "as simple as possible, but not simpler" or avoid **oversimplifying**.
+Explainability is made harder with more accurate models, since they tend to be more complex.
 
-This is compounded by the fact that more complex and accurate models tend to be less explainable. Without claiming universality, but we could represent this common case as:
 
 <div class="center w30">
     <a href="../assets/tradeoff.webp">
@@ -12,6 +16,8 @@ This is compounded by the fact that more complex and accurate models tend to be 
     </a>
     <p>Model accuracy vs Model explainability tradeoff.</p>
 </div>
+
+Moreover, simple explanations can **oversimplifying** its operation, or lack **generality**.
 
 ## Overview of methods
 

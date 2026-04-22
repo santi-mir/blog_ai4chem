@@ -1,39 +1,27 @@
-# Explainable AI - I
+# Explanations
 
-Explanations are usually defined as answers to a _why-question_, with certain properties and structure; there are also those who challenge the _question-type_, and are more flexible in terms of what counts as an answer.
-
-In Explainable AI (XAI), the central focus is _model explainability_. It can be defined as:
-
-> The degree to which we can answer questions about the model's inner working and outputs.
+Explanations are usually defined as answers to a _why-question_, with certain properties and structure. There are definitions extending the _question-type_, and more flexible in terms of what counts as an answer.
 
 ## Characteristics of explanations
 
-We characterise explanations as a _cognitive process_ (finding an answer), a product (the answer) and a _social process_ (communicating it).
-This can be associated with a series of steps:
+Explanations can be characterised as a:
 
-0. There is _something_ to explain (_explanandum_),
-1. The explainer _filters_ aspects of the _explanandum_ deemed relevant (using prior knowledge),
-2. _Generates_ possible answers (through explanation techniques),
-3. _Weight_ the likelihood of each hypotheses,
-4. Possibly selecting the most likely until contradicted by experience or super-seeded (e.g. by a simpler explanation),
-5. Communicate it.
+1. _Cognitive process_: the process of finding an answer; we can expand it (if the answer is already known, only `5.` is needed):
+  1. There is _something_ to explain (_explanandum_),
+  2. The explainer _filters_ aspects of the _explanandum_ deemed relevant (using prior knowledge),
+  3. _Generates_ possible answers (through explanation techniques),
+  4. _Weight_ the likelihood of each hypotheses,
+  5. Possibly selecting the most likely until contradicted by experience or super-seeded (e.g. by a simpler explanation),
+2. _Product_: the answer, as in the prior definition,
+3. _Social process_: The answer must then be communicated, and there are expectations about it. [Gricean Maxims][gricean_maxims] are rules observed in _good_ communication. These rules can also be used as a guide for good _model explanations_:
+    - **Informative** (Quantity): right amount of context and details,
+    - **Truthful** (Quality, or Fidelity): Try to make it true,
+    - **Relevance** (Relation): do not state things that aren't needed (provide insight),
+    - **Manner** (clarity): express it in elegant terms.
 
-Mapping this to the framework proposed in the paper [Explanation in artificial intelligence: insights from the social sciences][explanations_social], we have `1.`, `2.`, `3.` as part of the _cognitive process_, `4.` is the _product_ or result of it, and `5.` is a _social process.
+Which is a customised version of [Explanation in artificial intelligence: insights from the social sciences][explanations_social].
 
-If the answer is already known, only `5.` is needed.
-
-The paper above notes that _why-questions_ are usually contrastive questions, phrased as _why P rather than Q_ instead of _why P_. In this latter case, the _foil_ (Q) is implicit.
-
-## Social Process
-
-The answer must then be communicated, and there are expectations about it.
-
-[Gricean Maxims][gricean_maxims] are rules observed in _good_ communication. These rules can also be used as a guide for good _model explanations_.
-
-1. **Informative** (Quantity): right amount of context and details,
-2. **Truthful** (Quality, or Fidelity): Try to make it true,
-3. **Relevance** (Relation): do not state things that aren't needed (provide insight),
-4. **Manner** (clarity): express it in elegant terms.
+Importantly, the paper above notes that _why-questions_ are usually **contrastive questions** e.g. phrased as _why P rather than Q_ instead of _why P_, where the _foil_ (Q) is frequently implicit.
 
 ## Explanatory success
 
@@ -81,7 +69,7 @@ In the next post we use our knowledge to define Explainable AI.
 ------------
 
 <details>
-<summary>List of sources used in this blogpost</summary>
+<summary>Interesting resources</summary>
 
 1. [Studies in the logic of explanation][logic_of_expl_hempel] (1948),
 1. [Explanations, Predictions and Laws][scriven] (1948),
