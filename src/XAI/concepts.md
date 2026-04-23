@@ -25,7 +25,6 @@ The _cognitive process_ is the process of finding an answer, involving:
 
 _Finding an answer_ involves creativity, and a separate matter. In the case of XAI, concrete questions and answers will be described in the following posts.
 
-
 ### Social Process
 
 The _cognitive process_ and the specific case of inferring causes was described earlier. The remaining characteristic of explanations was a _social process_.

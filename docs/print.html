@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-716458d9.js";
+            window.path_to_searchindex_js = "searchindex-abde1fe5.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-4392cbfe.js"></script>
@@ -465,42 +465,7 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <li><em>Weight</em> the likelihood of each hypotheses,</li>
 <li>Possibly selecting the most likely until contradicted by experience or super-seeded (e.g. by a simpler explanation).</li>
 </ol>
-<p><em>Finding an answer</em> involves creativity, and a separate matter. But there are desirable qualities for answers, depending on context, question, audience, we may expect a <em>cause</em>, that is <em>testable</em>, <em>general</em>. Let's expand on <em>causes</em>.</p>
-<h4 id="causes"><a class="header" href="#causes">Causes</a></h4>
-<p>Defining <em>cause</em> has been a topic of debate.</p>
-<p>Two important definitions of <em>cause</em> are usually attributed to David Hume: regularity and counterfactual.</p>
-<p><strong>Regularity</strong>: things that occur together, or are always followed one after another. Confuses it with <em>correlation</em>.</p>
-<p><strong>Counterfactuals</strong>: imaginary situation negating (countering) the fact: <em>What would have happened with Y, had X not happened?</em>. In that case <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> causes <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> (in a necessary or sufficient manner) if <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> is reduced.</p>
-<p>We can also characterise causes in many ways. First, as probabilistic vs deterministic:</p>
-<p><strong>Probabilistic</strong>: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> causes <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> if <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mclose">)</span></span></span></span> i.e. it <em>increases</em> its probability, keeping any other variables (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>) constant. This and counterfactuals are common conceptions. The number of hunters will be a cause of success at hunting, and is non-deterministic.</p>
-<p><strong>Deterministic</strong>: cause-effect is a binary relation, rather than probabilistic. The effect occurs with the cause, and does not without it.</p>
-<p><strong>Mixed</strong>: Deterministic and probabistic causes can be mixed as well.</p>
-<p>Another dimension is <em>necessary</em> and <em>sufficient</em> causes which is skipped for now.</p>
-<p>The AI researcher Judea Pearl, whose aim was to create thinking machines, proposed a framework to think about causes:</p>
-<ol>
-<li>Use a causal diagram: a graph made from prior causal knowledge, or find out doing an experiment,</li>
-<li>Use a query language: a mathematical expression of what we want to know, which an engine then translates (using the diagram) into a statistics formula.</li>
-</ol>
-<p>Robots could reach different levels of causal reasoning based on its actions (on the world)</p>
-<ol>
-<li><em>Association</em>: relating raw-data by observation. This aligns with the <em>regularity</em> definition of causes (co-occurrences). Many questions can be answered with this information only, and it's the main area where statistics is used.
-<ul>
-<li>Example: <em>Do taller people have larger feet?</em> for example. Or the conditional probability <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord">∣</span><span class="mord mathnormal">L</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">ee</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span>. But this does not show if there is a causal relation.</li>
-<li>Tool: To remove con-founders randomised control trial (RCT) can be used. However, the cause may be something they share rather than one or the other (like a gene). For a process unfolding in time, it will determine the cause.</li>
-</ul>
-</li>
-<li><em>Intervention</em>: changing one variable to detect the causal relation , this is, doing an experiment. He wrote this as <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord">∣</span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">))</span></span></span></span>, which is then translated into a statistics formula.</li>
-<li><em>Imagination</em>: top of the ladder. Involves counterfactual thinking, that is, thinking what would happen in a different world, also called <em>What ifs</em>.
-<ul>
-<li>Example: What would have happened with his life expectancy, had Joe <em>not</em> taken the drug?</li>
-</ul>
-</li>
-</ol>
-<p>We can think of how far certain scientific models (including DL models), living organisms, reach in that ladder, but it's easiest to first read it thinking about robots.</p>
-<blockquote class="blockquote-tag blockquote-tag-note">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>Counterfactuals involve a fact, which is always in the past, hence a counterfactual it is always retrospective thinking. Planning / predicting are very similar, all involving simulating situations. For planning, humans may synthesize a reference-situation, and "counter-reference" to it as a tool for planning, predicting. For a robot though, the issue would be how to construct this initial situation (which will involve a lot of its history, past experience etc. maybe things like LLMs are good at this.)</p>
-</blockquote>
+<p><em>Finding an answer</em> involves creativity, and a separate matter. In the case of XAI, concrete questions and answers will be described in the following posts.</p>
 <h3 id="social-process"><a class="header" href="#social-process">Social Process</a></h3>
 <p>The <em>cognitive process</em> and the specific case of inferring causes was described earlier. The remaining characteristic of explanations was a <em>social process</em>.</p>
 <p>The <em>social process</em> involves communicating the answer, and there are expectations about it. <a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. These rules can also be used as a guide for good <em>model explanations</em>:</p>
@@ -600,12 +565,11 @@ The goal is to explain a model, and do it to some audience (which could be ourse
 </div>
 
 <p>Moreover, simple explanations can <strong>oversimplifying</strong> its operation, or lack <strong>generality</strong>.</p>
-<h2 id="relating-counterfactuals-to-xai"><a class="header" href="#relating-counterfactuals-to-xai">Relating Counterfactuals to XAI</a></h2>
-<p>How does the ladder of causation relate to explaining deep learning models? Does it even relate?</p>
-<p>It was suggested that explanations usually involve <em>causal reasoning</em>. An expert may frequently select inputs-outputs to a model which are <em>known causes-effects</em>. Then the models <em>do</em> learn something like causal inference (though the graph is external in a sense).</p>
-<p>But how does a non-expert know which columns (say form CSV tables) are inputs and which are outputs? Are those inputs are <em>actual</em> causes and not just predictors? This can cause issues down the line, since knowing which are causes and effects is critical in many cases.</p>
-<p>This is where having a causal graph is relevant for modelling, to identify actual causes as inputs and effects as outputs.</p>
-<p>Counterfactuals then, can be used in DL models as long as the inputs are known causes. This is in fact using counterfactual-methods for generating explanations: asking <em>what if this input was used instead</em> and such counterfactual questions.</p>
+<h2 id="explaining-a-prediction-via-counterfactuals"><a class="header" href="#explaining-a-prediction-via-counterfactuals">Explaining a prediction via counterfactuals</a></h2>
+<p>This framework is explained separately from methods to expand a bit more, but some of the methods use counterfactual-like logic behind.</p>
+<p>An expert may frequently select inputs-outputs to a model which are <em>known causes-effects</em>, then the models fit the relation of one to the other.</p>
+<p>A non-expert know may not know which are the causes, which the effects. And in some cases it does not matter. This is where having a causal graph is relevant for modelling, to identify actual causes as inputs and effects as outputs.</p>
+<p>But when the model is already based on a causal graph (first case), a technique of <em>counterfactuals</em> can be used for generating explanations: asking <em>what if this other input was used instead</em>, or what if one feature is changed slightly? Such are counterfactual-like questions (if the initial input is considered a fact).</p>
 <p>(A logic-inference section could be added, but at the moment I don't see it adding much useful information.)</p>
 <h2 id="overview-of-methods"><a class="header" href="#overview-of-methods">Overview of methods</a></h2>
 <p>Within the <em>cognitive process</em> of explanations, <em>model explainability</em> benefits from methods to identify causes or relevant properties.</p>

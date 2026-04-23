@@ -162,7 +162,6 @@
 <!---->
 <!-- Prior beliefs or knowledge are also used to evaluate the answers, and to omit what is considered obvious in the given context (or audience). -->
 
-
 <!-- #### Causes -->
 <!---->
 <!-- Defining _cause_ has been a topic of debate. -->

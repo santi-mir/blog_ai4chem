@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-716458d9.js";
+            window.path_to_searchindex_js = "../searchindex-abde1fe5.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-4392cbfe.js"></script>
@@ -200,12 +200,11 @@ The goal is to explain a model, and do it to some audience (which could be ourse
 </div>
 
 <p>Moreover, simple explanations can <strong>oversimplifying</strong> its operation, or lack <strong>generality</strong>.</p>
-<h2 id="relating-counterfactuals-to-xai"><a class="header" href="#relating-counterfactuals-to-xai">Relating Counterfactuals to XAI</a></h2>
-<p>How does the ladder of causation relate to explaining deep learning models? Does it even relate?</p>
-<p>It was suggested that explanations usually involve <em>causal reasoning</em>. An expert may frequently select inputs-outputs to a model which are <em>known causes-effects</em>. Then the models <em>do</em> learn something like causal inference (though the graph is external in a sense).</p>
-<p>But how does a non-expert know which columns (say form CSV tables) are inputs and which are outputs? Are those inputs are <em>actual</em> causes and not just predictors? This can cause issues down the line, since knowing which are causes and effects is critical in many cases.</p>
-<p>This is where having a causal graph is relevant for modelling, to identify actual causes as inputs and effects as outputs.</p>
-<p>Counterfactuals then, can be used in DL models as long as the inputs are known causes. This is in fact using counterfactual-methods for generating explanations: asking <em>what if this input was used instead</em> and such counterfactual questions.</p>
+<h2 id="explaining-a-prediction-via-counterfactuals"><a class="header" href="#explaining-a-prediction-via-counterfactuals">Explaining a prediction via counterfactuals</a></h2>
+<p>This framework is explained separately from methods to expand a bit more, but some of the methods use counterfactual-like logic behind.</p>
+<p>An expert may frequently select inputs-outputs to a model which are <em>known causes-effects</em>, then the models fit the relation of one to the other.</p>
+<p>A non-expert know may not know which are the causes, which the effects. And in some cases it does not matter. This is where having a causal graph is relevant for modelling, to identify actual causes as inputs and effects as outputs.</p>
+<p>But when the model is already based on a causal graph (first case), a technique of <em>counterfactuals</em> can be used for generating explanations: asking <em>what if this other input was used instead</em>, or what if one feature is changed slightly? Such are counterfactual-like questions (if the initial input is considered a fact).</p>
 <p>(A logic-inference section could be added, but at the moment I don't see it adding much useful information.)</p>
 <h2 id="overview-of-methods"><a class="header" href="#overview-of-methods">Overview of methods</a></h2>
 <p>Within the <em>cognitive process</em> of explanations, <em>model explainability</em> benefits from methods to identify causes or relevant properties.</p>
