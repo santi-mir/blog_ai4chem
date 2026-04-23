@@ -70,7 +70,6 @@ Many other metaphors could be proposed.
 
 ----------------
 
-
 <details>
 <summary>Interesting resources</summary>
 
