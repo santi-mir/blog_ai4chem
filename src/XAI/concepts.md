@@ -23,8 +23,6 @@ The _cognitive process_ is the process of finding an answer, involving:
 4. _Weight_ the likelihood of each hypotheses,
 5. Possibly selecting the most likely until contradicted by experience or super-seeded (e.g. by a simpler explanation).
 
-_Finding an answer_ involves creativity, and a separate matter. In the case of XAI, concrete questions and answers will be described in the following posts.
-
 ### Social Process
 
 The _cognitive process_ and the specific case of inferring causes was described earlier. The remaining characteristic of explanations was a _social process_.
@@ -79,7 +77,7 @@ Many other metaphors could be proposed.
 <details>
 <summary>Interesting resources</summary>
 
-1. [Studies in the logic of explanation][logic_of_expl_hempel] (1948),
+1. [Studies in the logic of explanation][logic_of_expl_hempel] (1948), all the conceptual, i.e. non algebraic/logical analysis, is interesting.
 1. [Explanations, Predictions and Laws][scriven] (1948),
 1. [On the mechanization of abductive logic][abductive_logic] (1973). The first page is quite interesting.
 <!-- A **deduction** (proof) is e.g. "All cats are animals (I); animals are big (II); then cats are big (III)", whereas **abduction** (hypothesis) would be "III; I; maybe II" notice the _maybe_ (anti-clockwise rotation). Another anti-clockwise rotation takes us to **induction** (generalisation,hypothesis): "II; III; maybe all I". -->

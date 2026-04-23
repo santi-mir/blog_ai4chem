@@ -1,6 +1,6 @@
 # Model Explainability
 
-Explanations were defined and characterised &mdash;in simple terms&mdash; in the previous post.
+Explanations were defined and characterised in the previous post.
 
 In Explainable AI (XAI), what primarily needs explanation is the model. _Model explainability_ can be defined as:
 
@@ -19,32 +19,42 @@ Explainability is made harder with more accurate models, since they tend to be m
 
 Moreover, simple explanations can **oversimplifying** its operation, or lack **generality**.
 
-## Explaining a prediction via counterfactuals
+## Explaining by Comparison
 
-This framework is explained separately from methods to expand a bit more, but some of the methods use counterfactual-like logic behind.
+This framework is explained separately from methods to expand a bit more, but some of the methods are based on this logic behind.
 
-<details><summary>A toy example</summary>
+### A toy example
 
-Let's take an imaginary model and its predictions: $\mathbf{y} = f(\mathbf{x})$. One expectation is that it's accurate. Suppose this is modelling weather, and using whether people take an umbrella as input variable. It reaches high accuracy and we are happy.
+Let's take an imaginary model and its predictions: $y = f(\mathbf{x})$. It is expected to be accurate and robust.
+
+Suppose this is modelling weather, and using whether people take an umbrella as input variable. It reaches high accuracy and we are happy.
 
 If we wanted to answer, what if the persons didn't take the umbrella? It does still rain. Why? There may be different reasons:
 
 1. The model is doing correlation/association, but there wasn't correlation data available for such an event, so the predictions bad;
 2. The model does not use causal information, like a weather forecast model would (not taking an umbrella doesn't make raining impossible).
 
-Let's say we change it to use causal variables instead. How do we know that we have _all_ the _causal inputs_? And how do we know it has built an accurate _and also robust_ model of the world?
+Let's say we change it to use causal variables instead. In this case, we are implicitly adding a _causal model_.
 
-We expect these models to be useful in different cases, but the latter should be more robust.
+But how do we know that we have _all_ the _causal inputs_? And how do we know it has built an accurate _and also robust_ model of the world?
 
-</details>
+In some cases, a subset of variables will be enough to get a good approximation. We expect the causal models harder to create but also more robust for generalising out of distribution.
 
-An expert may frequently select inputs-outputs to a model which are _known causes-effects_, then the models fit the relation of one to the other.
+So, getting to a causal model isn't easy, nor guaranteed to be complete. In some cases, we may even be just fine with a correlation model, but we should distinguish them.
 
-A non-expert know may not know which are the causes, which the effects. And in some cases it does not matter. This is where having a causal graph is relevant for modelling, to identify actual causes as inputs and effects as outputs.
+An expert may pick known causes-effects pairs as inputs-outputs to train a model. A non-expert, may not know which are the causes and this _can_ be problematic (we may be building a correlation model).
 
-But when the model is already based on a causal graph (first case), a technique of _counterfactuals_ can be used for generating explanations: asking _what if this other input was used instead_, or what if one feature is changed slightly? Such are counterfactual-like questions (if the initial input is considered a fact).
+### Comparing
 
-(A logic-inference section could be added, but at the moment I don't see it adding much useful information.)
+So far, we dealt with _generalisation_, not with _explanation_ of a model. The reason is that generalisation out of distribution is connected to causal models &mdash;those going beyond correlation.
+
+But how do we _explain_ such models? This is where counterfactuals can help. And more broadly, _comparing_ how different inputs and their outputs.
+
+_Counterfactuals_ can be used for generating explanations: asking _what if this other input was used instead_, or what if one feature is changed slightly? Such are counterfactual-like questions (if the initial input is considered a fact). We can use counterfactuals either changing features of the input (even if this makes it novel), or comparing with reference inputs.
+
+Both of these are known techniques listed in the [overview of methods][overview-of-methods] (next section).
+
+<!-- (A logic-inference section could be added, but at the moment I don't see it adding much useful information.) -->
 
 ## Overview of methods
 
@@ -97,6 +107,7 @@ In other words, classical ML and DL models each have their use-cases.
 <summary>List of sources used in this blogpost</summary>
 
 1. [Principles and practice of explainable machine-learning][principles_and_practice] (2021, 25 pages): Sections 8&ndash;11 are a useful review of explainability methods.
+2. [The Book of Why][https://en.wikipedia.org/wiki/The_Book_of_Why] (2018): The introduction and first chapter were read in detail, only the part of interest for XAI (to my judgement) is discussed here, comparison and counterfactuals. It's interesting but may be more useful in other areas (like medical sciences, economics etc.)
 
 </details>
 
