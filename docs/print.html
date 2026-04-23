@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-7ad3a7ba.js";
+            window.path_to_searchindex_js = "searchindex-716458d9.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-4392cbfe.js"></script>
@@ -483,9 +483,18 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 </ol>
 <p>Robots could reach different levels of causal reasoning based on its actions (on the world)</p>
 <ol>
-<li><em>Association</em>: relating raw-data by observation. This aligns with the <em>regularity</em> definition of causes (co-occurrences).</li>
+<li><em>Association</em>: relating raw-data by observation. This aligns with the <em>regularity</em> definition of causes (co-occurrences). Many questions can be answered with this information only, and it's the main area where statistics is used.
+<ul>
+<li>Example: <em>Do taller people have larger feet?</em> for example. Or the conditional probability <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord">∣</span><span class="mord mathnormal">L</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">ee</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span>. But this does not show if there is a causal relation.</li>
+<li>Tool: To remove con-founders randomised control trial (RCT) can be used. However, the cause may be something they share rather than one or the other (like a gene). For a process unfolding in time, it will determine the cause.</li>
+</ul>
+</li>
 <li><em>Intervention</em>: changing one variable to detect the causal relation , this is, doing an experiment. He wrote this as <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord">∣</span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">))</span></span></span></span>, which is then translated into a statistics formula.</li>
-<li><em>Imagination</em>: top of the ladder. Involves counterfactual thinking, that is, thinking what would happen in a different world, also called <em>What ifs</em>. What would have happened with his life expectancy, had Joe <em>not</em> taken the drug?</li>
+<li><em>Imagination</em>: top of the ladder. Involves counterfactual thinking, that is, thinking what would happen in a different world, also called <em>What ifs</em>.
+<ul>
+<li>Example: What would have happened with his life expectancy, had Joe <em>not</em> taken the drug?</li>
+</ul>
+</li>
 </ol>
 <p>We can think of how far certain scientific models (including DL models), living organisms, reach in that ladder, but it's easiest to first read it thinking about robots.</p>
 <blockquote class="blockquote-tag blockquote-tag-note">

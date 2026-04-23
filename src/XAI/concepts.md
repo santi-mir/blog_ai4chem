@@ -53,11 +53,11 @@ The AI researcher Judea Pearl, whose aim was to create thinking machines, propos
 Robots could reach different levels of causal reasoning based on its actions (on the world)
 
 1. _Association_: relating raw-data by observation. This aligns with the _regularity_ definition of causes (co-occurrences). Many questions can be answered with this information only, and it's the main area where statistics is used.
-    - Example: _Do taller people have larger feet?_ for example. Or the conditional probability $P(Tall | Large feet)$. But this does not show if there is a causal relation.
-    - Tool: To remove con-founders randomised control trial (RCT) can be used. However, the cause may be something they share rather than one or the other (like a gene). For a process unfolding in time, it will determine the cause.
+   - Example: _Do taller people have larger feet?_ for example. Or the conditional probability $P(Tall | Large feet)$. But this does not show if there is a causal relation.
+   - Tool: To remove con-founders randomised control trial (RCT) can be used. However, the cause may be something they share rather than one or the other (like a gene). For a process unfolding in time, it will determine the cause.
 2. _Intervention_: changing one variable to detect the causal relation , this is, doing an experiment. He wrote this as $P(Y|do(X))$, which is then translated into a statistics formula.
 3. _Imagination_: top of the ladder. Involves counterfactual thinking, that is, thinking what would happen in a different world, also called _What ifs_.
-    - Example: What would have happened with his life expectancy, had Joe _not_ taken the drug?
+   - Example: What would have happened with his life expectancy, had Joe _not_ taken the drug?
 
 We can think of how far certain scientific models (including DL models), living organisms, reach in that ladder, but it's easiest to first read it thinking about robots.
 
