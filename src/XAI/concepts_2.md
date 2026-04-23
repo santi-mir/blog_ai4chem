@@ -50,7 +50,7 @@ But how do we _explain_ such models? This is where counterfactuals can help. And
 
 _Counterfactuals_ can be used for generating explanations: asking _what if this other input was used instead_, or what if one feature is changed slightly? Such are counterfactual-like questions (if the initial input is considered a fact). We can use counterfactuals either changing features of the input (even if this makes it novel), or comparing with reference inputs.
 
-Both of these are known techniques listed in the [overview of methods][overview-of-methods] (next section).
+Both of these are known techniques listed in the next section.
 
 <!-- (A logic-inference section could be added, but at the moment I don't see it adding much useful information.) -->
 
