@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-49545248.js";
+            window.path_to_searchindex_js = "searchindex-63c72541.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-4392cbfe.js"></script>
@@ -465,7 +465,6 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <li><em>Weight</em> the likelihood of each hypotheses,</li>
 <li>Possibly selecting the most likely until contradicted by experience or super-seeded (e.g. by a simpler explanation).</li>
 </ol>
-<p><em>Finding an answer</em> involves creativity, and a separate matter. In the case of XAI, concrete questions and answers will be described in the following posts.</p>
 <h3 id="social-process"><a class="header" href="#social-process">Social Process</a></h3>
 <p>The <em>cognitive process</em> and the specific case of inferring causes was described earlier. The remaining characteristic of explanations was a <em>social process</em>.</p>
 <p>The <em>social process</em> involves communicating the answer, and there are expectations about it. <a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. These rules can also be used as a guide for good <em>model explanations</em>:</p>
@@ -524,7 +523,7 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <hr><details>
 <summary>Interesting resources</summary>
 <ol>
-<li><a href="https://fitelson.org/woodward/hempel_oppenheim.pdf">Studies in the logic of explanation</a> (1948),</li>
+<li><a href="https://fitelson.org/woodward/hempel_oppenheim.pdf">Studies in the logic of explanation</a> (1948), all the conceptual, i.e. non algebraic/logical analysis, is interesting.</li>
 <li><a href="https://fitelson.org/woodward/scriven_epl.pdf">Explanations, Predictions and Laws</a> (1948),</li>
 <li><a href="https://www.ijcai.org/Proceedings/73/Papers/017.pdf">On the mechanization of abductive logic</a> (1973). The first page is quite interesting.</li>
 </ol>
@@ -548,7 +547,7 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <!-- [XAI for whom]: http://arxiv.org/abs/2106.05568 -->
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="model-explainability"><a class="header" href="#model-explainability">Model Explainability</a></h1>
-<p>Explanations were defined and characterised —in simple terms— in the previous post.</p>
+<p>Explanations were defined and characterised in the previous post.</p>
 <p>In Explainable AI (XAI), what primarily needs explanation is the model. <em>Model explainability</em> can be defined as:</p>
 <blockquote>
 <p>The degree to which we can answer questions about the model's inner working and outputs.</p>
@@ -565,22 +564,27 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 </div>
 
 <p>Moreover, simple explanations can <strong>oversimplifying</strong> its operation, or lack <strong>generality</strong>.</p>
-<h2 id="explaining-a-prediction-via-counterfactuals"><a class="header" href="#explaining-a-prediction-via-counterfactuals">Explaining a prediction via counterfactuals</a></h2>
-<p>This framework is explained separately from methods to expand a bit more, but some of the methods use counterfactual-like logic behind.</p>
-<details><summary>A toy example</summary>
-<p>Let's take an imaginary model and its predictions: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.1944em;"></span><span class="mord mathbf" style="margin-right:0.01597em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathbf">x</span><span class="mclose">)</span></span></span></span>. One expectation is that it's accurate. Suppose this is modelling weather, and using whether people take an umbrella as input variable. It reaches high accuracy and we are happy.</p>
+<h2 id="explaining-by-comparison"><a class="header" href="#explaining-by-comparison">Explaining by Comparison</a></h2>
+<p>This framework is explained separately from methods to expand a bit more, but some of the methods are based on this logic behind.</p>
+<h3 id="a-toy-example"><a class="header" href="#a-toy-example">A toy example</a></h3>
+<p>Let's take an imaginary model and its predictions: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathbf">x</span><span class="mclose">)</span></span></span></span>. It is expected to be accurate and robust.</p>
+<p>Suppose this is modelling weather, and using whether people take an umbrella as input variable. It reaches high accuracy and we are happy.</p>
 <p>If we wanted to answer, what if the persons didn't take the umbrella? It does still rain. Why? There may be different reasons:</p>
 <ol>
 <li>The model is doing correlation/association, but there wasn't correlation data available for such an event, so the predictions bad;</li>
 <li>The model does not use causal information, like a weather forecast model would (not taking an umbrella doesn't make raining impossible).</li>
 </ol>
-<p>Let's say we change it to use causal variables instead. How do we know that we have <em>all</em> the <em>causal inputs</em>? And how do we know it has built an accurate <em>and also robust</em> model of the world?</p>
-<p>We expect these models to be useful in different cases, but the latter should be more robust.</p>
-</details>
-<p>An expert may frequently select inputs-outputs to a model which are <em>known causes-effects</em>, then the models fit the relation of one to the other.</p>
-<p>A non-expert know may not know which are the causes, which the effects. And in some cases it does not matter. This is where having a causal graph is relevant for modelling, to identify actual causes as inputs and effects as outputs.</p>
-<p>But when the model is already based on a causal graph (first case), a technique of <em>counterfactuals</em> can be used for generating explanations: asking <em>what if this other input was used instead</em>, or what if one feature is changed slightly? Such are counterfactual-like questions (if the initial input is considered a fact).</p>
-<p>(A logic-inference section could be added, but at the moment I don't see it adding much useful information.)</p>
+<p>Let's say we change it to use causal variables instead. In this case, we are implicitly adding a <em>causal model</em>.</p>
+<p>But how do we know that we have <em>all</em> the <em>causal inputs</em>? And how do we know it has built an accurate <em>and also robust</em> model of the world?</p>
+<p>In some cases, a subset of variables will be enough to get a good approximation. We expect the causal models harder to create but also more robust for generalising out of distribution.</p>
+<p>So, getting to a causal model isn't easy, nor guaranteed to be complete. In some cases, we may even be just fine with a correlation model, but we should distinguish them.</p>
+<p>An expert may pick known causes-effects pairs as inputs-outputs to train a model. A non-expert, may not know which are the causes and this <em>can</em> be problematic (we may be building a correlation model).</p>
+<h3 id="comparing"><a class="header" href="#comparing">Comparing</a></h3>
+<p>So far, we dealt with <em>generalisation</em>, not with <em>explanation</em> of a model. The reason is that generalisation out of distribution is connected to causal models —those going beyond correlation.</p>
+<p>But how do we <em>explain</em> such models? This is where counterfactuals can help. And more broadly, <em>comparing</em> how different inputs and their outputs.</p>
+<p><em>Counterfactuals</em> can be used for generating explanations: asking <em>what if this other input was used instead</em>, or what if one feature is changed slightly? Such are counterfactual-like questions (if the initial input is considered a fact). We can use counterfactuals either changing features of the input (even if this makes it novel), or comparing with reference inputs.</p>
+<p>Both of these are known techniques listed in the [overview of methods][overview-of-methods] (next section).</p>
+<!-- (A logic-inference section could be added, but at the moment I don't see it adding much useful information.) -->
 <h2 id="overview-of-methods"><a class="header" href="#overview-of-methods">Overview of methods</a></h2>
 <p>Within the <em>cognitive process</em> of explanations, <em>model explainability</em> benefits from methods to identify causes or relevant properties.</p>
 <p>For all audiences, we can group these methods into more general categories, and then go into specific cases for a certain audience.</p>
@@ -626,6 +630,7 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <summary>List of sources used in this blogpost</summary>
 <ol>
 <li><a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable machine-learning</a> (2021, 25 pages): Sections 8–11 are a useful review of explainability methods.</li>
+<li>[The Book of Why][https://en.wikipedia.org/wiki/The_Book_of_Why] (2018): The introduction and first chapter were read in detail, only the part of interest for XAI (to my judgement) is discussed here, comparison and counterfactuals. It's interesting but may be more useful in other areas (like medical sciences, economics etc.)</li>
 </ol>
 </details>
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
