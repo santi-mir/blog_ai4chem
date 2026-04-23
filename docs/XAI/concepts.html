@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-09b7209a.js";
+            window.path_to_searchindex_js = "../searchindex-f2ba990a.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-4392cbfe.js"></script>
@@ -248,9 +248,10 @@
 <li><em>Imagination</em>: involves counterfactual thinking, that is, thinking what would happen in the opposite world.<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup> What would have happened with his life expectancy, had Joe <em>not</em> taken the drug?</li>
 </ul>
 <p>How does all this relate to science or deep learning? An expert may frequently select inputs-outputs to a model which are <em>known causes-effects</em>. Then the models <em>do</em> learn something like causal inference (though the graph is external in a sense).</p>
-<p>For a non-expert, how does him/her know which columns (say form CSV tables) are inputs and which are outputs? Are those inputs are <em>actual</em> causes and not just predictors? This can cause issues down the line, since knowing which are causes and effects is critical in many cases.</p>
-<p>That is where having a causal graph is relevant for modelling.</p>
-<p>Counterfactuals then, can be used in DL models as long as the inputs are known causes! This is in fact what counterfactual-methods for explainability: asking <em>what if this input was used instead</em> and such counterfactual questions.</p>
+<p>But how does a non-expert know which columns (say form CSV tables) are inputs and which are outputs? Are those inputs are <em>actual</em> causes and not just predictors? This can cause issues down the line, since knowing which are causes and effects is critical in many cases.</p>
+<p>This is where having a causal graph is relevant for modelling, to identify actual causes as inputs and effects as outputs.</p>
+<p>Counterfactuals then, can be used in DL models as long as the inputs are known causes. This is in fact using counterfactual-methods for generating explanations: asking <em>what if this input was used instead</em> and such counterfactual questions.</p>
+<p>(A logic-inference section could be added, but at the moment I don't see it adding much useful information.)</p>
 <h2 id="metaphors"><a class="header" href="#metaphors">Metaphors</a></h2>
 <details><summary>The Machine and The Agent (click to open)</summary>
 <p>In the scientific and science-adjacent domains, models are conceptualised as <em>machines</em>: composed of parts, each with a function, a role.</p>
