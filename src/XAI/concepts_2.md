@@ -44,11 +44,13 @@ That aside, a subset of causal-variables may do for a good-enough approximation,
 
 ### Comparing
 
-We sketched that generalisation out of distribution is connected to causal models &mdash;those going beyond correlation.
+A model that does correlation is more likely to fail out of distribution, because it has not learnt the correlation. Causal models should in principle have less of this issue.
 
-But how do we _explain_ such models? This is where counterfactuals can help. And more broadly, _comparing_ how different inputs and their outputs.
+To explain these causal models we can use counterfactuals which will likely be out of distribution, hence the causal model is favoured.
 
-_Counterfactuals_ can be used for generating explanations: asking _what if this other input was used instead_, or what if one feature is changed slightly? Such are counterfactual-like questions (if the initial input is considered a fact). We can use counterfactuals either changing features of the input (even if this makes it novel), or comparing with reference inputs.
+_Counterfactuals_ ask _what would happen if this other input (fact) was used instead of the former one_, or if one feature is changed slightly?
+
+In a similar fashion to counterfactuals, we can compare with reference inputs.
 
 Both of these are known techniques listed in the next section.
 
