@@ -37,10 +37,10 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-1af9576a.js";
+            window.path_to_searchindex_js = "searchindex-45415d15.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-4392cbfe.js"></script>
+        <script src="toc-32a3ac59.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -446,10 +446,11 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <p>It is computationally cheap, and can help screen large number of compounds as a first selection step.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="explanations"><a class="header" href="#explanations">Explanations</a></h1>
-<p>Explanations are usually defined as answers to a <em>why-question</em>, with certain properties and structure.</p>
-<p>There are definitions extending the <em>question-type</em>, or considering that the <em>why-question</em> may be implicit, or analysing pieces of text (such as a lesson, which is an explanation) rather than the question.</p>
-<p>All these definitions have aspects considered here; for example, the question needn't be posed, but if it is or is inferred, it may help answering.</p>
-<p>Either way, an answer or explanation should have characteristics of its own, regardless of the question.</p>
+<p>Explanations are usually defined as answers to a <em>why-question</em>, with certain properties and structure. Others warn that the <em>why-question</em> may be implicit, or include <em>how</em>, <em>what</em> and other <em>question-types</em> in the definition.</p>
+<p>Yet others propose that lessons and books explain without any question, and that the important part is to fill-a-gap in imaginary or present askers.</p>
+<p>Certainly, questions can be pointers to the gap, and this will be exploited in some explanation techniques.</p>
+<p>All seem correct considerations.</p>
+<p>But, regardless of the question, an answer has characteristics of its own. This is discussed the next section.</p>
 <h2 id="characteristics-of-explanations"><a class="header" href="#characteristics-of-explanations">Characteristics of explanations</a></h2>
 <p>Generating explanations involve a <em>cognitive</em> and a <em>social</em> process. Below, I describe a version inspired by <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in artificial intelligence: insights from the social sciences</a>.</p>
 <h3 id="cognitive-process"><a class="header" href="#cognitive-process">Cognitive Process</a></h3>
@@ -475,7 +476,7 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <li><strong>Manner</strong> (clarity): express it in elegant terms.</li>
 </ul>
 <p>Importantly, the paper above notes that <em>why-questions</em> are usually <strong>contrastive questions</strong> e.g. phrased as <em>why P rather than Q</em> instead of <em>why P</em>, where the <em>foil</em> (Q) is frequently implicit.</p>
-<h2 id="explanatory-success"><a class="header" href="#explanatory-success">Explanatory success</a></h2>
+<h3 id="explanatory-success"><a class="header" href="#explanatory-success">Explanatory success</a></h3>
 <p>There are aspects that tend to make explanations (and the belief in a hypothesis) more successful:</p>
 <ul>
 <li>
@@ -500,8 +501,8 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 </ul>
 </li>
 </ul>
-<p>I don't have much to say about <em>product</em> (<code>2.</code>), so we jump to <code>3</code>.</p>
-<h2 id="metaphors-the-machine-and-the-agent"><a class="header" href="#metaphors-the-machine-and-the-agent">Metaphors: The Machine and The Agent</a></h2>
+<h3 id="metaphors-the-machine-and-the-agent"><a class="header" href="#metaphors-the-machine-and-the-agent">Metaphors: The Machine and The Agent</a></h3>
+<p>These are metaphors different audiences use to understand models, and can help generate explanations for them.</p>
 <p>In the scientific and science-adjacent domains, models are conceptualised as <em>machines</em>: composed of parts, each with a function, a role.</p>
 <p>Outside of science or the technical domain, they're conceptualised as <em>human-like agents</em>: explained in human terms, expected to be reliable, consistent.</p>
 <p>In summary, explanations are answers to <em>why-questions</em>; <em>good</em> explanations respect the Gricean maxims, and will be dependent on the audience (their preferred style, expectations, expertise). The metaphors can help think of an explanation-style a given audience.</p>
@@ -818,67 +819,6 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 </ol>
 </details>
 <!-- [whatifs_wachter]: https://arxiv.org/pdf/1711.00399 -->
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="graph-networks-for-chemistry"><a class="header" href="#graph-networks-for-chemistry">Graph Networks for Chemistry</a></h1>
-<p><a href="http://arxiv.org/abs/1812.05055">Materials Graph Network</a> (MEGNet) was introduced in 2018 by Shyue Ping Ong et al. based on the work in Graph Networks by Battaglia et al.</p>
-<p>The network is for property prediction, so we need property-values for training it, and the graph structures as inputs.</p>
-<p>Graph Networks are a generalisation over graph-based neural networks (such as Message Passing and Crystal-Graph Neural Nets) because they are <em>not</em> constrained to use Neural Networks to update the object's graph.</p>
-<p>A note on paper terminology: "materials" encompasses molecules and crystals.</p>
-<h2 id="megnet"><a class="header" href="#megnet">MEGNet</a></h2>
-<p>The novel part of MEGNets are the MEGNet modules, and the addition of a global state vector.</p>
-<h3 id="megnet-modules"><a class="header" href="#megnet-modules">MEGNet Modules</a></h3>
-<p>The MEGNet modules map the attribute-vectors for each object in the graph: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">↦</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.038em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord"></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">G</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">h</span><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>. Where <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> are atom vectors (vertices in the graph) and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> bond vectors (edges) of the material and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> is a global state vector, or context.</p>
-<p>The mapping is done serially, in the following way (using <code>+</code> as concatenation of vectors):</p>
-<ol>
-<li>Update bond vector <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9019em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathbf mtight">′</span></span></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathbf">b</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ma</span><span class="mord mathnormal">t</span><span class="mord mathnormal">hb</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord"><span class="mord"><span class="mord mathnormal">a</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathbf">u</span><span class="mclose">)</span></span></span></span>
-<ul>
-<li>Information flows from atoms to bonds</li>
-</ul>
-</li>
-<li>Update atom vectors using average bond vector <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9019em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathbf mtight">′</span></span></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0444em;vertical-align:-0.15em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.8144em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathbf">u</span><span class="mclose">)</span></span></span></span>
-<ul>
-<li>Information flows from bonds (as average) to atoms.</li>
-</ul>
-</li>
-<li>Update global vector using average bond and atom vector <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathbf">u</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathbf mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathbf">a</span></span></span><span style="top:-3.5644em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0444em;vertical-align:-0.15em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">ik</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.8144em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathbf">u</span><span class="mclose">)</span></span></span></span>
-<ul>
-<li>Information flows from average of atom and bond vectors to the global state.</li>
-</ul>
-</li>
-</ol>
-<p>A <em>reduce operation</em> is applied through <em>set2set(A)</em>, <em>set2set(B)</em>, to obtain a single atom vector and a single bond vector. These two vectors are then concatenated along with a global vector (see below), into a single vector.</p>
-<p>The resulting vector can be used (and reused, through transfer-learning) in prediction heads.</p>
-<h3 id="megnet-blocks"><a class="header" href="#megnet-blocks">MEGNet Blocks</a></h3>
-<p>The blocks consist of the MEGNet module preceded by a 2-layer perceptron.</p>
-<p>The whole network can be described (in very simplified terms) as:</p>
-<pre class="mermaid">flowchart LR
-subgraph MEGNet_Block_1
-    A["A,B,c"] --MLP--&gt; B["A', B', c'"]
-    B --MEGNet Module--&gt; C["A'', B'', c''"]
-end
-MEGNet_Block_1--...--&gt;F["MEGNet Block N"]
-F--set2set--&gt; D["a, b"]
-D--concatenate--&gt; E["abc"]
-E--prediction head--&gt;output
-</pre>
-
-<h2 id="datasets"><a class="header" href="#datasets">Datasets</a></h2>
-<p>What we need here is the vertices and edges vectors (materials' graph structures), and the property we want to train it for.</p>
-<ul>
-<li>
-<p>For molecules they selected QM9, which is a dataset of DFT calculated energies for small molecules; they used version preprocessed by other authors.</p>
-</li>
-<li>
-<p>For crystals, they obtained properties and structures from the materials' project API.</p>
-</li>
-</ul>
-<p>They timestamped the database used, published the datasets as JSON for reproducibility, and published the code on GitHub.</p>
-<details>
-<summary>Sources</summary>
-<ol>
-<li><a href="http://arxiv.org/abs/1812.05055">Graph Networks as a Universal Machine Learning Framework for Molecules and Crystals</a> (2019)</li>
-</ol>
-</details>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="discovering-inorganic-solids"><a class="header" href="#discovering-inorganic-solids">Discovering Inorganic Solids</a></h1>
 <p>These are some of my opinions and ideas after reading two papers by Rosseinsky group:</p>
@@ -1301,6 +1241,22 @@ A --&gt; Direct
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>

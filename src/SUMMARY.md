@@ -21,11 +21,11 @@
 - [Additive Features](./XAI/strategies.md)
 - [Visuals and Arch](./XAI/strategies_2.md)
 
------
-
-## Neural Networks
-
-- [Graph Nets](./arches/gn.md)
+<!-- ----- -->
+<!---->
+<!-- ## Neural Networks -->
+<!---->
+<!-- - [Graph Nets](./arches/gn.md) -->
 
 -----
 

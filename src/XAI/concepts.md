@@ -1,12 +1,14 @@
 # Explanations
 
-Explanations are usually defined as answers to a _why-question_, with certain properties and structure.
+Explanations are usually defined as answers to a _why-question_, with certain properties and structure. Others warn that the _why-question_ may be implicit, or include _how_, _what_ and other _question-types_ in the definition.
 
-There are definitions extending the _question-type_, or considering that the _why-question_ may be implicit, or analysing pieces of text (such as a lesson, which is an explanation) rather than the question.
+Yet others propose that lessons and books explain without any question, and that the important part is to fill-a-gap in imaginary or present askers.
 
-All these definitions have aspects considered here; for example, the question needn't be posed, but if it is or is inferred, it may help answering.
+Certainly, questions can be pointers to the gap, and this will be exploited in some explanation techniques.
 
-Either way, an answer or explanation should have characteristics of its own, regardless of the question.
+All seem correct considerations.
+
+But, regardless of the question, an answer has characteristics of its own. This is discussed the next section.
 
 ## Characteristics of explanations
 
@@ -36,7 +38,7 @@ The _social process_ involves communicating the answer, and there are expectatio
 
 Importantly, the paper above notes that _why-questions_ are usually **contrastive questions** e.g. phrased as _why P rather than Q_ instead of _why P_, where the _foil_ (Q) is frequently implicit.
 
-## Explanatory success
+### Explanatory success
 
 There are aspects that tend to make explanations (and the belief in a hypothesis) more successful:
 
@@ -49,9 +51,9 @@ There are aspects that tend to make explanations (and the belief in a hypothesis
 
     - Aids selecting what seems causally / explanatory relevant from what is not. Consider two light beams interfering on a Sunday. The day is irrelevant (usually), we disregard a confounding factor.
 
-I don't have much to say about _product_ (`2.`), so we jump to `3`.
+### Metaphors: The Machine and The Agent
 
-## Metaphors: The Machine and The Agent
+These are metaphors different audiences use to understand models, and can help generate explanations for them.
 
 In the scientific and science-adjacent domains, models are conceptualised as _machines_: composed of parts, each with a function, a role.
 
