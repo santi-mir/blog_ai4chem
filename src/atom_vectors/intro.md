@@ -1,4 +1,22 @@
-# Atom Vectors - Introduction
+# Atom vectors
+
+## Introduction
+
+I thought about titling this _The quest for good representations_ but it was too pretentious since the post is simply concerned with materials.
+
+However, there is an interesting aside I would like to make. In two different stories, the writer Jorge Luis Borges highlights aspects _contrary_ to intelligence.
+
+One is "The Library of Babel", an infinite library which contains all possible books; the other, "Funes the memorious" where the character (Funes) records events _exactly_ as they happen with unbearable detail.
+
+A similar theme can be found in John Searle's "Minds, Brains and Machines".
+
+A database or an infinitely large model, storing most compounds and properties, would answer all questions, but not about those unavailable.
+
+Compressing a wealth of information, selecting what matters for prediction are good characteristics of models and representations; of theories and laws within science.
+
+Good theories also tend to give more than it is put in, that is, lead to discoveries and new hypotheses.
+
+## Representing atoms
 
 _Atom vectors_ is a broad category. Narrower categories are:
 
@@ -9,7 +27,7 @@ These vector representations are of interest because they can be useful inputs f
 
 Here we are interested in methods that don't require human expertise, hence _descriptors_ won't be discussed.
 
-## Embeddings
+### Embeddings
 
 Embeddings are _machine-learnt vectors $\in \mathbb{R}^N$._ Normally, they are also:
 
@@ -20,7 +38,7 @@ Embeddings are _machine-learnt vectors $\in \mathbb{R}^N$._ Normally, they are a
 
 Dense vectors are useful because training will be faster (than a similar sparse version).
 
-### Some Background on Embeddings
+#### Some Background on Embeddings
 
 Embeddings for atoms were inspired by NLP models from the 2010s.
 
@@ -37,13 +55,13 @@ The surprise was that similar words (or atoms) end up with similar vectors. The 
 vector("Queen") = vector("King") - vector("Man") + vector("Woman")
 ```
 
-## Vectors in Chemistry
+### Vectors in Chemistry
 
 As discussed earlier, atom vectors can be expert-designed or they can be _learnt_ by an algorithm. Learning vectors yields more general-purpose vectors, and has won in popularity.
 
 Both [Atom2Vec] (2018) and [SkipAtom] (2022) are unsupervised algorithms that obtain their atom vectors from databases of compounds. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.
 
-### Classifications and Featurisers
+#### Classifications and Featurisers
 
 The method used to generate our vectors is called a _featuriser_ (we can use a featuriser or create our own). There are many common approaches:
 
