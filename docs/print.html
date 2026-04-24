@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-45415d15.js";
+            window.path_to_searchindex_js = "searchindex-3bfca82e.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-32a3ac59.js"></script>
@@ -200,7 +200,16 @@
 <li><a href="https://www.fontsquirrel.com/fonts/computer-modern">Computer Modern</a> font or <code>Ubuntu &gt; System UI &gt; sans-serif</code>, in that order of preference.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="atom-vectors---introduction"><a class="header" href="#atom-vectors---introduction">Atom Vectors - Introduction</a></h1>
+<h1 id="atom-vectors"><a class="header" href="#atom-vectors">Atom vectors</a></h1>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>I thought about titling this <em>The quest for good representations</em> but it was too pretentious since the post is simply concerned with materials.</p>
+<p>However, there is an interesting aside I would like to make. In two different stories, the writer Jorge Luis Borges highlights aspects <em>contrary</em> to intelligence.</p>
+<p>One is "The Library of Babel", an infinite library which contains all possible books; the other, "Funes the memorious" where the character (Funes) records events <em>exactly</em> as they happen with unbearable detail.</p>
+<p>A similar theme can be found in John Searle's "Minds, Brains and Machines".</p>
+<p>A database or an infinitely large model, storing most compounds and properties, would answer all questions, but not about those unavailable.</p>
+<p>Compressing a wealth of information, selecting what matters for prediction are good characteristics of models and representations; of theories and laws within science.</p>
+<p>Good theories also tend to give more than it is put in, that is, lead to discoveries and new hypotheses.</p>
+<h2 id="representing-atoms"><a class="header" href="#representing-atoms">Representing atoms</a></h2>
 <p><em>Atom vectors</em> is a broad category. Narrower categories are:</p>
 <ul>
 <li><em>Descriptor</em>: used for expert-designed vectors,</li>
@@ -208,7 +217,7 @@
 </ul>
 <p>These vector representations are of interest because they can be useful inputs for training machine-learning models.<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup></p>
 <p>Here we are interested in methods that don't require human expertise, hence <em>descriptors</em> won't be discussed.</p>
-<h2 id="embeddings"><a class="header" href="#embeddings">Embeddings</a></h2>
+<h3 id="embeddings"><a class="header" href="#embeddings">Embeddings</a></h3>
 <p>Embeddings are <em>machine-learnt vectors <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span></span></span></span>.</em> Normally, they are also:</p>
 <ul>
 <li>Dense rather than sparse i.e they have few zeros,</li>
@@ -217,7 +226,7 @@
 <li>Belong to a structured vector space: semantically similar vectors are close together and allow for meaningful vector-arithmetic.</li>
 </ul>
 <p>Dense vectors are useful because training will be faster (than a similar sparse version).</p>
-<h3 id="some-background-on-embeddings"><a class="header" href="#some-background-on-embeddings">Some Background on Embeddings</a></h3>
+<h4 id="some-background-on-embeddings"><a class="header" href="#some-background-on-embeddings">Some Background on Embeddings</a></h4>
 <p>Embeddings for atoms were inspired by NLP models from the 2010s.</p>
 <p>One such example was learning <a href="https://arxiv.org/abs/1301.3781v3">continuous vector representations of words</a> (2013). They proposed an automated mechanism to generate word-vectors by absorbing information from that word's environment (neighbouring words).</p>
 <p>Materials science has exploited the same ideas, for example:</p>
@@ -228,10 +237,10 @@
 <p>The surprise was that similar words (or atoms) end up with similar vectors. The vectors also support semantically meaningful arithmetic operations, and became useful for downstream tasks. A classic example was:</p>
 <pre><code class="language-txt">vector("Queen") = vector("King") - vector("Man") + vector("Woman")
 </code></pre>
-<h2 id="vectors-in-chemistry"><a class="header" href="#vectors-in-chemistry">Vectors in Chemistry</a></h2>
+<h3 id="vectors-in-chemistry"><a class="header" href="#vectors-in-chemistry">Vectors in Chemistry</a></h3>
 <p>As discussed earlier, atom vectors can be expert-designed or they can be <em>learnt</em> by an algorithm. Learning vectors yields more general-purpose vectors, and has won in popularity.</p>
 <p>Both <a href="https://pnas.org/doi/full/10.1073/pnas.1801181115">Atom2Vec</a> (2018) and <a href="https://www.nature.com/articles/s41524-022-00729-3">SkipAtom</a> (2022) are unsupervised algorithms that obtain their atom vectors from databases of compounds. Atom vectors can be combined into compound vectors, and used for downstream tasks like property-prediction.</p>
-<h3 id="classifications-and-featurisers"><a class="header" href="#classifications-and-featurisers">Classifications and Featurisers</a></h3>
+<h4 id="classifications-and-featurisers"><a class="header" href="#classifications-and-featurisers">Classifications and Featurisers</a></h4>
 <p>The method used to generate our vectors is called a <em>featuriser</em> (we can use a featuriser or create our own). There are many common approaches:</p>
 <ul>
 <li>Simple: like hot-encoded, random;</li>
@@ -827,7 +836,7 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <li><a href="https://www.nature.com/articles/s41467-021-25343-7">Element selection for crystalline inorganic solid discovery guided by unsupervised machine learning of experimentally explored chemistry</a> (2021)</li>
 </ol>
 <hr>
-<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<h2 id="introduction-1"><a class="header" href="#introduction-1">Introduction</a></h2>
 <p>In solid-state chemistry, some elemental compositions (phase fields) are more likely to lead to isolable compounds than others.</p>
 <p>Deep learning models can help differentiate between these two groups, and lead researchers to the promising areas. The models can be trained for this task with data from ICSD, the Inorganic Crystal Structure Database.</p>
 <p>Such models would improve the allocation of resources when exploring new phase fields.</p>
