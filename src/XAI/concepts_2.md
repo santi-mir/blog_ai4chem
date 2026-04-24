@@ -8,7 +8,8 @@ In Explainable AI (XAI), what primarily needs explanation is the model. _Model e
 
 The goal is to explain a model, and do it to some audience (which could be ourselves).
 
-Explainability is made harder with more accurate models, since they tend to be more complex.
+## Trade-offs
+In deep learning practice, explainability _tends to_ be harder with more accurate models, since they _tend to_ be more complex.
 
 <div class="center w30">
     <a href="../assets/tradeoff.webp">
@@ -17,40 +18,39 @@ Explainability is made harder with more accurate models, since they tend to be m
     <p>Model accuracy vs Model explainability tradeoff.</p>
 </div>
 
-Moreover, simple explanations can **oversimplifying** its operation, or lack **generality**.
+Moreover, simple explanations can **oversimplify** its operation, or lack **generality**.
 
 ## Explaining by Comparison
 
 This framework is explained separately from methods to expand a bit more, but some of the methods are based on this logic behind.
 
-### A toy example
+### Will it rain today?
 
-Let's take an imaginary "probability of rain" model, $y = f(u)$, the variable $u$ being the proportion of people with an umbrella.
+Let's take an imaginary model, $y = f(u)$, the variable $u$ being the proportion of people with an umbrella, $f$ the model and $y$ the probability of rain.
 
-It reaches high accuracy and we are happy.
+It reaches low evaluation error and everyone is happy.
 
 However, it is sometimes found that if the people don't take the umbrella it may still rain. Why? There may be different reasons:
 
 1. The model is doing correlation/association, but there wasn't correlation data available for such an event, so the predictions bad;
+    - With a large and diverse possible dataset, most questions may be answerable; but may not generalise out of distribution, restricting discoveries to certain interpolations.
+    - This _is_ useful and discoveries have been made this way, but it clearly limits them to interpolation, and low success out of distribution.
 2. The model does not use causal information, like a weather forecast model would (not taking an umbrella doesn't make raining impossible).
+    - Using causal models may help to overcome the problems highlighted in the previous point. It's _a bit like_ turning it into a law or theory expected to have found some deep structure that generates the data, even the unseen data.
 
-We change it to use causal variables instead, implicitly adding a _causal model_.
+The model is then modified to use causal variables instead (such as pressure and temperature), implicitly turning it into a _causal model_. But does it have _all_ the _causal inputs_?
 
-But how do we know that we have _all_ the _causal inputs_? And how do we know it has built an accurate _and also robust_ model of the world?
+An expert may pick known causes-effects pairs as inputs-outputs to train a model, but others may unknowingly build a correlation model instead.
 
-An expert may pick known causes-effects pairs as inputs-outputs to train a model. A non-expert, may not know which are the causes and this _can_ be problematic (we may be building a correlation model).Finding this out is itself quite hard.
+A subset of causal-variables may do for a good-enough approximation, and likely be robust for generalising out of distribution. In some cases though, it may be enough to have a correlation model, but they should be distinguished.
 
-That aside, a subset of causal-variables may do for a good-enough approximation, and likely be robust for generalising out of distribution. (In some cases though, we may be just fine with a correlation model, but we should distinguish them.)
-
-### Comparing
+### What if...?
 
 A model that does correlation is more likely to fail out of distribution, because it has not learnt the correlation. Causal models should in principle have less of this issue.
 
-To explain these causal models we can use counterfactuals which will likely be out of distribution, hence the causal model is favoured.
+_Counterfactuals_ ask _What would happen if this other input (fact) was used instead of the former one_, or if one feature is changed slightly? They are also similar to _What ifs_ (as the question shows).
 
-_Counterfactuals_ ask _what would happen if this other input (fact) was used instead of the former one_, or if one feature is changed slightly?
-
-In a similar fashion to counterfactuals, we can compare with reference inputs.
+For a model, _counterfactuals_ yet another prediction, but the question is helpful because that is one way humans explain things. In a similar fashion to counterfactuals, we can compare with reference inputs.
 
 Both of these are known techniques listed in the next section.
 
@@ -107,10 +107,11 @@ In other words, classical ML and DL models each have their use-cases.
 <summary>List of sources used in this blogpost</summary>
 
 1. [Principles and practice of explainable machine-learning][principles_and_practice] (2021, 25 pages): Sections 8&ndash;11 are a useful review of explainability methods.
-2. [The Book of Why][https://en.wikipedia.org/wiki/The_Book_of_Why] (2018): The introduction and first chapter were read in detail, only the part of interest for XAI (to my judgement) is discussed here, comparison and counterfactuals. It's interesting but may be more useful in other areas (like medical sciences, economics etc.)
+2. [The Book of Why][tbow] (2018): The introduction and first chapter were read in detail, only the part of interest for XAI (to my judgement) is discussed here, comparison and counterfactuals. It's interesting but may be more useful in other areas (like medical sciences, economics etc.)
 
 </details>
 
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
 
 [principles_and_practice]: https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full
+[tbow]: https://en.wikipedia.org/wiki/The_Book_of_Why

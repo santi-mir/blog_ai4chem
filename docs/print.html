@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-4bb87a07.js";
+            window.path_to_searchindex_js = "searchindex-1af9576a.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-4392cbfe.js"></script>
@@ -551,7 +551,8 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <p>The degree to which we can answer questions about the model's inner working and outputs.</p>
 </blockquote>
 <p>The goal is to explain a model, and do it to some audience (which could be ourselves).</p>
-<p>Explainability is made harder with more accurate models, since they tend to be more complex.</p>
+<h2 id="trade-offs"><a class="header" href="#trade-offs">Trade-offs</a></h2>
+<p>In deep learning practice, explainability <em>tends to</em> be harder with more accurate models, since they <em>tend to</em> be more complex.</p>
 <div class="center w30">
     <a href="assets/tradeoff.webp">
     <img src="assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff." />
@@ -561,26 +562,33 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 
 </div>
 
-<p>Moreover, simple explanations can <strong>oversimplifying</strong> its operation, or lack <strong>generality</strong>.</p>
+<p>Moreover, simple explanations can <strong>oversimplify</strong> its operation, or lack <strong>generality</strong>.</p>
 <h2 id="explaining-by-comparison"><a class="header" href="#explaining-by-comparison">Explaining by Comparison</a></h2>
 <p>This framework is explained separately from methods to expand a bit more, but some of the methods are based on this logic behind.</p>
-<h3 id="a-toy-example"><a class="header" href="#a-toy-example">A toy example</a></h3>
-<p>Let's take an imaginary "probability of rain" model, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mclose">)</span></span></span></span>, the variable <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> being the proportion of people with an umbrella.</p>
-<p>It reaches high accuracy and we are happy.</p>
+<h3 id="will-it-rain-today"><a class="header" href="#will-it-rain-today">Will it rain today?</a></h3>
+<p>Let's take an imaginary model, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mclose">)</span></span></span></span>, the variable <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> being the proportion of people with an umbrella, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span> the model and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> the probability of rain.</p>
+<p>It reaches low evaluation error and everyone is happy.</p>
 <p>However, it is sometimes found that if the people don't take the umbrella it may still rain. Why? There may be different reasons:</p>
 <ol>
-<li>The model is doing correlation/association, but there wasn't correlation data available for such an event, so the predictions bad;</li>
-<li>The model does not use causal information, like a weather forecast model would (not taking an umbrella doesn't make raining impossible).</li>
+<li>The model is doing correlation/association, but there wasn't correlation data available for such an event, so the predictions bad;
+<ul>
+<li>With a large and diverse possible dataset, most questions may be answerable; but may not generalise out of distribution, restricting discoveries to certain interpolations.</li>
+<li>This <em>is</em> useful and discoveries have been made this way, but it clearly limits them to interpolation, and low success out of distribution.</li>
+</ul>
+</li>
+<li>The model does not use causal information, like a weather forecast model would (not taking an umbrella doesn't make raining impossible).
+<ul>
+<li>Using causal models may help to overcome the problems highlighted in the previous point. It's <em>a bit like</em> turning it into a law or theory expected to have found some deep structure that generates the data, even the unseen data.</li>
+</ul>
+</li>
 </ol>
-<p>We change it to use causal variables instead, implicitly adding a <em>causal model</em>.</p>
-<p>But how do we know that we have <em>all</em> the <em>causal inputs</em>? And how do we know it has built an accurate <em>and also robust</em> model of the world?</p>
-<p>An expert may pick known causes-effects pairs as inputs-outputs to train a model. A non-expert, may not know which are the causes and this <em>can</em> be problematic (we may be building a correlation model).Finding this out is itself quite hard.</p>
-<p>That aside, a subset of causal-variables may do for a good-enough approximation, and likely be robust for generalising out of distribution. (In some cases though, we may be just fine with a correlation model, but we should distinguish them.)</p>
-<h3 id="comparing"><a class="header" href="#comparing">Comparing</a></h3>
+<p>The model is then modified to use causal variables instead (such as pressure and temperature), implicitly turning it into a <em>causal model</em>. But does it have <em>all</em> the <em>causal inputs</em>?</p>
+<p>An expert may pick known causes-effects pairs as inputs-outputs to train a model, but others may unknowingly build a correlation model instead.</p>
+<p>A subset of causal-variables may do for a good-enough approximation, and likely be robust for generalising out of distribution. In some cases though, it may be enough to have a correlation model, but they should be distinguished.</p>
+<h3 id="what-if"><a class="header" href="#what-if">What if...?</a></h3>
 <p>A model that does correlation is more likely to fail out of distribution, because it has not learnt the correlation. Causal models should in principle have less of this issue.</p>
-<p>To explain these causal models we can use counterfactuals which will likely be out of distribution, hence the causal model is favoured.</p>
-<p><em>Counterfactuals</em> ask <em>what would happen if this other input (fact) was used instead of the former one</em>, or if one feature is changed slightly?</p>
-<p>In a similar fashion to counterfactuals, we can compare with reference inputs.</p>
+<p><em>Counterfactuals</em> ask <em>What would happen if this other input (fact) was used instead of the former one</em>, or if one feature is changed slightly? They are also similar to <em>What ifs</em> (as the question shows).</p>
+<p>For a model, <em>counterfactuals</em> yet another prediction, but the question is helpful because that is one way humans explain things. In a similar fashion to counterfactuals, we can compare with reference inputs.</p>
 <p>Both of these are known techniques listed in the next section.</p>
 <!-- (A logic-inference section could be added, but at the moment I don't see it adding much useful information.) -->
 <h2 id="overview-of-methods"><a class="header" href="#overview-of-methods">Overview of methods</a></h2>
@@ -628,7 +636,7 @@ Can we design machine-learnt interpretable vectors that are intrinsically interp
 <summary>List of sources used in this blogpost</summary>
 <ol>
 <li><a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable machine-learning</a> (2021, 25 pages): Sections 8–11 are a useful review of explainability methods.</li>
-<li>[The Book of Why][https://en.wikipedia.org/wiki/The_Book_of_Why] (2018): The introduction and first chapter were read in detail, only the part of interest for XAI (to my judgement) is discussed here, comparison and counterfactuals. It's interesting but may be more useful in other areas (like medical sciences, economics etc.)</li>
+<li><a href="https://en.wikipedia.org/wiki/The_Book_of_Why">The Book of Why</a> (2018): The introduction and first chapter were read in detail, only the part of interest for XAI (to my judgement) is discussed here, comparison and counterfactuals. It's interesting but may be more useful in other areas (like medical sciences, economics etc.)</li>
 </ol>
 </details>
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
@@ -1293,6 +1301,22 @@ A --&gt; Direct
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>
