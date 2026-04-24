@@ -1,28 +1,16 @@
-# Explainable AI
+# Model Explainability
 
-Having defined _causal explanations_ we can define _model explainability_ &mdash;the focus of Explainable Artificial Intelligence&mdash; as:
+Explanations were defined and characterised in the previous post.
 
-> finding the causes underlying a model's predictions or operation.
+In Explainable AI (XAI), what primarily needs explanation is the model. _Model explainability_ can be defined as:
 
-But _can a model be pragmatically considered explainable if it can not be communicated to the target audience?_
+> The degree to which we can answer questions about the model's inner working and outputs.
 
-It should also be noted that, while explanations are often framed causally, they may involve non-causal relations such as correlations, constraints, or contributions (LIME, SHAP). Especially in XAI.
+The goal is to explain a model, and do it to some audience (which could be ourselves).
 
-We can amend the definition of _model explainability_ to better fit the 3-legged definition of explanations given earlier:
+## Trade-offs
 
-> the degree to which humans can effectively answer questions about a model's predictions or operation, either directly or using explainability methods.
-
-_Questions_ includes more than just why-questions, and also accepts associations and contributions; we won't necessarily get to a causal structure.
-
-_Effectively_ includes the social and communicational aspect of it (which Grice's Maxims aid).
-
-## Trade-off
-
-One trade-off is that each audience will demand certain guarantees, and have expectations, and expertise, but we do not want lose much fidelity to the original model.
-
-Simplification loses fidelity. Care must be taken to make "things as simple as possible, but not simpler" or there is risk of **oversimplifying**. This is compounded by the fact that more complex and accurate models tend to be less explainable.
-
-This is not universal, but we could represent this common case as:
+In deep learning practice, explainability _tends to_ be harder with more accurate models, since they _tend to_ be more complex.
 
 <div class="center w30">
     <a href="../assets/tradeoff.webp">
@@ -30,6 +18,44 @@ This is not universal, but we could represent this common case as:
     </a>
     <p>Model accuracy vs Model explainability tradeoff.</p>
 </div>
+
+Moreover, simple explanations can **oversimplify** its operation, or lack **generality**.
+
+## Explaining by Comparison
+
+This framework is explained separately from methods to expand a bit more, but some of the methods are based on this logic behind.
+
+### Will it rain today?
+
+Let's take an imaginary model, $y = f(u)$, the variable $u$ being the proportion of people with an umbrella, $f$ the model and $y$ the probability of rain.
+
+It reaches low evaluation error and everyone is happy.
+
+However, it is sometimes found that if the people don't take the umbrella it may still rain. Why? There may be different reasons:
+
+1. The model is doing correlation/association, but there wasn't correlation data available for such an event, so the predictions bad;
+   - With a large and diverse possible dataset, most questions may be answerable; but may not generalise out of distribution, restricting discoveries to certain interpolations.
+   - This _is_ useful and discoveries have been made this way, but it clearly limits them to interpolation, and low success out of distribution.
+2. The model does not use causal information, like a weather forecast model would (not taking an umbrella doesn't make raining impossible).
+   - Using causal models may help to overcome the problems highlighted in the previous point. It's _a bit like_ turning it into a law or theory expected to have found some deep structure that generates the data, even the unseen data.
+
+The model is then modified to use causal variables instead (such as pressure and temperature), implicitly turning it into a _causal model_. But does it have _all_ the _causal inputs_?
+
+An expert may pick known causes-effects pairs as inputs-outputs to train a model, but others may unknowingly build a correlation model instead.
+
+A subset of causal-variables may do for a good-enough approximation, and likely be robust for generalising out of distribution. In some cases though, it may be enough to have a correlation model, but they should be distinguished.
+
+### What if...?
+
+A model that does correlation is more likely to fail out of distribution, because it has not learnt the correlation. Causal models should in principle have less of this issue.
+
+_Counterfactuals_ ask _What would happen if this other input (fact) was used instead of the former one_, or if one feature is changed slightly? They are also similar to _What ifs_ (as the question shows).
+
+For a model, _counterfactuals_ yet another prediction, but the question is helpful because that is one way humans explain things. In a similar fashion to counterfactuals, we can compare with reference inputs.
+
+Both of these are known techniques listed in the next section.
+
+<!-- (A logic-inference section could be added, but at the moment I don't see it adding much useful information.) -->
 
 ## Overview of methods
 
@@ -82,9 +108,11 @@ In other words, classical ML and DL models each have their use-cases.
 <summary>List of sources used in this blogpost</summary>
 
 1. [Principles and practice of explainable machine-learning][principles_and_practice] (2021, 25 pages): Sections 8&ndash;11 are a useful review of explainability methods.
+2. [The Book of Why][tbow] (2018): The introduction and first chapter were read in detail, only the part of interest for XAI (to my judgement) is discussed here, comparison and counterfactuals. It's interesting but may be more useful in other areas (like medical sciences, economics etc.)
 
 </details>
 
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->
 
 [principles_and_practice]: https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full
+[tbow]: https://en.wikipedia.org/wiki/The_Book_of_Why

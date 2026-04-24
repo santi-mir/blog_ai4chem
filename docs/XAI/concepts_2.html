@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>What is XAI? - AI for Chemistry</title>
+        <title>XAI - AI for Chemistry</title>
 
 
         <!-- Custom HTML head -->
@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-a62a1df3.js";
+            window.path_to_searchindex_js = "../searchindex-45415d15.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-e2ff8d5b.js"></script>
+        <script src="../toc-32a3ac59.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -182,23 +182,15 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="explainable-ai"><a class="header" href="#explainable-ai">Explainable AI</a></h1>
-<p>Having defined <em>causal explanations</em> we can define <em>model explainability</em> —the focus of Explainable Artificial Intelligence— as:</p>
+<h1 id="model-explainability"><a class="header" href="#model-explainability">Model Explainability</a></h1>
+<p>Explanations were defined and characterised in the previous post.</p>
+<p>In Explainable AI (XAI), what primarily needs explanation is the model. <em>Model explainability</em> can be defined as:</p>
 <blockquote>
-<p>finding the causes underlying a model's predictions or operation.</p>
+<p>The degree to which we can answer questions about the model's inner working and outputs.</p>
 </blockquote>
-<p>But <em>can a model be pragmatically considered explainable if it can not be communicated to the target audience?</em></p>
-<p>It should also be noted that, while explanations are often framed causally, they may involve non-causal relations such as correlations, constraints, or contributions (LIME, SHAP). Especially in XAI.</p>
-<p>We can amend the definition of <em>model explainability</em> to better fit the 3-legged definition of explanations given earlier:</p>
-<blockquote>
-<p>the degree to which humans can effectively answer questions about a model's predictions or operation, either directly or using explainability methods.</p>
-</blockquote>
-<p><em>Questions</em> includes more than just why-questions, and also accepts associations and contributions; we won't necessarily get to a causal structure.</p>
-<p><em>Effectively</em> includes the social and communicational aspect of it (which Grice's Maxims aid).</p>
-<h2 id="trade-off"><a class="header" href="#trade-off">Trade-off</a></h2>
-<p>One trade-off is that each audience will demand certain guarantees, and have expectations, and expertise, but we do not want lose much fidelity to the original model.</p>
-<p>Simplification loses fidelity. Care must be taken to make "things as simple as possible, but not simpler" or there is risk of <strong>oversimplifying</strong>. This is compounded by the fact that more complex and accurate models tend to be less explainable.</p>
-<p>This is not universal, but we could represent this common case as:</p>
+<p>The goal is to explain a model, and do it to some audience (which could be ourselves).</p>
+<h2 id="trade-offs"><a class="header" href="#trade-offs">Trade-offs</a></h2>
+<p>In deep learning practice, explainability <em>tends to</em> be harder with more accurate models, since they <em>tend to</em> be more complex.</p>
 <div class="center w30">
     <a href="../assets/tradeoff.webp">
     <img src="../assets/tradeoff.webp" alt="Model Explainability vs Model accuracy tradeoff." />
@@ -208,6 +200,35 @@
 
 </div>
 
+<p>Moreover, simple explanations can <strong>oversimplify</strong> its operation, or lack <strong>generality</strong>.</p>
+<h2 id="explaining-by-comparison"><a class="header" href="#explaining-by-comparison">Explaining by Comparison</a></h2>
+<p>This framework is explained separately from methods to expand a bit more, but some of the methods are based on this logic behind.</p>
+<h3 id="will-it-rain-today"><a class="header" href="#will-it-rain-today">Will it rain today?</a></h3>
+<p>Let's take an imaginary model, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mclose">)</span></span></span></span>, the variable <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> being the proportion of people with an umbrella, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span> the model and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> the probability of rain.</p>
+<p>It reaches low evaluation error and everyone is happy.</p>
+<p>However, it is sometimes found that if the people don't take the umbrella it may still rain. Why? There may be different reasons:</p>
+<ol>
+<li>The model is doing correlation/association, but there wasn't correlation data available for such an event, so the predictions bad;
+<ul>
+<li>With a large and diverse possible dataset, most questions may be answerable; but may not generalise out of distribution, restricting discoveries to certain interpolations.</li>
+<li>This <em>is</em> useful and discoveries have been made this way, but it clearly limits them to interpolation, and low success out of distribution.</li>
+</ul>
+</li>
+<li>The model does not use causal information, like a weather forecast model would (not taking an umbrella doesn't make raining impossible).
+<ul>
+<li>Using causal models may help to overcome the problems highlighted in the previous point. It's <em>a bit like</em> turning it into a law or theory expected to have found some deep structure that generates the data, even the unseen data.</li>
+</ul>
+</li>
+</ol>
+<p>The model is then modified to use causal variables instead (such as pressure and temperature), implicitly turning it into a <em>causal model</em>. But does it have <em>all</em> the <em>causal inputs</em>?</p>
+<p>An expert may pick known causes-effects pairs as inputs-outputs to train a model, but others may unknowingly build a correlation model instead.</p>
+<p>A subset of causal-variables may do for a good-enough approximation, and likely be robust for generalising out of distribution. In some cases though, it may be enough to have a correlation model, but they should be distinguished.</p>
+<h3 id="what-if"><a class="header" href="#what-if">What if...?</a></h3>
+<p>A model that does correlation is more likely to fail out of distribution, because it has not learnt the correlation. Causal models should in principle have less of this issue.</p>
+<p><em>Counterfactuals</em> ask <em>What would happen if this other input (fact) was used instead of the former one</em>, or if one feature is changed slightly? They are also similar to <em>What ifs</em> (as the question shows).</p>
+<p>For a model, <em>counterfactuals</em> yet another prediction, but the question is helpful because that is one way humans explain things. In a similar fashion to counterfactuals, we can compare with reference inputs.</p>
+<p>Both of these are known techniques listed in the next section.</p>
+<!-- (A logic-inference section could be added, but at the moment I don't see it adding much useful information.) -->
 <h2 id="overview-of-methods"><a class="header" href="#overview-of-methods">Overview of methods</a></h2>
 <p>Within the <em>cognitive process</em> of explanations, <em>model explainability</em> benefits from methods to identify causes or relevant properties.</p>
 <p>For all audiences, we can group these methods into more general categories, and then go into specific cases for a certain audience.</p>
@@ -253,6 +274,7 @@
 <summary>List of sources used in this blogpost</summary>
 <ol>
 <li><a href="https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full">Principles and practice of explainable machine-learning</a> (2021, 25 pages): Sections 8–11 are a useful review of explainability methods.</li>
+<li><a href="https://en.wikipedia.org/wiki/The_Book_of_Why">The Book of Why</a> (2018): The introduction and first chapter were read in detail, only the part of interest for XAI (to my judgement) is discussed here, comparison and counterfactuals. It's interesting but may be more useful in other areas (like medical sciences, economics etc.)</li>
 </ol>
 </details>
 <!-- Also, a very interesting experiment in terms of explainability was <https://distill.pub>. -->

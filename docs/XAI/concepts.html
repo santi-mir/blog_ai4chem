@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>What are explanations? - AI for Chemistry</title>
+        <title>Explanations - AI for Chemistry</title>
 
 
         <!-- Custom HTML head -->
@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "dark";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-a62a1df3.js";
+            window.path_to_searchindex_js = "../searchindex-45415d15.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-e2ff8d5b.js"></script>
+        <script src="../toc-32a3ac59.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -182,103 +182,48 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<!-- Should analyse at least 10 kinds of explanations -->
-<h1 id="what-is-an-explanation"><a class="header" href="#what-is-an-explanation">What is an explanation?</a></h1>
-<p>Let's start with an example. Concepts are expanded in the remaining sections.</p>
-<h2 id="an-explanation-example"><a class="header" href="#an-explanation-example">An explanation example</a></h2>
-<p>You open a drawer, and a conversation with a friend starts.</p>
-<blockquote>
-<p>Friend: Why did the drawer slide out?<br>You: Because I pulled it out? Had I not, the drawer wouldn't have slide.</p>
-</blockquote>
-<p>The answer is an <em>efficient</em> cause. Aristotle proposed 4 causes: <em>efficient</em> (mechanism), <em>formal</em> (form, shape), <em>material</em> (properties), <em>final</em> (purposes).</p>
-<p>Hume instead, understood causes through <em>counterfactuals</em> such as: <em>had I not pulled, it wouldn't have slide</em>. Hence, <em>pulling</em> is the cause.</p>
-<blockquote>
-<p>Friend: I <em>know</em> that. But why does it slide <em>rather than</em> opening like a lid?<br>You: Oh! I misunderstood. The drawer sits on rails allowing it to slide.</p>
-</blockquote>
-<p>The "<em>rather than</em> ..." is a contrast called <em>foil</em>, which may be implicit. <em>Foils</em> make answering easier.</p>
-<p>Notice also the <strong>social process</strong> involved. For example, we tried to guess the friend's actual <em>knowledge gap</em> and be truthful. The friend may decide to keep asking "Why" and eventually reject or accept the causal chain (or remain sceptical).</p>
-<h2 id="definitions-of-explanation"><a class="header" href="#definitions-of-explanation">Definitions of Explanation</a></h2>
-<p>Explanations can be split into an <em>explanandum</em>, which is a description of what is explained, and the <em>explanans</em>, which are the statements adduced to account for the phenomenon. These definitions are used in what follows.</p>
-<h3 id="logical-process"><a class="header" href="#logical-process">Logical Process</a></h3>
-<p>The <a href="https://fitelson.org/woodward/hempel_oppenheim.pdf">Studies in the logic of explanation</a> (1948) defines scientific explanation in a few places. For example, with emphasis on the question:</p>
-<blockquote>
-<p>To explain the phenomena in the world of our experience, to answer the question "why?" rather than only the question "what?" (...)</p>
-</blockquote>
-<p>Or the answer:</p>
-<blockquote>
-<p>The decisive requirement for every sound explanation remains that it subsume the explanandum under general laws [or theories].</p>
-</blockquote>
-<p>They do require that the <em>explanans</em> be testable, believed to be true to a high accuracy, and logically lead to the <em>explanandum</em> by means of general laws.</p>
-<h3 id="filling-the-gaps"><a class="header" href="#filling-the-gaps">Filling the gaps</a></h3>
-<p>On the opposite side, <a href="https://fitelson.org/woodward/scriven_epl.pdf">Explanations, Predictions and Laws</a> argues that no question word (<em>why</em> or otherwise) is <em>necessary</em> for an explanation.</p>
-<p>The paper also highlights the social aspect of communication, by suggesting that <em>explanations</em> are a kind of description aiming to fill a gap of understanding (or correct a misunderstanding) to an explainee. The questions then, are important but not the defining part.</p>
-<p>This idea is the definition of explanation this post uses, even in the case of <em>scientific explanation</em>. However, the scientific context requires "filling the gap" to be rigorous (such as the conditions in the first definition).</p>
-<h3 id="characteristics-of-explanations"><a class="header" href="#characteristics-of-explanations">Characteristics of explanations</a></h3>
-<p>The description (or information or answer) may use causal inference, logic inference, comparison to a reference item, subsumption into a class, metaphors, analogy and so forth. Prior beliefs or knowledge are also used to evaluate answers, and to omit what is considered obvious in the given context (or audience).</p>
-<p>The <em>reference item</em> above is hinting to a <em>foil</em>. <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in AI: insights from the social sciences</a> notes that <em>why-questions</em> are usually contrastive questions, phrased as <em>why P rather than Q</em> instead of <em>why P</em>. In this latter case, the <em>foil</em> (Q) is implicit.</p>
-<p>Examples of answers are: "Light interferes because it is a wave." or "The sparrow chirps because it's a bird" or "It chirps because it's happy" or "The chirping is due to a vibration of its vocal strings".</p>
-<p>In section <strong>2.1.2</strong>, <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in AI: insights from the social sciences</a> characterises an explanation as: a <strong>cognitive process</strong>, involving the generation of possible answers; a <strong>product</strong>, resulting from the cognitive process; a <strong>social process</strong>, which involves communicating the product.</p>
-<p>Let's now expand on the <em>cognitive</em> and <em>social</em> processes of an explanation (as I see them).</p>
-<h2 id="the-cognitive-process-of-explanations"><a class="header" href="#the-cognitive-process-of-explanations">The cognitive process of explanations</a></h2>
-<p>The <em>cognitive process</em> is similar to the scientific method:</p>
+<h1 id="explanations"><a class="header" href="#explanations">Explanations</a></h1>
+<p>Explanations are usually defined as answers to a <em>why-question</em>, with certain properties and structure. Others warn that the <em>why-question</em> may be implicit, or include <em>how</em>, <em>what</em> and other <em>question-types</em> in the definition.</p>
+<p>Yet others propose that lessons and books explain without any question, and that the important part is to fill-a-gap in imaginary or present askers.</p>
+<p>Certainly, questions can be pointers to the gap, and this will be exploited in some explanation techniques.</p>
+<p>All seem correct considerations.</p>
+<p>But, regardless of the question, an answer has characteristics of its own. This is discussed the next section.</p>
+<h2 id="characteristics-of-explanations"><a class="header" href="#characteristics-of-explanations">Characteristics of explanations</a></h2>
+<p>Generating explanations involve a <em>cognitive</em> and a <em>social</em> process. Below, I describe a version inspired by <a href="https://www.sciencedirect.com/science/article/pii/S0004370218305988">Explanation in artificial intelligence: insights from the social sciences</a>.</p>
+<h3 id="cognitive-process"><a class="header" href="#cognitive-process">Cognitive Process</a></h3>
+<p>The <em>cognitive process</em> is the process of finding an answer, involving:</p>
 <ol>
-<li><em>Filter</em> aspects of the <em>explanandum</em> deemed relevant (using prior knowledge),</li>
-<li><em>Propose</em> different answers,</li>
+<li>There is <em>something</em> to explain (<em>explanandum</em>),</li>
+<li>The explainer <em>filters</em> aspects of the <em>explanandum</em> deemed relevant (using prior knowledge),
+<ul>
+<li>If the explanation is known, retrieve it and skip the rest.</li>
+</ul>
+</li>
+<li><em>Generates</em> possible answers (through explanation techniques),</li>
 <li><em>Weight</em> the likelihood of each hypotheses,</li>
-<li><em>Accept</em> until contradicted by experience or super-seeded (e.g. by a simpler explanation).</li>
+<li>Possibly selecting the most likely until contradicted by experience or super-seeded (e.g. by a simpler explanation).</li>
 </ol>
-<p>Besides using prior knowledge, the way we come up with hypotheses may involve creativity, metaphors, analogies and be aided by methods or techniques; this post won't go further into this aspect.</p>
-<p>The steps above can also be sketched in a graph:</p>
-<pre class="mermaid">flowchart LR
-    A(("Answer why-event"))
-    subgraph hypotheses
-    B("Caused by A")
-    C("Caused by B")
-    D("Assigned to class")
-    end
-    subgraph filtered
-    E("Caused by B")
-    end
-A --suggest all (inferences)--&gt; hypotheses
-hypotheses --select best--&gt; filtered
-</pre>
-
-<p>Next the topics of <em>causes</em> and how are answers proposed are discussed, in the context of the <em>cognitive process</em>.</p>
-<h3 id="causes"><a class="header" href="#causes">Causes</a></h3>
-<p>Aspects of causes already mentioned, but worth putting together, were:</p>
+<h3 id="social-process"><a class="header" href="#social-process">Social Process</a></h3>
+<p>The <em>cognitive process</em> and the specific case of inferring causes was described earlier. The remaining characteristic of explanations was a <em>social process</em>.</p>
+<p>The <em>social process</em> involves communicating the answer, and there are expectations about it. <a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. These rules can also be used as a guide for good <em>model explanations</em>:</p>
 <ul>
-<li>The cognitive process may involve <em>inferring a cause</em>.</li>
-<li>Aristotle's proposed 4 kinds of <em>causal</em> answers to a <em>why-question</em>. These explanations are not always exclusive, they can be complementary.</li>
-<li>Hume defined <em>causes</em> as <em>counterfactuals</em>: A is the cause of B if, had A not happened, B wouldn't have happened. This view was formalised by Pearl and Halpern.</li>
+<li><strong>Informative</strong> (Quantity): right amount of context and details,</li>
+<li><strong>Truthful</strong> (Quality, or Fidelity): Try to make it true,</li>
+<li><strong>Relevance</strong> (Relation): do not state things that aren't needed (provide insight),</li>
+<li><strong>Manner</strong> (clarity): express it in elegant terms.</li>
 </ul>
-<p><em>Are all Aristotelian causes Humean causes?</em> Efficient causes can be seen as counterfactuals, and both are common in science. The remaining 3 causes are not naturally seen as counterfactuals.</p>
-<h4 id="necessary-and-sufficient"><a class="header" href="#necessary-and-sufficient">Necessary and sufficient</a></h4>
-<p>Talking about <em>necessary</em> and <em>sufficient</em> causes would've overloaded the example. Briefly, <em>counterfactuals</em> use the word <em>happen</em>, so it's an event rather than a condition: The spark of a lighter would be the <em>cause</em> of a fire, but oxygen would still be a <em>necessary</em> cause (or condition, or setting).</p>
-<h3 id="logic-inference"><a class="header" href="#logic-inference">Logic Inference</a></h3>
-<p>Often, <em>logic inference</em> is used in the cognitive process (deriving a cause).</p>
-<p>In a <strong>deduction</strong> the <em>explanans</em> combine to yield the <em>explanandum</em>. <a href="https://fitelson.org/woodward/hempel_oppenheim.pdf">Studies in the logic of explanation</a> (1948) argues that, in scientific explanation, <em>explanans</em> are testable conditions and general laws:</p>
-<blockquote>
-<p>"Why does the phenomenon occur?" is construed as meaning "according to what general laws, and by virtue of what antecedent conditions does the phenomenon occur?"</p>
-</blockquote>
-<p>And it <em>should predict the explanandum, were it unknown</em> (hence connecting <em>prediction</em> and <em>explanation</em>):</p>
-<blockquote>
-<p>It may be said, therefore, that an explanation of a particular event is not fully adequate unless its explanans, if taken account of in time, could have served as a basis for predicting the event in question.</p>
-</blockquote>
-<ul>
-<li>Example: Light is a wave; all waves interfere; then light beams interfere.</li>
-</ul>
-<p>In an <strong>induction</strong> a claim is generalised; for example: Bats are mammals; bats fly; maybe all mammals fly.</p>
-<p>In an <strong>abduction</strong> a hypothesis is proposed which derives the explanandum. This is what is done in the science, and it is a <em>deduction</em>, but the difference is that it starts with a hypothesis.
-For example: Light shows interference patterns, waves interfere, maybe light is a wave.</p>
-<p>The <em>inference to a cause</em> is very important and sometimes not obvious. It is made obvious when we do it wrong. For example, imagine that the drawer (in the example) actually slides when we touch it, then our inferred cause was wrong.</p>
-<h3 id="strength-of-a-hypothesis"><a class="header" href="#strength-of-a-hypothesis">Strength of a Hypothesis</a></h3>
-<p>The plausibility of a hypothesis or causal claim is affected by different aspects.</p>
+<p>Importantly, the paper above notes that <em>why-questions</em> are usually <strong>contrastive questions</strong> e.g. phrased as <em>why P rather than Q</em> instead of <em>why P</em>, where the <em>foil</em> (Q) is frequently implicit.</p>
+<h3 id="explanatory-success"><a class="header" href="#explanatory-success">Explanatory success</a></h3>
+<p>There are aspects that tend to make explanations (and the belief in a hypothesis) more successful:</p>
 <ul>
 <li>
 <p><strong>Simplicity</strong>: if it involves a shorter chain of causes, it is preferred,</p>
 </li>
 <li>
 <p><strong>Generality</strong>: if it explains other cases, it is preferred,</p>
+</li>
+<li>
+<p><strong>Testable</strong>: Can we do hypothesis testing via an experiment?</p>
 </li>
 <li>
 <p><strong>Prior knowledge/beliefs</strong></p>
@@ -293,30 +238,12 @@ For example: Light shows interference patterns, waves interfere, maybe light is 
 </ul>
 </li>
 </ul>
-<p>I don't have much to say about <em>product</em> (<code>2.</code>), so we jump to <code>3</code>.</p>
-<h2 id="social-process"><a class="header" href="#social-process">Social Process</a></h2>
-<p>The answer must then be communicated, and there are expectations about it.</p>
-<p><a href="https://effectiviology.com/principles-of-effective-communication/">Gricean Maxims</a> are rules observed in <em>good</em> communication. These rules can also be used as a guide for good <em>model explanations</em>.</p>
-<ol>
-<li><strong>Informative</strong> (Quantity): right amount of context and details,</li>
-<li><strong>Truthful</strong> (Quality, or Fidelity): Try to make it true,</li>
-<li><strong>Relevance</strong> (Relation): do not state things that aren't needed (provide insight),</li>
-<li><strong>Manner</strong> (clarity): express it in elegant terms.</li>
-</ol>
-<h2 id="metaphors"><a class="header" href="#metaphors">Metaphors</a></h2>
-<details><summary>The Machine and The Agent (click to open)</summary>
-<p>In the scientific and science-adjacent domains, models are conceptualised as <em>machines</em>:</p>
-<ol>
-<li>They have parts, each with a function, a role,</li>
-<li>They correspond with some aspect of the reality being modelled.</li>
-</ol>
-<p>Outside of science or the technical domain, they're conceptualised as <em>human-like agents</em>:</p>
-<ol>
-<li>They tend to be explained in human terms,</li>
-<li>They are expected to be reliable, consistent, ...</li>
-</ol>
-<p>So explanations are answers to <em>why-questions</em>; <em>good</em> explanations respect the Gricean maxims, and will be dependent on the audience (their preferred style, expectations, expertise).</p>
-<p>The table below is a summary of the ideas above</p>
+<h3 id="metaphors-the-machine-and-the-agent"><a class="header" href="#metaphors-the-machine-and-the-agent">Metaphors: The Machine and The Agent</a></h3>
+<p>These are metaphors different audiences use to understand models, and can help generate explanations for them.</p>
+<p>In the scientific and science-adjacent domains, models are conceptualised as <em>machines</em>: composed of parts, each with a function, a role.</p>
+<p>Outside of science or the technical domain, they're conceptualised as <em>human-like agents</em>: explained in human terms, expected to be reliable, consistent.</p>
+<p>In summary, explanations are answers to <em>why-questions</em>; <em>good</em> explanations respect the Gricean maxims, and will be dependent on the audience (their preferred style, expectations, expertise). The metaphors can help think of an explanation-style a given audience.</p>
+<p>A table summary:</p>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -329,12 +256,10 @@ For example: Light shows interference patterns, waves interfere, maybe light is 
 </table>
 </div>
 <p>Many other metaphors could be proposed.</p>
-</details>
-<p>In the next post we use our knowledge to define Explainable AI.</p>
 <hr><details>
-<summary>List of sources used in this blogpost</summary>
+<summary>Interesting resources</summary>
 <ol>
-<li><a href="https://fitelson.org/woodward/hempel_oppenheim.pdf">Studies in the logic of explanation</a> (1948),</li>
+<li><a href="https://fitelson.org/woodward/hempel_oppenheim.pdf">Studies in the logic of explanation</a> (1948), all the conceptual, i.e. non algebraic/logical analysis, is interesting.</li>
 <li><a href="https://fitelson.org/woodward/scriven_epl.pdf">Explanations, Predictions and Laws</a> (1948),</li>
 <li><a href="https://www.ijcai.org/Proceedings/73/Papers/017.pdf">On the mechanization of abductive logic</a> (1973). The first page is quite interesting.</li>
 </ol>
